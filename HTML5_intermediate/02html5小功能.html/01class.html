@@ -1,0 +1,27 @@
+<!--
+ * @Brief: 
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-07-23 19:06:27
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="test" class="s1 s2 s3 s4"></div>
+    </body>
+    <script>
+        debugger;
+        var testNode = document.querySelector("#test");
+        // console.log(testNode.className);
+        testNode.classList.add("s5");
+        testNode.classList.remove("s2");
+
+        // toggle切换。如果数组中存在该值则删除，如果不存在，就添加
+        testNode.classList.toggle("s2");
+        console.log(testNode.classList);
+    </script>
+</html>
