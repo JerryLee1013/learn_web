@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      html {
+        perspective: 800px;
+      }
+
+      body {
+        border: 1px solid;
+        background-color: pink;
+      }
+      .box1 {
+        width: 400px;
+        background-color: #bfa;
+        margin: 200px auto;
+        transition: all 2s;
+      }
+
+      .box1 img {
+        width: 100%;
+        vertical-align: bottom;
+      }
+
+      body:hover .box1 {
+        /* transform: rotateZ(45deg); */
+        /* transform: rotateX(45deg); */
+        transform: rotateY(0.25turn) translateZ(200px);
+
+        /* backface-visibility是否显示元素的背面 */
+        backface-visibility: hidden;
+        /* transform: translateZ(200px) rotateY(45deg); */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box1">
+      <img src="img/2000055.jpg" alt="" />
+    </div>
+  </body>
+</html>

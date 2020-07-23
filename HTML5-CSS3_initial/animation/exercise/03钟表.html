@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      .clock {
+        width: 500px;
+        height: 500px;
+        margin: 100px auto;
+        border-radius: 50%;
+        border: 10px solid pink;
+        position: relative;
+        /* background-image: url("img/true.jfif"); */
+        background-image: url("img/bgc.jpg");
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        background-size: 100%;
+      }
+
+      .clock > div {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        border-radius: 50%;
+      }
+
+      .clock > div > div {
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+      }
+      .center-center {
+        width: 100%;
+        height: 100%;
+      }
+      .center-center .center {
+        width: 10%;
+        height: 10%;
+        background-color: pink;
+        background-image: url("img/Rolex.jfif");
+        background-size: 100%;
+        position: absolute;
+        z-index: 100;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        border-radius: 50%;
+      }
+
+      .sec-wrapper {
+        width: 85%;
+        height: 85%;
+        z-index: 10;
+        animation: run 60s steps(60) infinite;
+      }
+      .sec-wrapper .sec {
+        height: 50%;
+        width: 3px;
+        background-color: red;
+      }
+      .min-wrapper {
+        width: 73%;
+        height: 73%;
+        z-index: 9;
+        animation: run 3600s steps(3600) infinite;
+      }
+      .min-wrapper .min {
+        height: 50%;
+        width: 7px;
+        background-color: black;
+      }
+      .hour-wrapper {
+        height: 60%;
+        width: 60%;
+        z-index: 8;
+        animation: run 43200s steps(43200) infinite;
+      }
+      .hour-wrapper .hour {
+        height: 50%;
+        width: 11px;
+        background-color: blue;
+      }
+      @keyframes run {
+        from {
+          transform: rotateZ(0);
+        }
+        to {
+          transform: rotateZ(360deg);
+        }
+      }
+
+      /* 设置表数字 */
+      .clock-num,
+      .clock-lattice {
+        width: 100%;
+        height: 100%;
+      }
+
+      .clock-num .num,
+      .clock-lattice .lattice {
+        list-style-type: none;
+      }
+
+      .clock-num .num li,
+      .clock-lattice .lattice li {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        margin: auto;
+        width: 10px;
+        height: 100%;
+        /* background-color: pink; */
+      }
+      .clock-num .num li:last-of-type > span {
+        display: inline-block;
+      }
+      .clock-num .num li > span {
+        margin-top: 20px;
+        font-size: 18px;
+        font-weight: bold;
+        color: rgb(5, 5, 5);
+      }
+      .clock-num .num li:nth-of-type(1) {
+        transform: rotateZ(30deg);
+      }
+      .clock-num .num li:nth-of-type(1) > span {
+        display: inline-block;
+        transform: rotateZ(-30deg);
+      }
+      .clock-num .num li:nth-of-type(2) {
+        transform: rotateZ(60deg);
+      }
+      .clock-num .num li:nth-of-type(2) > span {
+        display: inline-block;
+        transform: rotateZ(-60deg);
+      }
+      .clock-num .num li:nth-of-type(3) {
+        transform: rotateZ(90deg);
+      }
+      .clock-num .num li:nth-of-type(3) > span {
+        display: inline-block;
+        transform: rotateZ(-90deg);
+      }
+      .clock-num .num li:nth-of-type(4) {
+        transform: rotateZ(120deg);
+      }
+      .clock-num .num li:nth-of-type(4) > span {
+        display: inline-block;
+        transform: rotateZ(-120deg);
+      }
+      .clock-num .num li:nth-of-type(5) {
+        transform: rotateZ(150deg);
+      }
+      .clock-num .num li:nth-of-type(5) > span {
+        display: inline-block;
+        transform: rotateZ(-150deg);
+      }
+      .clock-num .num li:nth-of-type(6) {
+        transform: rotateZ(180deg);
+      }
+      .clock-num .num li:nth-of-type(6) > span {
+        display: inline-block;
+        transform: rotateZ(-180deg);
+      }
+      .clock-num .num li:nth-of-type(7) {
+        transform: rotateZ(210deg);
+      }
+      .clock-num .num li:nth-of-type(7) > span {
+        display: inline-block;
+        transform: rotateZ(-210deg);
+      }
+      .clock-num .num li:nth-of-type(8) {
+        transform: rotateZ(240deg);
+      }
+      .clock-num .num li:nth-of-type(8) > span {
+        display: inline-block;
+        transform: rotateZ(-240deg);
+      }
+      .clock-num .num li:nth-of-type(9) {
+        transform: rotateZ(270deg);
+      }
+      .clock-num .num li:nth-of-type(9) > span {
+        display: inline-block;
+        transform: rotateZ(-270deg);
+      }
+      .clock-num .num li:nth-of-type(10) {
+        transform: rotateZ(300deg);
+      }
+      .clock-num .num li:nth-of-type(10) > span {
+        display: inline-block;
+        transform: rotateZ(-300deg);
+      }
+      .clock-num .num li:nth-of-type(11) {
+        transform: rotateZ(330deg);
+      }
+      .clock-num .num li:nth-of-type(11) > span {
+        display: inline-block;
+        transform: rotateZ(-330deg);
+      }
+
+      /* 设置钟表的小格子 */
+
+      .clock-lattice .lattice li > span {
+        position: absolute;
+        left: 0;
+        right: 0;
+        width: 4px;
+        height: 22px;
+        margin: 0 auto;
+        background-color: black;
+      }
+      .clock-lattice .lattice li:not(:last-child) > span {
+        width: 3px;
+        height: 16px;
+      }
+      .clock-lattice .lattice li:nth-of-type(1) {
+        transform: rotateZ(6deg);
+      }
+      .clock-lattice .lattice li:nth-of-type(2) {
+        transform: rotateZ(12deg);
+      }
+      .clock-lattice .lattice li:nth-of-type(3) {
+        transform: rotateZ(18deg);
+      }
+      .clock-lattice .lattice li:nth-of-type(4) {
+        transform: rotateZ(24deg);
+      }
+
+      .first {
+        transform: rotateZ(30deg);
+      }
+      .second {
+        transform: rotateZ(60deg);
+      }
+      .third {
+        transform: rotateZ(90deg);
+      }
+      .forth {
+        transform: rotateZ(120deg);
+      }
+      .fifth {
+        transform: rotateZ(150deg);
+      }
+      .sixth {
+        transform: rotateZ(180deg);
+      }
+      .seventh {
+        transform: rotateZ(210deg);
+      }
+      .eighth {
+        transform: rotateZ(240deg);
+      }
+      .ninth {
+        transform: rotateZ(270deg);
+      }
+      .tenth {
+        transform: rotateZ(300deg);
+      }
+      .eleventh {
+        transform: rotateZ(330deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="clock">
+      <div class="center-center">
+        <div class="center"></div>
+      </div>
+      <div class="sec-wrapper">
+        <div class="sec"></div>
+      </div>
+      <div class="min-wrapper">
+        <div class="min"></div>
+      </div>
+
+      <div class="hour-wrapper">
+        <div class="hour"></div>
+      </div>
+      <div class="clock-num">
+        <ul class="num">
+          <li><span>1</span></li>
+          <li><span>2</span></li>
+          <li><span>3</span></li>
+          <li><span>4</span></li>
+          <li><span>5</span></li>
+          <li><span>6</span></li>
+          <li><span>7</span></li>
+          <li><span>8</span></li>
+          <li><span>9</span></li>
+          <li><span>10</span></li>
+          <li><span>11</span></li>
+          <li><span>12</span></li>
+        </ul>
+      </div>
+      <div class="clock-lattice first">
+        <ul class="lattice">
+          <li><span></span></li>
+          <li><span></span></li>
+          <li><span></span></li>
+          <li><span></span></li>
+          <li><span></span></li>
+        </ul>
+      </div>
+      <div class="clock-lattice second">
+        <ul class="lattice">
+          <li><span></span></li>
+          <li><span></span></li>
+          <li><span></span></li>
+          <li><span></span></li>
+          <li><span></span></li>
+        </ul>
+      </div>
+      <div class="clock-lattice third">
+        <ul class="lattice">
+          <li><span></span></li>
+          <li><span></span></li>
+          <li><span></span></li>
+          <li><span></span></li>
+          <li><span></span></li>
+        </ul>
+      </div>
+      <div class="clock-lattice forth">
+        <ul class="lattice">
+          <li><span></span></li>
+          <li><span></span></li>
+          <li><span></span></li>
+          <li><span></span></li>
+          <li><span></span></li>
+        </ul>
+      </div>
+      <div class="clock-lattice fifth">
+        <ul class="lattice">
+          <li><span></span></li>
+          <li><span></span></li>
+          <li><span></span></li>
+          <li><span></span></li>
+          <li><span></span></li>
+        </ul>
+      </div>
+      <div class="clock-lattice sixth">
+        <ul class="lattice">
+          <li><span></span></li>
+          <li><span></span></li>
+          <li><span></span></li>
+          <li><span></span></li>
+          <li><span></span></li>
+        </ul>
+      </div>
+      <div class="clock-lattice seventh">
+        <ul class="lattice">
+          <li><span></span></li>
+          <li><span></span></li>
+          <li><span></span></li>
+          <li><span></span></li>
+          <li><span></span></li>
+        </ul>
+      </div>
+      <div class="clock-lattice eighth">
+        <ul class="lattice">
+          <li><span></span></li>
+          <li><span></span></li>
+          <li><span></span></li>
+          <li><span></span></li>
+          <li><span></span></li>
+        </ul>
+      </div>
+      <div class="clock-lattice ninth">
+        <ul class="lattice">
+          <li><span></span></li>
+          <li><span></span></li>
+          <li><span></span></li>
+          <li><span></span></li>
+          <li><span></span></li>
+        </ul>
+      </div>
+      <div class="clock-lattice tenth">
+        <ul class="lattice">
+          <li><span></span></li>
+          <li><span></span></li>
+          <li><span></span></li>
+          <li><span></span></li>
+          <li><span></span></li>
+        </ul>
+      </div>
+      <div class="clock-lattice eleventh">
+        <ul class="lattice">
+          <li><span></span></li>
+          <li><span></span></li>
+          <li><span></span></li>
+          <li><span></span></li>
+          <li><span></span></li>
+        </ul>
+      </div>
+      <div class="clock-lattice twelfth">
+        <ul class="lattice">
+          <li><span></span></li>
+          <li><span></span></li>
+          <li><span></span></li>
+          <li><span></span></li>
+          <li><span></span></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

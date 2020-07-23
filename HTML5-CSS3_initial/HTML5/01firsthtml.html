@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#test{
+				width: 200px;
+				height: 200px;
+				background-color: red;
+			}
+        </style>
+        <script type="text/javascript">
+            window.onload = function(){
+                var test = document.getElementById("test");
+                var btn01 = document.getElementById("btn01");
+                btn01.onclick = function(){
+                    alert(test.currentStyle.width);
+                };
+            }
+        </script>
+	</head>
+	<body>
+		<button id="btn01">点我1</button><br /><br />
+		<div id="test">
+			
+		</div>
+	</body>
+	
+</html>

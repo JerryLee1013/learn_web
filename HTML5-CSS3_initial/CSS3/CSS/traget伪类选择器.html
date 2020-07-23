@@ -1,0 +1,49 @@
+<!--
+ * @Brief: 
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-07-19 17:29:31
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            /* 
+                注释            
+            */
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            /**
+             * @brief: 
+             * @param[in]: 
+             * @param[out]: 
+             * @return: 
+             * @note: 
+             */
+            /*  */
+            div {
+                /* display: none; */
+                width: 200px;
+                height: 200px;
+                background-color: #bfa;
+                font: 50px/200px "黑体";
+            }
+
+            :target {
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <a href="#box1">div1</a><br />
+        <a href="#box2">div2</a><br />
+        <a href="#box3">div3</a><br />
+        <div id="box1">div1</div>
+        <div id="box2">div2</div>
+        <div id="box3">div3</div>
+    </body>
+</html>

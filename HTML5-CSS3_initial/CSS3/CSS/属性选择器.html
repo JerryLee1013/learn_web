@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* [属性名] */
+        div[title]{
+           color: red; 
+        }
+
+        /* [属性名 = 属性值] */
+        div[title = 'div1']{
+            color: black;
+        }
+
+        /* [属性名 ^= 属性值] 以属性值开头*/
+        div[title ^= 'adiv']{
+            color: yellow;
+        }
+
+        /* [属性名 $= 属性值] 以属性值结尾*/
+        div[title $= 'adiv']{
+            color: pink;
+        }
+
+        /* [属性名 *= 属性值] 包含该属性值*/
+        div[title *= 'abc']{
+            color: blue;
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <div title="div1">div1</div>
+    <div title="div1">div2</div>
+    <div title="adiv2">adiv3</div>
+    <div title="adiv3">adiv4</div>
+    <div title="div4div">bdiv5div</div>
+    <div title="div5div">bdiv6div/div>
+    <div title="div6abcdiv">cdiv7</div>
+    <div title="divdiv6abc">cdiv7</div>
+    <div title="6abcdiv6div">cdiv7</div>
+    <div title="qweasd">cdiv7</div>
+    <div title="qweasd">cdiv7</div>
+
+</body>
+</html>

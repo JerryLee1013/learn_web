@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      小米商城 - 小米10 Pro、Redmi 10X、小米MIX Alpha，小米电视官方网站
+    </title>
+    <!-- 引入重置样式表 -->
+    <link rel="stylesheet" href="CSS/reset.css" />
+    <!-- 引入font图标字体 -->
+    <link rel="stylesheet" href="font/css/all.css" />
+    <!-- 引入小米图标字体文件 -->
+    <link rel="stylesheet" href="font/font_1936955_xrp3of38jqo/iconfont.css" />
+
+    <!-- 顶部导航的样式设置 -->
+    <link rel="stylesheet" href="CSS/header.css" />
+
+    <!-- 第二导航栏设置 -->
+    <link rel="stylesheet" href="CSS/second-nav.css" />
+
+    <!-- priduct-intro样式设置 -->
+    <link rel="stylesheet" href="CSS/product-intro.css" />
+
+    <!-- 设置mixed-box样式 -->
+    <link rel="stylesheet" href="CSS/mixed-box.css" />
+
+    <!-- 
+      设置网站图标 在标题栏和收藏栏显示
+        网站图标一般都存储在网站根目录下，名字一般叫做favicon.icon
+          例如：小米的logo地址为：https://www.mi.com/favicon.ico
+    -->
+    <!-- <link rel="icon" href="https://www.mi.com/favicon.ico" /> -->
+    <link rel="icon" href="./favicon.ico" />
+
+    <style>
+      .clearfix::before,
+      .clearfix::after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- 创建header导航栏 -->
+    <header class="header-nav">
+      <div class="nav-list">
+        <ul class="left-list">
+          <li><a href="javascript:;">小米商城</a></li>
+          <li class="line"></li>
+          <li><a href="javascript:;">MIUI</a></li>
+          <li class="line"></li>
+          <li><a href="javascript:;">loT</a></li>
+          <li class="line"></li>
+          <li><a href="javascript:;">云服务</a></li>
+          <li class="line"></li>
+          <li><a href="javascript:;">金融</a></li>
+          <li class="line"></li>
+          <li><a href="javascript:;">有品</a></li>
+          <li class="line"></li>
+          <li><a href="javascript:;">小爱开放平台</a></li>
+          <li class="line"></li>
+          <li><a href="javascript:;">企业团购</a></li>
+          <li class="line"></li>
+          <li><a href="javascript:;">资质证照</a></li>
+          <li class="line"></li>
+          <li><a href="javascript:;">协议规则</a></li>
+          <li class="line"></li>
+          <li class="download">
+            <a href="javascript:;">下载app</a>
+            <span class="xiala"></span>
+            <div class="download-app"></div>
+          </li>
+          <li class="line"></li>
+          <li><a href="javascript:;">Selection Location</a></li>
+        </ul>
+        <ul class="right-list">
+          <li><a href="javascript:;">登录</a></li>
+          <li class="line"></li>
+          <li><a href="javascript:;">注册</a></li>
+          <li class="line"></li>
+          <li><a href="javascript:;">消息通知</a></li>
+          <div class="right">
+            <div class="shoppingcar">
+              <i class="fas fa-shopping-cart"></i>
+              <a href="javascript:;">购物车&nbsp;&nbsp;(0)</a>
+            </div>
+            <div class="shoppingcar-list"></div>
+          </div>
+        </ul>
+      </div>
+    </header>
+
+    <!-- 创建第二导航栏-->
+    <div class="second-nav clearfix">
+      <div class="logo">
+        <a href="javascript:;"></a>
+      </div>
+
+      <ul class="nav-div">
+        <li>
+          <a href="javascript:;">小米手机 </a>
+          <span class="second-xiala"></span>
+        </li>
+        <li>
+          <a href="javascript:;">Redmi红米 </a>
+          <span class="second-xiala"></span>
+        </li>
+        <li>
+          <a href="javascript:;">电视 </a>
+          <span class="second-xiala"></span>
+        </li>
+        <li>
+          <a href="javascript:;">笔记本 </a>
+          <span class="second-xiala"></span>
+        </li>
+        <li>
+          <a href="javascript:;">家电 </a>
+          <span class="second-xiala"></span>
+        </li>
+        <li>
+          <a href="javascript:;">路由器 </a>
+          <span class="second-xiala"></span>
+        </li>
+        <li>
+          <a href="javascript:;">智能硬件 </a>
+          <span class="second-xiala"></span>
+        </li>
+        <li>
+          <a href="javascript:;">服务 </a>
+          <span class="second-xiala"></span>
+        </li>
+        <li>
+          <a href="javascript:;">社区 </a>
+          <span class="second-xiala"></span>
+        </li>
+      </ul>
+
+      <table class="search-form">
+        <tr>
+          <td>
+            <input type="text" name="" id="" />
+          </td>
+          <td>
+            <i class="fas fa-search"></i>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- 创建中部商品introduce区域 -->
+    <div class="product-intro clearfix">
+      <aside class="intro-nav">
+        <ul>
+          <li>
+            <a href="javascript:;">手机&nbsp;电话卡</a>
+            <span></span>
+          </li>
+          <li>
+            <a href="javascript:;">电视&nbsp;盒子</a>
+            <span></span>
+          </li>
+          <li>
+            <a href="javascript:;">笔记本&nbsp;显示器&nbsp;平板</a><span></span>
+          </li>
+          <li><a href="javascript:;">家电&nbsp;插线板</a><span></span></li>
+          <li><a href="javascript:;">出行&nbsp;穿戴</a><span></span></li>
+          <li><a href="javascript:;">智能&nbsp;路由器</a><span></span></li>
+          <li><a href="javascript:;">电源&nbsp;配件</a><span></span></li>
+          <li><a href="javascript:;">健康&nbsp;儿童</a><span></span></li>
+          <li><a href="javascript:;">耳机&nbsp;音箱</a><span></span></li>
+          <li><a href="javascript:;">生活&nbsp;箱包</a><span></span></li>
+        </ul>
+      </aside>
+      <div class="pic-list">
+        <ul class="img-list">
+          <li>
+            <a href=""><img src="./img/milunbo1.jpg" alt="" /></a>
+          </li>
+          <li>
+            <a href=""><img src="./img/milunbo2.jpg" alt="" /></a>
+          </li>
+          <li>
+            <a href=""><img src="./img/milunbo3.jpg" alt="" /></a>
+          </li>
+          <li>
+            <a href=""><img src="./img/milunbo4.jpg" alt="" /></a>
+          </li>
+          <li>
+            <a href=""><img src="./img/milunbo5.jpg" alt="" /></a>
+          </li>
+
+          <div class="img-icon">
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+          </div>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mixed-box clearfix">
+      <div class="left-box">
+        <div>
+          <i class="iconfont icon-icon-"></i><br />
+          <a href="javascript:;">小米秒杀</a>
+        </div>
+        <div>
+          <i class="iconfont icon-qiye"></i><br />
+          <a href="javascript:;">企业团购</a>
+        </div>
+        <div>
+          <i class="iconfont icon-F_round"></i><br />
+          <a href="javascript:;">F码通道</a>
+        </div>
+        <div>
+          <i class="iconfont icon-simqia"></i><br />
+          <a href="javascript:;">米粉卡</a>
+        </div>
+        <div>
+          <i class="iconfont icon-renminbi"></i><br />
+          <a href="javascript:;">以旧换新</a>
+        </div>
+        <div>
+          <i class="iconfont icon-huafei"></i><br />
+          <a href="javascript:;">花费充值</a>
+        </div>
+      </div>
+      <div class="right-box">
+        <a href="javascript:;"><img src="img/mix1.jpg" alt="" /></a>
+        <a href="javascript:;"><img src="img/mix2.jpg" alt="" /></a>
+        <a href="javascript:;"><img src="img/mix3.jpg" alt="" /></a>
+      </div>
+    </div>
+  </body>
+</html>

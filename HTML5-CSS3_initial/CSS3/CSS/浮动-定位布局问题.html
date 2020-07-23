@@ -1,0 +1,75 @@
+<!--
+ * @Brief: 
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-07-20 10:27:25
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            div {
+                width: 200px;
+                height: 200px;
+            }
+            /* box1设置float：left */
+            .box1 {
+                background-color: blue;
+                float: left;
+
+                /* box1开启透明效果，方便查看box2未开启任何定位效果时，元素的布局效果 */
+                /* opacity: 0; */
+            }
+
+            /* box2不浮动 ,设置相对定位*/
+            .box2 {
+                /* 不开启定位时，box2边框样式隐藏在box1的下面，可以设置box1  opacity：0查看 ，box2的文本div2没有上升到上面的布局中去*/
+
+                /* 
+                    设置相对定位时，box2边框样式覆盖box1的元素布局 ，
+                    div2文本并没有上升到上面的布局中去，
+                    同时box3  float:right到box2文本行div2的右侧
+
+                        ——问题：
+                            为什么在box1开启float后，box2的元素边框样式上升到box1的位置，
+                            文本div2没有上升，按照我对float的理解，box2作为一个块级元素，没有开启float，
+                            他的布局样式应该独占一行，为什么边框样式上升了，但是文本却保留下来，
+                            而且box3即使浮动了，也应该时浮动到box2下面一行的右侧，
+                            而不该浮动到box2拉下的文本div2的右侧，因为box2，并没有开启浮动。
+                            
+                            针对上面的问题，其中涉及了什么样的元素布局原理？
+                                问题简述：
+                                    ——为什么box2作为块级元素，在没有开启浮动的情况下，
+                                    没有独占一行，并且边框样式和文本行相互分离？
+
+                                问题解答：
+                                    CSS中脱离文档流，也就是将元素从普通的布局排版中拿走，其他盒子在定位的时候，会当做脱离文档流的元素不存在而进行定位。
+　　                                需要注意的是，使用float脱离文档流时，其他盒子会无视这个元素，但其他盒子内的文本依然会为这个元素让出位置，环绕在周围。
+　　                                而对于使用absolute positioning脱离文档流的元素，其他盒子与其他盒子内的文本都会无视它。
+————————————————
+                                    版权声明：本文为CSDN博主「paediatrician」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+                                    原文链接：https://blog.csdn.net/paediatrician/article/details/52583653
+
+                */
+                position: relative;
+
+                /* 开启绝对定位时，box2布局整体覆盖了box1的元素布局 */
+                /* position: absolute; */
+                background-color: pink;
+            }
+
+            /* box3开启float：right */
+            .box3 {
+                background-color: red;
+                float: right;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box1"></div>
+        <div class="box2">div2</div>
+        <div class="box3"></div>
+    </body>
+</html>

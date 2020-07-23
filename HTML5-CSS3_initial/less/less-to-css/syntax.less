@@ -1,0 +1,54 @@
+//less单行注释，不会被解析到css文件中
+
+/*
+    多行注释，会被解析到css文件中
+*/
+.box1 {
+  background-color: #bfa;
+  .box2 {
+    background-color: green;
+
+    .box4 {
+      color: red;
+    }
+  }
+  .box3 {
+    background-color: orange;
+  }
+}
+
+//变量。可以存储一个任意的值
+//并且我们可以在需要时任意修改变量的值
+//变量的语法：@变量名
+@a: 100px;
+@b: red;
+@c: box6;
+.box5 {
+  width: @a;
+  color: @b;
+}
+
+
+//作为类名或者一部分值使用时，以@{变量名}的形式使用
+.@{c}{
+    height: @a;
+    background-image: url("@{c}/1.png");
+}
+
+@d:200px;
+@d:300px;
+div{
+
+    //变量发生重名时，优先使用较近的变量
+    @d:115px;
+    width:@d;
+    height: @e;
+}
+//可以在变量声明前使用次变量，但是一般不建议这样使用
+@e:335px;
+
+div{
+    width: 300px;
+    height: $width;
+
+}

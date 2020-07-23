@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>less</title>
+    <style>
+      html {
+        /* css原生也支持变量的设置 */
+        --color: #ff0;
+
+        --length: 100px;
+      }
+      .box1 {
+        width: var(--length);
+        height: var(--length);
+        background-color: var(--color);
+      }
+      .box2 {
+        width: calc(1000px / 2);
+        height: var(--length);
+        border: 1px solid var(--color);
+      }
+      .box3 {
+        width: var(--length);
+        height: var(--length);
+        color: var(--color);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box1">aaa</div>
+    <div class="box2">aaa</div>
+    <div class="box3">aaa</div>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        body{
+            background-color:  antiquewhite;
+        }
+        /* 设置外部ul的样式 */
+        .img-list{
+            width: 280px;
+            height: 696px;
+            overflow: hidden;
+            margin: 50px auto;
+            background-color: rgb(244,244,244);
+        }
+
+        .img-list li:not(:last-child){
+            margin-bottom: 10px;
+        }
+
+        .img-list img{
+            width: 280px;
+            
+        }
+
+        .img-list>li:nth-of-type(1){
+            
+        }
+    </style>
+</head>
+<body>
+    <ul class="img-list">
+        <li>
+            <a href="javascript:;">
+                <img src="../img/1.webp" alt="不粘锅">
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <img src="../img/2.webp" alt="主机">
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <img src="../img/3.webp" alt="一加手机">
+            </a>
+        </li>
+    </ul>
+</body>
+</html>

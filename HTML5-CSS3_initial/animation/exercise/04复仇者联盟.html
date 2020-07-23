@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      html {
+        perspective: 3000px;
+      }
+      .cube {
+        position: relative;
+        width: 640px;
+        height: 360px;
+        /* background-color: #bfa; */
+        margin: 200px auto;
+        transform-style: preserve-3d;
+        /* transform: rotateX(45deg) rotateY(45deg); */
+        animation: rotate 20s linear infinite;
+
+        /* 演示scaleZ（） */
+        /* transform: scaleZ(3) rotateY(45deg); */
+      }
+      .cube > div {
+        width: 100%;
+        height: 100%;
+        opacity: 0.7;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+      }
+
+      .cube img {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+      }
+      @keyframes rotate {
+        from {
+          transform: rotateX(0) rotateY(0) rotateZ(0);
+        }
+        to {
+          transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+        }
+      }
+
+      .box1 {
+        transform: rotateY(90deg) translateZ(320px);
+      }
+      .box2 {
+        transform: rotateY(-90deg) translateZ(320px);
+      }
+      .box3 {
+        transform: rotateY(180deg) translateZ(320px);
+      }
+      .box4 {
+        transform: translateZ(320px);
+      }
+      .box5 {
+        transform: rotateX(90deg) translateZ(180px);
+      }
+      .box6 {
+        transform: rotateX(-90deg) translateZ(180px);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cube">
+      <div class="box1">
+        <img src="img/marvel/marvel1.jpg" alt="" />
+      </div>
+      <div class="box2">
+        <img src="img/marvel/marvel2.jpg" alt="" />
+      </div>
+      <div class="box3">
+        <img src="img/marvel/marvel3.jpg" alt="" />
+      </div>
+      <div class="box4">
+        <img src="img/marvel/marvel4.jpg" alt="" />
+      </div>
+      <div class="box5">
+        <img src="img/marvel/marvel7_1.jpg" alt="" />
+      </div>
+      <div class="box6">
+        <img src="img/marvel/marvel8_1.jpg" alt="" />
+      </div>
+    </div>
+  </body>
+</html>

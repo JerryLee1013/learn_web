@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 将ul里面第一个li设置为红色 */
+        /* ul>li:first-child{
+            color: red;
+        } */
+
+        /* 将ul里面最后一个li设置为黄色 */
+        /* ul>li:last-child{
+            color: yellow;
+        } */
+
+        /* 将ul里面第n个li设置为pink */
+        /* ul>li:nth-child(3){
+            color: pink;
+        } */
+
+        /* 特殊值n */
+        /* n时表示操作所有子元素 */
+        /* 2n或even时表示操作偶数位的子元素 */
+        /* 2n+1或odd表示操作奇数位的子元素 */
+        /* ul > li:nth-child(n){
+            border: 1px solid;
+        } */
+        /* 以上的伪类都是根据所有的子元素进行排序 */
+        /* ul > li:nth-child(odd){
+            border: 1px solid;
+        } */
+
+
+        /* 
+            :first-of-type  第一个子元素
+            :last-of-type   对后一个子元素
+            :nth-of-type()  第i个子元素
+            这几个伪类的功能和上述的类似，不同点是，他们在同类型元素中进行排序
+         */
+        /* ul > li:first-of-type{
+            color: red;
+        }
+
+        ul > li:last-of-type{
+            color: pink;
+        }
+
+        ul > li:nth-of-type(3){
+            color: yellow;
+        }
+
+        ul > li:nth-of-type(2n){
+            border: 1px solid;
+        } */
+
+        /* :not() */
+        ul > li:not(:nth-of-type(3)){
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <span>span</span>
+        <li>第一个</li>
+        <li>第二个</li>
+        <li>第三个</li>
+        <li>第四个</li>
+        <li>第五个</li>
+    </ul>
+</body>
+</html>

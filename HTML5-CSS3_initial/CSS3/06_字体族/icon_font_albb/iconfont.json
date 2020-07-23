@@ -1,0 +1,51 @@
+{
+  "id": "1922962",
+  "name": "iconfont_learning",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "15694001",
+      "name": "采购",
+      "font_class": "caigou",
+      "unicode": "e62b",
+      "unicode_decimal": 58923
+    },
+    {
+      "icon_id": "15694002",
+      "name": "报销资产",
+      "font_class": "baoxiaozichan",
+      "unicode": "e62a",
+      "unicode_decimal": 58922
+    },
+    {
+      "icon_id": "15694003",
+      "name": "公文",
+      "font_class": "gongwen",
+      "unicode": "e62c",
+      "unicode_decimal": 58924
+    },
+    {
+      "icon_id": "15694004",
+      "name": "更新变更",
+      "font_class": "gengxinbiangeng",
+      "unicode": "e62d",
+      "unicode_decimal": 58925
+    },
+    {
+      "icon_id": "15694005",
+      "name": "分享共享",
+      "font_class": "fenxianggongxiang",
+      "unicode": "e62e",
+      "unicode_decimal": 58926
+    },
+    {
+      "icon_id": "15694006",
+      "name": "国机",
+      "font_class": "guoji",
+      "unicode": "e62f",
+      "unicode_decimal": 58927
+    }
+  ]
+}

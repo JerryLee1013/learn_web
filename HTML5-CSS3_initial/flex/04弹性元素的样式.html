@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      ul {
+        width: 500px;
+        border: 10px solid red;
+        display: flex;
+        /* flex-direction: column; */
+      }
+
+      li {
+        width: 200px;
+        height: 100px;
+        line-height: 100px;
+        background-color: #bfa;
+        font-size: 50px;
+        text-align: center;
+        /* flex-grow: 1; */
+
+        flex-shrink: 1;
+        /* 指定元素在主轴上的基础长度 */
+        /* flex-basis: auto; */
+
+        /* flex简写属性 */
+        /* flex: 1 1 auto; */
+        flex: initial;
+      }
+
+      li:nth-child(2) {
+        background-color: pink;
+      }
+      li:nth-child(3) {
+        background-color: orange;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="clearfix">
+      <li>
+        1
+        <div></div>
+      </li>
+      <li>2</li>
+      <li>3</li>
+    </ul>
+  </body>
+</html>

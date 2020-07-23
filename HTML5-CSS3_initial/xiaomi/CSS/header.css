@@ -1,0 +1,125 @@
+.header-nav {
+  height: 40px;
+  background-color: #333;
+  font: 12px Helvetica Neue, Helvetica, Arial, Microsoft Yahei, Hiragino Sans GB,
+    Heiti SC, WenQuanYi Micro Hei, sans-serif;
+  color: #b0b0b0;
+}
+
+.header-nav .nav-list {
+  width: 1226px;
+  height: 100%;
+  background-color: #333;
+  /* border: 1px solid yellow; */
+  margin: auto;
+  line-height: 40px;
+}
+.nav-list ul > li {
+  display: inline-block;
+}
+
+.nav-list .left-list {
+  float: left;
+}
+.nav-list .right-list {
+  float: right;
+  position: relative;
+}
+
+.header-nav li a:hover {
+  color: white;
+}
+li.line {
+  height: 10px;
+  width: 1px;
+  line-height: 10px;
+  margin: 0 5px;
+  line-height: 10px;
+  background-color: #424242;
+}
+
+li.shoppingcar {
+  height: 100%;
+  width: 120px;
+  text-align: center;
+  background-color: #424242;
+  padding-bottom: 1px;
+  margin-left: 20px;
+  position: relative;
+  z-index: 9999;
+}
+
+/* 设置下载app下拉框  */
+li.download {
+  position: relative;
+}
+span.xiala {
+  display: none;
+  width: 0;
+  height: 0;
+  border-bottom: 10px solid white;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  position: absolute;
+  bottom: -1px;
+  left: 10px;
+}
+.download-app {
+  display: none;
+  width: 120px;
+  height: 130px;
+  background-color: #fff;
+  margin: 1px auto 0;
+  position: absolute;
+  left: -38px;
+  right: 0;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  z-index: 9998;
+}
+
+li.download:hover a {
+  color: white;
+}
+
+li.download:hover span {
+  display: block;
+}
+li.download:hover .download-app {
+  display: block;
+}
+
+/* 设置购物车下拉框 */
+div.right {
+  float: right;
+  position: relative;
+  margin-left: 30px;
+}
+
+div.shoppingcar {
+  position: relative;
+  background-color: #424242;
+  padding: 0 20px;
+  text-align: center;
+  z-index: 9999;
+}
+
+div.shoppingcar-list {
+  display: none;
+  position: absolute;
+  z-index: 1000;
+  right: 0;
+  width: 300px;
+  height: 100px;
+  background-color: white;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+  margin-top: -1px;
+}
+
+div.right:hover .shoppingcar-list {
+  display: block;
+}
+div.right:hover .shoppingcar {
+  padding-bottom: 1px;
+  background-color: #fff;
+  color: red;
+}

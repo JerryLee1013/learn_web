@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title></title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            /* div[name~="n1"] {
+                border: 1px solid;
+                background-color: red;
+            } */
+
+            /* div[name|="n1"] {
+                border: 1px solid;
+                background-color: red;
+            } */
+
+            div[name^="n1"] {
+                border: 1px solid;
+                background-color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <div name="a n1 a">1</div>
+            <div name="n1- b">2</div>
+            <div name="n1 c">3</div>
+            <div name="n1 d">4</div>
+            <div name="n2 e">5</div>
+            <div name="n2 f">6</div>
+        </div>
+    </body>
+</html>

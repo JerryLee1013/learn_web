@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      ul {
+        width: 500px;
+        /* height: 500px; */
+        border: 10px solid red;
+
+        /* 将ul设置为弹性容器 */
+        display: flex;
+
+        /* 
+          flex-direction: 指定容器中弹性容器的排列方向; 
+
+          主轴：弹性元素的排列方向
+          侧轴：
+            row
+              主轴：自左向右
+              侧轴：
+            row-reverse
+              主轴：自右向左
+              侧轴：
+            colum
+              主轴：自上向下
+              侧轴：
+            colum-reverse
+              主轴：自下向上
+              侧轴：
+
+          
+        */
+
+        flex-direction: row;
+      }
+      /* .clearfix {
+        display: table;
+        content: "";
+        clear: both;
+      } */
+      li {
+        width: 200px;
+        height: 100px;
+        line-height: 100px;
+        background-color: #bfa;
+        font-size: 50px;
+        text-align: center;
+
+        /* 
+          flex-shrink收缩系数
+            当父元素的空间不足以容纳所有的子元素时，如何对子元素进行收缩
+            默认值1；等比例收缩
+
+         */
+
+        /* flex-shrink: 0; */
+
+        /* 
+          flex-grow:弹性元素的伸展系数 ; 
+        */
+        /* flex-grow: 1; */
+        /* display: flex; */
+        /* float: left; */
+      }
+      li:nth-child(1) {
+        /* flex-grow: 0; */
+        flex-shrink: 1;
+      }
+      li:nth-child(2) {
+        background-color: pink;
+        /* flex-grow: 2; */
+        flex-shrink: 2;
+      }
+      li:nth-child(3) {
+        background-color: orange;
+        /* flex-grow: 3; */
+        flex-shrink: 3;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="clearfix">
+      <li>
+        1
+        <div></div>
+      </li>
+      <li>2</li>
+      <li>3</li>
+    </ul>
+  </body>
+</html>

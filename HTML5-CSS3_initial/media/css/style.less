@@ -1,0 +1,172 @@
+// 导航条外部容器
+.top-container {
+    background-color: #000;
+}
+.top-bar {
+    max-width: 1200px;
+    height: 48px;
+    margin: 0 auto;
+
+    padding: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+a {
+    color: #fff;
+
+    &:hover {
+        color: rgb(197, 196, 196);
+    }
+}
+// 设置左侧导航的图标
+.left-menu {
+    //   鼠标移入的效果，正常情况用js，现用hover模拟
+    &:active {
+        // 显示隐藏的菜单
+        .nav {
+            padding-top: 60px;
+            top: 48px;
+            right: 0;
+            bottom: 0;
+            li {
+                border-bottom: 1px solid #4e4e4e;
+            }
+        }
+
+        .menu-icon {
+            li:nth-child(1) {
+                //   向下旋转
+                transform: rotate(39deg);
+            }
+            li:nth-child(2) {
+                opacity: 0;
+            }
+            li:nth-child(3) {
+                //   向上旋转
+                transform: rotate(-39deg);
+            }
+        }
+    }
+
+    //   设置菜单
+    .nav {
+        position: absolute;
+
+        top: 48px;
+        left: 0;
+        right: 100%;
+        bottom: 100%;
+        background-color: #000;
+        text-align: left;
+        transition: all 0.5s;
+        li {
+            width: 80%;
+            margin: 0 auto;
+
+            a {
+                display: block;
+                line-height: 44px;
+                font-size: 14px;
+            }
+            &:last-child {
+                a {
+                    display: inline-block;
+                }
+
+                span {
+                    font-size: 14px;
+                    color: #fff;
+                    margin-left: 10px;
+                }
+            }
+        }
+    }
+    .menu-icon {
+        // background-color: #bfa;
+        width: 18px;
+        height: 48px;
+        // 开启定位
+        position: relative;
+        li {
+            width: 18px;
+            height: 1px;
+            background-color: #fff;
+            position: absolute;
+            //   修改变形原点
+            transform-origin: left center;
+            //   过渡
+            transition: all 0.5s;
+        }
+        li:nth-child(1) {
+            top: 18px;
+        }
+        li:nth-child(2) {
+            transition: all 0.5s;
+            top: 24px;
+        }
+        li:nth-child(3) {
+            bottom: 18px;
+        }
+    }
+}
+
+.logo {
+    a {
+        text-indent: -9999px;
+        display: block;
+        width: 73px;
+        height: 20px;
+        background-image: url("https://img.app.meitudata.com/corp-new/image/logo-white.@f94af395.png");
+        background-size: 100% 100%;
+    }
+}
+
+// 设置媒体查询
+@media only screen {
+    //断点
+    @media (min-width: 768px) {
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            .left-menu {
+                order: 2;
+                display: flex;
+                width: 80%;
+
+                justify-content: space-evenly;
+                align-items: center;
+                flex-wrap: nowrap;
+                .menu-icon {
+                    display: none;
+                }
+                .nav {
+                    padding-top: 0;
+                    display: flex;
+                    position: static;
+                    width: 100%;
+                    flex-wrap: nowrap;
+                    flex: auto;
+                    justify-content: space-evenly;
+                    li {
+                        text-align: center;
+                        border-bottom: none;
+                        a {
+                            line-height: 48px;
+                        }
+                        span {
+                            display: none;
+                        }
+                    }
+                }
+            }
+
+            .logo {
+                order: 1;
+            }
+            .user-info {
+                order: 3;
+            }
+        }
+    }
+}

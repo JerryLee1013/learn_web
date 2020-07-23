@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 交集选择器 */
+        div.div1{
+            color: red;
+        }
+
+        span#span1{
+            color:yellow;
+        }
+        
+        /* 并集选择器 */
+        div.div3,span#span2{
+            color: pink;
+        }
+
+        .div4,#span3{
+            color: deeppink;
+        }
+
+        /* 关系选择器 */
+        div > #childDiv{
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="div1">div1</div>
+    <div class="div1">div2</div>
+    <div class="div3">div3</div>
+    <div class="div4">div4</div>
+    <span id="span1">span1</span><br>
+    <span id="span2">span2</span><br>
+    <span id="span3">span4</span><br>
+    
+    <div>
+        <div id="childDiv">childDiv</div>
+    </div>
+</body>
+</html>

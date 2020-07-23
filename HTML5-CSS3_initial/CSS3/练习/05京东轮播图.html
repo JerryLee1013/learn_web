@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+     
+        
+        ul{
+            list-style-type: none;
+            width: 732px;
+            height: 585px;
+            position: relative;
+            margin: 100px auto;
+        }
+        
+        img{
+            width: 732px;
+            
+        }
+
+        li{
+            position: absolute;
+        }
+
+        .navlist > a{
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            margin-left: 10px;
+            background-color: rgba(255,255,255,.6);
+            border-radius: 50%;
+            /* 将背景颜色设置到内容区，边框和内边距不再有背景颜色 */
+            background-clip: content-box;
+            border: 3px solid transparent;
+        }
+
+        .navlist{
+            position: absolute;
+            left: 20px;
+            bottom: 20px;
+            z-index: 9999;
+
+        }
+
+        div.navlist > a.active,
+        div.navlist > a:hover{
+            background-color: white;
+            border: 3px solid rgba(255,255,255,.5);
+        }
+        
+    </style>
+</head>
+<body>
+
+    
+        <ul>
+            <li><a href="javascript:;"><img src="../img/lunbo1.webp" alt="lunbo1"></a></li>
+            <li><a href="javascript:;"><img src="../img/lunbo2.webp" alt="lunbo2"></a></li>
+            <li><a href="javascript:;"><img src="../img/lunbo3.webp" alt="lunbo3"></a></li>
+            <li><a href="javascript:;"><img src="../img/lunbo4.webp" alt="lunbo4"></a></li>
+
+            <div class="navlist">
+                <a href="javascript:;" class="active"></a>
+                <a href="javascript:;"></a>
+                <a href="javascript:;"></a>
+                <a href="javascript:;"></a>
+            </div>
+        </ul>
+        
+        
+   
+    
+</body>
+</html>

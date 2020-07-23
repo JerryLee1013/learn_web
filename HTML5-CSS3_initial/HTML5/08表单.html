@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="08_target.html">
+      <input type="text" />
+      <input type="submit" value="注册" />
+
+      <!-- 单选按钮，必须指定value属性，用于区分选项，同时当选定后，向服务器发送对应的value值 -->
+      <input type="radio" name="danxuan" value="a" />
+      <input type="radio" name="danxuan" value="b" />
+
+      <br />
+      <input type="checkbox" value="1" />
+      <input type="checkbox" value="2" />
+      <input type="checkbox" value="3" />
+      <button>按钮</button>
+
+      <br />
+      <select name="city" id="city">
+        <option value="1">北京</option>
+        <option value="2" selected>上海</option>
+        <option value="3">广州</option>
+        <option value="4">深圳</option>
+      </select>
+    </form>
+  </body>
+</html>

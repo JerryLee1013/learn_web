@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>超链接伪类</title>
+
+    <style>
+        a:link{
+            color: orange;
+        }
+
+        a:visited{
+            color: red;
+        }
+        a:hover{
+            color: black;
+        }
+
+        a:active{
+            color: yellow;
+        }
+
+        /* :empty操作没有任何子元素或文本元素的元素样式 */
+        div:empty{
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+
+        div:has(a){
+            border:1px solid;
+        }
+    </style>
+</head>
+<body>
+    <!-- 超链接伪类 -->
+
+    <a href="#">百度一下1</a><br>
+    <a href="#">百度一下2</a>
+
+    <div></div>
+    <div><a href="#">lianjie</a></div>
+
+</body>
+</html>

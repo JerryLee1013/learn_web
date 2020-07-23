@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            font-size: 50px;
+            /* text-decoration: underline; */
+            /* text-decoration: line-through; */
+            /* text-decoration: underline red; 不支持IE浏览器*/
+            text-decoration: underline red dotted;
+        }
+
+        .box2{
+            width: 300px;
+            border: 1px solid ;
+            /* white-space: pre;保留空白 */
+
+            /* 文本不换行nowrap */
+            white-space: nowrap;
+            overflow: hidden;
+
+            /* 溢出内容显示省略号 */
+            text-overflow: ellipsis;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        今天天气真不错
+
+    </div>
+    <div class="box2">
+        据西班牙《新论坛报》网站6月29日报道，根据该组织的数据显示，
+        新冠病毒大流行造成的人员流动限制，以及缺乏有效的社保覆盖，导致
+        全球将近四分之三的家政工作者面临失业和收入锐减的巨大风险。
+    </div>
+</body>
+</html>

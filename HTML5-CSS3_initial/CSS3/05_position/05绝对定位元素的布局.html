@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            width: 500px;
+            height: 500px;
+            background-color: pink;
+
+            position: relative;
+        }
+
+        .box2{
+            
+            width: 100px;
+            height: 100px;
+            background-color: red;
+
+            position: absolute;
+            /*
+                水平布局：
+                包含块的内容区宽度 = left +margin-left + border-left + padding-left + width + padding-right + border-right + margin-right + right ;
+                
+                -当我们开启了绝对定位后
+                    水平方向的布局等式就需要添加left 和 right两个值
+                        此时规则和之前一样只是多添加了两个值：
+                            当前发生过渡约束时：
+                                如果九个值中没有auto，则自动调整right值以使等式成立
+                                如果有auto，则自动调整auto的值以使等式成立
+
+                            ——可设置auto的值：
+                                margin
+                                width
+                                left
+                                right
+                垂直布局：
+                包含块内容区高度 = top + margin-top + border-top + padding-top + height + padding-bottom + border-bottom + margin-bottom + bottom ;
+
+             */
+             right: 0;
+             left: 0;
+             /*
+                ——应为left和right的默认值使auto，所以如果不指定left和right
+                    则等式不满足时，会自动调整两个值 
+              */
+             margin-left:auto;
+             margin-right: auto;
+             top: 0;
+             bottom: 0; 
+             margin-top: auto;
+             margin-bottom: auto;
+             /* margin: auto; */
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <div class="box2">
+
+        </div>
+    </div>
+</body>
+</html>

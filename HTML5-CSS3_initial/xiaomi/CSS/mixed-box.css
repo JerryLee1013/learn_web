@@ -1,0 +1,36 @@
+.mixed-box {
+  width: 1226px;
+  height: 170px;
+  margin: 15px auto;
+}
+.mixed-box .left-box {
+  width: 234px;
+  height: 100%;
+  float: left;
+  background-color: rgb(95, 87, 80);
+}
+
+.mixed-box .right-box a img {
+  display: inline-block;
+  width: 312px;
+  height: 170px;
+  margin-left: 16px;
+}
+.mixed-box .left-box div {
+  width: 76px;
+  height: 82px;
+  float: left;
+  text-align: center;
+  padding-top: 10px;
+  color: rgb(188, 185, 182);
+}
+.mixed-box .left-box div i {
+  font-size: 30px;
+}
+.mixed-box .left-box div a {
+  font-size: 12px;
+}
+
+.mixed-box .left-box div:hover {
+  color: white;
+}

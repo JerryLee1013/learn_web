@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="font_awesome/css/all.css">
+    <style>
+        li{
+            list-style-type: none;
+        }
+
+        /*
+            通过伪元素设置字体图标：
+                1.引入all.css
+                2.找到要设置图标字体的元素，添加伪元素选择器before、after等
+                3.在zeal中找到要添加的字体图标，复制其对应的编码“f520”，“f56b”等
+                4.在上述伪元素选择器中，添加content属性：属性值=第3步选定的字体图标编码
+                5.在all.css中找到对应的font-family，添加到伪元素选择器中
+                6.设置对应font-weight
+
+         */
+
+        li::before{
+            content: "\f56b";
+            /* font-family: "Font Awesome 5 Brands"; */
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            color: pink;
+            margin-right: 10px;
+        }
+        span{
+            color: blue;
+            font-size: 100px;
+        }
+    </style>
+</head>
+<body>
+    <!-- <i class="fab fa-youtube"></i> -->
+
+    <ul>
+        <li>锄禾日当午</li>
+        <li>汗滴禾下土</li>
+        <li>谁知盘中餐</li>
+        <li>粒粒皆辛苦</li>
+        
+    </ul>
+
+    <!-- 
+        通过实体引入字体图标
+         &#x开头 + 字体图标编码 + ；结尾
+    -->
+    <span class="fas">&#xf6d3;</span>
+</body>
+</html>

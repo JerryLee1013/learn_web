@@ -1,0 +1,121 @@
+.second-nav {
+  width: 1226px;
+  height: 100px;
+  /* background-color: pink; */
+  margin: 0 auto;
+}
+
+/* 设置logo样式 */
+.second-nav .logo {
+  width: 50px;
+  height: 50px;
+  float: left;
+  margin-top: 25px;
+}
+
+.second-nav .logo a {
+  display: block;
+  width: 50px;
+  height: 50px;
+  background-image: url("../img/milogo.png");
+  background-position: 0 0;
+}
+.second-nav .logo a:hover {
+  background-position: -50px 0;
+}
+
+/* 设置nav-list样式 */
+.second-nav ul.nav-div {
+  width: 650px;
+  height: 100%;
+  line-height: 100px;
+  margin-left: 200px;
+
+  text-align: center;
+  float: left;
+}
+.second-nav .nav-div li {
+  display: inline-block;
+  height: 100px;
+}
+
+.second-nav .nav-div a {
+  font: 16px Helvetica Neue, Helvetica, Arial, Microsoft Yahei, Hiragino Sans GB,
+    Heiti SC, WenQuanYi Micro Hei, sans-serif;
+  padding: 0 8px;
+  color: #333;
+}
+
+.second-nav .nav-div a:hover {
+  color: red;
+}
+
+/* 设置搜索框样式 */
+
+.search-form {
+  width: 300px;
+  height: 50px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  line-height: 50px;
+  text-align: center;
+  float: right;
+  margin-top: 25px;
+}
+
+.search-form td:last-child {
+  width: 50px;
+  border-left: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.search-form input {
+  width: 250px;
+  padding: 0 10px;
+}
+
+.search-form i {
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+/* 设置搜索框鼠标样式 */
+.search-form:hover {
+  border: 1px solid pink;
+}
+
+.search-form:hover td:last-child {
+  border: 1px solid pink;
+}
+
+.search-form td:last-child:hover {
+  background-color: red;
+}
+
+.search-form td:last-child:hover i {
+  color: white;
+}
+
+/* 设置下拉框的样式表 */
+span {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 140px;
+  z-index: 8888;
+  /* 宽度设置问题存在，后续解决 */
+  width: 100%;
+  height: 300px;
+
+  background-color: white;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+}
+
+.second-nav .nav-div li:hover span {
+  display: block;
+}
+
+.second-nav .nav-div li:last-child:hover .second-xiala {
+  display: none;
+}
+.second-nav .nav-div li:nth-child(8):hover .second-xiala {
+  display: none;
+}

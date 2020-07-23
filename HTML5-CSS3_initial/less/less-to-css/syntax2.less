@@ -1,0 +1,83 @@
+.box1 {
+  font-size: 20px;
+  color: pink;
+  .box2 {
+    color: red;
+  }
+  > .box3 {
+    color: pink;
+    &:hover {
+      color: blue;
+    }
+  }
+
+  &:hover {
+    color: yellow;
+  }
+
+  div & {
+    width: 100px;
+  }
+}
+
+.p1 {
+  width: 100px;
+  height: 200px;
+}
+
+.p2:extend(.p1) {
+  //选择器分组
+  color: red;
+}
+
+.p3 {
+  //直接对指定的样式进行引用
+  //p3引用p1的样式
+  //mixin混合
+  .p1;
+}
+
+//使用类选择器时可以在选择器后边添加一个括号，这时我们实际上就创建了一个mixin
+//使用（）h后，编译时不显示在css中
+//专门供别的选择器引用，这就是混合函数
+.p4() {
+  width: 333px;
+  height: 222px;
+  background-color: red;
+}
+
+//混合函数
+//在混合函数中可以直接设置变量,引用该混合函数时设置变量值
+.test(@w:222px,@h:333px,@bg-color) {
+  width: @w;
+  height: @h;
+  border: 1px solid @bg-color;
+}
+
+.box {
+  //调用混合函数，按顺序传递
+  //   .test(200px ,300px,pink);
+
+  //根据属性名传值
+  //   .test(@bg-color:red,@h:200px,@w:300px);
+
+  //@w:222px,@h:333px,使用默认值
+  .test(@bg-color:red);
+}
+
+span {
+  color: average(red, yellow);
+}
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  background-color: #bfa;
+  &:hover {
+    background-color: darken(#bfa, 70%);
+  }
+}
