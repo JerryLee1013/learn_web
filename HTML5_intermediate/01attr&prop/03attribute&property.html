@@ -1,0 +1,71 @@
+<!--
+ * @Brief: attribute和property的区别和联系
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-07-23 14:32:40
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- 
+            attribute 标签的属性
+
+            预定义属性，也是该标签结点的原生属性
+         -->
+        <input type="checkbox" name="username" id="" attr_zdy="atrr_zdy" />
+    </body>
+    <script>
+        // 布尔值属性：prtoperty是布尔值类型；
+        // 非布尔值属性：property是非布尔值属性
+
+        // 非布尔值属性，property和attribute的同步问题
+        // 在非布尔属性中，property和attribute的都会同步
+        var attr_zdy = document.querySelector("input[type=checkbox]");
+
+        // debugger;
+        // 操作标签属性attribute
+        attr_zdy.setAttribute("name", "zdy1");
+        attr_zdy.setAttribute("name", "zdy2");
+        attr_zdy.setAttribute("name", "zdy3");
+
+        // 操作js的结点属性property
+        attr_zdy.name = "zdy4";
+        attr_zdy.name = "zdy5";
+        attr_zdy.name = "zdy6";
+
+        attr_zdy.setAttribute("name", "zdy7");
+        attr_zdy.setAttribute("name", "zdy8");
+        attr_zdy.setAttribute("name", "zdy9");
+
+        // 布尔值属性，property和attribute的同步问题,在本练习下property初始值为true，attribute初始值为checked
+        /*
+            1.改变property不会时，同步attribute
+            2.在没有动过property时，
+                attribute会同步property
+            一旦动过property， 
+                attribute不会同步property
+
+        */
+
+        var attr_zdy = document.querySelector("input[type=checkbox]");
+
+        debugger;
+        attr_zdy.setAttribute("checked", "zdy1");
+        attr_zdy.setAttribute("checked", "zdy2");
+        attr_zdy.setAttribute("checked", "zdy3");
+
+        attr_zdy.checked = "zdy4";
+        attr_zdy.checked = "zdy5";
+        attr_zdy.checked = "zdy6";
+
+        attr_zdy.checked = false;
+
+        attr_zdy.setAttribute("checked", "zdy7");
+        attr_zdy.setAttribute("checked", "zdy8");
+        attr_zdy.setAttribute("checked", "zdy9");
+    </script>
+</html>

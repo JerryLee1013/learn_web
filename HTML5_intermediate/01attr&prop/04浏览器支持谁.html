@@ -1,0 +1,31 @@
+<!--
+ * @Brief: 
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-07-23 14:44:32
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <input type="checkbox" name="username" id="" zdy="zdy" />zdy
+        <input type="button" value="button"></input>
+    </body>
+    <script>
+        let btn = document.querySelector("input[type=button]")
+        let zdy = document.querySelector("input[type=checkbox]")
+        
+        /**
+            布尔属性
+                浏览器编译时支持property
+        **/
+        btn.onclick = function(){
+            debugger
+            zdy.checked = true
+            
+        }
+    </script>
+</html>
