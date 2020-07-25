@@ -1,0 +1,93 @@
+<!--
+ * @Brief: 
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-07-24 21:40:56
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            /*
+                对于非布尔值的运算，会将非布尔值先转换为布尔值，然后进行运算,最后返回原类型值
+            */
+            var result = 1 && 2; //
+            console.log(result); //2
+
+            // result = 1 && null;
+            result = null && 1;
+            console.log(result); //null
+
+            // result = 2 && true;//返回true
+            result = true && 2;
+            console.log(result); //2
+
+            result = 1 && false;
+            console.log(result); //false
+
+            result = 1 && undefined;
+            console.log(result); //undefined
+
+            result = "a" && "b";
+            console.log(result); //b
+
+            result = "1" || false;
+            console.log(result); //1
+
+            result = true || false;
+            console.log(result); //true
+
+            result = false || "a";
+            console.log(result); //a
+
+            result = false || NaN;
+            console.log(result); //NaN
+
+            // !后面可以运算任意类型的值，运算时向将运算值转换为Boolean类型，然后对值进行取反操作并返回结果
+            result = !"a";
+            console.log(result); //false
+
+            result = !"";
+            console.log(result); //true
+
+            result = !0;
+            console.log(result); //true
+
+            result = !-123;
+            console.log(result); //false
+
+            result = !null;
+            console.log(result); //true
+
+            result = !undefined;
+            console.log(result); //true
+
+            result = !NaN;
+            console.log(result); //true
+
+            console.log(null >= undefined); //false
+            console.log(null < undefined); //false
+            console.log(1 > null); //true
+            console.log(1 >= undefined); //false
+            console.log(1 < undefined); //false；undefined转换为Number为NaN
+            console.log(1 > "a"); //false;"a"转换为Number为NaN
+
+            console.log(true > false); //true
+            console.log(true == "1"); //true
+            console.log(false == ""); //true
+
+            //判断一个值是否为NaN，使用isNaN()函数
+            var a = NaN;
+            console.log(isNaN(a)); //true
+
+            var b = "abc";
+            b = +b;
+            console.log(b); //NaN
+            console.log(isNaN(b)); //true
+        </script>
+    </body>
+</html>

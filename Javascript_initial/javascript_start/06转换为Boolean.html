@@ -1,0 +1,70 @@
+<!--
+ * @Brief: 
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-07-24 17:20:37
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body></body>
+    <script>
+        // Number转换为Boolean
+        // 当Number为不为0的和NaN的数值时，无论正负，转换为Boolean值都为true
+        var a = 123;
+        a = Boolean(a);
+        console.log(a); //true
+        console.log(typeof a); //boolean
+
+        a = -123.123;
+        a = Boolean(a);
+        console.log(a); //true
+        console.log(typeof a); //boolean
+
+        // 当Number为NaN时，Boolean值转换为false
+        a = NaN;
+        a = Boolean(a);
+        console.log(a); //false
+        console.log(typeof a); //boolean
+
+        // 当Number为0时，Boolean值转换为false
+        a = 0;
+        a = Boolean(a);
+        console.log(a); //true
+        console.log(typeof a); //boolean
+
+        // String转换为Boolean
+        // 当String为非空字符串时，或由空格组成的字符串，Boolean转换为true
+        a = "abc";
+        a = Boolean(a);
+        console.log(a); //true
+        console.log(typeof a); //boolean
+
+        // 一个空格字符串
+        a = " ";
+        a = Boolean(a);
+        console.log(a); //true
+        console.log(typeof a); //boolean
+
+        // String为空字符串时，Boolean值转换为false
+        a = "";
+        a = Boolean(a);
+        console.log(a); //false
+        console.log(typeof a); //boolean
+
+        // Null转换为Boolean
+        a = null;
+        a = Boolean(a);
+        console.log(a); //false
+        console.log(typeof a); //boolean
+
+        // Undefined转换为Boolean
+        a = undefined;
+        a = Boolean(a);
+        console.log(a); //false
+        console.log(typeof a); //boolean
+    </script>
+</html>

@@ -1,0 +1,150 @@
+<!--
+ * @Brief: 
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-07-24 20:30:40
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body></body>
+    <script>
+        // 将其他类型转换为Number类型
+        // 使用Number()函数
+        //将String类型转换为Number
+        var a = "123";
+        console.log(a); //"123"
+        console.log(typeof a); //String
+
+        a = Number(a);
+        console.log(a); //123
+        console.log(typeof a); //Number
+
+        //当String值含有任何非Number型字符，强转到Number类型时，a就会赋值成NaN
+        a = "123*";
+        a = Number(a);
+        console.log(a); //NaN : Not a Number
+        console.log(typeof a); //Number
+
+        // 字符串为空串或全空格字符串
+        console.log("a是空字符串");
+        a = "   ";
+        a = Number(a);
+        console.log(a); //0
+        console.log(typeof a); //Number
+
+        a = "";
+        a = Number(a);
+        console.log(a); //0
+        console.log(typeof a); //Number
+
+        // 将Boolean转换为Number
+        a = true;
+        a = Number(a);
+        console.log(a); //1
+        console.log(typeof a); //Number
+
+        a = false;
+        a = Number(a);
+        console.log(a); //0
+        console.log(typeof a); //Number
+
+        //将Null转换为Number
+        a = null;
+        a = Number(a);
+        console.log(a); //0
+        console.log(typeof a); //Number
+
+        //将Undefined转换为Number
+        a = undefined;
+        a = Number(a);
+        console.log(a); //NaN : Not a Number
+        console.log(typeof a); //Number
+
+        /*
+            转换方式2:这种方式专门用来对付字符串
+                函数：
+                parseInt();把一个字符串转换为整型
+                parseFloat();把一个字符串转换为浮点数
+        */
+        // 将具有非数值型的字符串转换为Number类型
+        console.log("-------");
+        a = "123px";
+        a = parseInt(a);
+        console.log(a); //123
+        console.log(typeof a); //Number
+
+        a = "123.123abc";
+        a = parseInt(a);
+        console.log(a); //123
+        console.log(typeof a); //Number
+
+        a = "123.123abc";
+        a = parseFloat(a);
+        console.log(a); //123.123
+        console.log(typeof a); //Number
+
+        a = "123.123.123abc";
+        a = parseFloat(a);
+        console.log(a); //123.123
+        console.log(typeof a); //Number
+
+        // parseInt()和parseFloat()函数只解析到非数字型字符为止
+        a = "12abc3.123";
+        a = parseInt(a);
+        console.log(a); //12
+        console.log(typeof a); //Number
+
+        // 字符串以非数值型字符开头的，字符串被解析成NaN
+        a = "abc123.123abc";
+        a = parseFloat(a);
+        console.log(a); //NaN
+        console.log(typeof a); //Number
+
+        /*
+            如果对非String使用parseInt()或parseFloat(),
+            他会先将布尔值转换为String类型的值，
+            然后再解析为Number
+        */
+        a = true;
+        a = parseFloat(a);
+        console.log(a); //NaN
+        console.log(typeof a); //Number
+
+        a = null;
+        a = parseInt(a);
+        console.log(a); //NaN
+        console.log(typeof a); //Number
+
+        // 使用"+"将纯数字型String转换为Number类型
+        a = "0123";
+        a = +a;
+        console.log(typeof a); //number
+        console.log(a); //123
+
+        // 使用"+"将Boolean类型转换为Number类型
+        a = true;
+        a = +a;
+        console.log(typeof a); //number
+        console.log(a); //1
+
+        a = false;
+        a = +a;
+        console.log(typeof a); //number
+        console.log(a); //0
+        // 将null类型转换为Number
+        a = null;
+        a = +a;
+        console.log(typeof a); //number
+        console.log(a); //0
+
+        // 将undefined类型转换为Number
+        a = undefined;
+        a = +a;
+        console.log(typeof a); //number
+        console.log(a); //NaN
+    </script>
+</html>

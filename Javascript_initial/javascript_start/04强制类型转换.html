@@ -1,0 +1,84 @@
+<!--
+ * @Brief: 
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-07-24 15:56:14
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            var a = 123;
+
+            // a强转为String
+            // a调用该方法不会改变a的值，它会将结果返回
+            // 方法1：调用toString（）方法
+            a.toString();
+            console.log(typeof a);
+
+            a = a.toString();
+            console.log(typeof a);
+
+            // boolean转换为String
+            // 方法1：调用toString（）方法
+            var b = true;
+            b = b.toString();
+            console.log(typeof b);
+            console.log(b);
+
+            //null转为String
+            var c = null;
+            // c = c.toString(); //报错，null值没有toString()方法
+            //使用String（）函数
+            c = String(c);
+            console.log(typeof c); //String
+            console.log(c); //null
+
+            //undefined 转换为String
+            var d = undefined;
+            // d = d.toString(); //报错，undefined没有toString()方法；
+            // 调用String()函数
+            d = String(d);
+            console.log(typeof d); //String
+            console.log(d); //undefined
+
+            // 方法2：调用String()函数
+            var e = 123;
+            e = String(e);
+            console.log(typeof e); //String
+
+            var f = true;
+            f = String(f);
+            console.log(typeof f); //String
+
+            // 加空字符串""转换为String
+            // null转换为String
+            var g = null;
+            g = g + "";
+            console.log(typeof g); //String
+            console.log(g); //"null"
+
+            // undefined转换为String
+            var h;
+            h = h + "";
+            console.log(typeof h); //String
+            console.log(h); //"undefined"
+
+            // Number转换为String
+            var i = 123;
+            i = i + "";
+            console.log(typeof i); //String
+            console.log(i); //"123"
+
+            // Boolean转换为String
+            var j = false;
+            j = j + "";
+            console.log(typeof j); //String
+            console.log(j); //"false"
+        </script>
+    </body>
+</html>

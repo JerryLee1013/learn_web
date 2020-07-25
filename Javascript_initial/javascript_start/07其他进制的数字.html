@@ -1,0 +1,43 @@
+<!--
+ * @Brief: 
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-07-24 20:16:25
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body></body>
+    <script>
+        var a = 123;
+        console.log(a);
+
+        // 16进制的表示:需要以0x开头
+        a = 0x123;
+        console.log(a); //291，输出以十进制形式
+        a = 0xffff;
+        console.log(a); //65535，输出以十进制形式
+
+        //8进制表示：需要以0开头
+        a = 070;
+        console.log(a); //56;
+
+        //2进制数字：以0b开头
+        a = 0b10;
+        console.log(a); //2
+
+        // 不同的浏览器，解析的进制可能不一样
+        /* 
+            为了解决这类的问题，可以使用parseInt(a,10) 
+            a表示被解析的变量，10表示10进制
+        */
+        a = "070";
+        // a = parseInt(a, 10);
+        a = parseInt(a);
+        console.log(a); //70
+        console.log(typeof a); //number
+    </script>
+</html>

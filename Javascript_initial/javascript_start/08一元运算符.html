@@ -1,0 +1,30 @@
+<!--
+ * @Brief: 
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-07-24 20:35:22
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body></body>
+    <script>
+        var a = 1;
+        var b = "2";
+        var c = true;
+
+        var d = a + b + c;
+        console.log(d); //"12true";字符串拼接
+
+        d = a + +b + +c;
+        console.log(d); //4
+
+        a = undefined;
+        a = -a;
+        console.log(typeof a);
+        console.log(a);
+    </script>
+</html>
