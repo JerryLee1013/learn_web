@@ -1,0 +1,54 @@
+<!--
+ * @Brief: 
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-07-27 20:16:54
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // 构造函数
+            function Person(name, age, gender) {
+                //this是类的实例
+                this.name = name;
+                this.age = age;
+                this.gender = gender;
+
+                /*
+                    目前的方法是在构造函数内部创建的，也就是构造函数没执行一次就会创建一个新的sayName()方法
+                        也就是所有实例的sayName都是唯一的，
+                        导致构造函数执行一次就会创建一个构造方法，浪费内存
+
+                    使所有的对象共享一个方法：
+                        将sayName方法在全局作用域中定义
+                */
+                this.sayName = fun;
+            }
+
+            //将构造函数中的方法在全局作用域中定义
+            //将函数定义在全局作用域中，污染了全局作用域的命名空间
+            //而且定义在全局作用域中也很不安全
+            function fun() {
+                console.log(
+                    "姓名:" +
+                        this.name +
+                        "; 年龄:" +
+                        this.age +
+                        "; 性别:" +
+                        this.gender
+                );
+            }
+
+            var person1 = new Person("孙悟空", 29, "男");
+            var person2 = new Person("猪八戒", 29, "男");
+            person1.sayName();
+            person2.sayName(); //与person1中的sayName用的不是一个函数
+            console.log(person1.sayName == person2.sayName); //true
+        </script>
+    </body>
+</html>

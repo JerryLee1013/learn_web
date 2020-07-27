@@ -1,7 +1,7 @@
 <!--
  * @Brief:
  * @LastEditors: Jerry Lee
- * @LastEditTime: 2020-07-27 12:08:16
+ * @LastEditTime: 2020-07-27 20:57:43
 -->
 
 #Javascript 基础部分(常用关键点)：
@@ -545,6 +545,20 @@
 -   由 ES 标准定义的对象，在任何的 ES 实现中都可以用
 -   比如：Math String Number
 
+| 内置对象  | 对象说明       |
+| :-------- | :------------- |
+| Arguments | 函数参数集合   |
+| Array     | 数组           |
+| Boolean   | 布尔对象       |
+| Math      | 数学对象       |
+| Date      | 日期时间       |
+| Error     | 异常对象       |
+| Function  | 函数构造器     |
+| Number    | 数值对象       |
+| Object    | 基础对象       |
+| RegExp    | 正则表达式对象 |
+| String    | 字符串对象     |
+
 ###宿主对象
 
 -   由 js 的运行环境提供的对象，目前来讲，只要是浏览器提供的对象
@@ -565,3 +579,290 @@
 -基本数据类型和对象的内存图
 
 ![基本数据类型和对象的内存图](img/基本数据类型和对象内存图.svg)
+
+##作用域
+
+###全局作用域
+
+####全局作用域：
+
+-   直接编写在 script 标签中的 js 代码，都在全局作用域中；
+-   全局作用域在页面打开时创建，在页面关闭时销毁；
+-   在全局作用域中有一个全局对象 window，可以直接使用；代表的是浏览器的窗口，它由浏览器创建，可以直接使用
+-   在全局作用域中：创建的变量都会作为 window 对象的属性保存
+
+####变量的声明提前：
+
+> 使用 var 关键字声明的变量，会在所有代码执行之前被声明
+> 但是如果声明变量时，不使用 var 关键字，则变量不会声明提前
+
+```javascript
+console.log(a); //undefined
+var a = 123;
+
+//不使用var声明变量a
+console.log(a); //Uncaught ReferenceError: a is not defined
+a = 123;
+```
+
+####函数声明的提前
+
+> 使用函数声明形式创建 “function 函数名(){}”函数，它会在所有的代码执行之前就被创建；
+> 使用函数表达式创建的函数，不会被声明提前，所以不能在声明前调用
+
+```javascript
+fun1(); //可执行
+//fun2(); //不可执行;报错：Uncaught TypeError: fun2 is not a function
+console.log(fun1);
+console.log(fun2); //undefined
+
+function fun1() {
+    console.log("我是一个fun1函数");
+}
+
+var fun2 = function () {
+    console.log("我是fun2函数");
+};
+```
+
+###函数作用域
+
+```
+        var a = 123;
+        function fun() {
+            var a = "我是函数中的变量a";
+            var b = 456;
+            console.log(a);
+
+            fun2(); //我是函数中的变量a
+
+            fun3(); //123;说明函数作用域中的变量的取值和调用位置没有任何关系，和函数创建的位置有关系
+
+            function fun2() {
+                console.log("fun2函数:" + a); //我是函数中的变量a
+
+                //如果调用全局变量中的a，使用window.a
+                //console.log(window.a); //123
+            }
+        }
+        fun();
+        console.log(a); //123
+        //console.log(b); //Uncaught ReferenceError: b is not defined
+
+        function fun3() {
+            console.log("fun3函数:" + a);
+        }
+```
+
+-   调用函数时，创建函数作用域，函数执行完毕后，函数作用域销毁
+-   每调用一次函数就会创建一个新的函数作用域，他们之间是相互独立的
+-   在函数作用域，可以访问到全局变量
+-   在全局作用域中无法访问到函数作用域中的变量
+-   当函数作用域操作一个变量时，它会先在自身作用域中寻找，如果有就直接使用，如果没有就向上一级作用域中寻找
+-   在函数中使用全局变量可以使用 window 调用
+-   在函数中，不使用 var 声明的变量都会成为全局变量
+
+    ```
+    var c = 33;
+    function fun4() {
+        console.log(c); //33
+        c = 10;
+    }
+
+        fun4(); //33
+        console.log(c); //10
+    ```
+
+-   定义形参就相当于在函数作用域中声明了变量
+
+        ```
+        var e = 55;
+        function fun5(e) {
+            //定义形参相当于var e;
+            console.log(e);
+            var e = 77;
+        }
+        fun5(); //undefined
+        fun5(e); //55
+        console.log(e); //55
+
+        ```
+
+##方法
+
+-   函数也可以作为对象的属性
+-   如果一个函数作为一个对象的属性保存，那么我们称这个函数是这个对象的方法
+-   调用函数就说明调用对象的方法
+-   函数与方法只是名称上的区别，本质上是一样的
+-   函数是公交车，方法是对象的私家车
+
+    ```
+        function fun(){
+                console.log("我是函数");
+        }
+
+        var obj = {
+                name:"孙悟空",
+                sayName = function(){
+                        console.log("我是obj对象的方法");
+                }
+        }
+
+        //调方法
+        obj.sayName();
+        //调函数
+        fun();
+    ```
+
+##this 关键字
+
+-   解析器在调用函数时。每次都会向函数内部传递进一个隐含的参数
+-   这个隐含参数就是 this
+-   this 指向的是一个对象，成为上下文对象
+-   根据函数调用方式的不同，this 会指向不同的对象
+-   以函数的形式调用，this 永远指向 window
+-   以方法的形式调用，this 就是调用方法的对象
+-   当以构造函数形式调用时，this 就是新创建的对象实例
+
+    ```
+    function fun() {
+                console.log(this.name);
+            }
+
+            var obj1 = {
+                name: "孙悟空",
+                sayName: fun,
+            };
+
+            var obj2 = {
+                name: "沙和尚",
+                sayName: fun,
+            };
+
+            var name = "猪八戒";
+
+            console.log(obj1.sayName == fun); //true
+            obj1.sayName(); // 孙悟空
+            obj2.sayName(); //沙和尚
+            fun(); // 猪八戒
+    ```
+
+##使用工厂方法创建对象
+
+```
+            function createPerson(name, age, gender) {
+                var obj = new Object();
+                obj.name = name;
+                obj.age = age;
+                obj.gender = gender;
+                obj.sayName = function () {
+                    console.log(this.name, this.age, this.gender);
+                };
+                return obj;
+            }
+
+            var obj1 = createPerson("孙悟空", 29, "男");
+            obj1.sayName();
+```
+
+##构造函数
+
+-   构造函数的创建和普通函数没有区别，不同的是构造函数的函数名首字母大写
+-   构造函数和普通函数的区别就是调用方式的不同
+    > 普通函数直接调用
+    > 构造函数使用 new 关键字
+    >
+    > > new 函数名()
+-   构造函数执行流程：
+
+        1.立即创建一个新的对象
+        2.将新建的对象设置为函数中的 this，在构造函数中可以使用this来引用新建的对象
+        3.逐行执行函数中的代码
+        4.将新建的对象作为返回值返回
+
+-   构造函数也可以被称为类
+-   instanceof 可以检查一个对象是否是一个类的实例
+
+    ```
+            // 构造函数
+            function Person(name, age, gender) {
+                //this是新建的对象
+                this.name = name;
+                this.age = age;
+                this.gender = gender;
+                this.sayName = function () {
+                    console.log(
+                        "姓名:" +
+                            this.name +
+                            "; 年龄:" +
+                            this.age +
+                            "; 性别:" +
+                            this.gender
+                    );
+                };
+            }
+
+            var person = new Person("孙悟空", 29, "男");
+            console.log(person);
+            person.sayName();
+
+            //使用instanceof可以检查一个对象是否是一个类的实例
+            console.log(person instanceof Person); //true
+    ```
+
+-   构造函数问题优化
+
+    > 目前的方法是在构造函数内部创建的，也就是构造函数没执行一次就会创建一个新的 sayName()方法;也就是所有实例的 sayName 都是唯一的;导致构造函数执行一次就会创建一个构造方法，浪费内存
+    > 用将方法定义在全局作用域的方法任然有以下问题的存在:
+    >
+    > > 将函数定义在全局作用域中，污染了全局作用域的命名空间;而且定义在全局作用域中也很不安全.
+
+    ```
+        function Person(name, age, gender) {
+            //this是类的实例
+            this.name = name;
+            this.age = age;
+            this.gender = gender;
+
+            /*
+                目前的方法是在构造函数内部创建的，也就是构造函数没执行一次就会创建一个新的sayName()方法
+                        也就是所有实例的sayName都是唯一的，导致构造函数执行一次就会创建一个构造方法，浪费内存
+
+                使所有的对象共享一个方法：
+                     将sayName方法在全局作用域中定义
+            */
+             this.sayName = fun;
+             }
+
+        //将构造函数中的方法在全局作用域中定义
+        //将函数定义在全局作用域中，污染了全局作用域的命名空间
+        //而且定义在全局作用域中也很不安全
+        function fun() {
+            console.log(
+                "姓名:" +
+                    this.name +
+                    "; 年龄:" +
+                    this.age +
+                    "; 性别:" +
+                    this.gender
+            );
+        }
+
+        var person1 = new Person("孙悟空", 29, "男");
+        var person2 = new Person("猪八戒", 29, "男");
+        person1.sayName();
+        person2.sayName();
+        console.log(person1.sayName == person2.sayName); //true
+    ```
+
+##原型对象 Prototype
+
+-   我们所创建的每一个函数，解析器，都会向函数中添加一个属性 Prototype；
+-   这个属性对应着一个对象，这个对象就是所谓的原型对象；
+-   如果函数作为普通函数调用 prototype，没有任何作用；
+-   当函数通过构造函数形式调用时，它所创建的对象中，都会有一个隐含的属性，指向该构造函数的原型对象；
+-   我们可以通过(实例对象.\_\_proto\_\_)来访问该隐藏的属性；
+-   而且(实例对象.\_\_proto\_\_)等于(构造函数.prototype)；
+-   原型对象就相当于一个公共区域，所有同类的实例都可以访问原型对象；
+-   可以将对象中共有的内容统一设置到原型对象中；
+-   当我们访问对象的一个属性或方法时，他会在对象自身中寻找，如果有则直接使用；如果没有，就去原型对象中寻找，找到后就返回；

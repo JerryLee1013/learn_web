@@ -1,0 +1,41 @@
+<!--
+ * @Brief: 
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-07-27 19:57:32
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // 构造函数
+            function Person(name, age, gender) {
+                //this是新建的对象
+                this.name = name;
+                this.age = age;
+                this.gender = gender;
+                this.sayName = function () {
+                    console.log(
+                        "姓名:" +
+                            this.name +
+                            "; 年龄:" +
+                            this.age +
+                            "; 性别:" +
+                            this.gender
+                    );
+                };
+            }
+
+            var person = new Person("孙悟空", 29, "男");
+            console.log(person);
+            person.sayName();
+
+            //使用instanceof可以检查一个对象是否是一个类的实例
+            console.log(person instanceof Person); //true
+        </script>
+    </body>
+</html>

@@ -1,0 +1,65 @@
+<!--
+ * @Brief: 
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-07-27 16:48:04
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            var a = 123;
+            function fun() {
+                var a = "我是函数中的变量a";
+                var b = 456;
+                console.log(a);
+
+                fun2(); //我是函数中的变量a
+
+                fun3(); //123;说明函数作用域中的变量的取值和调用位置没有任何关系，和函数创建的位置有关系
+
+                function fun2() {
+                    console.log("fun2函数:" + a); //我是函数中的变量a
+
+                    //如果调用全局变量中的a，使用window.a
+                    //console.log(window.a); //123
+                }
+            }
+            fun();
+            console.log(a); //123
+            //console.log(b); //Uncaught ReferenceError: b is not defined
+
+            function fun3() {
+                console.log("fun3函数:" + a);
+            }
+
+            var c = 33;
+            function fun4() {
+                console.log(c); //33
+                c = 10;
+                //d没有使用var关键字，在函数调用时，则会设置为全局变量
+                d = 100;
+            }
+
+            fun4(); //33
+            console.log(c); //10
+            console.log(d); //100
+
+            console.log("------------");
+
+            var e = 55;
+            function fun5(e) {
+                //定义形参相当于var e;
+                console.log(e);
+                var e = 77;
+            }
+            fun5(); //undefined
+            fun5(e); //55
+            console.log(e); //55
+        </script>
+    </body>
+</html>

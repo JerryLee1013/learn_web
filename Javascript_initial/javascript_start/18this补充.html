@@ -1,0 +1,35 @@
+<!--
+ * @Brief: 
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-07-27 18:52:17
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            var name = "全局";
+
+            //
+            function fun() {
+                console.log(this.name);
+            }
+
+            var obj1 = {
+                name: "孙悟空",
+                sayName: fun,
+            };
+
+            var obj2 = {
+                name: "沙和尚",
+                sayName: fun,
+            };
+
+            obj1.sayName();
+        </script>
+    </body>
+</html>

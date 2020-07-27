@@ -1,0 +1,41 @@
+<!--
+ * @Brief: 
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-07-27 21:02:43
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            function MyClass() {}
+
+            //向MyClass的原型中添加一个属性a
+            MyClass.prototype.a = 123;
+
+            //向MyClass原型中添加一个方法
+            MyClass.prototype.sayHello = function () {
+                console.log("hello!!");
+            };
+
+            var mc1 = new MyClass();
+            var mc2 = new MyClass();
+            console.log(mc1.__proto__ == MyClass.prototype); //true
+            console.log(mc2.__proto__ == MyClass.prototype); //true
+
+            mc1.sayHello();
+            mc1.__proto__.sayHello();
+
+            console.log(mc1.a); //123
+            console.log(mc1.__proto__.a); //123
+
+            mc2.a = "我是mc2中的a";
+            console.log(mc2.a); //我是mc2中的a
+            console.log(mc2.__proto__.a); //123
+        </script>
+    </body>
+</html>

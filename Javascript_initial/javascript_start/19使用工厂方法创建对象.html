@@ -1,0 +1,85 @@
+<!--
+ * @Brief: 
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-07-27 19:57:25
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            /* var obj1 = {
+                name: "孙悟空",
+                age: 29,
+                gender: "男",
+                sayName: function () {
+                    alert(this.name);
+                },
+            };
+
+            var obj2 = {
+                name: "猪八戒",
+                age: 22,
+                gender: "男",
+                sayName: function () {
+                    alert(this.name);
+                },
+            };
+
+            var obj3 = {
+                name: "沙和尚",
+                age: 26,
+                gender: "男",
+                sayName: function () {
+                    alert(this.name);
+                },
+            };
+
+            obj1.sayName(); */
+
+            // 使用工厂方法创建对象
+            /* function createPerson(name, age, gender) {
+                var obj = new Object();
+                obj.name = name;
+                obj.age = age;
+                obj.gender = gender;
+                obj.sayName = function () {
+                    console.log(this.name, this.age, this.gender);
+                };
+                return obj;
+            }
+
+            var obj1 = createPerson("孙悟空", 29, "男");
+            obj1.sayName(); */
+
+            // 构造函数
+            function Person(name, age, gender) {
+                //this是新建的对象
+                this.name = name;
+                this.age = age;
+                this.gender = gender;
+                this.sayName = function () {
+                    console.log(
+                        "姓名:" +
+                            this.name +
+                            "; 年龄:" +
+                            this.age +
+                            "; 性别:" +
+                            this.gender
+                    );
+                };
+            }
+
+            var person = new Person("孙悟空", 29, "男");
+            console.log(person);
+            person.sayName();
+
+            //使用instanceof可以检查一个对象是否是一个类的实例
+            console.log(person instanceof Person); //true
+        </script>
+    </body>
+</html>
