@@ -1,0 +1,31 @@
+<!--
+ * @Brief: 水仙花数指的是一个三位数，它的每一位上的数字的三次方之和等于他本身
+            var i = 100~999；
+            打印所有水仙花数
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-07-25 20:29:45
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            var a, b, c;
+
+            for (var i = 100; i < 1000; i++) {
+                a = parseInt(i / 100);
+                b = parseInt((i % 100) / 10);
+                c = parseInt(i % 10);
+                // console.log(a, b, c);
+                if (Math.pow(a, 3) + Math.pow(b, 3) + Math.pow(c, 3) == i) {
+                    console.log(i);
+                }
+            }
+        </script>
+    </body>
+</html>

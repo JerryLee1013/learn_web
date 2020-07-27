@@ -1,0 +1,36 @@
+<!--
+ * @Brief: 
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-07-27 11:45:23
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            var a = 2;
+            var b = a;
+            a = 3;
+            console.log(b);
+
+            var obj1 = new Object();
+            var obj2 = obj1;
+
+            obj2.name = "孙悟空";
+            console.log(obj1.name);
+            console.log(obj2.name);
+
+            obj1.name = "猪八戒";
+            console.log(obj1.name);
+            console.log(obj2.name);
+
+            obj2 = null;
+            console.log(obj1); //{name: "猪八戒"}
+            console.log(obj2); //null
+        </script>
+    </body>
+</html>

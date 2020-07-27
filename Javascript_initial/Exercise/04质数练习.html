@@ -1,0 +1,33 @@
+<!--
+ * @Brief: 取2~100之间的质数
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-07-25 21:03:37
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            var num = prompt("请输入一个不小于2的整数：");
+            if (num < 2) {
+                alert("输入的数字不合法，请输入不小于2的数字");
+            }
+            for (var i = 2; i <= num; i++) {
+                var count = 2;
+                for (var j = 2; j <= i / 2; j++) {
+                    if (i % j == 0) {
+                        count++;
+                        continue;
+                    }
+                }
+                if (count == 2) {
+                    document.write(i + "\t");
+                }
+            }
+        </script>
+    </body>
+</html>

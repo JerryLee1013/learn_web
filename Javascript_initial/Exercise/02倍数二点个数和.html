@@ -1,0 +1,26 @@
+<!--
+ * @Brief: 打印1~100之间所有7的倍数的个数和总和
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-07-25 20:08:42
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            var count = 0;
+            var sum = 0;
+            for (var i = 0; i <= 100; i++) {
+                if (i % 7 == 0) {
+                    count++;
+                    sum += i;
+                }
+            }
+            console.log(count, sum);
+        </script>
+    </body>
+</html>
