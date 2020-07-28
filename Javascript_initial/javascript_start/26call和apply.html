@@ -1,0 +1,46 @@
+<!--
+ * @Brief: 
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-07-28 13:28:57
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            var name = "孙悟空";
+            function fun(a, b) {
+                console.log(a);
+                console.log(b);
+                // alert(this.name);
+            }
+
+            function Person(name) {
+                this.name = name;
+            }
+
+            var obj = {
+                name: "沙和尚",
+                sayName: function () {
+                    alert(this.name);
+                },
+            };
+
+            var obj2 = {
+                name: "唐三藏",
+            };
+
+            var person = new Person("猪八戒");
+
+            fun.call(obj, 2, 3);
+            fun.apply(obj2, [5, 6]);
+            // fun.call(obj);
+            // obj.sayName.apply(obj2);
+            // fun.apply();
+        </script>
+    </body>
+</html>

@@ -1,0 +1,23 @@
+<!--
+ * @Brief: 
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-07-28 21:27:02
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <button id="btn">我是一个按钮</button>
+    </body>
+    <script>
+        var btn = document.getElementById("btn");
+
+        console.log(btn.innerHTML);
+        btn.innerHTML = "I'm button";
+        console.log(btn.innerHTML);
+    </script>
+</html>

@@ -1,7 +1,7 @@
 <!--
  * @Brief:
  * @LastEditors: Jerry Lee
- * @LastEditTime: 2020-07-28 09:16:13
+ * @LastEditTime: 2020-07-28 21:23:01
 -->
 
 #Javascript 基础部分(常用关键点)：
@@ -723,6 +723,7 @@ var fun2 = function () {
 -   以函数的形式调用，this 永远指向 window
 -   以方法的形式调用，this 就是调用方法的对象
 -   当以构造函数形式调用时，this 就是新创建的对象实例
+-   使用 call 和 apply 调用时，this 是指定的那个对象
 
     ```
     function fun() {
@@ -953,3 +954,204 @@ var fun2 = function () {
 -   原型对象图
 
     ![原型对象](img/原型对象.svg)
+
+##apply 和 call
+
+-   这两个都是函数方法，需要通过函数对象调用;
+-   当对函数调用 call()和 apply()都会调用函数执行
+-   在调用 call 和 apply 可以将一个对象指定为第一个参数;此时这个对象将会成为函数执行时的 this；
+-   call()方法可以将实参在对象之后依次传递；
+-   apply()方法需要将实参封装到一个数组中统一传递；
+
+        ```
+        var name = "孙悟空";
+        function fun(a, b) {
+            console.log(a);
+            console.log(b);
+            // alert(this.name);
+        }
+
+        function Person(name) {
+            this.name = name;
+        }
+
+        var obj = {
+            name: "沙和尚",
+            sayName: function () {
+                alert(this.name);
+            },
+        };
+
+        var obj2 = {
+            name: "唐三藏",
+        };
+
+        var person = new Person("猪八戒");
+
+        fun.call(obj, 2, 3);
+        fun.apply(obj2, [5, 6]);
+        // fun.call(obj);
+        // obj.sayName.apply(obj2);
+        // fun.apply();
+        ```
+
+##arguments
+
+-   在调用函数时，浏览器每次都会传递进两个隐含的参数
+
+    1.函数的上下文对象
+
+    2.封装实参的对象 arguments
+
+-   Arguments 是一个类数组对象，它也可以通过索引来操作数据，也可以获取长度
+-   在调用函数时，我们所传递的实参都会在 arguments 中保存
+-   arguments.length 可以用来获取长度
+-   即使不定义形参也可以使用 arguments[index]来使用参数
+-   它里边有一个属性，这个属性叫做 callee。这个属性对应一个函数，就是当前正在执行的函数对象
+
+        ```
+        function fun() {
+            console.log(arguments.length);
+            console.log(arguments[0]);
+            console.log(arguments.callee);
+        }
+
+        fun("hello", true);
+        ```
+
+##正则表达式
+
+-   语法：var 变量 = new RegExp(“正则表达式”，“匹配模式”)；
+
+    ```
+    var reg = new RegExp("a", "i");
+    console.log(reg);
+
+    var str = "Abc";
+    console.log(reg.test(str)); //true
+    ```
+
+-   匹配模式：可以是：i（忽略大小写）；g(全局匹配)；
+-   使用字面量创建正则表达式；语法：var reg = /正则表达式/匹式模配;
+
+    ```
+    var reg = /a/i;
+    var str = "Abc";
+    console.log(typeof reg); //object
+    console.log(reg.test(str)); //true
+    ```
+
+-   使用字面量方式创建更加简单，使用 RegExp 创建更加灵活，可以传入变量
+-   "|"表示或的意思
+-   "[]"也是表示或的意思;[^ab]表示匹配除了 ab 以外的字符
+-   "a\-z"表示 a 到 z 之间的字母
+-   "{n}"表示某个字符出现的次数;量词只对前面的一个字符起作用；如果要对多个字符起作用，需要将多个字符用()括起来
+-   "{m,n}"表示字符出现的次数为 m~n 次;
+-   "+"表示至少包含一个该字符
+-   "\*"表示包含 0 个或多个该字符
+-   "?"表示最多包含 1 个该字符串
+-   "^a"检查一个字符串是否以 a 开头
+
+    ```
+            var reg;
+            reg = new RegExp("a", "i");
+            console.log(reg);
+
+            var str = "Abc";
+            console.log(reg.test(str)); //true
+
+            // 使用字面量创建正则表达式
+            var reg = /正则表达式/匹式模配;
+            var reg = /a/i;
+            var str = "Abc";
+            console.log(typeof reg); //object
+            console.log(reg.test(str)); //true
+
+            /* 创建一个正则表达式；检查是否有a或b
+            使用|表示或的意思 */
+            reg = /a|b/;
+            console.log(reg.test("acd"));
+
+            /* 创建一个正则表达式检查是否有字母
+            []表示或
+            [a-z]任意小写字母
+            [A-Z]任意大写字母
+            [A-z]所有大小写英文字母 */
+            reg = /[A-z]/;
+            console.log(reg.test("acd"));
+
+            // 检查一个字符串中是否含有abc或adc或aec
+            reg = /a[b-e]c/;
+            console.log(reg.test("adc"));
+
+            // 除了ab之外的内容
+            reg = /[^ab]/;
+            console.log(reg.test("99")); //true
+
+            // 匹配数字
+            reg = /[0-9]/;
+            console.log(reg.test(1213)); //true
+    ```
+
+-   转移字符表示特殊符号(. \ 等)
+
+    ```
+            /*
+              检查一个字符串中是否含有 "." ;必须使用转移字符"\.";
+                单独使用.表示任意字符；
+                \\表示\
+              使用构造函数来创建者正则表达式，注意：输入的实参位字符型，在写特殊字符的正则表达式时，也需要转移字符
+            */
+            var reg = /\./;
+            console.log(reg.test("abc.bcd"));
+
+            var reg = /\\/;
+            console.log(reg.test("abc\\bcd")); //在字符串中也要使用转移字符表示单斜杠
+
+            //构造函数创建正则表达式
+            reg = new RegExp("\\\\");
+            console.log(reg); //  输出为 ：/\\/
+    ```
+
+-   转移字符的正则表达式相关代码表
+    ![相关转移字符的正则表达式](img/正则表达式转移字符.png)
+
+    ```
+            var str = "      hel   lo    ";
+
+            //去除字符串前面和后面的空格；使用空串替换空格
+
+            // 去除开头的空格
+            // str = str.replace(/^\s+/, "");
+            //去除结尾的空格
+            // str = str.replace(/\s+$/, "");
+
+            //同时去除开头和结尾的空格
+            str = str.replace(/^\s*|\s*$/g, "");
+            console.log(str);
+    ```
+
+##文档对象模型 DOM(Document Object Model)
+
+    1.文档：表示整个HTML网页文档
+    2.对象：表示将网页中的每一个部分都转换为了一个对象
+    3.模型：使用模型表示对象之间的关系，方便获取对象
+
+###节点
+
+> Node 构成 HTML 文档最基本的单元
+
+-   常用节点分为 4 类：
+
+    1.文档节点：整个 HTML 文档
+
+    2.元素节点：HTML 文档中的 HTML 标签
+
+    3.属性节点：元素的属性
+
+    4.文本节点：HTML 标签中的文本内容
+
+###document 对象
+
+-   浏览器已经为我们提供文档节点，这个对象是 window 属性；可以在页面中直接使用，文档节点代表整个网页；这个节点就是 document 对象。
+-   通过 document 对象获取文档模型面的其他节点对象

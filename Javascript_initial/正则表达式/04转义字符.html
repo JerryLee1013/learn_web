@@ -1,0 +1,32 @@
+<!--
+ * @Brief: 
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-07-28 20:16:54
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            /*
+              检查一个字符串中是否含有 "." ;必须使用转移字符"\.";
+                单独使用.表示任意字符；
+                \\表示\
+              使用构造函数来创建者正则表达式，注意：输入的实参位字符型，在写特殊字符的正则表达式时，也需要转移字符
+            */
+            var reg = /\./;
+            console.log(reg.test("abc.bcd"));
+
+            var reg = /\\/;
+            console.log(reg.test("abc\\bcd")); //在字符串中也要使用转移字符表示单斜杠
+
+            //构造函数创建正则表达式
+            reg = new RegExp("\\\\");
+            console.log(reg); //  输出为 ：/\\/
+        </script>
+    </body>
+</html>

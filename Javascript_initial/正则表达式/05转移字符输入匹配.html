@@ -1,0 +1,31 @@
+<!--
+ * @Brief: 
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-07-28 20:44:07
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // var str = prompt("请输入用户名：");
+
+            var str = "      hel   lo    ";
+
+            //去除字符串前面和后面的空格；使用空串替换空格
+
+            // 去除开头的空格
+            // str = str.replace(/^\s+/, "");
+            //去除结尾的空格
+            // str = str.replace(/\s+$/, "");
+
+            //同时去除开头和结尾的空格
+            str = str.replace(/^\s*|\s*$/g, "");
+            console.log(str);
+        </script>
+    </body>
+</html>

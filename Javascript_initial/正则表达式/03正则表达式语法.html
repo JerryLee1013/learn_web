@@ -1,0 +1,59 @@
+<!--
+ * @Brief: 
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-07-28 20:05:47
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            /*
+             创建一个正则表达式，检查一个字符串中是否含有aaa
+            */
+            var reg = /a{3}/;
+            console.log(reg.test("aaaabbx")); //true
+
+            //检查是否存在ababab
+            reg = /(ab){3}/;
+            console.log(reg.test("abababoopjkklab")); //true
+
+            //{m,n}出现m-n次
+            reg = /ab{1,3}c/;
+            console.log(reg.test("abbc")); //true
+            console.log(reg.test("abbbbc")); //false
+
+            //{n,}至少出现n次
+            reg = /ab{3,}c/;
+            console.log(reg.test("abbc")); //false
+            console.log(reg.test("abbbbc")); //true
+
+            //检查字符串是否以a开头，使用^
+            reg = /^a/;
+            console.log(reg.test("abc")); //true
+            console.log(reg.test("bgas")); //false
+
+            //检查是否以a结尾,使用$
+
+            reg = /a$/;
+            console.log(reg.test("absca")); //true
+            console.log(reg.test("abscac")); //false
+
+            //创建一个字符串用来检查一个字符串是否是一个手机号
+            /*
+              手机号规则：
+                1.必须以1开头
+                2.第二位以3-9的任意数字
+                3.第3-11位位任意数字 
+             */
+            var phoneNum = "1334568899";
+
+            reg = /^1[3-9][0-9]{9}$/;
+            console.log(reg.test(phoneNum)); //true
+        </script>
+    </body>
+</html>
