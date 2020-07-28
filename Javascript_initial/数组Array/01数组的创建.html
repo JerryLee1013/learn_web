@@ -1,0 +1,64 @@
+<!--
+ * @Brief: 
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-07-28 09:53:48
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            var arr1 = [];
+            var arr2 = [1, 2, 3];
+            var arr3 = new Array(3); //数组长度为3
+            var arr4 = Array(4); //数组长度为4
+            var arr5 = new Array(1, 2, 3, 4, 5); //数组内容为：[1, 2, 3, 4, 5]
+
+            console.log(arr1);
+            console.log(JSON.stringify(arr5));
+
+            // 数组可以存放任意数据类型
+            var arr6 = [
+                1,
+                "string",
+                true,
+                { name: "孙悟空", age: 16, gender: "男" },
+                null,
+                undefined,
+            ];
+
+            console.log(JSON.stringify(arr6));
+
+            // 二维数组
+            var arr7 = [
+                [1, 2, 3],
+                ["str1", "str2", "str3"],
+            ];
+            console.log(JSON.stringify(arr7));
+
+            //修改数组的长度
+            arr5.length = 3;
+            console.log(JSON.stringify(arr5));
+            arr5.length = 7;
+            console.log(JSON.stringify(arr5));
+
+            // 冒泡排序
+            var arr = [45, 29, 49, 35, 86, 10, 27, 15];
+            for (var i = 0; i < arr.length - 1; i++) {
+                for (var j = 0; j < arr.length - i - 1; j++) {
+                    if (arr[j] > arr[j + 1]) {
+                        var temp = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
+                    }
+                }
+            }
+
+            console.log(arr);
+        </script>
+    </body>
+</html>

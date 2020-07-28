@@ -1,7 +1,7 @@
 <!--
  * @Brief:
  * @LastEditors: Jerry Lee
- * @LastEditTime: 2020-07-27 20:57:43
+ * @LastEditTime: 2020-07-28 09:16:13
 -->
 
 #Javascript 基础部分(常用关键点)：
@@ -855,6 +855,39 @@ var fun2 = function () {
         console.log(person1.sayName == person2.sayName); //true
     ```
 
+-   使用原型对象优化构造函数中的方法
+
+    ```
+            // 构造函数
+            function Person(name, age, gender) {
+                //this是类的实例
+                this.name = name;
+                this.age = age;
+                this.gender = gender;
+
+                //this.sayName = fun;//设置fun为全局函数
+            }
+
+            //使用原型对象优化构造函数中的方法
+            Person.prototype.sayName = function () {
+                console.log(
+                    "姓名:" +
+                        this.name +
+                        "; 年龄:" +
+                        this.age +
+                        "; 性别:" +
+                        this.gender
+                );
+            };
+
+            var person1 = new Person("孙悟空", 29, "男");
+            var person2 = new Person("猪八戒", 29, "男");
+            person1.sayName();
+            person2.sayName(); //与person1中的sayName用的是一个函数
+            console.log(person1.sayName == person2.sayName); //true
+
+    ```
+
 ##原型对象 Prototype
 
 -   我们所创建的每一个函数，解析器，都会向函数中添加一个属性 Prototype；
@@ -866,3 +899,57 @@ var fun2 = function () {
 -   原型对象就相当于一个公共区域，所有同类的实例都可以访问原型对象；
 -   可以将对象中共有的内容统一设置到原型对象中；
 -   当我们访问对象的一个属性或方法时，他会在对象自身中寻找，如果有则直接使用；如果没有，就去原型对象中寻找，找到后就返回；
+-   以后创造构造函数时，可以将这些对象的共有属性和方法，统一添加到构造函数的原型对象中，这样就不用分别为每一个对象添加，也不会影响到全局作用域，就可以使每个对象具有这些属性和方法了。
+
+    ```
+            function MyClass() {}
+
+            //向MyClass的原型中添加一个属性a
+            MyClass.prototype.a = 123;
+
+            //向MyClass原型中添加一个方法
+            MyClass.prototype.sayHello = function () {
+                console.log("hello!!");
+            };
+
+            var mc1 = new MyClass();
+            var mc2 = new MyClass();
+            console.log(mc1.__proto__ == MyClass.prototype); //true
+            console.log(mc2.__proto__ == MyClass.prototype); //true
+
+            mc1.sayHello();
+            mc1.__proto__.sayHello();
+
+            console.log(mc1.a); //123
+            console.log(mc1.__proto__.a); //123
+
+            mc2.a = "我是mc2中的a";
+            console.log(mc2.a); //我是mc2中的a
+            console.log(mc2.__proto__.a); //123
+    ```
+
+-   使用 in 检查对象中是否含有某个属性时，如果对象中没有但是原型中有，也会返回 true；
+-   可以使用 hasOwnProperty()方法检查对象自身中是否还有该属性;使用该方法，只有对象自身具有该属性时才会返回 true；
+    ```
+    console.log(mc.hasOwnProperty("name")); //false
+    console.log(mc.hasOwnProperty("hasOwnProperty")); //false
+    console.log(mc.__proto__.hasOwnProperty("hasOwnProperty")); //false
+    console.log(mc.__proto__.__proto__.hasOwnProperty("hasOwnProperty")); //true
+    ```
+-   原型对象也是对象，它也有原型，当我们使用一个对下个的属性或方法时，他会在自身中寻找，自身如果有则直接使用，如果没有就去原型中寻找，找到后使用；如果还没有，就去原型的原型中寻找；直到找到 Object 对象的原型；Object 对象的原型的原型为 null；
+
+    ```
+    console.log(mc.__proto__); //{name: "我是原型中的name", constructor: ƒ}
+    console.log(mc.__proto__.__proto__); //{constructor: ƒ, __defineGetter__: ƒ,.....
+    console.log(mc.__proto__.__proto__.__proto__); //null
+
+    var obj = new Object();
+    console.log(obj); //{}
+    console.log(obj.__proto__); //{constructor: ƒ, __defineGetter__: ƒ,.....
+    console.log(obj.__proto__.__proto__); //null
+    console.log(Object.prototype); //{constructor: ƒ, __defineGetter__: ƒ,.....
+    ```
+
+-   原型对象图
+
+    ![原型对象](img/原型对象.svg)

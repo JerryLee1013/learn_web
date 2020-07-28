@@ -1,0 +1,26 @@
+<!--
+ * @Brief: 垃圾回收
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-07-28 09:24:43
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            var obj = new Object();
+
+            /*
+                但一个对象没有任何的变量或属性对他进行引用，此时我们永远无法操作该对象，
+                    这种对象就是一个垃圾，过多会占用内存空间，导致程序变慢
+                -在js中拥有自动的垃圾回收机制，自动将垃圾对象从内存销毁
+                    我们不需要也不能进行垃圾回收操作
+                -我们需要做的就是将不再使用的对象设置为null
+            obj = null;
+        </script>
+    </body>
+</html>

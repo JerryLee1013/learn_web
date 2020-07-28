@@ -1,0 +1,37 @@
+<!--
+ * @Brief: 
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-07-28 09:08:29
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            function Person(name, age, gender) {
+                this.name = name;
+                this.age = age;
+                this.gender = gender;
+            }
+
+            //重写toString方法
+            Person.prototype.toString = function () {
+                return (
+                    "Person[name=" +
+                    this.name +
+                    ",age=" +
+                    this.age +
+                    ",gender=" +
+                    this.gender +
+                    "]"
+                );
+            };
+            var person1 = new Person("孙悟空", 34, "男");
+            console.log(person1.toString());
+        </script>
+    </body>
+</html>

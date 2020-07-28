@@ -1,0 +1,47 @@
+<!--
+ * @Brief: 
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-07-27 22:21:22
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            function MyClass() {}
+
+            //向MyClass的原型中添加一个name属性
+            MyClass.prototype.name = "我是原型中的name";
+
+            var mc = new MyClass();
+
+            console.log(mc.name); //我是原型中的name
+
+            // 使用 in 检查对象中是否含有某个属性时，如果对象中没有但是原型中有，也会返回 true
+            console.log("name" in mc); //true
+
+            //可以使用hasOwnProperty()方法检查对象自身中是否还有该属性
+            console.log(mc.hasOwnProperty("name")); //false
+            console.log(mc.hasOwnProperty("hasOwnProperty")); //false
+            console.log(mc.__proto__.hasOwnProperty("hasOwnProperty")); //false
+            console.log(
+                mc.__proto__.__proto__.hasOwnProperty("hasOwnProperty")
+            ); //true
+
+            console.log("------------");
+            console.log(mc.__proto__); //{name: "我是原型中的name", constructor: ƒ}
+            console.log(mc.__proto__.__proto__); //{constructor: ƒ, __defineGetter__: ƒ,.....
+            console.log(mc.__proto__.__proto__.__proto__); //null
+
+            var obj = new Object();
+            console.log(obj); //{}
+            console.log(obj.__proto__); //{constructor: ƒ, __defineGetter__: ƒ,.....
+            console.log(obj.__proto__.__proto__); //null
+            console.log(Object.prototype); //{constructor: ƒ, __defineGetter__: ƒ,.....
+        </script>
+    </body>
+</html>
