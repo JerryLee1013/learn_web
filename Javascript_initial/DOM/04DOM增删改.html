@@ -1,7 +1,7 @@
 <!--
  * @Brief: 
  * @LastEditors: Jerry Lee
- * @LastEditTime: 2020-07-30 19:08:54
+ * @LastEditTime: 2020-07-30 19:18:16
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -74,5 +74,16 @@
     </body>
     <script>
         var cities = document.querySelector(".cities");
+        var addCity = document.getElementById("addCity");
+        var removeCity = document.getElementById("removeCity");
+        var insertCity = document.getElementById("insertCity");
+        var replaceCity = document.getElementById("replaceCity");
+        addCity.onclick = function () {
+            // 1.创建待增加城市节点<li>城市</li>
+            // 1.1.创建li节点
+            document.createElement("li");
+            // 1.2创建文本节点
+            // 2.将城市添加到cities下
+        };
     </script>
 </html>
