@@ -1,7 +1,7 @@
 <!--
  * @Brief:
  * @LastEditors: Jerry Lee
- * @LastEditTime: 2020-07-29 15:03:33
+ * @LastEditTime: 2020-07-30 18:16:37
 -->
 
 #Javascript 基础部分(常用关键点)：
@@ -542,8 +542,8 @@
 
 ###内建对象
 
--   由 ES 标准定义的对象，在任何的 ES 实现中都可以用
--   比如：Math String Number
+- 由 ES 标准定义的对象，在任何的 ES 实现中都可以用
+- 比如：Math String Number
 
 | 内置对象  | 对象说明       |
 | :-------- | :------------- |
@@ -561,20 +561,20 @@
 
 ###宿主对象
 
--   由 js 的运行环境提供的对象，目前来讲，只要是浏览器提供的对象
--   比如：BOM DOM
+- 由 js 的运行环境提供的对象，目前来讲，只要是浏览器提供的对象
+- 比如：BOM DOM
 
 ###自定义对象
 
--   用户自己创建的对象
+- 用户自己创建的对象
 
 ##基本数据类型和对象
 
--   基本数据类型都是保存在栈内存里；
+- 基本数据类型都是保存在栈内存里；
 
-    > 值与值之间是独立存在，修改一个变量不会影响其他的变量值
+  > 值与值之间是独立存在，修改一个变量不会影响其他的变量值
 
--   引用数据类型（对象）是保存在堆内存中的，没创建一个对象，就会在堆内存中开辟一块内存空间；变量保存的是对象的内存地址，如果两个变量保存的是同一个对象的引用，当通过一个变量修改属性时，另一个也会受影响。但是当对其中赋值为一个赋值为 null 时，并不会改变另一个对象，因为赋值为 null，相当于切断了该变量与内存地址之间的联系，但是另一个对象并不受影响。
+- 引用数据类型（对象）是保存在堆内存中的，没创建一个对象，就会在堆内存中开辟一块内存空间；变量保存的是对象的内存地址，如果两个变量保存的是同一个对象的引用，当通过一个变量修改属性时，另一个也会受影响。但是当对其中赋值为一个赋值为 null 时，并不会改变另一个对象，因为赋值为 null，相当于切断了该变量与内存地址之间的联系，但是另一个对象并不受影响。
 
 -基本数据类型和对象的内存图
 
@@ -586,10 +586,10 @@
 
 ####全局作用域：
 
--   直接编写在 script 标签中的 js 代码，都在全局作用域中；
--   全局作用域在页面打开时创建，在页面关闭时销毁；
--   在全局作用域中有一个全局对象 window，可以直接使用；代表的是浏览器的窗口，它由浏览器创建，可以直接使用
--   在全局作用域中：创建的变量都会作为 window 对象的属性保存
+- 直接编写在 script 标签中的 js 代码，都在全局作用域中；
+- 全局作用域在页面打开时创建，在页面关闭时销毁；
+- 在全局作用域中有一个全局对象 window，可以直接使用；代表的是浏览器的窗口，它由浏览器创建，可以直接使用
+- 在全局作用域中：创建的变量都会作为 window 对象的属性保存
 
 ####变量的声明提前：
 
@@ -617,11 +617,11 @@ console.log(fun1);
 console.log(fun2); //undefined
 
 function fun1() {
-    console.log("我是一个fun1函数");
+  console.log("我是一个fun1函数");
 }
 
 var fun2 = function () {
-    console.log("我是fun2函数");
+  console.log("我是fun2函数");
 };
 ```
 
@@ -654,99 +654,99 @@ var fun2 = function () {
         }
 ```
 
--   调用函数时，创建函数作用域，函数执行完毕后，函数作用域销毁
--   每调用一次函数就会创建一个新的函数作用域，他们之间是相互独立的
--   在函数作用域，可以访问到全局变量
--   在全局作用域中无法访问到函数作用域中的变量
--   当函数作用域操作一个变量时，它会先在自身作用域中寻找，如果有就直接使用，如果没有就向上一级作用域中寻找
--   在函数中使用全局变量可以使用 window 调用
--   在函数中，不使用 var 声明的变量都会成为全局变量
+- 调用函数时，创建函数作用域，函数执行完毕后，函数作用域销毁
+- 每调用一次函数就会创建一个新的函数作用域，他们之间是相互独立的
+- 在函数作用域，可以访问到全局变量
+- 在全局作用域中无法访问到函数作用域中的变量
+- 当函数作用域操作一个变量时，它会先在自身作用域中寻找，如果有就直接使用，如果没有就向上一级作用域中寻找
+- 在函数中使用全局变量可以使用 window 调用
+- 在函数中，不使用 var 声明的变量都会成为全局变量
 
-    ```
-    var c = 33;
-    function fun4() {
-        console.log(c); //33
-        c = 10;
-    }
+  ```
+  var c = 33;
+  function fun4() {
+      console.log(c); //33
+      c = 10;
+  }
 
-        fun4(); //33
-        console.log(c); //10
-    ```
+      fun4(); //33
+      console.log(c); //10
+  ```
 
--   定义形参就相当于在函数作用域中声明了变量
+- 定义形参就相当于在函数作用域中声明了变量
 
-        ```
-        var e = 55;
-        function fun5(e) {
-            //定义形参相当于var e;
-            console.log(e);
-            var e = 77;
-        }
-        fun5(); //undefined
-        fun5(e); //55
-        console.log(e); //55
+      ```
+      var e = 55;
+      function fun5(e) {
+          //定义形参相当于var e;
+          console.log(e);
+          var e = 77;
+      }
+      fun5(); //undefined
+      fun5(e); //55
+      console.log(e); //55
 
-        ```
+      ```
 
 ##方法
 
--   函数也可以作为对象的属性
--   如果一个函数作为一个对象的属性保存，那么我们称这个函数是这个对象的方法
--   调用函数就说明调用对象的方法
--   函数与方法只是名称上的区别，本质上是一样的
--   函数是公交车，方法是对象的私家车
+- 函数也可以作为对象的属性
+- 如果一个函数作为一个对象的属性保存，那么我们称这个函数是这个对象的方法
+- 调用函数就说明调用对象的方法
+- 函数与方法只是名称上的区别，本质上是一样的
+- 函数是公交车，方法是对象的私家车
 
-    ```
-        function fun(){
-                console.log("我是函数");
-        }
+  ```
+      function fun(){
+              console.log("我是函数");
+      }
 
-        var obj = {
-                name:"孙悟空",
-                sayName = function(){
-                        console.log("我是obj对象的方法");
-                }
-        }
+      var obj = {
+              name:"孙悟空",
+              sayName = function(){
+                      console.log("我是obj对象的方法");
+              }
+      }
 
-        //调方法
-        obj.sayName();
-        //调函数
-        fun();
-    ```
+      //调方法
+      obj.sayName();
+      //调函数
+      fun();
+  ```
 
 ##this 关键字
 
--   解析器在调用函数时。每次都会向函数内部传递进一个隐含的参数
--   这个隐含参数就是 this
--   this 指向的是一个对象，成为上下文对象
--   根据函数调用方式的不同，this 会指向不同的对象
--   以函数的形式调用，this 永远指向 window
--   以方法的形式调用，this 就是调用方法的对象
--   当以构造函数形式调用时，this 就是新创建的对象实例
--   使用 call 和 apply 调用时，this 是指定的那个对象
+- 解析器在调用函数时。每次都会向函数内部传递进一个隐含的参数
+- 这个隐含参数就是 this
+- this 指向的是一个对象，成为上下文对象
+- 根据函数调用方式的不同，this 会指向不同的对象
+- 以函数的形式调用，this 永远指向 window
+- 以方法的形式调用，this 就是调用方法的对象
+- 当以构造函数形式调用时，this 就是新创建的对象实例
+- 使用 call 和 apply 调用时，this 是指定的那个对象
 
-    ```
-    function fun() {
-                console.log(this.name);
-            }
+  ```
+  function fun() {
+              console.log(this.name);
+          }
 
-            var obj1 = {
-                name: "孙悟空",
-                sayName: fun,
-            };
+          var obj1 = {
+              name: "孙悟空",
+              sayName: fun,
+          };
 
-            var obj2 = {
-                name: "沙和尚",
-                sayName: fun,
-            };
+          var obj2 = {
+              name: "沙和尚",
+              sayName: fun,
+          };
 
-            var name = "猪八戒";
+          var name = "猪八戒";
 
-            console.log(obj1.sayName == fun); //true
-            obj1.sayName(); // 孙悟空
-            obj2.sayName(); //沙和尚
-            fun(); // 猪八戒
-    ```
+          console.log(obj1.sayName == fun); //true
+          obj1.sayName(); // 孙悟空
+          obj2.sayName(); //沙和尚
+          fun(); // 猪八戒
+  ```
 
 ##使用工厂方法创建对象
 
@@ -768,368 +768,368 @@ var fun2 = function () {
 
 ##构造函数
 
--   构造函数的创建和普通函数没有区别，不同的是构造函数的函数名首字母大写
--   构造函数和普通函数的区别就是调用方式的不同
-    > 普通函数直接调用
-    > 构造函数使用 new 关键字
-    >
-    > > new 函数名()
--   构造函数执行流程：
+- 构造函数的创建和普通函数没有区别，不同的是构造函数的函数名首字母大写
+- 构造函数和普通函数的区别就是调用方式的不同
+  > 普通函数直接调用
+  > 构造函数使用 new 关键字
+  >
+  > > new 函数名()
+- 构造函数执行流程：
 
-        1.立即创建一个新的对象
-        2.将新建的对象设置为函数中的 this，在构造函数中可以使用this来引用新建的对象
-        3.逐行执行函数中的代码
-        4.将新建的对象作为返回值返回
+      1.立即创建一个新的对象
+      2.将新建的对象设置为函数中的 this，在构造函数中可以使用this来引用新建的对象
+      3.逐行执行函数中的代码
+      4.将新建的对象作为返回值返回
 
--   构造函数也可以被称为类
--   instanceof 可以检查一个对象是否是一个类的实例
+- 构造函数也可以被称为类
+- instanceof 可以检查一个对象是否是一个类的实例
 
-    ```
-            // 构造函数
-            function Person(name, age, gender) {
-                //this是新建的对象
-                this.name = name;
-                this.age = age;
-                this.gender = gender;
-                this.sayName = function () {
-                    console.log(
-                        "姓名:" +
-                            this.name +
-                            "; 年龄:" +
-                            this.age +
-                            "; 性别:" +
-                            this.gender
-                    );
-                };
-            }
+  ```
+          // 构造函数
+          function Person(name, age, gender) {
+              //this是新建的对象
+              this.name = name;
+              this.age = age;
+              this.gender = gender;
+              this.sayName = function () {
+                  console.log(
+                      "姓名:" +
+                          this.name +
+                          "; 年龄:" +
+                          this.age +
+                          "; 性别:" +
+                          this.gender
+                  );
+              };
+          }
 
-            var person = new Person("孙悟空", 29, "男");
-            console.log(person);
-            person.sayName();
+          var person = new Person("孙悟空", 29, "男");
+          console.log(person);
+          person.sayName();
 
-            //使用instanceof可以检查一个对象是否是一个类的实例
-            console.log(person instanceof Person); //true
-    ```
+          //使用instanceof可以检查一个对象是否是一个类的实例
+          console.log(person instanceof Person); //true
+  ```
 
--   构造函数问题优化
+- 构造函数问题优化
 
-    > 目前的方法是在构造函数内部创建的，也就是构造函数没执行一次就会创建一个新的 sayName()方法;也就是所有实例的 sayName 都是唯一的;导致构造函数执行一次就会创建一个构造方法，浪费内存
-    > 用将方法定义在全局作用域的方法任然有以下问题的存在:
-    >
-    > > 将函数定义在全局作用域中，污染了全局作用域的命名空间;而且定义在全局作用域中也很不安全.
+  > 目前的方法是在构造函数内部创建的，也就是构造函数没执行一次就会创建一个新的 sayName()方法;也就是所有实例的 sayName 都是唯一的;导致构造函数执行一次就会创建一个构造方法，浪费内存
+  > 用将方法定义在全局作用域的方法任然有以下问题的存在:
+  >
+  > > 将函数定义在全局作用域中，污染了全局作用域的命名空间;而且定义在全局作用域中也很不安全.
 
-    ```
-        function Person(name, age, gender) {
-            //this是类的实例
-            this.name = name;
-            this.age = age;
-            this.gender = gender;
+  ```
+      function Person(name, age, gender) {
+          //this是类的实例
+          this.name = name;
+          this.age = age;
+          this.gender = gender;
 
-            /*
-                目前的方法是在构造函数内部创建的，也就是构造函数没执行一次就会创建一个新的sayName()方法
-                        也就是所有实例的sayName都是唯一的，导致构造函数执行一次就会创建一个构造方法，浪费内存
+          /*
+              目前的方法是在构造函数内部创建的，也就是构造函数没执行一次就会创建一个新的sayName()方法
+                      也就是所有实例的sayName都是唯一的，导致构造函数执行一次就会创建一个构造方法，浪费内存
 
-                使所有的对象共享一个方法：
-                     将sayName方法在全局作用域中定义
-            */
-             this.sayName = fun;
-             }
+              使所有的对象共享一个方法：
+                   将sayName方法在全局作用域中定义
+          */
+           this.sayName = fun;
+           }
 
-        //将构造函数中的方法在全局作用域中定义
-        //将函数定义在全局作用域中，污染了全局作用域的命名空间
-        //而且定义在全局作用域中也很不安全
-        function fun() {
-            console.log(
-                "姓名:" +
-                    this.name +
-                    "; 年龄:" +
-                    this.age +
-                    "; 性别:" +
-                    this.gender
-            );
-        }
+      //将构造函数中的方法在全局作用域中定义
+      //将函数定义在全局作用域中，污染了全局作用域的命名空间
+      //而且定义在全局作用域中也很不安全
+      function fun() {
+          console.log(
+              "姓名:" +
+                  this.name +
+                  "; 年龄:" +
+                  this.age +
+                  "; 性别:" +
+                  this.gender
+          );
+      }
 
-        var person1 = new Person("孙悟空", 29, "男");
-        var person2 = new Person("猪八戒", 29, "男");
-        person1.sayName();
-        person2.sayName();
-        console.log(person1.sayName == person2.sayName); //true
-    ```
+      var person1 = new Person("孙悟空", 29, "男");
+      var person2 = new Person("猪八戒", 29, "男");
+      person1.sayName();
+      person2.sayName();
+      console.log(person1.sayName == person2.sayName); //true
+  ```
 
--   使用原型对象优化构造函数中的方法
+- 使用原型对象优化构造函数中的方法
 
-    ```
-            // 构造函数
-            function Person(name, age, gender) {
-                //this是类的实例
-                this.name = name;
-                this.age = age;
-                this.gender = gender;
+  ```
+          // 构造函数
+          function Person(name, age, gender) {
+              //this是类的实例
+              this.name = name;
+              this.age = age;
+              this.gender = gender;
 
-                //this.sayName = fun;//设置fun为全局函数
-            }
+              //this.sayName = fun;//设置fun为全局函数
+          }
 
-            //使用原型对象优化构造函数中的方法
-            Person.prototype.sayName = function () {
-                console.log(
-                    "姓名:" +
-                        this.name +
-                        "; 年龄:" +
-                        this.age +
-                        "; 性别:" +
-                        this.gender
-                );
-            };
+          //使用原型对象优化构造函数中的方法
+          Person.prototype.sayName = function () {
+              console.log(
+                  "姓名:" +
+                      this.name +
+                      "; 年龄:" +
+                      this.age +
+                      "; 性别:" +
+                      this.gender
+              );
+          };
 
-            var person1 = new Person("孙悟空", 29, "男");
-            var person2 = new Person("猪八戒", 29, "男");
-            person1.sayName();
-            person2.sayName(); //与person1中的sayName用的是一个函数
-            console.log(person1.sayName == person2.sayName); //true
+          var person1 = new Person("孙悟空", 29, "男");
+          var person2 = new Person("猪八戒", 29, "男");
+          person1.sayName();
+          person2.sayName(); //与person1中的sayName用的是一个函数
+          console.log(person1.sayName == person2.sayName); //true
 
-    ```
+  ```
 
 ##原型对象 Prototype
 
--   我们所创建的每一个函数，解析器，都会向函数中添加一个属性 Prototype；
--   这个属性对应着一个对象，这个对象就是所谓的原型对象；
--   如果函数作为普通函数调用 prototype，没有任何作用；
--   当函数通过构造函数形式调用时，它所创建的对象中，都会有一个隐含的属性，指向该构造函数的原型对象；
--   我们可以通过(实例对象.\_\_proto\_\_)来访问该隐藏的属性；
--   而且(实例对象.\_\_proto\_\_)等于(构造函数.prototype)；
--   原型对象就相当于一个公共区域，所有同类的实例都可以访问原型对象；
--   可以将对象中共有的内容统一设置到原型对象中；
--   当我们访问对象的一个属性或方法时，他会在对象自身中寻找，如果有则直接使用；如果没有，就去原型对象中寻找，找到后就返回；
--   以后创造构造函数时，可以将这些对象的共有属性和方法，统一添加到构造函数的原型对象中，这样就不用分别为每一个对象添加，也不会影响到全局作用域，就可以使每个对象具有这些属性和方法了。
+- 我们所创建的每一个函数，解析器，都会向函数中添加一个属性 Prototype；
+- 这个属性对应着一个对象，这个对象就是所谓的原型对象；
+- 如果函数作为普通函数调用 prototype，没有任何作用；
+- 当函数通过构造函数形式调用时，它所创建的对象中，都会有一个隐含的属性，指向该构造函数的原型对象；
+- 我们可以通过(实例对象.\_\_proto\_\_)来访问该隐藏的属性；
+- 而且(实例对象.\_\_proto\_\_)等于(构造函数.prototype)；
+- 原型对象就相当于一个公共区域，所有同类的实例都可以访问原型对象；
+- 可以将对象中共有的内容统一设置到原型对象中；
+- 当我们访问对象的一个属性或方法时，他会在对象自身中寻找，如果有则直接使用；如果没有，就去原型对象中寻找，找到后就返回；
+- 以后创造构造函数时，可以将这些对象的共有属性和方法，统一添加到构造函数的原型对象中，这样就不用分别为每一个对象添加，也不会影响到全局作用域，就可以使每个对象具有这些属性和方法了。
 
-    ```
-            function MyClass() {}
+  ```
+          function MyClass() {}
 
-            //向MyClass的原型中添加一个属性a
-            MyClass.prototype.a = 123;
+          //向MyClass的原型中添加一个属性a
+          MyClass.prototype.a = 123;
 
-            //向MyClass原型中添加一个方法
-            MyClass.prototype.sayHello = function () {
-                console.log("hello!!");
-            };
+          //向MyClass原型中添加一个方法
+          MyClass.prototype.sayHello = function () {
+              console.log("hello!!");
+          };
 
-            var mc1 = new MyClass();
-            var mc2 = new MyClass();
-            console.log(mc1.__proto__ == MyClass.prototype); //true
-            console.log(mc2.__proto__ == MyClass.prototype); //true
+          var mc1 = new MyClass();
+          var mc2 = new MyClass();
+          console.log(mc1.__proto__ == MyClass.prototype); //true
+          console.log(mc2.__proto__ == MyClass.prototype); //true
 
-            mc1.sayHello();
-            mc1.__proto__.sayHello();
+          mc1.sayHello();
+          mc1.__proto__.sayHello();
 
-            console.log(mc1.a); //123
-            console.log(mc1.__proto__.a); //123
+          console.log(mc1.a); //123
+          console.log(mc1.__proto__.a); //123
 
-            mc2.a = "我是mc2中的a";
-            console.log(mc2.a); //我是mc2中的a
-            console.log(mc2.__proto__.a); //123
-    ```
+          mc2.a = "我是mc2中的a";
+          console.log(mc2.a); //我是mc2中的a
+          console.log(mc2.__proto__.a); //123
+  ```
 
--   使用 in 检查对象中是否含有某个属性时，如果对象中没有但是原型中有，也会返回 true；
--   可以使用 hasOwnProperty()方法检查对象自身中是否还有该属性;使用该方法，只有对象自身具有该属性时才会返回 true；
-    ```
-    console.log(mc.hasOwnProperty("name")); //false
-    console.log(mc.hasOwnProperty("hasOwnProperty")); //false
-    console.log(mc.__proto__.hasOwnProperty("hasOwnProperty")); //false
-    console.log(mc.__proto__.__proto__.hasOwnProperty("hasOwnProperty")); //true
-    ```
--   原型对象也是对象，它也有原型，当我们使用一个对下个的属性或方法时，他会在自身中寻找，自身如果有则直接使用，如果没有就去原型中寻找，找到后使用；如果还没有，就去原型的原型中寻找；直到找到 Object 对象的原型；Object 对象的原型的原型为 null；
+- 使用 in 检查对象中是否含有某个属性时，如果对象中没有但是原型中有，也会返回 true；
+- 可以使用 hasOwnProperty()方法检查对象自身中是否还有该属性;使用该方法，只有对象自身具有该属性时才会返回 true；
+  ```
+  console.log(mc.hasOwnProperty("name")); //false
+  console.log(mc.hasOwnProperty("hasOwnProperty")); //false
+  console.log(mc.__proto__.hasOwnProperty("hasOwnProperty")); //false
+  console.log(mc.__proto__.__proto__.hasOwnProperty("hasOwnProperty")); //true
+  ```
+- 原型对象也是对象，它也有原型，当我们使用一个对下个的属性或方法时，他会在自身中寻找，自身如果有则直接使用，如果没有就去原型中寻找，找到后使用；如果还没有，就去原型的原型中寻找；直到找到 Object 对象的原型；Object 对象的原型的原型为 null；
 
-    ```
-    console.log(mc.__proto__); //{name: "我是原型中的name", constructor: ƒ}
-    console.log(mc.__proto__.__proto__); //{constructor: ƒ, __defineGetter__: ƒ,.....
-    console.log(mc.__proto__.__proto__.__proto__); //null
+  ```
+  console.log(mc.__proto__); //{name: "我是原型中的name", constructor: ƒ}
+  console.log(mc.__proto__.__proto__); //{constructor: ƒ, __defineGetter__: ƒ,.....
+  console.log(mc.__proto__.__proto__.__proto__); //null
 
-    var obj = new Object();
-    console.log(obj); //{}
-    console.log(obj.__proto__); //{constructor: ƒ, __defineGetter__: ƒ,.....
-    console.log(obj.__proto__.__proto__); //null
-    console.log(Object.prototype); //{constructor: ƒ, __defineGetter__: ƒ,.....
-    ```
+  var obj = new Object();
+  console.log(obj); //{}
+  console.log(obj.__proto__); //{constructor: ƒ, __defineGetter__: ƒ,.....
+  console.log(obj.__proto__.__proto__); //null
+  console.log(Object.prototype); //{constructor: ƒ, __defineGetter__: ƒ,.....
+  ```
 
--   原型对象图
+- 原型对象图
 
-    ![原型对象](img/原型对象.svg)
+  ![原型对象](img/原型对象.svg)
 
 ##apply 和 call
 
--   这两个都是函数方法，需要通过函数对象调用;
--   当对函数调用 call()和 apply()都会调用函数执行
--   在调用 call 和 apply 可以将一个对象指定为第一个参数;此时这个对象将会成为函数执行时的 this；
--   call()方法可以将实参在对象之后依次传递；
--   apply()方法需要将实参封装到一个数组中统一传递；
+- 这两个都是函数方法，需要通过函数对象调用;
+- 当对函数调用 call()和 apply()都会调用函数执行
+- 在调用 call 和 apply 可以将一个对象指定为第一个参数;此时这个对象将会成为函数执行时的 this；
+- call()方法可以将实参在对象之后依次传递；
+- apply()方法需要将实参封装到一个数组中统一传递；
 
-        ```
-        var name = "孙悟空";
-        function fun(a, b) {
-            console.log(a);
-            console.log(b);
-            // alert(this.name);
-        }
+      ```
+      var name = "孙悟空";
+      function fun(a, b) {
+          console.log(a);
+          console.log(b);
+          // alert(this.name);
+      }
 
-        function Person(name) {
-            this.name = name;
-        }
+      function Person(name) {
+          this.name = name;
+      }
 
-        var obj = {
-            name: "沙和尚",
-            sayName: function () {
-                alert(this.name);
-            },
-        };
+      var obj = {
+          name: "沙和尚",
+          sayName: function () {
+              alert(this.name);
+          },
+      };
 
-        var obj2 = {
-            name: "唐三藏",
-        };
+      var obj2 = {
+          name: "唐三藏",
+      };
 
-        var person = new Person("猪八戒");
+      var person = new Person("猪八戒");
 
-        fun.call(obj, 2, 3);
-        fun.apply(obj2, [5, 6]);
-        // fun.call(obj);
-        // obj.sayName.apply(obj2);
-        // fun.apply();
-        ```
+      fun.call(obj, 2, 3);
+      fun.apply(obj2, [5, 6]);
+      // fun.call(obj);
+      // obj.sayName.apply(obj2);
+      // fun.apply();
+      ```
 
 ##arguments
 
--   在调用函数时，浏览器每次都会传递进两个隐含的参数
+- 在调用函数时，浏览器每次都会传递进两个隐含的参数
 
-    1.函数的上下文对象
+  1.函数的上下文对象
 
-    2.封装实参的对象 arguments
+  2.封装实参的对象 arguments
 
--   Arguments 是一个类数组对象，它也可以通过索引来操作数据，也可以获取长度
--   在调用函数时，我们所传递的实参都会在 arguments 中保存
--   arguments.length 可以用来获取长度
--   即使不定义形参也可以使用 arguments[index]来使用参数
--   它里边有一个属性，这个属性叫做 callee。这个属性对应一个函数，就是当前正在执行的函数对象
+- Arguments 是一个类数组对象，它也可以通过索引来操作数据，也可以获取长度
+- 在调用函数时，我们所传递的实参都会在 arguments 中保存
+- arguments.length 可以用来获取长度
+- 即使不定义形参也可以使用 arguments[index]来使用参数
+- 它里边有一个属性，这个属性叫做 callee。这个属性对应一个函数，就是当前正在执行的函数对象
 
-        ```
-        function fun() {
-            console.log(arguments.length);
-            console.log(arguments[0]);
-            console.log(arguments.callee);
-        }
+      ```
+      function fun() {
+          console.log(arguments.length);
+          console.log(arguments[0]);
+          console.log(arguments.callee);
+      }
 
-        fun("hello", true);
-        ```
+      fun("hello", true);
+      ```
 
 ##正则表达式
 
--   语法：var 变量 = new RegExp(“正则表达式”，“匹配模式”)；
+- 语法：var 变量 = new RegExp(“正则表达式”，“匹配模式”)；
 
-    ```
-    var reg = new RegExp("a", "i");
-    console.log(reg);
+  ```
+  var reg = new RegExp("a", "i");
+  console.log(reg);
 
-    var str = "Abc";
-    console.log(reg.test(str)); //true
-    ```
+  var str = "Abc";
+  console.log(reg.test(str)); //true
+  ```
 
--   匹配模式：可以是：i（忽略大小写）；g(全局匹配)；
--   使用字面量创建正则表达式；语法：var reg = /正则表达式/匹式模配;
+- 匹配模式：可以是：i（忽略大小写）；g(全局匹配)；
+- 使用字面量创建正则表达式；语法：var reg = /正则表达式/匹式模配;
 
-    ```
-    var reg = /a/i;
-    var str = "Abc";
-    console.log(typeof reg); //object
-    console.log(reg.test(str)); //true
-    ```
+  ```
+  var reg = /a/i;
+  var str = "Abc";
+  console.log(typeof reg); //object
+  console.log(reg.test(str)); //true
+  ```
 
--   使用字面量方式创建更加简单，使用 RegExp 创建更加灵活，可以传入变量
--   "|"表示或的意思
--   "[]"也是表示或的意思;[^ab]表示匹配除了 ab 以外的字符
--   "a\-z"表示 a 到 z 之间的字母
--   "{n}"表示某个字符出现的次数;量词只对前面的一个字符起作用；如果要对多个字符起作用，需要将多个字符用()括起来
--   "{m,n}"表示字符出现的次数为 m~n 次;
--   "+"表示至少包含一个该字符
--   "\*"表示包含 0 个或多个该字符
--   "?"表示最多包含 1 个该字符串
--   "^a"检查一个字符串是否以 a 开头
+- 使用字面量方式创建更加简单，使用 RegExp 创建更加灵活，可以传入变量
+- "|"表示或的意思
+- "[]"也是表示或的意思;[^ab]表示匹配除了 ab 以外的字符
+- "a\-z"表示 a 到 z 之间的字母
+- "{n}"表示某个字符出现的次数;量词只对前面的一个字符起作用；如果要对多个字符起作用，需要将多个字符用()括起来
+- "{m,n}"表示字符出现的次数为 m~n 次;
+- "+"表示至少包含一个该字符
+- "\*"表示包含 0 个或多个该字符
+- "?"表示最多包含 1 个该字符串
+- "^a"检查一个字符串是否以 a 开头
 
-    ```
-            var reg;
-            reg = new RegExp("a", "i");
-            console.log(reg);
+  ```
+          var reg;
+          reg = new RegExp("a", "i");
+          console.log(reg);
 
-            var str = "Abc";
-            console.log(reg.test(str)); //true
+          var str = "Abc";
+          console.log(reg.test(str)); //true
 
-            // 使用字面量创建正则表达式
-            var reg = /正则表达式/匹式模配;
-            var reg = /a/i;
-            var str = "Abc";
-            console.log(typeof reg); //object
-            console.log(reg.test(str)); //true
+          // 使用字面量创建正则表达式
+          var reg = /正则表达式/匹式模配;
+          var reg = /a/i;
+          var str = "Abc";
+          console.log(typeof reg); //object
+          console.log(reg.test(str)); //true
 
-            /* 创建一个正则表达式；检查是否有a或b
-            使用|表示或的意思 */
-            reg = /a|b/;
-            console.log(reg.test("acd"));
+          /* 创建一个正则表达式；检查是否有a或b
+          使用|表示或的意思 */
+          reg = /a|b/;
+          console.log(reg.test("acd"));
 
-            /* 创建一个正则表达式检查是否有字母
-            []表示或
-            [a-z]任意小写字母
-            [A-Z]任意大写字母
-            [A-z]所有大小写英文字母 */
-            reg = /[A-z]/;
-            console.log(reg.test("acd"));
+          /* 创建一个正则表达式检查是否有字母
+          []表示或
+          [a-z]任意小写字母
+          [A-Z]任意大写字母
+          [A-z]所有大小写英文字母 */
+          reg = /[A-z]/;
+          console.log(reg.test("acd"));
 
-            // 检查一个字符串中是否含有abc或adc或aec
-            reg = /a[b-e]c/;
-            console.log(reg.test("adc"));
+          // 检查一个字符串中是否含有abc或adc或aec
+          reg = /a[b-e]c/;
+          console.log(reg.test("adc"));
 
-            // 除了ab之外的内容
-            reg = /[^ab]/;
-            console.log(reg.test("99")); //true
+          // 除了ab之外的内容
+          reg = /[^ab]/;
+          console.log(reg.test("99")); //true
 
-            // 匹配数字
-            reg = /[0-9]/;
-            console.log(reg.test(1213)); //true
-    ```
+          // 匹配数字
+          reg = /[0-9]/;
+          console.log(reg.test(1213)); //true
+  ```
 
--   转移字符表示特殊符号(. \ 等)
+- 转移字符表示特殊符号(. \ 等)
 
-    ```
-            /*
-              检查一个字符串中是否含有 "." ;必须使用转移字符"\.";
-                单独使用.表示任意字符；
-                \\表示\
-              使用构造函数来创建者正则表达式，注意：输入的实参位字符型，在写特殊字符的正则表达式时，也需要转移字符
-            */
-            var reg = /\./;
-            console.log(reg.test("abc.bcd"));
+  ```
+          /*
+            检查一个字符串中是否含有 "." ;必须使用转移字符"\.";
+              单独使用.表示任意字符；
+              \\表示\
+            使用构造函数来创建者正则表达式，注意：输入的实参位字符型，在写特殊字符的正则表达式时，也需要转移字符
+          */
+          var reg = /\./;
+          console.log(reg.test("abc.bcd"));
 
-            var reg = /\\/;
-            console.log(reg.test("abc\\bcd")); //在字符串中也要使用转移字符表示单斜杠
+          var reg = /\\/;
+          console.log(reg.test("abc\\bcd")); //在字符串中也要使用转移字符表示单斜杠
 
-            //构造函数创建正则表达式
-            reg = new RegExp("\\\\");
-            console.log(reg); //  输出为 ：/\\/
-    ```
+          //构造函数创建正则表达式
+          reg = new RegExp("\\\\");
+          console.log(reg); //  输出为 ：/\\/
+  ```
 
--   转移字符的正则表达式相关代码表
-    ![相关转移字符的正则表达式](img/正则表达式转移字符.png)
+- 转移字符的正则表达式相关代码表
+  ![相关转移字符的正则表达式](img/正则表达式转移字符.png)
 
-    ```
-            var str = "      hel   lo    ";
+  ```
+          var str = "      hel   lo    ";
 
-            //去除字符串前面和后面的空格；使用空串替换空格
+          //去除字符串前面和后面的空格；使用空串替换空格
 
-            // 去除开头的空格
-            // str = str.replace(/^\s+/, "");
-            //去除结尾的空格
-            // str = str.replace(/\s+$/, "");
+          // 去除开头的空格
+          // str = str.replace(/^\s+/, "");
+          //去除结尾的空格
+          // str = str.replace(/\s+$/, "");
 
-            //同时去除开头和结尾的空格
-            str = str.replace(/^\s*|\s*$/g, "");
-            console.log(str);
-    ```
+          //同时去除开头和结尾的空格
+          str = str.replace(/^\s*|\s*$/g, "");
+          console.log(str);
+  ```
 
 ##文档对象模型 DOM(Document Object Model)
 
@@ -1141,44 +1141,59 @@ var fun2 = function () {
 
 > Node 构成 HTML 文档最基本的单元
 
--   常用节点分为 4 类：
+- 常用节点分为 4 类：
 
-    1.文档节点：整个 HTML 文档
+  1.文档节点：整个 HTML 文档
 
-    2.元素节点：HTML 文档中的 HTML 标签
+  2.元素节点：HTML 文档中的 HTML 标签
 
-    3.属性节点：元素的属性
+  3.属性节点：元素的属性
 
-    4.文本节点：HTML 标签中的文本内容
+  4.文本节点：HTML 标签中的文本内容
 
 ###document 对象
 
--   浏览器已经为我们提供文档节点，这个对象是 window 属性；可以在页面中直接使用，文档节点代表整个网页；这个节点就是 document 对象。
--   通过 document 对象获取文档模型面的其他节点对象
+- 浏览器已经为我们提供文档节点，这个对象是 window 属性；可以在页面中直接使用，文档节点代表整个网页；这个节点就是 document 对象。
+- 通过 document 对象获取文档模型面的其他节点对象
 
 ###DOM 查询
 
--   getElementById()通过 id 属性获取一个元素节点对象
--   getElementsByTagName()通过标签名获取一组元素节点对象；该组元素节点对象以一个类数组的形式保存；
--   getElementsByName()通过 name 属性获取一组元素节点对象
--   innerText 和 InnerHtml
+- getElementById()通过 id 属性获取一个元素节点对象
+- getElementsByTagName()通过标签名获取一组元素节点对象；该组元素节点对象以一个类数组的形式保存；
+- getElementsByName()通过 name 属性获取一组元素节点对象
+- innerText 和 InnerHtml
 
-    -   都可以获取元素内部的文本内容
-    -   innerText 和 innerHTML 类似，不同的是，在输出子元素的内容时，他会自动将 html 去除，只输出文本。
+  - 都可以获取元素内部的文本内容
+  - innerText 和 innerHTML 类似，不同的是，在输出子元素的内容时，他会自动将 html 去除，只输出文本。
 
--   通过具体的元素节点调用；
--   获取子节点和子元素
+- 通过具体的元素节点调用；
+- 获取子节点和子元素
 
-    -   getElementsByTagName():方法；返回当前节点的指定标签名后代节点；
-    -   childNodes;属性；表示当前节点的所有子节点，包括当前节点中存在的空白文本节点；
-    -   firstChild;属性；表示当前节点的第一个**子节点**；
-    -   lastChild;属性；表示当前节点的最后一个**子节点**；
-    -   children;属性；获取当前元素的所有**子元素**；
-    -   firstElementChild;属性；获取当前元素的第一个**子元素**；不支持 IE8 以下
+  - getElementsByTagName():方法；返回当前节点的指定标签名后代节点；
+  - childNodes;属性；表示当前节点的所有子节点，包括当前节点中存在的空白文本节点；
+  - firstChild;属性；表示当前节点的第一个**子节点**；
+  - lastChild;属性；表示当前节点的最后一个**子节点**；
+  - children;属性；获取当前元素的所有**子元素**；
+  - firstElementChild;属性；获取当前元素的第一个**子元素**；不支持 IE8 以下
 
--   获取父节点和兄弟节点
+- 获取父节点和兄弟节点
 
-        -   parentNode；属性，表示当前节点的父节点；
-        -   previousSibling;属性；表示当前节点的前一个兄弟节点；
-        -   nextSibling;属性；表示当前节点的后一个兄弟节点；
-        -   nodeValue；属性；取节点的属性值
+      -   parentNode；属性，表示当前节点的父节点；
+      -   previousSibling;属性；表示当前节点的前一个兄弟节点；
+      -   nextSibling;属性；表示当前节点的后一个兄弟节点；
+      -   nodeValue；属性；取节点的属性值
+
+- 获取 body 标签:document.body;
+- 获取 html 标签:document.documentElement;
+- 获取页面所有标签元素:document.all;
+- 根据 class 属性查询元素节点对象:document.getElementsByClassName(类名);只支持 ie9 及以上的浏览器
+- document.querySelector(CSS 选择器字符串)；IE8 及以上浏览器都支持；该方法只会返回一个元素；如果满足条件的元素有多个，那么它只会返回第一个
+
+  例如：
+
+        document.querySelector("#idName");
+        document.querySelector(".className");
+
+- document.querySelectorAll(CSS 选择器字符串)；匹配所有满足条件的元素并存在类数组中
+
+###DOM 增删改

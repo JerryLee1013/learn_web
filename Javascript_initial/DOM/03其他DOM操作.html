@@ -1,0 +1,25 @@
+<!--
+ * @Brief: 
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-07-30 17:21:56
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="box1">第一个box1</div>
+    <div class="box1">第二个box1</div>
+    <div class="box1">第三个box1</div>
+  </body>
+  <script>
+    var box = document.querySelector(".box1");
+    console.log(box.innerHTML);
+
+    box = document.querySelectorAll(".box1");
+    console.log(box.length);
+  </script>
+</html>
