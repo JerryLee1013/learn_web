@@ -1,0 +1,119 @@
+<!--
+ * @Brief: 
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-07-30 12:36:30
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <script>
+        window.onload = function () {
+            var checkallornone = document.getElementById("checkallornone");
+            var btn_checkall = document.getElementById("btn-checkall");
+            var btn_checknone = document.getElementById("btn-checknone");
+            var btn_checkrel = document.getElementById("btn-checkrel");
+            var btn_summit = document.getElementById("btn-summit");
+
+            //取hobby
+            var hobby = document.getElementsByName("hobby");
+            //设置全选
+            btn_checkall.onclick = function () {
+                for (var i = 0; i < hobby.length; i++) {
+                    hobby[i].checked = true;
+                }
+                checkallornone.checked = true;
+            };
+
+            // 设置全不选
+            btn_checknone.onclick = function () {
+                for (var i = 0; i < hobby.length; i++) {
+                    hobby[i].checked = false;
+                }
+                checkallornone.checked = false;
+            };
+
+            // 设置反选
+            btn_checkrel.onclick = function () {
+                for (var i = 0; i < hobby.length; i++) {
+                    hobby[i].checked = !hobby[i].checked;
+
+                    // var flag = true;
+                    // for(var j = 0;j<hobby.length;j++){
+                    //     flag = flag && hobby[j].checked;
+                    // }
+                    // checkallornone.checked = flag;
+
+                    checkallornone.checked = true;
+                    // var flag = true;
+                    for(var j = 0;j<hobby.length;j++){
+                        // flag = flag && hobby[j].checked;
+                        if(!hobby[j].checked){
+                            checkallornone.checked = false;
+
+                            
+                            break;
+                        }
+                    }
+                }
+            };
+
+            // 设置提交
+            btn_summit.onclick = function () {
+                for (var i = 0; i < hobby.length; i++) {
+                    if (hobby[i].checked) {
+                        alert(hobby[i].value);
+                    }
+                }
+            };
+
+            // 设置全选全不选
+            checkallornone.onclick = function () {    
+                for (var i = 0; i < hobby.length; i++) {
+                    
+                    hobby[i].checked = this.checked;
+                }             
+            };
+
+            // 设置hobby的点击事件对全选/全不选的影响
+            for(var i = 0;i<hobby.length;i++){
+                hobby[i].onclick = function(){
+                    checkallornone.checked = true;
+                    // var flag = true;
+                    for(var j = 0;j<hobby.length;j++){
+                        // flag = flag && hobby[j].checked;
+                        if(!hobby[j].checked){
+                            checkallornone.checked = false;
+                            //提前结束循环
+                            break;
+                        }
+                    }
+                    // checkallornone.checked = flag;
+                    
+                }
+            }
+        };
+    </script>
+    <body>
+        <form action="#">
+            你爱好的运动是？
+            <input
+                type="checkbox"
+                id="checkallornone"
+                value=""
+            />全选/全不选<br />
+            <input type="checkbox" name="hobby" value="足球" />足球
+            <input type="checkbox" name="hobby" value="篮球" />篮球
+            <input type="checkbox" name="hobby" value="乒乓球" />乒乓球
+            <input type="checkbox" name="hobby" value="排球" />排球
+            <br />
+            <input type="button" id="btn-checkall" value="全选"></input>
+            <input type="button" id="btn-checknone" value="全不选"></input>
+            <input type="button" id="btn-checkrel" value="反选"></input>
+            <input type="button" id="btn-summit" value="提交"></input>
+        </form>
+    </body>
+</html>

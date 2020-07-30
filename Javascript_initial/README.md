@@ -1,7 +1,7 @@
 <!--
  * @Brief:
  * @LastEditors: Jerry Lee
- * @LastEditTime: 2020-07-28 21:23:01
+ * @LastEditTime: 2020-07-29 15:03:33
 -->
 
 #Javascript 基础部分(常用关键点)：
@@ -1155,3 +1155,30 @@ var fun2 = function () {
 
 -   浏览器已经为我们提供文档节点，这个对象是 window 属性；可以在页面中直接使用，文档节点代表整个网页；这个节点就是 document 对象。
 -   通过 document 对象获取文档模型面的其他节点对象
+
+###DOM 查询
+
+-   getElementById()通过 id 属性获取一个元素节点对象
+-   getElementsByTagName()通过标签名获取一组元素节点对象；该组元素节点对象以一个类数组的形式保存；
+-   getElementsByName()通过 name 属性获取一组元素节点对象
+-   innerText 和 InnerHtml
+
+    -   都可以获取元素内部的文本内容
+    -   innerText 和 innerHTML 类似，不同的是，在输出子元素的内容时，他会自动将 html 去除，只输出文本。
+
+-   通过具体的元素节点调用；
+-   获取子节点和子元素
+
+    -   getElementsByTagName():方法；返回当前节点的指定标签名后代节点；
+    -   childNodes;属性；表示当前节点的所有子节点，包括当前节点中存在的空白文本节点；
+    -   firstChild;属性；表示当前节点的第一个**子节点**；
+    -   lastChild;属性；表示当前节点的最后一个**子节点**；
+    -   children;属性；获取当前元素的所有**子元素**；
+    -   firstElementChild;属性；获取当前元素的第一个**子元素**；不支持 IE8 以下
+
+-   获取父节点和兄弟节点
+
+        -   parentNode；属性，表示当前节点的父节点；
+        -   previousSibling;属性；表示当前节点的前一个兄弟节点；
+        -   nextSibling;属性；表示当前节点的后一个兄弟节点；
+        -   nodeValue；属性；取节点的属性值
