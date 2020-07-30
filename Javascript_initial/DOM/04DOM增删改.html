@@ -1,0 +1,78 @@
+<!--
+ * @Brief: 
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-07-30 19:08:54
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .container {
+                width: 500px;
+                margin: 50px auto;
+                border: 1px solid;
+                overflow: hidden;
+            }
+            .leftbox {
+                float: left;
+                width: 75%;
+            }
+            .cities {
+                padding-left: 10px;
+            }
+            .cities li {
+                list-style-type: none;
+                display: inline-block;
+                margin-bottom: 10px;
+                background-color: #bfa;
+                border: 1px solid;
+                box-sizing: border-box;
+            }
+            .btn-box {
+                padding: 20px;
+                float: right;
+                border-left: 1px solid;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="leftbox">
+                <div>你喜欢哪个城市？</div>
+                <ul class="cities">
+                    <li>广州</li>
+                    <li>深圳</li>
+                    <li>上海</li>
+                    <li>北京</li>
+                </ul>
+            </div>
+
+            <div class="btn-box">
+                <form action="#">
+                    <input
+                        type="button"
+                        value="添加城市"
+                        id="addCity"
+                    /><br /><br />
+                    <input
+                        type="button"
+                        value="删除城市"
+                        id="removeCity"
+                    /><br /><br />
+                    <input
+                        type="button"
+                        value="插入城市"
+                        id="insertCity"
+                    /><br /><br />
+                    <input type="button" value="修改城市" id="replaceCity" />
+                </form>
+            </div>
+        </div>
+    </body>
+    <script>
+        var cities = document.querySelector(".cities");
+    </script>
+</html>
