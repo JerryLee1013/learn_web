@@ -1,7 +1,7 @@
 <!--
  * @Brief: 
  * @LastEditors: Jerry Lee
- * @LastEditTime: 2020-07-30 20:56:23
+ * @LastEditTime: 2020-07-30 21:58:55
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -10,6 +10,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
         <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
             .container {
                 width: 500px;
                 margin: 50px auto;
@@ -26,7 +30,7 @@
             .cities li {
                 list-style-type: none;
                 display: inline-block;
-                margin-bottom: 10px;
+                margin: 10px;
                 background-color: #bfa;
                 border: 1px solid;
                 box-sizing: border-box;
@@ -46,7 +50,7 @@
                     <li>广州</li>
                     <li>深圳</li>
                     <li>上海</li>
-                    <li>北京</li>
+                    <li id="bj">北京</li>
                 </ul>
             </div>
 
@@ -78,12 +82,63 @@
         var removeCity = document.getElementById("removeCity");
         var insertCity = document.getElementById("insertCity");
         var replaceCity = document.getElementById("replaceCity");
+
+        //添加城市
         addCity.onclick = function () {
-            // 1.创建待增加城市节点<li>城市</li>
+            // // 1.创建待增加城市节点<li>城市</li>
+            // // 1.1.创建li节点
+            // var li = document.createElement("li");
+            // // 1.2创建城市文本节点
+            // var cityText = document.createTextNode("城市");
+            // //1.3将城市文本节点设置为li的子节点
+            // li.appendChild(cityText);
+            // // 2.将城市添加到cities下
+            // cities.appendChild(li);
+            //方法2：
+            //使用innerHTML +=；这种影响较大，
+            // cities.innerHTML += "<li>城市</li>";
+            //方法3：
+            //使用下面这种innerHTML +=方式，影响较小
+            var li = document.createElement("li");
+            li.innerHTML = "城市";
+            cities.appendChild(li);
+        };
+
+        //将城市节点插入到#bj节点之前
+        insertCity.onclick = function () {
             // 1.1.创建li节点
-            document.createElement("li");
-            // 1.2创建文本节点
-            // 2.将城市添加到cities下
+            var li = document.createElement("li");
+            // 1.2创建城市文本节点
+            var cityText = document.createTextNode("城市");
+            //1.3将城市文本节点设置为li的子节点
+            li.appendChild(cityText);
+            var bj = document.getElementById("bj");
+            cities.insertBefore(li, bj);
+        };
+
+        //使用广州节点替换北京节点
+        replaceCity.onclick = function () {
+            // 1.1.创建li节点
+            var li = document.createElement("li");
+            // 1.2创建城市文本节点
+            var cityText = document.createTextNode("城市");
+            //1.3将城市文本节点设置为li的子节点
+            li.appendChild(cityText);
+            //2.1获取子节点
+            var bj = document.getElementById("bj");
+            //2.2替换子节点
+            cities.replaceChild(li, bj);
+        };
+
+        //删除#bj节点
+        removeCity.onclick = function () {
+            // //1获取子节点
+            var bj = document.getElementById("bj");
+            // //2删除子节点
+            // cities.removeChild(bj);
+
+            // 自己杀自己
+            bj.parentNode.removeChild(bj);
         };
     </script>
 </html>
