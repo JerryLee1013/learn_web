@@ -1,0 +1,128 @@
+<!--
+ * @Brief: 
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-07-31 10:30:28
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="../css/reset.css" />
+        <style>
+            .container {
+                width: 300px;
+                margin: 50px auto;
+            }
+            table {
+                border: 1px solid;
+            }
+            th,
+            td {
+                border: 1px solid;
+            }
+            .box2 {
+                border: 1px solid;
+                text-align: center;
+            }
+            input {
+                border: 1px solid;
+                margin-bottom: 10px;
+                width: 200px;
+            }
+            input[type="submit"] {
+                width: 50px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Salary</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td>Tom1</td>
+                    <td>tom1@email.com</td>
+                    <td>8000</td>
+                    <td><a href="javascript:;">Delete</a></td>
+                </tr>
+                <tr>
+                    <td>Tom2</td>
+                    <td>tom2@email.com</td>
+                    <td>10000</td>
+                    <td><a href="javascript:;">Delete</a></td>
+                </tr>
+                <tr>
+                    <td>Tom3</td>
+                    <td>tom3@email.com</td>
+                    <td>9000</td>
+                    <td><a href="javascript:;">Delete</a></td>
+                </tr>
+            </table>
+        </div>
+        <div class="container box2">
+            <h3>添加新员工</h3>
+            <form action="javascript:;">
+                name:<input type="text" name="username" id="username" /><br />
+                email:<input type="text" name="email" id="email" /><br />
+                salary:<input type="text" name="salary" id="salary" /><br />
+                <input id="submit" type="submit" value="Submit" />
+            </form>
+        </div>
+    </body>
+    <script>
+        var submit = document.getElementById("submit");
+        var table = document.getElementsByTagName("table")[0];
+        var tbody = document.getElementsByTagName("tbody")[0];
+
+        // 点击提交添加用户
+        submit.onclick = function () {
+            var name = document.querySelector("#username").value;
+            var email = document.querySelector("#email").value;
+            var salary = document.querySelector("#salary").value;
+            var alink = document.createElement("a");
+            var aText = document.createTextNode("Delete");
+            alink.appendChild(aText);
+            alink.href = "javascript:;";
+            alink.onclick = fun;
+            // var aLink = "<a href='javascript:;'>Delete</a>";
+            var userData = [name, email, salary];
+            // console.log(userData);
+            var tr = document.createElement("tr");
+            for (var i = 0; i < userData.length; i++) {
+                var td = document.createElement("td");
+                td.innerHTML = userData[i];
+                tr.appendChild(td);
+            }
+            var td = document.createElement("td");
+            td.appendChild(alink);
+            tr.appendChild(td);
+            tbody.appendChild(tr);
+            table.appendChild(tbody);
+        };
+
+        // 点击delete删除该行用户
+        var deleteBtn = document.getElementsByTagName("a");
+        for (var i = 0; i < deleteBtn.length; i++) {
+            deleteBtn[i].onclick = fun;
+        }
+
+        // 删除事件函数
+        function fun() {
+            var userText = this.parentNode.parentNode.children[0].innerHTML;
+            // alert(userText);
+            if (confirm("确认删除" + userText + "吗？")) {
+                this.parentNode.parentNode.parentNode.removeChild(
+                    this.parentNode.parentNode
+                );
+            }
+
+            return false;
+        }
+    </script>
+</html>
