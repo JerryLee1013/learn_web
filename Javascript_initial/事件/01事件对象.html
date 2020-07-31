@@ -1,0 +1,43 @@
+<!--
+ * @Brief: 
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-07-31 19:39:09
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .box1 {
+                width: 500px;
+                height: 300px;
+                border: 1px solid;
+            }
+            .box2 {
+                width: 200px;
+                height: 20px;
+                border: 1px solid;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box1"></div>
+        <br />
+        <div class="box2"></div>
+    </body>
+    <script>
+        var box1 = document.querySelector(".box1");
+        var box2 = document.querySelector(".box2");
+        box1.onmousemove = function (event) {
+            /* if (!event) {
+                event = window.event;
+            } */
+            event = event || window.event;
+            var x = event.clientX;
+            var y = event.clientY;
+            box2.innerHTML = "x = " + x + "  y = " + y;
+        };
+    </script>
+</html>

@@ -1,0 +1,57 @@
+<!--
+ * @Brief: 
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-07-31 22:08:29
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <ul id="u1">
+            <li><a href="javascript:;" class="link">超链接1</a></li>
+            <li><a href="javascript:;" class="link">超链接2</a></li>
+            <li><a href="javascript:;" class="link">超链接3</a></li>
+            <li><a href="javascript:;" class="link">超链接4</a></li>
+            <li><a href="javascript:;" class="link">超链接5</a></li>
+        </ul>
+        <button id="btn1">添加超链接</button>
+    </body>
+    <script>
+        /*
+            为每一个超链接绑定单击响应函数
+         */
+        //  方法：获取所有a标签
+        /* var allA = document.getElementsByTagName("a");
+        for (var i = 0; i < allA.length; i++) {
+            allA[i].onclick = function () {
+                alert(this.innerHTML);
+            };
+        } */
+
+        var u1 = document.getElementById("u1");
+        u1.onclick = function (event) {
+            /*
+                如果触发事件的元素是我们希望的元素则执行
+             */
+            event = event || window.event;
+            // event.target;触发事件的对象
+            // alert(event.target);
+            if (event.target.className == "link") {
+                alert(event.target.innerHTML);
+            }
+        };
+
+        // 事件的委派,添加超链接
+        var btn1 = document.getElementById("btn1");
+        btn1.onclick = function () {
+            var li = document.createElement("li");
+            li.innerHTML = "<a href='javascript:;' class='link'>超链接</a>";
+
+            u1.appendChild(li);
+        };
+    </script>
+</html>

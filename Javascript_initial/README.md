@@ -1,7 +1,7 @@
 <!--
  * @Brief:
  * @LastEditors: Jerry Lee
- * @LastEditTime: 2020-07-31 16:11:01
+ * @LastEditTime: 2020-07-31 22:06:02
 -->
 
 # Javascript 基础部分(常用关键点)
@@ -1275,3 +1275,62 @@ var fun2 = function () {
 -   element.scrollLeft、element.scrollTop;获取有滚动条水平拉和下拉的位移；
 -   **element.clientHeight + element.scrollTop = element.scrollHeight**;
 -   **element.clientWidth + element.scrollLeft = element.scrollWidth**;
+
+##事件对象 event
+
+> 当事件的响应函数被触发时，浏览器每次都会将一个事件对象作为实参传递进响应函数
+
+###event 属性
+
+-   clientX 可以获取鼠标指针的水平座标，相对于视口
+-   clientY 可以获取鼠标指针的垂直坐标，相对于视口
+-   event 在 IE8 中响应函数被触发时，浏览器不会传递事件对象，在 IE8 及以下浏览器中是将事件对象作为 window 对象的属性保存；使用时应 （window.event.属性）使用
+    **兼容型代码**
+    ```
+        <!-- 方法1： -->
+        if (!event) {
+            event = window.event;
+        }
+        <!-- 方法2： -->
+        event = event || window.event;
+    ```
+-   pageX,pageY;可以获取鼠标相对于当前页面的坐标;不兼容 IE8；如果需要兼容 IE8 不能用这个；
+
+###event 冒泡(Bubble 重要)
+
+> **所谓事件的冒泡就是事件的向上传导，当后代元素的事件被触发时，其祖先元素的相同事件也会被触发**，在开发中冒泡大部分是有用的；
+> 如果不希望发生事件冒泡，可以通过事件对象(event.cancelBubble = true)来取消冒泡
+> 事件委派利用事件冒泡，将单击响应函数绑定到元素共有的祖先元素上，就可以在单击子元素的时候响应单击响应函数
+
+-   event.target 表示触发事件的对象
+
+```
+    <body>
+        <div id="div1">
+            我是box1
+            <span>我是span</span>
+        </div>
+    </body>
+    <script>
+        // 为span绑定一个单击响应事件
+        var span = document.querySelector("#div1 span");
+        span.onclick = function () {
+            alert("我是span的单击响应函数");
+
+            // 取消冒泡
+            event.cancelBubble = true;
+        };
+
+        // 为div1绑定一个单击响应函数
+        var div1 = document.getElementById("div1");
+        div1.onclick = function () {
+            alert("我是div1的单机响应函数");
+        };
+
+        // 为body绑定一个单击响应函数
+        var body = document.body;
+        body.onclick = function () {
+            alert("我是body的单机响应函数");
+        };
+    </script>
+```

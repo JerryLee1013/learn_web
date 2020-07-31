@@ -1,0 +1,55 @@
+<!--
+ * @Brief: 
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-07-31 21:37:22
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            body {
+                height: 1500px;
+                width: 2000px;
+            }
+            .box1 {
+                width: 100px;
+                height: 100px;
+                background-color: #bfa;
+                position: absolute;
+            }
+        </style>
+    </head>
+    <body>
+        <div
+            id="box2"
+            style="width: 500px; height: 500px; background-color: pink;"
+        ></div>
+        <div class="box1"></div>
+    </body>
+    <script>
+        var box1 = document.querySelector(".box1");
+        var box2 = document.getElementById("box2");
+        box2.onmousemove = function (event) {
+            event = event || window.event;
+
+            // 阻止事件冒泡
+            event.cancelBubble = true;
+        };
+        document.onmousemove = function (event) {
+            var event = event || window.event;
+            var xScroll = document.documentElement.scrollLeft;
+            var yScroll =
+                document.body.scrollTop || document.documentElement.scrollTop;
+            console.log(yScroll);
+            // var x = event.pageX;
+            // var y = event.pageY;
+            var x = event.clientX;
+            var y = event.clientY;
+            box1.style.left = x + xScroll + "px";
+            box1.style.top = y + yScroll + "px";
+        };
+    </script>
+</html>
