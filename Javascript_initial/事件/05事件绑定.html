@@ -1,0 +1,104 @@
+<!--
+ * @Brief: 
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-07-31 23:19:02
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <button id="btn1">点击</button>
+    </body>
+    <script>
+        var btn1 = document.getElementById("btn1");
+        /* btn1.onclick = function () {
+            alert(123);
+        };
+        // 后面的绑定函数覆盖前面的绑定
+        btn1.onclick = function () {
+            alert(456);
+        }; */
+
+        /* 
+            addEventListener(a,b,c) 
+            不兼容IE8及以下
+                参数：
+                    a:时间字符串；不要on
+                    b：回调函数；
+        */
+        /* btn1.addEventListener(
+            "click",
+            function () {
+                alert(123);
+            },
+            false
+        );
+
+        btn1.addEventListener(
+            "click",
+            function () {
+                alert(456);
+            },
+            false
+        ); */
+
+        /*  
+            兼容IE8及以下的方法：
+            attachEvent(a,b)
+                参数：
+                    a:事件的字符串，要on
+                    b:回调函数
+         */
+        /* btn1.attachEvent("onclick", function () {
+            alert(123);
+        });
+        btn1.attachEvent("onclick", function () {
+            alert(456);
+        }); */
+
+        /*
+            addEventListener()中绑定事件的this是绑定事件的对象
+            attachEvent()中的this是window；
+                需要统一两个方法中的this
+         */
+        /* btn1.addEventListener(
+            "click",
+            function () {
+                alert(this);//[object HTMLButtonElement]
+            },
+            false
+        ); */
+        /* btn1.attachEvent("onclick", function () {
+            alert(this); //[object Window]
+        }); */
+
+        // 测试bind()
+        bind(btn1, "click", function () {
+            alert(this);
+        });
+        /*
+            代码兼容型处理，为一个元素绑定响应函数 
+            参数：
+                obj：要绑定事件的对象
+                eventStr：事件字符串
+                callback：回调函数
+         */
+        function bind(obj, eventStr, callback) {
+            if (obj.addEventListener) {
+                // 大部分浏览器兼容的方式
+                obj.addEventListener(eventStr, callback, false);
+            } else {
+                // 兼容IE8及以下的方式
+                // callback.call(obj)该变this的指向为obj
+                obj.attachEvent("on" + eventStr, function () {
+                    // 在匿名函数中调用callback();
+                    callback.call(obj);
+                });
+            }
+        }
+    </script>
+</html>

@@ -1,7 +1,7 @@
 <!--
  * @Brief:
  * @LastEditors: Jerry Lee
- * @LastEditTime: 2020-07-31 22:06:02
+ * @LastEditTime: 2020-07-31 23:21:02
 -->
 
 # Javascript 基础部分(常用关键点)
@@ -1334,3 +1334,70 @@ var fun2 = function () {
         };
     </script>
 ```
+
+###event 绑定
+
+-   方式 1：元素.事件名 = 函数；
+
+    > 这种方式只能绑定一个事件响应函数，如果绑定多个，后面的绑定会覆盖前面的绑定；前面的失效；
+
+    ```
+    btn1.onclick = function () {
+    alert(456);
+    };
+
+    // 后面的绑定函数覆盖前面的绑定
+    btn1.onclick = function () {
+        alert(123);
+    };
+    ```
+
+-   方式 2：addEventListener(a,b,c|false)；可以按照这种方式绑定多个事件响应函数；执行时按照事件的绑定顺序执行；但是此方式不支持 IE8 及以下的浏览器；
+
+    > a:事件字符串；不要 on
+    > b:回调函数；
+    > c:是否在捕获阶段触发事件，需要一个布尔值，一般都传 false
+
+    -   **兼容 IE8 及以下的方法：attachEvent(a,b)**
+        > a:事件字符串；不要 on;
+        > b:回调函数;
+    -   这个方法也可以同时绑定多个事件响应；不同的是，事件的执行顺序和代码的编写顺序相反，写在最后的是将绑定最先执行；写在最上面的最后执行
+
+-   addEventListener()中绑定事件的 this 是绑定事件的对象
+    ；attachEvent()中的 this 是 window；需要统一两个方法中的 this
+
+    ```
+    btn1.addEventListener("click",function () {
+        alert(this);//[object HTMLButtonElement]
+    },false);
+
+    btn1.attachEvent("onclick", function () {
+        alert(this); //[object Window]
+    });
+
+    ```
+
+-   代码兼容处理
+
+    ```
+        /*
+            代码兼容型处理，为一个元素绑定响应函数
+            参数：
+                obj：要绑定事件的对象
+                eventStr：事件字符串
+                callback：回调函数
+         */
+        function bind(obj, eventStr, callback) {
+            if (obj.addEventListener) {
+                // 大部分浏览器兼容的方式
+                obj.addEventListener(eventStr, callback, false);
+            } else {
+                // 兼容IE8及以下的方式
+                // callback.call(obj)该变this的指向为obj
+                obj.attachEvent("on" + eventStr, function () {
+                    // 在匿名函数中调用callback();
+                    callback.call(obj);
+                });
+            }
+        }
+    ```
