@@ -1,40 +1,36 @@
 <!--
  * @Brief:
  * @LastEditors: Jerry Lee
- * @LastEditTime: 2020-07-30 21:56:28
+ * @LastEditTime: 2020-07-31 16:11:01
 -->
 
-#Javascript 基础部分(常用关键点)：
+# Javascript 基础部分(常用关键点)
 
-##一个完整的 js 实现应该由以下三个部分构成：
+## 一个完整的 js 实现应该由以下三个部分构成
 
 > ECMAScript:js 编码规范(标准)
 > DOM：提供一组对象可以操作网页
 > BOM：提供一组对象可以操作浏览器
 
-##怎么取 body 的结点：
+## 怎么取 body 的结点
 
 > var bodyNode = document.documentElement;
 
-##js 代码编写位置：
+## js 代码编写位置
 
 > 标签的 onclick 属性中；
->
-> > > onclick="alert();"
 
-> a 标签的 href 属性值中;
->
-> > > href = "javascript:alert()";
-
-> 从外部引入 js 文件
->
-> > > <script src="model.js"></script>
+```
+onclick="alert();"
+a 标签的 href 属性值中;
+ href = "javascript:alert()";
+从外部引入 js 文件
+<script src="model.js"></script>
+```
 
 > 在<head>元素中编写 js 代码
->
-> > > <script>alert("head中内部的js代码");</script>
 
-##js 的数据类型：
+## js 的数据类型：
 
 ###基本数据类型
 
@@ -135,6 +131,7 @@
 ####使用 Number()函数
 
 ```
+
         //将String类型转换为Number
         var a = "123";
         console.log(a); //"123"
@@ -184,11 +181,13 @@
         a = Number(a);
         console.log(a); //NaN : Not a Number
         console.log(typeof a); //Number
+
 ```
 
 ####使用 parseInt()和 parseFloat()函数
 
 ```
+
         /*
             转换方式2:这种方式专门用来对付字符串
                 函数：
@@ -243,11 +242,13 @@
         a = parseInt(a);
         console.log(a); //NaN
         console.log(typeof a); //Number
+
 ```
 
 ####使用"+"或者"-"将其他类型转换为 Number 类型
 
 ```
+
         // 将纯数字型String转换为Number类型
         a = "0123";
         a = +a;
@@ -278,6 +279,7 @@
         console.log(a); //NaN
 
         <!-- 以上代码使用“-”也可将其他类型转换为Number类型 -->
+
 ```
 
 ###其他类型转换为 Boolean
@@ -285,6 +287,7 @@
 ####使用 Boolean()函数
 
 ```
+
         // Number转换为Boolean
         // 当Number为不为0的和NaN的数值时，无论正负，转换为Boolean值都为true
         var a = 123;
@@ -339,38 +342,46 @@
         a = Boolean(a);
         console.log(a); //false
         console.log(typeof a); //boolean
+
 ```
 
 ##其他进制的数字
 ###16 进制的表示
 
 ```
+
         // 16进制的表示:需要以0x开头
         a = 0x123;
         console.log(a); //291，输出以十进制形式
         a = 0xffff;
         console.log(a); //65535，输出以十进制形式
+
 ```
 
 ###8 进制的表示
 
 ```
+
         //8进制表示：需要以0开头
         a = 070;
         console.log(a); //56;
+
 ```
 
 ###2 进制的表示
 
 ```
+
         //2进制数字：以0b开头
         a = 0b10;
         console.log(a); //2
+
 ```
 
 ###IE 兼容性问题
 
 ```
+
         a = "070";
         a = parseInt(a);
         console.log(a); //70；IE8及以下为56
@@ -385,11 +396,13 @@
         a = parseInt(a,10);
         console.log(a); //70
         console.log(typeof a); //number
+
 ```
 
 ##逻辑运算符
 
 ```
+
         /*
             逻辑运算符：
                 &&
@@ -407,11 +420,13 @@
 
         // ！取反操作
         console.log(!(1 < 2));
+
 ```
 
 ##非布尔值运算
 
 ```
+
             /*
                 对于非布尔值的运算，会将非布尔值先转换为布尔值，然后进行运算,最后返回原类型值
             */
@@ -468,6 +483,7 @@
 
             result = !NaN;
             console.log(result); //true
+
 ```
 
 ##关系运算符
@@ -485,6 +501,7 @@
 > > 如果运算符两侧都是 String 型，会按照 Unicode 编码依次比较字符的大小。
 
 ```
+
             console.log(null >= undefined); //false
             console.log(null < undefined); //false
             console.log(1 > null); //true
@@ -495,11 +512,13 @@
             console.log(true > false); //true
             console.log(true == "1"); //true
             console.log(false == ""); //true
+
 ```
 
 > 判断一个值是否时 NaN，可以通过 isNaN()函数
 
 ```
+
             var a = NaN;
             console.log(isNaN(a)); //true
 
@@ -507,6 +526,7 @@
             b = +b;
             console.log(b); //NaN
             console.log(isNaN(b)); //true
+
 ```
 
 ##条件运算符
@@ -1206,3 +1226,52 @@ var fun2 = function () {
 -   父节点.replaceChild(新子节点,子节点);替换子节点
 -   父节点.removeChild(子节点);删除子节点；他杀
     -   子节点.parentNode.removeChild(子节点)；也可以删除子节点;自杀
+
+###使用 DOM 操作 CSS 样式表
+
+####修改元素样式
+
+-   **语法：元素.style.样式名 = 样式值**；
+-   通过 style 属性修改的样式都是**内联样式**，优先级较高，用 js 修改后会立即显示
+-   如果在样式表中写了!important；此时样式优先级最高，即使通过 js 也不能覆盖该样式，所以尽量不要使用!important;
+
+####读取元素样式:
+
+-   **语法：元素.style.样式名**；这种语法**只能**读取**内联样式**
+-   获取元素当前显示的样式；**语法：元素.currentStyle.样式名**；可以用来读取当前元素正在显示的样式；只有 IE 和 Opera 支持该方法；
+    -   当 width 等值没有设置时，用它读取为 auto；
+-   其他浏览器样式读取可以使用 **getComputeStyle(a,b).属性名**;这个方式是 window 方法，可以直接使用；
+    -   IE8 及以下不可用
+    -   当 width 等值没有设置时，用它读取为**窗口准确值**；
+    -   参数：
+        > a:要获取样式的元素;
+        > b:可以传递一个伪元素（一般都传 null）;
+-   currentStyle 和 getComputeStyle 都是只读的，不能修改元素样式
+
+```
+    function getStyle(obj, name) {
+        // 兼容代码方法1
+        if (window.getComputedStyle) {
+            return getComputedStyle(obj, null)[name];
+        } else {
+            return obj.currentStyle[name];
+        }
+        // 兼容代码方法2
+        // if (obj.currentStyle) {
+        //     return obj.currentStyle[name];
+        // } else {
+        //     return getComputedStyle(obj, null)[name];
+        // }
+    }
+```
+
+####其他样式相关属性
+
+-   element.clientHeight、element.clientWidth；获取元素的可见高度；获取元素的可见宽度,包括内容区和内边距
+-   element.offsetHeight、element.offsetWidth;获取元素的高度和宽度；包括内容区，内边距，边框的大小；
+-   element.offsetParent;获取当前元素的定位父元素；
+-   element.offsetLeft、element.offsetTop 元素的水平偏移量和垂直偏移量；
+-   element.scrollHeight、element.scrollWidth;返回 元素的整体高度和宽度;一般指用于读取包括 overflow：scroll 被隐藏的那部分大小；element 一般是被撑开的元素；
+-   element.scrollLeft、element.scrollTop;获取有滚动条水平拉和下拉的位移；
+-   **element.clientHeight + element.scrollTop = element.scrollHeight**;
+-   **element.clientWidth + element.scrollLeft = element.scrollWidth**;

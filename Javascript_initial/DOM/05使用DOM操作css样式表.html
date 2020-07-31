@@ -1,0 +1,78 @@
+<!--
+ * @Brief: 
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-07-31 12:30:59
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            #box1 {
+                width: 200px;
+                height: 200px;
+                background-color: #bfa;
+            }
+        </style>
+        <script>
+            window.onload = function () {
+                var btn1 = document.getElementById("btn1");
+                var btn2 = document.getElementById("btn2");
+                var btn3 = document.getElementById("btn3");
+                var box1 = document.getElementById("box1");
+                btn1.onclick = function () {
+                    box1.style.width = "400px";
+                    box1.style.backgroundColor = "red";
+                };
+                btn2.onclick = function () {
+                    // 读取内联样式
+                    console.log(box1.width);
+                    console.log(box1.style.backgroundColor);
+                };
+                /*  */
+                btn3.onclick = function () {
+                    // currentStyle，只适用于IE Opera
+                    // alert(box1.currentStyle.height);
+                    //getComputedStyle(box1, null)适用于其他浏览器
+                    // console.log(getComputedStyle(box1, null).width);
+                    /* 设置兼容IE8h和其他浏览器 */
+                    alert(getStyle(box1, "width"));
+                };
+
+                /*
+                    定义一个函数，用来获取指定元素的样式
+                    参数：
+                        -obj，要获取样式的元素
+                        -name,要获取的样式属性名
+                 */
+                function getStyle(obj, name) {
+                    // 正常浏览器
+                    // return getComputedStyle(obj, null)[name];
+                    // IE8、Opera
+                    // return obj.currentStyle[name];
+                    // 兼容代码方法1
+                    if (window.getComputedStyle) {
+                        return getComputedStyle(obj, null)[name];
+                    } else {
+                        return obj.currentStyle[name];
+                    }
+                    // 兼容代码方法2
+                    // if (obj.currentStyle) {
+                    //     return obj.currentStyle[name];
+                    // } else {
+                    //     return getComputedStyle(obj, null)[name];
+                    // }
+                }
+            };
+        </script>
+    </head>
+    <body>
+        <button id="btn1">点我1</button><br />
+        <button id="btn2">点我2</button><br />
+        <button id="btn3">点我3</button><br />
+
+        <div id="box1"></div>
+    </body>
+</html>
