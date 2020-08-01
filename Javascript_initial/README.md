@@ -1,7 +1,7 @@
 <!--
  * @Brief:
  * @LastEditors: Jerry Lee
- * @LastEditTime: 2020-07-31 23:21:02
+ * @LastEditTime: 2020-08-01 21:50:21
 -->
 
 # Javascript 基础部分(常用关键点)
@@ -1379,18 +1379,65 @@ var fun2 = function () {
 
 -   代码兼容处理
 
+        ```
+            /*
+                代码兼容型处理，为一个元素绑定响应函数
+                参数：
+                    obj：要绑定事件的对象
+                    eventStr：事件字符串
+                    callback：回调函数
+             */
+            function bind(obj, eventStr, callback) {
+                if (obj.addEventListener) {
+                    // 大部分浏览器兼容的方式
+                    obj.addEventListener(eventStr, callback, false);
+                } else {
+                    // 兼容IE8及以下的方式
+                    // callback.call(obj)该变this的指向为obj
+                    obj.attachEvent("on" + eventStr, function () {
+                        // 在匿名函数中调用callback();
+                        callback.call(obj);
+                    });
+                }
+            }
+        ```
+
+###event 的传播
+
+-   由内向外传播；子元素向祖先元素冒泡传播
+-   W3C 将时间的传播分成三个阶段
+
+    -   捕获阶段：由最外层祖先元素向目标元素进行事件的捕获，但是默认此时不会触发事件；
+    -   目标阶段：事件捕获到目标元素，捕获结束，开始在目标元素上触发事件；
+    -   冒泡阶段：事件从目标元素向祖先元素传递；
+    -   如果希望在捕获阶段就触发事件，可以将 addEventListener(obj,eventStr,false)修改为 addEventListener(obj,eventStr,true);一般情况下不希望在捕获阶段触发事件，所以一般不这么使用；
+    -   IE8 及以下的浏览器没有捕获阶段
+
     ```
-        /*
-            代码兼容型处理，为一个元素绑定响应函数
-            参数：
-                obj：要绑定事件的对象
-                eventStr：事件字符串
-                callback：回调函数
-         */
+    <body>
+        <div id="box1">
+            <div id="box2">
+                <div id="box3"></div>
+            </div>
+        </div>
+    </body>
+    <script>
+        var box1 = document.getElementById("box1");
+        var box2 = document.getElementById("box2");
+        var box3 = document.getElementById("box3");
+        bind(box1, "click", function () {
+            alert("我是box1的响应函数");
+        });
+        bind(box2, "click", function () {
+            alert("我是box2的响应函数");
+        });
+        bind(box3, "click", function () {
+            alert("我是box3的响应函数");
+        });
         function bind(obj, eventStr, callback) {
             if (obj.addEventListener) {
                 // 大部分浏览器兼容的方式
-                obj.addEventListener(eventStr, callback, false);
+                obj.addEventListener(eventStr, callback, true);
             } else {
                 // 兼容IE8及以下的方式
                 // callback.call(obj)该变this的指向为obj
@@ -1400,4 +1447,88 @@ var fun2 = function () {
                 });
             }
         }
+    </script>
+    ```
+
+###event 捕获
+
+-   当调用某一个元素的 setCapture()[元素事件的捕获]方法后，这个元素将会把下一次所有的元素事件捕获到自身上；不适用于 chrome 浏览器,会报错，适用于 IE 浏览器；用于 IE8 阻止浏览器的默认事件样式；
+-   清除浏览器默认样式
+
+        ```
+        // 清除浏览器的默认样式，该方法对 IE8 不起作用
+        return false;
+        // 设置 box1 捕获所有的鼠标按下的事件;这种方法用来清除IE8 浏览器事件的默认样式
+        box1.setCapture && box1.setCapture();
+        // 取消box1的捕获
+        box1.setCapture && box1.releaseCapture();
+        ```
+
+###鼠标键盘事件
+
+-   onmousewheel 鼠标滚轮事件，会在鼠标滚轮滚动时触发； - 但是火狐浏览器不支持； - 在火狐中需要使用 DOMMouseScroll 来绑定滚动事件；注意该事件需要通过 addEventLintener()函数来绑定 - event.wheelDelta 判断鼠标滚轮的方向；在火狐中不适用 > 向上滚是 120；向下滚是-120；不看大小只看正负； - event.detail 适用于火狐浏览器 > 向上滚是-3；向下滚是 3；
+
+    ```
+    <!DOCTYPE html>
+
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <title>Document</title>
+            <style>
+                body {
+                    height: 2000px;
+                }
+                #box1 {
+                    width: 100px;
+                    height: 100px;
+                    background-color: #bfa;
+                }
+            </style>
+        </head>
+        <body>
+            <div id="box1"></div>
+        </body>
+        <script>
+            var box1 = document.getElementById("box1");
+            box1.onmousewheel = function fun(event) {
+                event = event || window.event;
+
+                if (event.wheelDelta > 0 || event.detail < 0) {
+                    // alert("向上滚");
+                    // box1变短
+                    this.style.height = this.clientHeight - 10 + "px";
+                } else {
+                    // alert("向下滚");
+                    // box1边长
+                    this.style.height = this.clientHeight + 10 + "px";
+                }
+
+                //使用addEventlistener()方法绑定响应函数，取消默认行为时，不能使用return false；需要使用event来取消默认行为
+                event.preventDefault && event.preventDefault(); //不适用于IE8及以下浏览器
+
+                // 滚轮滚动时，如果浏览器有滚动条，滚动条会随之滚动，这是浏览器的默认行为，如果不希望发生，可以取消
+                return false;
+            };
+
+            // 火狐滚轮事件绑定
+            bind(box1, "DOMMouseScroll", box1.onmousewheel);
+
+            function bind(obj, eventStr, callback) {
+                if (obj.addEventListener) {
+                    // 大部分浏览器兼容的方式
+                    obj.addEventListener(eventStr, callback, false);
+                } else {
+                    // 兼容IE8及以下的方式
+                    // callback.call(obj)该变this的指向为obj
+                    obj.attachEvent("on" + eventStr, function () {
+                        // 在匿名函数中调用callback();
+                        callback.call(obj);
+                    });
+                }
+            }
+        </script>
+
+    </html>
     ```
