@@ -1,0 +1,51 @@
+<!--
+ * @Brief: 
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-08-01 23:39:15
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .box1 {
+                width: 100px;
+                height: 100px;
+                background-color: #bfa;
+                position: absolute;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box1"></div>
+    </body>
+    <script>
+        var box1 = document.querySelector(".box1");
+        document.onkeydown = function (event) {
+            event = event || window.event;
+            var speed = 10;
+
+            // 按ctrl之后速度加快
+            if (event.ctrlKey) {
+                speed += 50;
+            }
+            // 上下左右四键的编码为:38、40、37、39
+            switch (event.keyCode) {
+                case 37:
+                    box1.style.left = box1.offsetLeft - speed + "px";
+                    break;
+                case 38:
+                    box1.style.top = box1.offsetTop - speed + "px";
+                    break;
+                case 39:
+                    box1.style.left = box1.offsetLeft + speed + "px";
+                    break;
+                case 40:
+                    box1.style.top = box1.offsetTop + speed + "px";
+                    break;
+            }
+        };
+    </script>
+</html>

@@ -1,0 +1,56 @@
+<!--
+ * @Brief: 
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-08-01 23:17:33
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            #box1 {
+                width: 100px;
+                height: 100px;
+                background-color: pink;
+            }
+        </style>
+    </head>
+    <body>
+        <input type="text" />
+    </body>
+    <script>
+        /* document.onkeydown = function (event) {
+            event = event || window.event;
+
+            // 获取按键的Unicode编码
+            console.log(event.keyCode);
+            // console.log("按键按下");
+
+            //判断一个Y是否被按下
+            console.log(event.keyCode == 89 ? "y被按下了" : "y没有被按下");
+
+            // 判断y和ctrl是否同时被按下
+            if (event.ctrlKey && event.keyCode == 89) {
+                console.log("ctrl和y都被按下");
+            }
+        };
+        document.onkeyup = function () {
+            // console.log("按键松开");
+        }; */
+
+        var input = document.getElementsByTagName("input")[0];
+        input.onkeydown = function (event) {
+            event = event || window.event;
+
+            // 使文本框中不能输入数字
+            if (event.keyCode >= 48 && event.keyCode <= 57) {
+                return false;
+            }
+            console.log("按键按下");
+            // 取消默认行为，则按键按下的内容，不会出现在文本框中
+            // return false;
+        };
+    </script>
+</html>
