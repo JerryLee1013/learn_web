@@ -1,7 +1,7 @@
 <!--
  * @Brief:
  * @LastEditors: Jerry Lee
- * @LastEditTime: 2020-08-01 23:03:20
+ * @LastEditTime: 2020-08-02 14:24:15
 -->
 
 # Javascript 基础部分(常用关键点)
@@ -1543,3 +1543,47 @@ var fun2 = function () {
     -   event.ctrlKey
     -   event.shiftKey
     -   用来判断 alt、ctrl、shift 键是否被按下；返回 true/false
+
+##BOM 浏览器对象模型
+
+###window
+
+-   代表的是浏览器窗口，同时也是网页中的全局对象
+
+###Navigator
+
+-   代表当前浏览器的信息，通过该对象可以识别不同的浏览器
+-   其中的大部分功能都不能使用了
+-   一般使用 userAgent 来判断浏览器的信息；不同的浏览器具有不同的 userAgent
+-   "ActiveXObject" in window 判断是否是 IE 浏览器；因为 ActiveXObject 属性只有 IE 浏览器有
+
+    ```
+        var ua = navigator.userAgent;
+
+        if (/edg/i.test(ua)) {
+            console.log("此浏览器为Edge");
+        } else if (/opr/i.test(ua)) {
+            console.log("此浏览器为Opera");
+        } else if (/firefox/i.test(ua)) {
+            console.log("此浏览器为FireFox");
+        } else if ("ActiveXObject" in window) {
+            //"ActiveXObject" in window判断是否是IE浏览器；因为ActiveXObject属性只有IE浏览器有
+            console.log("此浏览器为IE");
+        } else if (/Chrome/i.test(ua)) {
+            console.log("此浏览器为Chrome"); //因为Opera和Edge的userAgent也有Chrome，所以将chrome放在最后判断，不能放在最前面
+        }
+    ```
+
+###Location
+
+-   代表当前浏览器的地址栏信息，通过 Location 可以获取地址栏信息，或者操作浏览器跳转页面
+
+###History
+
+-   代表浏览器的历史记录；通过该对象操作浏览器的历史记录；由于隐私原因；该对象不能获取具体的历史记录，只能操作浏览器向前向后翻页；而操作只在当此访问时有效；
+
+###Screen
+
+-   代表用户的屏幕信息，通过该对象可以获取到用户的显示器的相关信息
+
+-   以上这些 BOM 对象在浏览器中都是作为 window 对象的属性保存；可以通过 window 对象来使用，也可以直接使用
