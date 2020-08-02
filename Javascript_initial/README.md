@@ -699,7 +699,7 @@ var fun2 = function () {
 
 -   定义形参就相当于在函数作用域中声明了变量
 
-        ```
+	```javascript
         var e = 55;
         function fun5(e) {
             //定义形参相当于var e;
@@ -710,7 +710,7 @@ var fun2 = function () {
         fun5(e); //55
         console.log(e); //55
 
-        ```
+	```
 
 ## 方法
 
@@ -1550,7 +1550,7 @@ obj1.sayName();
     -   event.shiftKey
     -   用来判断 alt、ctrl、shift 键是否被按下；返回 true/false
 
-##BOM 浏览器对象模型
+## BOM 浏览器对象模型
 
 ### window
 
