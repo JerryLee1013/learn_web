@@ -1608,3 +1608,10 @@ obj1.sayName();
 -   代表用户的屏幕信息，通过该对象可以获取到用户的显示器的相关信息
 
 -   以上这些 BOM 对象在浏览器中都是作为 window 对象的属性保存；可以通过 window 对象来使用，也可以直接使用
+
+## 定时器
+
+-	var timer= setInterval(function(){},time);每间隔一段时间执行一次
+-	setTomeout()
+-	clearInterval(timer);关闭定时器；
+-	clearTimeout()
