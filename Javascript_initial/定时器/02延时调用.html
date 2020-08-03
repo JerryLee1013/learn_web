@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		var num = 1;
+		/* setInterval(function(){
+			console.log(num++);
+		},3000);
+		 */
+		var timer = setTimeout(function(){
+			console.log(num++);
+		},3000);
+		// 关闭延时调用
+		clearTimeout(timer);
+	</script>
+</html>
