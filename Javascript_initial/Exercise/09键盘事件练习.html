@@ -23,29 +23,45 @@
     </body>
     <script>
         var box1 = document.querySelector(".box1");
+		var speed = 10;
+		// 创建按一个变量表示方向
+		var direction = 0;
+		setInterval(function(){
+			// 上下左右四键的编码为:38、40、37、39
+			switch (direction) {
+			    case 37:
+			        box1.style.left = box1.offsetLeft - speed + "px";
+			        break;
+			    case 38:
+			        box1.style.top = box1.offsetTop - speed + "px";
+			        break;
+			    case 39:
+			        box1.style.left = box1.offsetLeft + speed + "px";
+			        break;
+			    case 40:
+			        box1.style.top = box1.offsetTop + speed + "px";
+			        break;
+			}
+		},30);
+		
+		
         document.onkeydown = function (event) {
             event = event || window.event;
-            var speed = 10;
+            
 
             // 按ctrl之后速度加快
             if (event.ctrlKey) {
-                speed += 50;
-            }
-            // 上下左右四键的编码为:38、40、37、39
-            switch (event.keyCode) {
-                case 37:
-                    box1.style.left = box1.offsetLeft - speed + "px";
-                    break;
-                case 38:
-                    box1.style.top = box1.offsetTop - speed + "px";
-                    break;
-                case 39:
-                    box1.style.left = box1.offsetLeft + speed + "px";
-                    break;
-                case 40:
-                    box1.style.top = box1.offsetTop + speed + "px";
-                    break;
-            }
+                speed += 10;
+            }else{
+				speed = 10;
+			}
+			
+			direction = event.keyCode;  
         };
+		
+		// 按键松开；div不在移动
+		document.onkeyup = function(){
+			direction =0;
+		}
     </script>
 </html>
