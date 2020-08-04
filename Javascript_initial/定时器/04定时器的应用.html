@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/tools.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				
+			}
+			#box1{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				position: absolute;
+				left: 0;
+			}
+			#box2{
+				width: 100px;
+				height: 100px;
+				background-color: pink;
+				position: absolute;
+				left: 0;
+				top: 300px;
+			}
+			#box3{
+				width: 1px;
+				height: 500px;
+				background-color: #000000;
+				position: absolute;
+				left: 800px;
+				top: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<button type="button" id="btn1">点击,使box1向右移动</button>
+		<button type="button" id="btn2">点击,使box1向左移动</button><br>
+		<button type="button" id="btn3">点击,使box2向右移动</button>
+		<button type="button" id="btn4">点击,使box2向左移动</button><br>
+		<button type="button" id="btn5">测试按钮</button><br>
+		<button type="button" id="btn6">测试带函数参数的按钮</button><br>
+		<div id="box1">
+			
+		</div>
+		<div id="box2">
+			
+		</div>
+		<div id="box3">
+			
+		</div>
+	</body>
+	<script type="text/javascript">
+		var box1 = document.getElementById("box1");
+		var box2 = document.getElementById("box2");
+		var btn1 = document.getElementById("btn1");
+		var btn2 = document.getElementById("btn2");
+		var btn3 = document.getElementById("btn3");
+		var btn4 = document.getElementById("btn4");
+		var btn5 = document.getElementById("btn5");
+		var btn6 = document.getElementById("btn6");
+		/* 
+			目前所有的定时器标识全部由timer保存，所有正在执行的定时器都在这个变量中保存；点击一个定时器。之前正在运行的定时器就会被停止；
+		 */
+		// var timer;
+		
+		btn1.onclick = function(){
+			move(box1,"left",700,10);
+		};
+		
+		btn2.onclick = function(){
+			move(box1,"left",0,10);
+		};
+		btn3.onclick = function(){
+			move(box2,"left",700,10);
+		};
+		
+		btn4.onclick = function(){
+			move(box2,"left",0,10);
+		};
+		
+		btn5.onclick = function(){
+			move(box2,"width",800,10,function(){
+				alert("动画执行完毕");
+			});
+		};
+		btn6.onclick = function(){
+			move(box2,"width",800,10,function(){
+				move(box2,"height",500,10,function(){
+					alert("动画执行完毕");
+				});
+			});
+		};
+		
+		
+	</script>
+</html>

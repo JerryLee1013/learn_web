@@ -1,0 +1,109 @@
+<!--
+ * @Brief: 
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-08-01 14:26:41
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            #box1 {
+                width: 100px;
+                height: 100px;
+                background-color: red;
+                position: absolute;
+                /* z-index: 1; */
+            }
+            #box2 {
+                width: 100px;
+                height: 100px;
+                background-color: pink;
+                position: absolute;
+                left: 200px;
+                top: 200px;
+            }
+            img {
+                width: 500px;
+                position: absolute;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- <span>我是文本</span> -->
+        <div id="box1"></div>
+        <div id="box2"></div>
+        <img id="img" src="../img/marvel12.jpg" alt="" />
+    </body>
+    <script>
+        var box1 = document.getElementById("box1");
+        var box2 = document.getElementById("box2");
+        var img = document.getElementById("img");
+        drag(img);
+        drag(box1);
+        drag(box2);
+        // 拖拽代码优化
+        function drag(obj) {
+            bind(obj, "mousedown", function (event) {
+                // 设置box1捕获所有的鼠标按下的事件;这种方法用来清除IE8浏览器事件的默认样式
+                /* if (box1.setCapture) {
+                box1.setCapture();
+            } */
+                this.setCapture && this.setCapture();
+
+                // alert(this);
+                event = event || window.event;
+                var boxXOffset = this.offsetLeft;
+                var boxYOffset = this.offsetTop;
+                var left = event.clientX;
+                var top = event.clientY;
+                var divXOffset = left - boxXOffset;
+                var divYOffset = top - boxYOffset;
+
+                document.onmousemove = function (event) {
+                    event = event || window.event;
+                    var left = event.clientX - divXOffset;
+                    var top = event.clientY - divYOffset;
+                    // alert(this);
+                    var xScroll = obj.scrollLeft;
+                    var yScroll = obj.scrollTop;
+
+                    obj.style.left = left + xScroll + "px";
+                    obj.style.top = top + yScroll + "px";
+
+                    // 清除浏览器的默认样式，该方法对IE8不起作用
+                    return false;
+                };
+
+                document.onmouseup = function (event) {
+                    // 取消document.onmousemove
+                    this.onmousemove = null;
+                    // 取消document.onmouseup
+                    this.onmouseup = null;
+
+                    // 取消box1的捕获
+                    /* if (box1.setCapture) {
+                    box1.releaseCapture();
+                } */
+                    obj.setCapture && obj.releaseCapture();
+                };
+            });
+        }
+
+        function bind(obj, eventStr, callback) {
+            if (obj.addEventListener) {
+                // 大部分浏览器兼容的方式
+                obj.addEventListener(eventStr, callback, false);
+            } else {
+                // 兼容IE8及以下的方式
+                // callback.call(obj)该变this的指向为obj
+                obj.attachEvent("on" + eventStr, function () {
+                    // 在匿名函数中调用callback();
+                    callback.call(obj);
+                });
+            }
+        }
+    </script>
+</html>

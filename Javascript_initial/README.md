@@ -1,7 +1,7 @@
 <!--
  * @Brief:
  * @LastEditors: Jerry Lee
- * @LastEditTime: 2020-07-31 23:21:02
+ * @LastEditTime: 2020-08-02 14:24:15
 -->
 
 # Javascript 基础部分(常用关键点)
@@ -14,25 +14,29 @@
 
 ## 怎么取 body 的结点
 
-> var bodyNode = document.documentElement;
+> var bodyNode = document.body;
+
+## 怎么取 html 的结点
+
+> var htmlNode = document.documentElement;
 
 ## js 代码编写位置
 
-> 标签的 onclick 属性中；
+> 标签的 onclick 属性中:
 
-```
-onclick="alert();"
-a 标签的 href 属性值中;
- href = "javascript:alert()";
-从外部引入 js 文件
-<script src="model.js"></script>
+```javascript
+	onclick="alert();"
+	a 标签的 href 属性值中;
+	 href = "javascript:alert()";
+	从外部引入 js 文件
+	<script src="model.js"></script>
 ```
 
-> 在<head>元素中编写 js 代码
+> 在<head>元素中编写 js 代码:
 
 ## js 的数据类型：
 
-###基本数据类型
+### 基本数据类型
 
 > String
 > Number
@@ -40,15 +44,15 @@ a 标签的 href 属性值中;
 > Null
 > Undefined
 
-###引用数据类型
+### 引用数据类型
 
 > Object
 
-##强制类型转换
+## 强制类型转换
 
-###其他类型转换为 String 类型
+### 其他类型转换为 String 类型
 
-####调用被转换数据类型的 toString()方法
+#### 调用被转换数据类型的 toString()方法
 
 > > Number 转换为 String
 > >
@@ -67,7 +71,7 @@ a 标签的 href 属性值中;
 > > Null/Undefined 转换为 String
 > > Null/Undefined 没有 toString()方法
 
-####调用 String()函数,对于 Number 类型 和 Boolean 类型而言，实际上调用的还是 toString()方法，因为针对 Number 类型和 Boolean 类型的 String 类型转换， String()函数的底层就是由 toString()方法实现；但是对于 NUll 和 Undefined 类型就不会调用 toString()方法，他会将 null 直接转换为“null”，将 undefined 转换为“undefined”；
+#### 调用 String()函数,对于 Number 类型 和 Boolean 类型而言，实际上调用的还是 toString()方法，因为针对 Number 类型和 Boolean 类型的 String 类型转换， String()函数的底层就是由 toString()方法实现；但是对于 NUll 和 Undefined 类型就不会调用 toString()方法，他会将 null 直接转换为“null”，将 undefined 转换为“undefined”；
 
 > > //Number 转换为 String
 > >
@@ -100,7 +104,7 @@ a 标签的 href 属性值中;
 > > > console.log(typeof d); //String
 > > > console.log(d); //"undefined"
 
-####// 加空字符串""转换为 String
+#### // 加空字符串""转换为 String
 
 > > > // null 转换为 String
 > > > var g = null;
@@ -126,11 +130,11 @@ a 标签的 href 属性值中;
 > > > console.log(typeof j); //String
 > > > console.log(j); //"false"
 
-###其他类型转换为 Number
+### 其他类型转换为 Number
 
-####使用 Number()函数
+#### 使用 Number()函数
 
-```
+```javascript
 
         //将String类型转换为Number
         var a = "123";
@@ -184,9 +188,9 @@ a 标签的 href 属性值中;
 
 ```
 
-####使用 parseInt()和 parseFloat()函数
+#### 使用 parseInt()和 parseFloat()函数
 
-```
+```javascript
 
         /*
             转换方式2:这种方式专门用来对付字符串
@@ -245,9 +249,9 @@ a 标签的 href 属性值中;
 
 ```
 
-####使用"+"或者"-"将其他类型转换为 Number 类型
+#### 使用"+"或者"-"将其他类型转换为 Number 类型
 
-```
+```javascript
 
         // 将纯数字型String转换为Number类型
         a = "0123";
@@ -282,11 +286,11 @@ a 标签的 href 属性值中;
 
 ```
 
-###其他类型转换为 Boolean
+### 其他类型转换为 Boolean
 
-####使用 Boolean()函数
+#### 使用 Boolean()函数
 
-```
+```javascript
 
         // Number转换为Boolean
         // 当Number为不为0的和NaN的数值时，无论正负，转换为Boolean值都为true
@@ -345,10 +349,10 @@ a 标签的 href 属性值中;
 
 ```
 
-##其他进制的数字
-###16 进制的表示
+## 其他进制的数字
+### 16 进制的表示
 
-```
+```javascript
 
         // 16进制的表示:需要以0x开头
         a = 0x123;
@@ -358,9 +362,9 @@ a 标签的 href 属性值中;
 
 ```
 
-###8 进制的表示
+### 8 进制的表示
 
-```
+```javascript
 
         //8进制表示：需要以0开头
         a = 070;
@@ -368,9 +372,9 @@ a 标签的 href 属性值中;
 
 ```
 
-###2 进制的表示
+### 2 进制的表示
 
-```
+```javascript
 
         //2进制数字：以0b开头
         a = 0b10;
@@ -378,9 +382,9 @@ a 标签的 href 属性值中;
 
 ```
 
-###IE 兼容性问题
+### IE 兼容性问题
 
-```
+```javascript
 
         a = "070";
         a = parseInt(a);
@@ -399,9 +403,9 @@ a 标签的 href 属性值中;
 
 ```
 
-##逻辑运算符
+## 逻辑运算符
 
-```
+```javascript
 
         /*
             逻辑运算符：
@@ -423,9 +427,9 @@ a 标签的 href 属性值中;
 
 ```
 
-##非布尔值运算
+## 非布尔值运算
 
-```
+```javascript
 
             /*
                 对于非布尔值的运算，会将非布尔值先转换为布尔值，然后进行运算,最后返回原类型值
@@ -486,7 +490,7 @@ a 标签的 href 属性值中;
 
 ```
 
-##关系运算符
+## 关系运算符
 
 > 大于 ">"
 > 小于 "<"
@@ -500,7 +504,7 @@ a 标签的 href 属性值中;
 > > 运算符两侧的数据类型不同时，会先将其他类型转换为 Number 类型，然后再根据大小比较
 > > 如果运算符两侧都是 String 型，会按照 Unicode 编码依次比较字符的大小。
 
-```
+```javascript
 
             console.log(null >= undefined); //false
             console.log(null < undefined); //false
@@ -517,7 +521,7 @@ a 标签的 href 属性值中;
 
 > 判断一个值是否时 NaN，可以通过 isNaN()函数
 
-```
+```javascript
 
             var a = NaN;
             console.log(isNaN(a)); //true
@@ -529,14 +533,14 @@ a 标签的 href 属性值中;
 
 ```
 
-##条件运算符
+## 条件运算符
 
 > 条件表达式：语句 1？语句 2
 >
 > > 条件表达式结果为 true；执行语句 1
 > > 条件表达式结果为 false；执行语句 2
 
-##运算符的优先级
+## 运算符的优先级
 
 | 优先级权重 | 运算符                                                   |
 | :--------: | :------------------------------------------------------- |
@@ -558,9 +562,9 @@ a 标签的 href 属性值中;
 |     2      | "=、+=、-=、\*=、/=、%=、<<=、>>=、>>>=、&=、^=、 或等于 |
 |     1      | ,                                                        |
 
-##对象
+## 对象
 
-###内建对象
+### 内建对象
 
 -   由 ES 标准定义的对象，在任何的 ES 实现中都可以用
 -   比如：Math String Number
@@ -579,16 +583,16 @@ a 标签的 href 属性值中;
 | RegExp    | 正则表达式对象 |
 | String    | 字符串对象     |
 
-###宿主对象
+### 宿主对象
 
 -   由 js 的运行环境提供的对象，目前来讲，只要是浏览器提供的对象
 -   比如：BOM DOM
 
-###自定义对象
+### 自定义对象
 
 -   用户自己创建的对象
 
-##基本数据类型和对象
+## 基本数据类型和对象
 
 -   基本数据类型都是保存在栈内存里；
 
@@ -600,18 +604,18 @@ a 标签的 href 属性值中;
 
 ![基本数据类型和对象的内存图](img/基本数据类型和对象内存图.svg)
 
-##作用域
+## 作用域
 
-###全局作用域
+### 全局作用域
 
-####全局作用域：
+#### 全局作用域：
 
 -   直接编写在 script 标签中的 js 代码，都在全局作用域中；
 -   全局作用域在页面打开时创建，在页面关闭时销毁；
 -   在全局作用域中有一个全局对象 window，可以直接使用；代表的是浏览器的窗口，它由浏览器创建，可以直接使用
 -   在全局作用域中：创建的变量都会作为 window 对象的属性保存
 
-####变量的声明提前：
+#### 变量的声明提前：
 
 > 使用 var 关键字声明的变量，会在所有代码执行之前被声明
 > 但是如果声明变量时，不使用 var 关键字，则变量不会声明提前
@@ -625,7 +629,7 @@ console.log(a); //Uncaught ReferenceError: a is not defined
 a = 123;
 ```
 
-####函数声明的提前
+#### 函数声明的提前
 
 > 使用函数声明形式创建 “function 函数名(){}”函数，它会在所有的代码执行之前就被创建；
 > 使用函数表达式创建的函数，不会被声明提前，所以不能在声明前调用
@@ -645,9 +649,9 @@ var fun2 = function () {
 };
 ```
 
-###函数作用域
+### 函数作用域
 
-```
+```javascript
         var a = 123;
         function fun() {
             var a = "我是函数中的变量a";
@@ -682,7 +686,7 @@ var fun2 = function () {
 -   在函数中使用全局变量可以使用 window 调用
 -   在函数中，不使用 var 声明的变量都会成为全局变量
 
-    ```
+    ```javascript
     var c = 33;
     function fun4() {
         console.log(c); //33
@@ -695,7 +699,7 @@ var fun2 = function () {
 
 -   定义形参就相当于在函数作用域中声明了变量
 
-        ```
+	```javascript
         var e = 55;
         function fun5(e) {
             //定义形参相当于var e;
@@ -706,9 +710,9 @@ var fun2 = function () {
         fun5(e); //55
         console.log(e); //55
 
-        ```
+	```
 
-##方法
+## 方法
 
 -   函数也可以作为对象的属性
 -   如果一个函数作为一个对象的属性保存，那么我们称这个函数是这个对象的方法
@@ -716,7 +720,7 @@ var fun2 = function () {
 -   函数与方法只是名称上的区别，本质上是一样的
 -   函数是公交车，方法是对象的私家车
 
-    ```
+    ```javascript
         function fun(){
                 console.log("我是函数");
         }
@@ -734,7 +738,7 @@ var fun2 = function () {
         fun();
     ```
 
-##this 关键字
+## this 关键字
 
 -   解析器在调用函数时。每次都会向函数内部传递进一个隐含的参数
 -   这个隐含参数就是 this
@@ -745,7 +749,7 @@ var fun2 = function () {
 -   当以构造函数形式调用时，this 就是新创建的对象实例
 -   使用 call 和 apply 调用时，this 是指定的那个对象
 
-    ```
+    ```javascript
     function fun() {
                 console.log(this.name);
             }
@@ -768,25 +772,26 @@ var fun2 = function () {
             fun(); // 猪八戒
     ```
 
-##使用工厂方法创建对象
+## 使用工厂方法创建对象
 
+```javascript
+function createPerson(name, age, gender) {
+	var obj = new Object();
+	obj.name = name;
+	obj.age = age;
+	obj.gender = gender;
+	obj.sayName = function () {
+		console.log(this.name, this.age, this.gender);
+	};
+	return obj;
+}
+
+var obj1 = createPerson("孙悟空", 29, "男");
+obj1.sayName();
+	
 ```
-            function createPerson(name, age, gender) {
-                var obj = new Object();
-                obj.name = name;
-                obj.age = age;
-                obj.gender = gender;
-                obj.sayName = function () {
-                    console.log(this.name, this.age, this.gender);
-                };
-                return obj;
-            }
 
-            var obj1 = createPerson("孙悟空", 29, "男");
-            obj1.sayName();
-```
-
-##构造函数
+## 构造函数
 
 -   构造函数的创建和普通函数没有区别，不同的是构造函数的函数名首字母大写
 -   构造函数和普通函数的区别就是调用方式的不同
@@ -804,7 +809,7 @@ var fun2 = function () {
 -   构造函数也可以被称为类
 -   instanceof 可以检查一个对象是否是一个类的实例
 
-    ```
+    ```javascript
             // 构造函数
             function Person(name, age, gender) {
                 //this是新建的对象
@@ -838,7 +843,7 @@ var fun2 = function () {
     >
     > > 将函数定义在全局作用域中，污染了全局作用域的命名空间;而且定义在全局作用域中也很不安全.
 
-    ```
+    ```javascript
         function Person(name, age, gender) {
             //this是类的实例
             this.name = name;
@@ -878,7 +883,7 @@ var fun2 = function () {
 
 -   使用原型对象优化构造函数中的方法
 
-    ```
+    ```javascript
             // 构造函数
             function Person(name, age, gender) {
                 //this是类的实例
@@ -909,7 +914,7 @@ var fun2 = function () {
 
     ```
 
-##原型对象 Prototype
+## 原型对象 Prototype
 
 -   我们所创建的每一个函数，解析器，都会向函数中添加一个属性 Prototype；
 -   这个属性对应着一个对象，这个对象就是所谓的原型对象；
@@ -922,7 +927,7 @@ var fun2 = function () {
 -   当我们访问对象的一个属性或方法时，他会在对象自身中寻找，如果有则直接使用；如果没有，就去原型对象中寻找，找到后就返回；
 -   以后创造构造函数时，可以将这些对象的共有属性和方法，统一添加到构造函数的原型对象中，这样就不用分别为每一个对象添加，也不会影响到全局作用域，就可以使每个对象具有这些属性和方法了。
 
-    ```
+    ```javascript
             function MyClass() {}
 
             //向MyClass的原型中添加一个属性a
@@ -959,7 +964,7 @@ var fun2 = function () {
     ```
 -   原型对象也是对象，它也有原型，当我们使用一个对下个的属性或方法时，他会在自身中寻找，自身如果有则直接使用，如果没有就去原型中寻找，找到后使用；如果还没有，就去原型的原型中寻找；直到找到 Object 对象的原型；Object 对象的原型的原型为 null；
 
-    ```
+    ```javascript
     console.log(mc.__proto__); //{name: "我是原型中的name", constructor: ƒ}
     console.log(mc.__proto__.__proto__); //{constructor: ƒ, __defineGetter__: ƒ,.....
     console.log(mc.__proto__.__proto__.__proto__); //null
@@ -975,7 +980,7 @@ var fun2 = function () {
 
     ![原型对象](img/原型对象.svg)
 
-##apply 和 call
+## apply 和 call
 
 -   这两个都是函数方法，需要通过函数对象调用;
 -   当对函数调用 call()和 apply()都会调用函数执行
@@ -983,7 +988,7 @@ var fun2 = function () {
 -   call()方法可以将实参在对象之后依次传递；
 -   apply()方法需要将实参封装到一个数组中统一传递；
 
-        ```
+	```javascript
         var name = "孙悟空";
         function fun(a, b) {
             console.log(a);
@@ -1013,9 +1018,9 @@ var fun2 = function () {
         // fun.call(obj);
         // obj.sayName.apply(obj2);
         // fun.apply();
-        ```
+	```
 
-##arguments
+## arguments
 
 -   在调用函数时，浏览器每次都会传递进两个隐含的参数
 
@@ -1029,7 +1034,7 @@ var fun2 = function () {
 -   即使不定义形参也可以使用 arguments[index]来使用参数
 -   它里边有一个属性，这个属性叫做 callee。这个属性对应一个函数，就是当前正在执行的函数对象
 
-        ```
+	```javascript
         function fun() {
             console.log(arguments.length);
             console.log(arguments[0]);
@@ -1037,13 +1042,13 @@ var fun2 = function () {
         }
 
         fun("hello", true);
-        ```
+	```
 
-##正则表达式
+## 正则表达式
 
 -   语法：var 变量 = new RegExp(“正则表达式”，“匹配模式”)；
 
-    ```
+    ```javascript
     var reg = new RegExp("a", "i");
     console.log(reg);
 
@@ -1054,7 +1059,7 @@ var fun2 = function () {
 -   匹配模式：可以是：i（忽略大小写）；g(全局匹配)；
 -   使用字面量创建正则表达式；语法：var reg = /正则表达式/匹式模配;
 
-    ```
+    ```javascript
     var reg = /a/i;
     var str = "Abc";
     console.log(typeof reg); //object
@@ -1072,7 +1077,7 @@ var fun2 = function () {
 -   "?"表示最多包含 1 个该字符串
 -   "^a"检查一个字符串是否以 a 开头
 
-    ```
+    ```javascript
             var reg;
             reg = new RegExp("a", "i");
             console.log(reg);
@@ -1115,7 +1120,7 @@ var fun2 = function () {
 
 -   转移字符表示特殊符号(. \ 等)
 
-    ```
+    ```javascript
             /*
               检查一个字符串中是否含有 "." ;必须使用转移字符"\.";
                 单独使用.表示任意字符；
@@ -1136,7 +1141,7 @@ var fun2 = function () {
 -   转移字符的正则表达式相关代码表
     ![相关转移字符的正则表达式](img/正则表达式转移字符.png)
 
-    ```
+    ```javascript
             var str = "      hel   lo    ";
 
             //去除字符串前面和后面的空格；使用空串替换空格
@@ -1151,13 +1156,13 @@ var fun2 = function () {
             console.log(str);
     ```
 
-##文档对象模型 DOM(Document Object Model)
+## 文档对象模型 DOM(Document Object Model)
 
     1.文档：表示整个HTML网页文档
     2.对象：表示将网页中的每一个部分都转换为了一个对象
     3.模型：使用模型表示对象之间的关系，方便获取对象
 
-###节点
+### 节点
 
 > Node 构成 HTML 文档最基本的单元
 
@@ -1171,12 +1176,12 @@ var fun2 = function () {
 
     4.文本节点：HTML 标签中的文本内容
 
-###document 对象
+### document 对象
 
 -   浏览器已经为我们提供文档节点，这个对象是 window 属性；可以在页面中直接使用，文档节点代表整个网页；这个节点就是 document 对象。
 -   通过 document 对象获取文档模型面的其他节点对象
 
-###DOM 查询
+### DOM 查询
 
 -   getElementById()通过 id 属性获取一个元素节点对象
 -   getElementsByTagName()通过标签名获取一组元素节点对象；该组元素节点对象以一个类数组的形式保存；
@@ -1210,13 +1215,14 @@ var fun2 = function () {
 -   document.querySelector(CSS 选择器字符串)；IE8 及以上浏览器都支持；该方法只会返回一个元素；如果满足条件的元素有多个，那么它只会返回第一个
 
     例如：
-
+		
           document.querySelector("#idName");
           document.querySelector(".className");
+		
 
 -   document.querySelectorAll(CSS 选择器字符串)；匹配所有满足条件的元素并存在类数组中
 
-###DOM 增删改
+### DOM 增删改
 
 -   document.createElement(标签名);创建一个元素节点对象；它需要一个标签名作为参数，将会根据该标签名创建元素节点对象，并将创建好的对象作为返回值返回。
 -   document.createTextNode();创建文本节点对象，需要一个文本内容作为参数，将会根据该内容创建文本节点，并将新的节点返回；
@@ -1227,15 +1233,15 @@ var fun2 = function () {
 -   父节点.removeChild(子节点);删除子节点；他杀
     -   子节点.parentNode.removeChild(子节点)；也可以删除子节点;自杀
 
-###使用 DOM 操作 CSS 样式表
+### 使用 DOM 操作 CSS 样式表
 
-####修改元素样式
+#### 修改元素样式
 
 -   **语法：元素.style.样式名 = 样式值**；
 -   通过 style 属性修改的样式都是**内联样式**，优先级较高，用 js 修改后会立即显示
 -   如果在样式表中写了!important；此时样式优先级最高，即使通过 js 也不能覆盖该样式，所以尽量不要使用!important;
 
-####读取元素样式:
+#### 读取元素样式:
 
 -   **语法：元素.style.样式名**；这种语法**只能**读取**内联样式**
 -   获取元素当前显示的样式；**语法：元素.currentStyle.样式名**；可以用来读取当前元素正在显示的样式；只有 IE 和 Opera 支持该方法；
@@ -1248,7 +1254,7 @@ var fun2 = function () {
         > b:可以传递一个伪元素（一般都传 null）;
 -   currentStyle 和 getComputeStyle 都是只读的，不能修改元素样式
 
-```
+```javascript
     function getStyle(obj, name) {
         // 兼容代码方法1
         if (window.getComputedStyle) {
@@ -1265,7 +1271,7 @@ var fun2 = function () {
     }
 ```
 
-####其他样式相关属性
+#### 其他样式相关属性
 
 -   element.clientHeight、element.clientWidth；获取元素的可见高度；获取元素的可见宽度,包括内容区和内边距
 -   element.offsetHeight、element.offsetWidth;获取元素的高度和宽度；包括内容区，内边距，边框的大小；
@@ -1276,17 +1282,17 @@ var fun2 = function () {
 -   **element.clientHeight + element.scrollTop = element.scrollHeight**;
 -   **element.clientWidth + element.scrollLeft = element.scrollWidth**;
 
-##事件对象 event
+## 事件对象 event
 
 > 当事件的响应函数被触发时，浏览器每次都会将一个事件对象作为实参传递进响应函数
 
-###event 属性
+### event 属性
 
 -   clientX 可以获取鼠标指针的水平座标，相对于视口
 -   clientY 可以获取鼠标指针的垂直坐标，相对于视口
 -   event 在 IE8 中响应函数被触发时，浏览器不会传递事件对象，在 IE8 及以下浏览器中是将事件对象作为 window 对象的属性保存；使用时应 （window.event.属性）使用
     **兼容型代码**
-    ```
+    ```javascript
         <!-- 方法1： -->
         if (!event) {
             event = window.event;
@@ -1296,7 +1302,7 @@ var fun2 = function () {
     ```
 -   pageX,pageY;可以获取鼠标相对于当前页面的坐标;不兼容 IE8；如果需要兼容 IE8 不能用这个；
 
-###event 冒泡(Bubble 重要)
+### event 冒泡(Bubble 重要)
 
 > **所谓事件的冒泡就是事件的向上传导，当后代元素的事件被触发时，其祖先元素的相同事件也会被触发**，在开发中冒泡大部分是有用的；
 > 如果不希望发生事件冒泡，可以通过事件对象(event.cancelBubble = true)来取消冒泡
@@ -1304,7 +1310,7 @@ var fun2 = function () {
 
 -   event.target 表示触发事件的对象
 
-```
+	```javascript
     <body>
         <div id="div1">
             我是box1
@@ -1333,15 +1339,15 @@ var fun2 = function () {
             alert("我是body的单机响应函数");
         };
     </script>
-```
+	```
 
-###event 绑定
+### event 绑定
 
 -   方式 1：元素.事件名 = 函数；
 
     > 这种方式只能绑定一个事件响应函数，如果绑定多个，后面的绑定会覆盖前面的绑定；前面的失效；
 
-    ```
+    ```javascript
     btn1.onclick = function () {
     alert(456);
     };
@@ -1366,7 +1372,7 @@ var fun2 = function () {
 -   addEventListener()中绑定事件的 this 是绑定事件的对象
     ；attachEvent()中的 this 是 window；需要统一两个方法中的 this
 
-    ```
+    ```javascript
     btn1.addEventListener("click",function () {
         alert(this);//[object HTMLButtonElement]
     },false);
@@ -1379,18 +1385,65 @@ var fun2 = function () {
 
 -   代码兼容处理
 
-    ```
-        /*
-            代码兼容型处理，为一个元素绑定响应函数
-            参数：
-                obj：要绑定事件的对象
-                eventStr：事件字符串
-                callback：回调函数
-         */
+	```javascript
+            /*
+                代码兼容型处理，为一个元素绑定响应函数
+                参数：
+                    obj：要绑定事件的对象
+                    eventStr：事件字符串
+                    callback：回调函数
+             */
+            function bind(obj, eventStr, callback) {
+                if (obj.addEventListener) {
+                    // 大部分浏览器兼容的方式
+                    obj.addEventListener(eventStr, callback, false);
+                } else {
+                    // 兼容IE8及以下的方式
+                    // callback.call(obj)该变this的指向为obj
+                    obj.attachEvent("on" + eventStr, function () {
+                        // 在匿名函数中调用callback();
+                        callback.call(obj);
+                    });
+                }
+            }
+	```
+
+### event 的传播
+
+-   由内向外传播；子元素向祖先元素冒泡传播
+-   W3C 将时间的传播分成三个阶段
+
+    -   捕获阶段：由最外层祖先元素向目标元素进行事件的捕获，但是默认此时不会触发事件；
+    -   目标阶段：事件捕获到目标元素，捕获结束，开始在目标元素上触发事件；
+    -   冒泡阶段：事件从目标元素向祖先元素传递；
+    -   如果希望在捕获阶段就触发事件，可以将 addEventListener(obj,eventStr,false)修改为 addEventListener(obj,eventStr,true);一般情况下不希望在捕获阶段触发事件，所以一般不这么使用；
+    -   IE8 及以下的浏览器没有捕获阶段
+
+    ```html
+    <body>
+        <div id="box1">
+            <div id="box2">
+                <div id="box3"></div>
+            </div>
+        </div>
+    </body>
+    <script>
+        var box1 = document.getElementById("box1");
+        var box2 = document.getElementById("box2");
+        var box3 = document.getElementById("box3");
+        bind(box1, "click", function () {
+            alert("我是box1的响应函数");
+        });
+        bind(box2, "click", function () {
+            alert("我是box2的响应函数");
+        });
+        bind(box3, "click", function () {
+            alert("我是box3的响应函数");
+        });
         function bind(obj, eventStr, callback) {
             if (obj.addEventListener) {
                 // 大部分浏览器兼容的方式
-                obj.addEventListener(eventStr, callback, false);
+                obj.addEventListener(eventStr, callback, true);
             } else {
                 // 兼容IE8及以下的方式
                 // callback.call(obj)该变this的指向为obj
@@ -1400,6 +1453,210 @@ var fun2 = function () {
                 });
             }
         }
+    </script>
     ```
 
+<<<<<<< HEAD
 ## 类
+=======
+### event 捕获
+
+-   当调用某一个元素的 setCapture()[元素事件的捕获]方法后，这个元素将会把下一次所有的元素事件捕获到自身上；不适用于 chrome 浏览器,会报错，适用于 IE 浏览器；用于 IE8 阻止浏览器的默认事件样式；
+-   清除浏览器默认样式
+
+	```javascript
+        // 清除浏览器的默认样式，该方法对 IE8 不起作用
+        return false;
+        // 设置 box1 捕获所有的鼠标按下的事件;这种方法用来清除IE8 浏览器事件的默认样式
+        box1.setCapture && box1.setCapture();
+        // 取消box1的捕获
+        box1.setCapture && box1.releaseCapture();
+	```
+
+### 鼠标滚轮事件
+
+-   onmousewheel 鼠标滚轮事件，会在鼠标滚轮滚动时触发； - 但是火狐浏览器不支持； - 在火狐中需要使用 DOMMouseScroll 来绑定滚动事件；注意该事件需要通过 addEventLintener()函数来绑定 - event.wheelDelta 判断鼠标滚轮的方向；在火狐中不适用 > 向上滚是 120；向下滚是-120；不看大小只看正负； - event.detail 适用于火狐浏览器 > 向上滚是-3；向下滚是 3；
+
+```html
+        <!DOCTYPE html>
+
+        <html lang="en">
+            <head>
+                <meta charset="UTF-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <title>Document</title>
+                <style>
+                    body {
+                        height: 2000px;
+                    }
+                    #box1 {
+                        width: 100px;
+                        height: 100px;
+                        background-color: #bfa;
+                    }
+                </style>
+            </head>
+            <body>
+                <div id="box1"></div>
+            </body>
+            <script>
+                var box1 = document.getElementById("box1");
+                box1.onmousewheel = function fun(event) {
+                    event = event || window.event;
+
+                    if (event.wheelDelta > 0 || event.detail < 0) {
+                        // alert("向上滚");
+                        // box1变短
+                        this.style.height = this.clientHeight - 10 + "px";
+                    } else {
+                        // alert("向下滚");
+                        // box1边长
+                        this.style.height = this.clientHeight + 10 + "px";
+                    }
+
+                    //使用addEventlistener()方法绑定响应函数，取消默认行为时，不能使用return false；需要使用event来取消默认行为
+                    event.preventDefault && event.preventDefault(); //不适用于IE8及以下浏览器
+
+                    // 滚轮滚动时，如果浏览器有滚动条，滚动条会随之滚动，这是浏览器的默认行为，如果不希望发生，可以取消
+                    return false;
+                };
+
+                // 火狐滚轮事件绑定
+                bind(box1, "DOMMouseScroll", box1.onmousewheel);
+
+                function bind(obj, eventStr, callback) {
+                    if (obj.addEventListener) {
+                        // 大部分浏览器兼容的方式
+                        obj.addEventListener(eventStr, callback, false);
+                    } else {
+                        // 兼容IE8及以下的方式
+                        // callback.call(obj)该变this的指向为obj
+                        obj.attachEvent("on" + eventStr, function () {
+                            // 在匿名函数中调用callback();
+                            callback.call(obj);
+                        });
+                    }
+                }
+            </script>
+
+        </html>
+```
+
+### 键盘事件
+
+-   onkeydown；按键按下；
+-   onkeyup；按键松开；
+-   键盘事件一般会绑定到一些可以获取焦点的对象；
+-   可以通过 **event.keyCode** 获取按键的 Unicode 编码；
+    -   event.altKey
+    -   event.ctrlKey
+    -   event.shiftKey
+    -   用来判断 alt、ctrl、shift 键是否被按下；返回 true/false
+
+## BOM 浏览器对象模型
+
+### window
+
+-   代表的是浏览器窗口，同时也是网页中的全局对象
+
+### Navigator
+
+-   代表当前浏览器的信息，通过该对象可以识别不同的浏览器
+-   其中的大部分功能都不能使用了
+-   一般使用 userAgent 来判断浏览器的信息；不同的浏览器具有不同的 userAgent
+-   "ActiveXObject" in window 判断是否是 IE 浏览器；因为 ActiveXObject 属性只有 IE 浏览器有
+
+
+```javascript
+        
+		var ua = navigator.userAgent;
+
+        if (/edg/i.test(ua)) {
+            console.log("此浏览器为Edge");
+        } else if (/opr/i.test(ua)) {
+            console.log("此浏览器为Opera");
+        } else if (/firefox/i.test(ua)) {
+            console.log("此浏览器为FireFox");
+        } else if ("ActiveXObject" in window) {
+            //"ActiveXObject" in window判断是否是IE浏览器；因为ActiveXObject属性只有IE浏览器有
+            console.log("此浏览器为IE");
+        } else if (/Chrome/i.test(ua)) {
+            console.log("此浏览器为Chrome"); //因为Opera和Edge的userAgent也有Chrome，所以将chrome放在最后判断，不能放在最前面
+        }
+```
+
+### Location
+
+-   代表当前浏览器的地址栏信息，通过 Location 可以获取地址栏信息，或者操作浏览器跳转页面
+-   如果将location的值丢该为一个网页地址值（相对路径/绝对路径），就会跳转到该地址
+-   location.assign(地址值);作用和上一条一样；
+-   location.reload();刷新页面；如果传入一个true作为参数，会强制清空页面缓存，刷新页面;
+-   location.replace("地址值");用一个新的页面替代现在的页面；作用和location.assign(地址值)类似；但是不同的是跳转到新页面后不能回退；
+
+### History
+
+-   代表浏览器的历史记录；通过该对象操作浏览器的历史记录；由于隐私原因；该对象不能获取具体的历史记录，只能操作浏览器向前向后翻页；而操作只在当此访问时有效；
+-   history.length;当次访问的页面数量
+-   history.back()回退到上一个页面，作用和浏览器回退按钮一样;
+-   history.forward();前进到下一个页面；作用和浏览器前进按钮一样;
+-   history.go(index);可以跳转到指定的页面；
+	
+	-	index整数作为参数
+	-	1表示向前跳转一个页面
+	-	2表示向前跳转2个页面
+	-	-1表示向后跳转一个页面
+
+### Screen
+
+-   代表用户的屏幕信息，通过该对象可以获取到用户的显示器的相关信息
+
+-   以上这些 BOM 对象在浏览器中都是作为 window 对象的属性保存；可以通过 window 对象来使用，也可以直接使用
+
+## 定时器
+
+-	var timer = setInterval(function(){},time);每间隔一段时间执行一次
+-	var timer = setTomeout();延时调用；隔一段之间之后执行
+-	clearInterval(timer);关闭定时器；
+-	clearTimeout(timer);关闭延时调用；
+-	延时调用和定时调用可以互相代替，在开发中根据需要去选择；
+
+```javascript
+		/*
+			参数：
+				obj：要执行动画的对象；
+				attr：要执行动画的样式；比如：left top width height
+				target：要执行动画的边界目标；
+				speed：动画的移动速度；
+				callback：动画执行结束时，调用回调函数；
+		 */
+		function move(obj,attr,target,speed,callback){
+			clearInterval(obj.timer);
+			var currentValue = parseInt(getStyle(obj,attr));
+			if(currentValue>=target){
+				speed = -speed;
+			}
+			// 向执行动画的对象中添加一个timer属性，用来保存自己的定时器标识；
+			obj.timer = setInterval(function(){
+				var oldValue = parseInt(getStyle(obj,attr));
+				var newValue = oldValue+speed;
+				if((speed>0 && newValue>target) || (speed<0 && newValue<target)){
+					newValue=target;
+					clearInterval(obj.timer);
+					// 如果传入的参数有回调函数就执行，没有就不执行
+					callback && callback();
+				}
+				obj.style[attr] = newValue+"px";
+				
+			},30);
+		}
+	
+		function getStyle(obj, name) {
+		    // 兼容代码方法1
+		    if (window.getComputedStyle) {
+		        return getComputedStyle(obj, null)[name];
+		    } else {
+		        return obj.currentStyle[name];
+		    }
+		}
+```
+>>>>>>> ef697cc4a40d81792505b5743f20fbdea2e362e0

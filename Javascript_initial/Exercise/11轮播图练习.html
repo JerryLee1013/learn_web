@@ -1,0 +1,168 @@
+<!--
+ * @Brief: 使用js/定时器等完成轮播图的练习
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-08-04 15:50:58
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="../css/reset.css" />
+        <script src="../js/tools.js"></script>
+        <style>
+            .outer {
+                position: relative;
+                width: 960px;
+                height: 540px;
+                margin: 100px auto;
+                border: 10px solid yellow;
+                box-sizing: border-box;
+                overflow: hidden;
+            }
+            .imglist {
+                width: 7680px;
+                position: absolute;
+                transition: 1s;
+            }
+            .imglist li {
+                float: left;
+            }
+            .clearfix::before,
+            .clearfix::after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+            img {
+                width: 960px;
+                padding: 0 10px;
+                margin: 0 -10px;
+                vertical-align: bottom;
+            }
+            .imglistselect {
+                position: absolute;
+                z-index: 999;
+                left: 50%;
+                bottom: 50px;
+                transform: translateX(-50%);
+                text-align: center;
+            }
+
+            .imglistselect span {
+                display: inline-block;
+                width: 10px;
+                height: 10px;
+                margin: 0 10px;
+                background-color: red;
+            }
+            .imglistselect span:hover {
+                background-color: yellow;
+            }
+            .imglistselect span:first-child {
+                background-color: yellow;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container" class="outer clearfix">
+            <ul id="imglist" class="imglist clearfix">
+                <li>
+                    <a href="javascript:;"
+                        ><img src="../img/marvel12.jpg" alt=""
+                    /></a>
+                </li>
+                <li>
+                    <a href="javascript:;"
+                        ><img src="../img/marvel19.jpg" alt=""
+                    /></a>
+                </li>
+                <li>
+                    <a href="javascript:;"
+                        ><img src="../img/marvel20.jpg" alt=""
+                    /></a>
+                </li>
+                <li>
+                    <a href="javascript:;"
+                        ><img src="../img/marvel21.jpg" alt=""
+                    /></a>
+                </li>
+                <li>
+                    <a href="javascript:;"
+                        ><img src="../img/marvel22.jpg" alt=""
+                    /></a>
+                </li>
+                <li>
+                    <a href="javascript:;"
+                        ><img src="../img/marvel23.jpg" alt=""
+                    /></a>
+                </li>
+                <li>
+                    <a href="javascript:;"
+                        ><img src="../img/marvel24.jpg" alt=""
+                    /></a>
+                </li>
+                <li>
+                    <a href="javascript:;"
+                        ><img src="../img/marvel12.jpg" alt=""
+                    /></a>
+                </li>
+            </ul>
+            <div id="imglistselect" class="imglistselect">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </body>
+    <script>
+        // 显示的图片索引
+        var index = 0;
+        var imglist = document.getElementById("imglist");
+        var imglistselect = document.getElementById("imglistselect");
+        var imgArr = imglistselect.children;
+        var timer;
+        var spanindex = 0;
+        var j = 0;
+        for (var i = 0; i < imgArr.length; i++) {
+            imgArr[i].num = i;
+            imgArr[i].onclick = function () {
+                clearInterval(timer);
+                index = this.num;
+                var target = -940 * index;
+                move(imglist, "left", target, 940);
+                // 修改imglistselect的样式;
+                setSpanColor();
+            };
+        }
+        autoChange();
+        // 定时轮播效果
+
+        function autoChange() {
+            timer = setInterval(function () {
+                index++;
+                imglist.style.transition = "1s";
+                move(imglist, "left", -940 * index, 940, function () {
+                    setSpanColor();
+                });
+            }, 1000);
+        }
+
+        function setSpanColor() {
+            if (index >= imgArr.length - 1) {
+                imglist.style.left = 0;
+                imglist.style.transition = "0s";
+            }
+            for (var i = 0; i < imgArr.length; i++) {
+                imgArr[i].style.backgroundColor = "red";
+            }
+            // 选中的设置为黄色
+            imgArr[index].style.backgroundColor = "yellow";
+        }
+    </script>
+</html>

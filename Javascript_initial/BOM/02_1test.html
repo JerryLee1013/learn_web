@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<h2>
+			Test01
+		</h2>
+		<button type="button" id="btn">点我一下</button>
+		<a href = "02history.html">去02history.html</a>
+	</body>
+	<script type="text/javascript">
+		var btn = document.getElementById("btn");
+		btn.onclick = function(){
+			// history.forward();
+			history.go(1);
+		}
+	</script>
+</html>

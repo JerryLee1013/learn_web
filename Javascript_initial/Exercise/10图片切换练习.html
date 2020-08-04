@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<img src="../img/marvel12.jpg" ><br>
+		<button type="button" id="btn1">点击开始</button>
+		<button type="button" id="btn2">点击暂停</button>
+	</body>
+	<script type="text/javascript">
+		var img = document.getElementsByTagName("img")[0];
+		var btn1 = document.getElementById("btn1");
+		var btn2 = document.getElementById("btn2");
+		var timer;
+		var arr = ["../img/marvel12.jpg",
+					"../img/marvel19.jpg",
+					"../img/marvel20.jpg",
+					"../img/marvel21.jpg",
+					"../img/marvel22.jpg",
+					"../img/marvel23.jpg",
+					"../img/marvel24.jpg"];
+		
+		btn1.onclick = function(){
+			// 防止多次点击触发多个定时器程序的运行，每次点击之前将前一个定时器清除
+			clearInterval(timer);
+			var index = 0;
+			timer = setInterval(function(){
+				
+				
+				img.src = arr[index++];
+				if(index == arr.length){
+					index=0;
+				}
+			},1000);
+		}
+		btn2.onclick = function(){
+			clearInterval(timer);
+		}
+	</script>
+</html>
