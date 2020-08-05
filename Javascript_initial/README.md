@@ -1,7 +1,7 @@
 <!--
  * @Brief:
  * @LastEditors: Jerry Lee
- * @LastEditTime: 2020-08-02 14:24:15
+ * @LastEditTime: 2020-08-05 11:49:53
 -->
 
 # Javascript 基础部分(常用关键点)
@@ -135,118 +135,114 @@
 #### 使用 Number()函数
 
 ```javascript
+//将String类型转换为Number
+var a = "123";
+console.log(a); //"123"
+console.log(typeof a); //String
 
-        //将String类型转换为Number
-        var a = "123";
-        console.log(a); //"123"
-        console.log(typeof a); //String
+a = Number(a);
+console.log(a); //123
+console.log(typeof a); //Number
 
-        a = Number(a);
-        console.log(a); //123
-        console.log(typeof a); //Number
+//当String值含有任何非Number型字符，强转到Number类型时，a就会赋值成NaN
+a = "123*";
+a = Number(a);
+console.log(a); //NaN : Not a Number
+console.log(typeof a); //Number
 
-        //当String值含有任何非Number型字符，强转到Number类型时，a就会赋值成NaN
-        a = "123*";
-        a = Number(a);
-        console.log(a); //NaN : Not a Number
-        console.log(typeof a); //Number
+// 字符串为空串或全空格字符串
+console.log("a是空字符串");
+a = "   ";
+a = Number(a);
+console.log(a); //0
+console.log(typeof a); //Number
 
-        // 字符串为空串或全空格字符串
-        console.log("a是空字符串");
-        a = "   ";
-        a = Number(a);
-        console.log(a); //0
-        console.log(typeof a); //Number
+a = "";
+a = Number(a);
+console.log(a); //0
+console.log(typeof a); //Number
 
-        a = "";
-        a = Number(a);
-        console.log(a); //0
-        console.log(typeof a); //Number
+// 将Boolean转换为Number
+a = true;
+a = Number(a);
+console.log(a); //1
+console.log(typeof a); //Number
 
-        // 将Boolean转换为Number
-        a = true;
-        a = Number(a);
-        console.log(a); //1
-        console.log(typeof a); //Number
+a = false;
+a = Number(a);
+console.log(a); //0
+console.log(typeof a); //Number
 
-        a = false;
-        a = Number(a);
-        console.log(a); //0
-        console.log(typeof a); //Number
+//将Null转换为Number
+a = null;
+a = Number(a);
+console.log(a); //0
+console.log(typeof a); //Number
 
-        //将Null转换为Number
-        a = null;
-        a = Number(a);
-        console.log(a); //0
-        console.log(typeof a); //Number
-
-        //将Undefined转换为Number
-        a = undefined;
-        a = Number(a);
-        console.log(a); //NaN : Not a Number
-        console.log(typeof a); //Number
-
+//将Undefined转换为Number
+a = undefined;
+a = Number(a);
+console.log(a); //NaN : Not a Number
+console.log(typeof a); //Number
 ```
 
 #### 使用 parseInt()和 parseFloat()函数
 
 ```javascript
-
-        /*
+/*
             转换方式2:这种方式专门用来对付字符串
                 函数：
                 parseInt();把一个字符串转换为整型
                 parseFloat();把一个字符串转换为浮点数
         */
-        // 将具有非数值型的字符串转换为Number类型
-        console.log("-------");
-        a = "123px";
-        a = parseInt(a);
-        console.log(a); //123
-        console.log(typeof a); //Number
+// 将具有非数值型的字符串转换为Number类型
+console.log("-------");
+a = "123px";
+a = parseInt(a);
+console.log(a); //123
+console.log(typeof a); //Number
 
-        a = "123.123abc";
-        a = parseInt(a);
-        console.log(a); //123
-        console.log(typeof a); //Number
+a = "123.123abc";
+a = parseInt(a);
+console.log(a); //123
+console.log(typeof a); //Number
 
-        a = "123.123abc";
-        a = parseFloat(a);
-        console.log(a); //123.123
-        console.log(typeof a); //Number
+a = "123.123abc";
+a = parseFloat(a);
+console.log(a); //123.123
+console.log(typeof a); //Number
 
-        a = "123.123.123abc";
-        a = parseFloat(a);
-        console.log(a); //123.123
-        console.log(typeof a); //Number
+a = "123.123.123abc";
+a = parseFloat(a);
+console.log(a); //123.123
+console.log(typeof a); //Number
 
-        // parseInt()和parseFloat()函数只解析到非数字型字符为止
-        a = "12abc3.123";
-        a = parseInt(a);
-        console.log(a); //12
-        console.log(typeof a); //Number
+// parseInt()和parseFloat()函数只解析到非数字型字符为止
+a = "12abc3.123";
+a = parseInt(a);
+console.log(a); //12
+console.log(typeof a); //Number
 
-        // 字符串以非数值型字符开头的，字符串被解析成NaN
-        a = "abc123.123abc";
-        a = parseFloat(a);
-        console.log(a); //NaN
-        console.log(typeof a); //Number
+// 字符串以非数值型字符开头的，字符串被解析成NaN
+a = "abc123.123abc";
+a = parseFloat(a);
+console.log(a); //NaN
+console.log(typeof a); //Number
 
-        /*
+/*
             如果对非String使用parseInt()或parseFloat(),
             他会先将布尔值转换为String类型的值，
             然后再解析为Number
         */
-        a = true;
-        a = parseFloat(a);
-        console.log(a); //NaN
-        console.log(typeof a); //Number
+a = true;
+a = parseFloat(a);
+console.log(a); //NaN
+console.log(typeof a); //Number
 
-        a = null;
-        a = parseInt(a);
-        console.log(a); //NaN
-        console.log(typeof a); //Number
-
+a = null;
+a = parseInt(a);
+console.log(a); //NaN
+console.log(typeof a); //Number
 ```
 
 #### 使用"+"或者"-"将其他类型转换为 Number 类型
@@ -291,203 +287,190 @@
 #### 使用 Boolean()函数
 
 ```javascript
+// Number转换为Boolean
+// 当Number为不为0的和NaN的数值时，无论正负，转换为Boolean值都为true
+var a = 123;
+a = Boolean(a);
+console.log(a); //true
+console.log(typeof a); //boolean
 
-        // Number转换为Boolean
-        // 当Number为不为0的和NaN的数值时，无论正负，转换为Boolean值都为true
-        var a = 123;
-        a = Boolean(a);
-        console.log(a); //true
-        console.log(typeof a); //boolean
+a = -123.123;
+a = Boolean(a);
+console.log(a); //true
+console.log(typeof a); //boolean
 
-        a = -123.123;
-        a = Boolean(a);
-        console.log(a); //true
-        console.log(typeof a); //boolean
+// 当Number为NaN时，Boolean值转换为false
+a = NaN;
+a = Boolean(a);
+console.log(a); //false
+console.log(typeof a); //boolean
 
-        // 当Number为NaN时，Boolean值转换为false
-        a = NaN;
-        a = Boolean(a);
-        console.log(a); //false
-        console.log(typeof a); //boolean
+// 当Number为0时，Boolean值转换为false
+a = 0;
+a = Boolean(a);
+console.log(a); //true
+console.log(typeof a); //boolean
 
-        // 当Number为0时，Boolean值转换为false
-        a = 0;
-        a = Boolean(a);
-        console.log(a); //true
-        console.log(typeof a); //boolean
+// String转换为Boolean
+// 当String为非空字符串时，或由空格组成的字符串，Boolean转换为true
+a = "abc";
+a = Boolean(a);
+console.log(a); //true
+console.log(typeof a); //boolean
 
-        // String转换为Boolean
-        // 当String为非空字符串时，或由空格组成的字符串，Boolean转换为true
-        a = "abc";
-        a = Boolean(a);
-        console.log(a); //true
-        console.log(typeof a); //boolean
+// 一个空格字符串
+a = " ";
+a = Boolean(a);
+console.log(a); //true
+console.log(typeof a); //boolean
 
-        // 一个空格字符串
-        a = " ";
-        a = Boolean(a);
-        console.log(a); //true
-        console.log(typeof a); //boolean
+// String为空字符串时，Boolean值转换为false
+a = "";
+a = Boolean(a);
+console.log(a); //false
+console.log(typeof a); //boolean
 
-        // String为空字符串时，Boolean值转换为false
-        a = "";
-        a = Boolean(a);
-        console.log(a); //false
-        console.log(typeof a); //boolean
+// Null转换为Boolean
+a = null;
+a = Boolean(a);
+console.log(a); //false
+console.log(typeof a); //boolean
 
-        // Null转换为Boolean
-        a = null;
-        a = Boolean(a);
-        console.log(a); //false
-        console.log(typeof a); //boolean
-
-        // Undefined转换为Boolean
-        a = undefined;
-        a = Boolean(a);
-        console.log(a); //false
-        console.log(typeof a); //boolean
-
+// Undefined转换为Boolean
+a = undefined;
+a = Boolean(a);
+console.log(a); //false
+console.log(typeof a); //boolean
 ```
 
 ## 其他进制的数字
+
 ### 16 进制的表示
 
 ```javascript
-
-        // 16进制的表示:需要以0x开头
-        a = 0x123;
-        console.log(a); //291，输出以十进制形式
-        a = 0xffff;
-        console.log(a); //65535，输出以十进制形式
-
+// 16进制的表示:需要以0x开头
+a = 0x123;
+console.log(a); //291，输出以十进制形式
+a = 0xffff;
+console.log(a); //65535，输出以十进制形式
 ```
 
 ### 8 进制的表示
 
 ```javascript
-
-        //8进制表示：需要以0开头
-        a = 070;
-        console.log(a); //56;
-
+//8进制表示：需要以0开头
+a = 070;
+console.log(a); //56;
 ```
 
 ### 2 进制的表示
 
 ```javascript
-
-        //2进制数字：以0b开头
-        a = 0b10;
-        console.log(a); //2
-
+//2进制数字：以0b开头
+a = 0b10;
+console.log(a); //2
 ```
 
 ### IE 兼容性问题
 
 ```javascript
+a = "070";
+a = parseInt(a);
+console.log(a); //70；IE8及以下为56
+console.log(typeof a); //number
 
-        a = "070";
-        a = parseInt(a);
-        console.log(a); //70；IE8及以下为56
-        console.log(typeof a); //number
-
-        // 不同的浏览器，解析的进制可能不一样
-        /*
+// 不同的浏览器，解析的进制可能不一样
+/*
             为了解决这类的问题，可以使用parseInt(a,10)
             a表示被解析的变量，10表示10进制
         */
-        a = "070";
-        a = parseInt(a,10);
-        console.log(a); //70
-        console.log(typeof a); //number
-
+a = "070";
+a = parseInt(a, 10);
+console.log(a); //70
+console.log(typeof a); //number
 ```
 
 ## 逻辑运算符
 
 ```javascript
-
-        /*
+/*
             逻辑运算符：
                 &&
                 ||
                 ！
         */
 
-        // &&第一个条件为false，&&之后的语句不执行
-        false && alert("&&之后的语句");
-        // true && alert("&&之后的语句");
+// &&第一个条件为false，&&之后的语句不执行
+false && alert("&&之后的语句");
+// true && alert("&&之后的语句");
 
-        // ||第一个条件语句为true，第二个语句不在执行
-        true || alert("||之后的语句");
-        // false || alert("||之后的语句");
+// ||第一个条件语句为true，第二个语句不在执行
+true || alert("||之后的语句");
+// false || alert("||之后的语句");
 
-        // ！取反操作
-        console.log(!(1 < 2));
-
+// ！取反操作
+console.log(!(1 < 2));
 ```
 
 ## 非布尔值运算
 
 ```javascript
-
-            /*
+/*
                 对于非布尔值的运算，会将非布尔值先转换为布尔值，然后进行运算,最后返回原类型值
             */
-            var result = 1 && 2; //
-            console.log(result); //2
+var result = 1 && 2; //
+console.log(result); //2
 
-            // result = 1 && null;
-            result = null && 1;
-            console.log(result); //null
+// result = 1 && null;
+result = null && 1;
+console.log(result); //null
 
-            // result = 2 && true;//返回true
-            result = true && 2;
-            console.log(result); //2
+// result = 2 && true;//返回true
+result = true && 2;
+console.log(result); //2
 
-            result = 1 && false;
-            console.log(result); //false
+result = 1 && false;
+console.log(result); //false
 
-            result = 1 && undefined;
-            console.log(result); //undefined
+result = 1 && undefined;
+console.log(result); //undefined
 
-            result = "a" && "b";
-            console.log(result); //b
+result = "a" && "b";
+console.log(result); //b
 
-            result = "1" || false;
-            console.log(result); //1
+result = "1" || false;
+console.log(result); //1
 
-            result = true || false;
-            console.log(result); //true
+result = true || false;
+console.log(result); //true
 
-            result = false || "a";
-            console.log(result); //a
+result = false || "a";
+console.log(result); //a
 
-            result = false || NaN;
-            console.log(result); //NaN
+result = false || NaN;
+console.log(result); //NaN
 
-            // !后面可以运算任意类型的值，运算时向将运算值转换为Boolean类型，然后对值进行取反操作并返回结果
-            result = !"a";
-            console.log(result); //false
+// !后面可以运算任意类型的值，运算时向将运算值转换为Boolean类型，然后对值进行取反操作并返回结果
+result = !"a";
+console.log(result); //false
 
-            result = !"";
-            console.log(result); //true
+result = !"";
+console.log(result); //true
 
-            result = !0;
-            console.log(result); //true
+result = !0;
+console.log(result); //true
 
-            result = !-123;
-            console.log(result); //false
+result = !-123;
+console.log(result); //false
 
-            result = !null;
-            console.log(result); //true
+result = !null;
+console.log(result); //true
 
-            result = !undefined;
-            console.log(result); //true
+result = !undefined;
+console.log(result); //true
 
-            result = !NaN;
-            console.log(result); //true
-
+result = !NaN;
+console.log(result); //true
 ```
 
 ## 关系运算符
@@ -505,32 +488,28 @@
 > > 如果运算符两侧都是 String 型，会按照 Unicode 编码依次比较字符的大小。
 
 ```javascript
+console.log(null >= undefined); //false
+console.log(null < undefined); //false
+console.log(1 > null); //true
+console.log(1 >= undefined); //false
+console.log(1 < undefined); //false；undefined转换为Number为NaN
+console.log(1 > "a"); //false;"a"转换为Number为NaN
 
-            console.log(null >= undefined); //false
-            console.log(null < undefined); //false
-            console.log(1 > null); //true
-            console.log(1 >= undefined); //false
-            console.log(1 < undefined); //false；undefined转换为Number为NaN
-            console.log(1 > "a"); //false;"a"转换为Number为NaN
-
-            console.log(true > false); //true
-            console.log(true == "1"); //true
-            console.log(false == ""); //true
-
+console.log(true > false); //true
+console.log(true == "1"); //true
+console.log(false == ""); //true
 ```
 
 > 判断一个值是否时 NaN，可以通过 isNaN()函数
 
 ```javascript
+var a = NaN;
+console.log(isNaN(a)); //true
 
-            var a = NaN;
-            console.log(isNaN(a)); //true
-
-            var b = "abc";
-            b = +b;
-            console.log(b); //NaN
-            console.log(isNaN(b)); //true
-
+var b = "abc";
+b = +b;
+console.log(b); //NaN
+console.log(isNaN(b)); //true
 ```
 
 ## 条件运算符
@@ -652,30 +631,30 @@ var fun2 = function () {
 ### 函数作用域
 
 ```javascript
-        var a = 123;
-        function fun() {
-            var a = "我是函数中的变量a";
-            var b = 456;
-            console.log(a);
+var a = 123;
+function fun() {
+    var a = "我是函数中的变量a";
+    var b = 456;
+    console.log(a);
 
-            fun2(); //我是函数中的变量a
+    fun2(); //我是函数中的变量a
 
-            fun3(); //123;说明函数作用域中的变量的取值和调用位置没有任何关系，和函数创建的位置有关系
+    fun3(); //123;说明函数作用域中的变量的取值和调用位置没有任何关系，和函数创建的位置有关系
 
-            function fun2() {
-                console.log("fun2函数:" + a); //我是函数中的变量a
+    function fun2() {
+        console.log("fun2函数:" + a); //我是函数中的变量a
 
-                //如果调用全局变量中的a，使用window.a
-                //console.log(window.a); //123
-            }
-        }
-        fun();
-        console.log(a); //123
-        //console.log(b); //Uncaught ReferenceError: b is not defined
+        //如果调用全局变量中的a，使用window.a
+        //console.log(window.a); //123
+    }
+}
+fun();
+console.log(a); //123
+//console.log(b); //Uncaught ReferenceError: b is not defined
 
-        function fun3() {
-            console.log("fun3函数:" + a);
-        }
+function fun3() {
+    console.log("fun3函数:" + a);
+}
 ```
 
 -   调用函数时，创建函数作用域，函数执行完毕后，函数作用域销毁
@@ -693,24 +672,23 @@ var fun2 = function () {
         c = 10;
     }
 
-        fun4(); //33
-        console.log(c); //10
+    fun4(); //33
+    console.log(c); //10
     ```
 
 -   定义形参就相当于在函数作用域中声明了变量
 
-	```javascript
-        var e = 55;
-        function fun5(e) {
-            //定义形参相当于var e;
-            console.log(e);
-            var e = 77;
-        }
-        fun5(); //undefined
-        fun5(e); //55
-        console.log(e); //55
-
-	```
+    ```javascript
+    var e = 55;
+    function fun5(e) {
+        //定义形参相当于var e;
+        console.log(e);
+        var e = 77;
+    }
+    fun5(); //undefined
+    fun5(e); //55
+    console.log(e); //55
+    ```
 
 ## 方法
 
@@ -751,44 +729,43 @@ var fun2 = function () {
 
     ```javascript
     function fun() {
-                console.log(this.name);
-            }
+        console.log(this.name);
+    }
 
-            var obj1 = {
-                name: "孙悟空",
-                sayName: fun,
-            };
+    var obj1 = {
+        name: "孙悟空",
+        sayName: fun,
+    };
 
-            var obj2 = {
-                name: "沙和尚",
-                sayName: fun,
-            };
+    var obj2 = {
+        name: "沙和尚",
+        sayName: fun,
+    };
 
-            var name = "猪八戒";
+    var name = "猪八戒";
 
-            console.log(obj1.sayName == fun); //true
-            obj1.sayName(); // 孙悟空
-            obj2.sayName(); //沙和尚
-            fun(); // 猪八戒
+    console.log(obj1.sayName == fun); //true
+    obj1.sayName(); // 孙悟空
+    obj2.sayName(); //沙和尚
+    fun(); // 猪八戒
     ```
 
 ## 使用工厂方法创建对象
 
 ```javascript
 function createPerson(name, age, gender) {
-	var obj = new Object();
-	obj.name = name;
-	obj.age = age;
-	obj.gender = gender;
-	obj.sayName = function () {
-		console.log(this.name, this.age, this.gender);
-	};
-	return obj;
+    var obj = new Object();
+    obj.name = name;
+    obj.age = age;
+    obj.gender = gender;
+    obj.sayName = function () {
+        console.log(this.name, this.age, this.gender);
+    };
+    return obj;
 }
 
 var obj1 = createPerson("孙悟空", 29, "男");
 obj1.sayName();
-	
 ```
 
 ## 构造函数
@@ -810,30 +787,30 @@ obj1.sayName();
 -   instanceof 可以检查一个对象是否是一个类的实例
 
     ```javascript
-            // 构造函数
-            function Person(name, age, gender) {
-                //this是新建的对象
-                this.name = name;
-                this.age = age;
-                this.gender = gender;
-                this.sayName = function () {
-                    console.log(
-                        "姓名:" +
-                            this.name +
-                            "; 年龄:" +
-                            this.age +
-                            "; 性别:" +
-                            this.gender
-                    );
-                };
-            }
+    // 构造函数
+    function Person(name, age, gender) {
+        //this是新建的对象
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+        this.sayName = function () {
+            console.log(
+                "姓名:" +
+                    this.name +
+                    "; 年龄:" +
+                    this.age +
+                    "; 性别:" +
+                    this.gender
+            );
+        };
+    }
 
-            var person = new Person("孙悟空", 29, "男");
-            console.log(person);
-            person.sayName();
+    var person = new Person("孙悟空", 29, "男");
+    console.log(person);
+    person.sayName();
 
-            //使用instanceof可以检查一个对象是否是一个类的实例
-            console.log(person instanceof Person); //true
+    //使用instanceof可以检查一个对象是否是一个类的实例
+    console.log(person instanceof Person); //true
     ```
 
 -   构造函数问题优化
@@ -844,74 +821,63 @@ obj1.sayName();
     > > 将函数定义在全局作用域中，污染了全局作用域的命名空间;而且定义在全局作用域中也很不安全.
 
     ```javascript
-        function Person(name, age, gender) {
-            //this是类的实例
-            this.name = name;
-            this.age = age;
-            this.gender = gender;
+    function Person(name, age, gender) {
+        //this是类的实例
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
 
-            /*
+        /*
                 目前的方法是在构造函数内部创建的，也就是构造函数没执行一次就会创建一个新的sayName()方法
                         也就是所有实例的sayName都是唯一的，导致构造函数执行一次就会创建一个构造方法，浪费内存
-
+    
                 使所有的对象共享一个方法：
                      将sayName方法在全局作用域中定义
             */
-             this.sayName = fun;
-             }
+        this.sayName = fun;
+    }
 
-        //将构造函数中的方法在全局作用域中定义
-        //将函数定义在全局作用域中，污染了全局作用域的命名空间
-        //而且定义在全局作用域中也很不安全
-        function fun() {
-            console.log(
-                "姓名:" +
-                    this.name +
-                    "; 年龄:" +
-                    this.age +
-                    "; 性别:" +
-                    this.gender
-            );
-        }
+    //将构造函数中的方法在全局作用域中定义
+    //将函数定义在全局作用域中，污染了全局作用域的命名空间
+    //而且定义在全局作用域中也很不安全
+    function fun() {
+        console.log(
+            "姓名:" + this.name + "; 年龄:" + this.age + "; 性别:" + this.gender
+        );
+    }
 
-        var person1 = new Person("孙悟空", 29, "男");
-        var person2 = new Person("猪八戒", 29, "男");
-        person1.sayName();
-        person2.sayName();
-        console.log(person1.sayName == person2.sayName); //true
+    var person1 = new Person("孙悟空", 29, "男");
+    var person2 = new Person("猪八戒", 29, "男");
+    person1.sayName();
+    person2.sayName();
+    console.log(person1.sayName == person2.sayName); //true
     ```
 
 -   使用原型对象优化构造函数中的方法
 
     ```javascript
-            // 构造函数
-            function Person(name, age, gender) {
-                //this是类的实例
-                this.name = name;
-                this.age = age;
-                this.gender = gender;
+    // 构造函数
+    function Person(name, age, gender) {
+        //this是类的实例
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
 
-                //this.sayName = fun;//设置fun为全局函数
-            }
+        //this.sayName = fun;//设置fun为全局函数
+    }
 
-            //使用原型对象优化构造函数中的方法
-            Person.prototype.sayName = function () {
-                console.log(
-                    "姓名:" +
-                        this.name +
-                        "; 年龄:" +
-                        this.age +
-                        "; 性别:" +
-                        this.gender
-                );
-            };
+    //使用原型对象优化构造函数中的方法
+    Person.prototype.sayName = function () {
+        console.log(
+            "姓名:" + this.name + "; 年龄:" + this.age + "; 性别:" + this.gender
+        );
+    };
 
-            var person1 = new Person("孙悟空", 29, "男");
-            var person2 = new Person("猪八戒", 29, "男");
-            person1.sayName();
-            person2.sayName(); //与person1中的sayName用的是一个函数
-            console.log(person1.sayName == person2.sayName); //true
-
+    var person1 = new Person("孙悟空", 29, "男");
+    var person2 = new Person("猪八戒", 29, "男");
+    person1.sayName();
+    person2.sayName(); //与person1中的sayName用的是一个函数
+    console.log(person1.sayName == person2.sayName); //true
     ```
 
 ## 原型对象 Prototype
@@ -928,30 +894,30 @@ obj1.sayName();
 -   以后创造构造函数时，可以将这些对象的共有属性和方法，统一添加到构造函数的原型对象中，这样就不用分别为每一个对象添加，也不会影响到全局作用域，就可以使每个对象具有这些属性和方法了。
 
     ```javascript
-            function MyClass() {}
+    function MyClass() {}
 
-            //向MyClass的原型中添加一个属性a
-            MyClass.prototype.a = 123;
+    //向MyClass的原型中添加一个属性a
+    MyClass.prototype.a = 123;
 
-            //向MyClass原型中添加一个方法
-            MyClass.prototype.sayHello = function () {
-                console.log("hello!!");
-            };
+    //向MyClass原型中添加一个方法
+    MyClass.prototype.sayHello = function () {
+        console.log("hello!!");
+    };
 
-            var mc1 = new MyClass();
-            var mc2 = new MyClass();
-            console.log(mc1.__proto__ == MyClass.prototype); //true
-            console.log(mc2.__proto__ == MyClass.prototype); //true
+    var mc1 = new MyClass();
+    var mc2 = new MyClass();
+    console.log(mc1.__proto__ == MyClass.prototype); //true
+    console.log(mc2.__proto__ == MyClass.prototype); //true
 
-            mc1.sayHello();
-            mc1.__proto__.sayHello();
+    mc1.sayHello();
+    mc1.__proto__.sayHello();
 
-            console.log(mc1.a); //123
-            console.log(mc1.__proto__.a); //123
+    console.log(mc1.a); //123
+    console.log(mc1.__proto__.a); //123
 
-            mc2.a = "我是mc2中的a";
-            console.log(mc2.a); //我是mc2中的a
-            console.log(mc2.__proto__.a); //123
+    mc2.a = "我是mc2中的a";
+    console.log(mc2.a); //我是mc2中的a
+    console.log(mc2.__proto__.a); //123
     ```
 
 -   使用 in 检查对象中是否含有某个属性时，如果对象中没有但是原型中有，也会返回 true；
@@ -988,37 +954,37 @@ obj1.sayName();
 -   call()方法可以将实参在对象之后依次传递；
 -   apply()方法需要将实参封装到一个数组中统一传递；
 
-	```javascript
-        var name = "孙悟空";
-        function fun(a, b) {
-            console.log(a);
-            console.log(b);
-            // alert(this.name);
-        }
+    ```javascript
+    var name = "孙悟空";
+    function fun(a, b) {
+        console.log(a);
+        console.log(b);
+        // alert(this.name);
+    }
 
-        function Person(name) {
-            this.name = name;
-        }
+    function Person(name) {
+        this.name = name;
+    }
 
-        var obj = {
-            name: "沙和尚",
-            sayName: function () {
-                alert(this.name);
-            },
-        };
+    var obj = {
+        name: "沙和尚",
+        sayName: function () {
+            alert(this.name);
+        },
+    };
 
-        var obj2 = {
-            name: "唐三藏",
-        };
+    var obj2 = {
+        name: "唐三藏",
+    };
 
-        var person = new Person("猪八戒");
+    var person = new Person("猪八戒");
 
-        fun.call(obj, 2, 3);
-        fun.apply(obj2, [5, 6]);
-        // fun.call(obj);
-        // obj.sayName.apply(obj2);
-        // fun.apply();
-	```
+    fun.call(obj, 2, 3);
+    fun.apply(obj2, [5, 6]);
+    // fun.call(obj);
+    // obj.sayName.apply(obj2);
+    // fun.apply();
+    ```
 
 ## arguments
 
@@ -1034,15 +1000,15 @@ obj1.sayName();
 -   即使不定义形参也可以使用 arguments[index]来使用参数
 -   它里边有一个属性，这个属性叫做 callee。这个属性对应一个函数，就是当前正在执行的函数对象
 
-	```javascript
-        function fun() {
-            console.log(arguments.length);
-            console.log(arguments[0]);
-            console.log(arguments.callee);
-        }
+    ```javascript
+    function fun() {
+        console.log(arguments.length);
+        console.log(arguments[0]);
+        console.log(arguments.callee);
+    }
 
-        fun("hello", true);
-	```
+    fun("hello", true);
+    ```
 
 ## 正则表达式
 
@@ -1078,82 +1044,82 @@ obj1.sayName();
 -   "^a"检查一个字符串是否以 a 开头
 
     ```javascript
-            var reg;
-            reg = new RegExp("a", "i");
-            console.log(reg);
+    var reg;
+    reg = new RegExp("a", "i");
+    console.log(reg);
 
-            var str = "Abc";
-            console.log(reg.test(str)); //true
+    var str = "Abc";
+    console.log(reg.test(str)); //true
 
-            // 使用字面量创建正则表达式
-            var reg = /正则表达式/匹式模配;
-            var reg = /a/i;
-            var str = "Abc";
-            console.log(typeof reg); //object
-            console.log(reg.test(str)); //true
+    // 使用字面量创建正则表达式
+    var reg = /正则表达式/匹式模配;
+    var reg = /a/i;
+    var str = "Abc";
+    console.log(typeof reg); //object
+    console.log(reg.test(str)); //true
 
-            /* 创建一个正则表达式；检查是否有a或b
+    /* 创建一个正则表达式；检查是否有a或b
             使用|表示或的意思 */
-            reg = /a|b/;
-            console.log(reg.test("acd"));
+    reg = /a|b/;
+    console.log(reg.test("acd"));
 
-            /* 创建一个正则表达式检查是否有字母
+    /* 创建一个正则表达式检查是否有字母
             []表示或
             [a-z]任意小写字母
             [A-Z]任意大写字母
             [A-z]所有大小写英文字母 */
-            reg = /[A-z]/;
-            console.log(reg.test("acd"));
+    reg = /[A-z]/;
+    console.log(reg.test("acd"));
 
-            // 检查一个字符串中是否含有abc或adc或aec
-            reg = /a[b-e]c/;
-            console.log(reg.test("adc"));
+    // 检查一个字符串中是否含有abc或adc或aec
+    reg = /a[b-e]c/;
+    console.log(reg.test("adc"));
 
-            // 除了ab之外的内容
-            reg = /[^ab]/;
-            console.log(reg.test("99")); //true
+    // 除了ab之外的内容
+    reg = /[^ab]/;
+    console.log(reg.test("99")); //true
 
-            // 匹配数字
-            reg = /[0-9]/;
-            console.log(reg.test(1213)); //true
+    // 匹配数字
+    reg = /[0-9]/;
+    console.log(reg.test(1213)); //true
     ```
 
 -   转移字符表示特殊符号(. \ 等)
 
     ```javascript
-            /*
+    /*
               检查一个字符串中是否含有 "." ;必须使用转移字符"\.";
                 单独使用.表示任意字符；
                 \\表示\
               使用构造函数来创建者正则表达式，注意：输入的实参位字符型，在写特殊字符的正则表达式时，也需要转移字符
             */
-            var reg = /\./;
-            console.log(reg.test("abc.bcd"));
+    var reg = /\./;
+    console.log(reg.test("abc.bcd"));
 
-            var reg = /\\/;
-            console.log(reg.test("abc\\bcd")); //在字符串中也要使用转移字符表示单斜杠
+    var reg = /\\/;
+    console.log(reg.test("abc\\bcd")); //在字符串中也要使用转移字符表示单斜杠
 
-            //构造函数创建正则表达式
-            reg = new RegExp("\\\\");
-            console.log(reg); //  输出为 ：/\\/
+    //构造函数创建正则表达式
+    reg = new RegExp("\\\\");
+    console.log(reg); //  输出为 ：/\\/
     ```
 
 -   转移字符的正则表达式相关代码表
     ![相关转移字符的正则表达式](img/正则表达式转移字符.png)
 
     ```javascript
-            var str = "      hel   lo    ";
+    var str = "      hel   lo    ";
 
-            //去除字符串前面和后面的空格；使用空串替换空格
+    //去除字符串前面和后面的空格；使用空串替换空格
 
-            // 去除开头的空格
-            // str = str.replace(/^\s+/, "");
-            //去除结尾的空格
-            // str = str.replace(/\s+$/, "");
+    // 去除开头的空格
+    // str = str.replace(/^\s+/, "");
+    //去除结尾的空格
+    // str = str.replace(/\s+$/, "");
 
-            //同时去除开头和结尾的空格
-            str = str.replace(/^\s*|\s*$/g, "");
-            console.log(str);
+    //同时去除开头和结尾的空格
+    str = str.replace(/^\s*|\s*$/g, "");
+    console.log(str);
     ```
 
 ## 文档对象模型 DOM(Document Object Model)
@@ -1215,12 +1181,10 @@ obj1.sayName();
 -   document.querySelector(CSS 选择器字符串)；IE8 及以上浏览器都支持；该方法只会返回一个元素；如果满足条件的元素有多个，那么它只会返回第一个
 
     例如：
-		
-          document.querySelector("#idName");
-          document.querySelector(".className");
-		
+    document.querySelector("#idName");
+    document.querySelector(".className");
 
--   document.querySelectorAll(CSS 选择器字符串)；匹配所有满足条件的元素并存在类数组中
+*   document.querySelectorAll(CSS 选择器字符串)；匹配所有满足条件的元素并存在类数组中
 
 ### DOM 增删改
 
@@ -1255,20 +1219,20 @@ obj1.sayName();
 -   currentStyle 和 getComputeStyle 都是只读的，不能修改元素样式
 
 ```javascript
-    function getStyle(obj, name) {
-        // 兼容代码方法1
-        if (window.getComputedStyle) {
-            return getComputedStyle(obj, null)[name];
-        } else {
-            return obj.currentStyle[name];
-        }
-        // 兼容代码方法2
-        // if (obj.currentStyle) {
-        //     return obj.currentStyle[name];
-        // } else {
-        //     return getComputedStyle(obj, null)[name];
-        // }
+function getStyle(obj, name) {
+    // 兼容代码方法1
+    if (window.getComputedStyle) {
+        return getComputedStyle(obj, null)[name];
+    } else {
+        return obj.currentStyle[name];
     }
+    // 兼容代码方法2
+    // if (obj.currentStyle) {
+    //     return obj.currentStyle[name];
+    // } else {
+    //     return getComputedStyle(obj, null)[name];
+    // }
+}
 ```
 
 #### 其他样式相关属性
@@ -1310,7 +1274,7 @@ obj1.sayName();
 
 -   event.target 表示触发事件的对象
 
-	```javascript
+    ```javascript
     <body>
         <div id="div1">
             我是box1
@@ -1339,7 +1303,7 @@ obj1.sayName();
             alert("我是body的单机响应函数");
         };
     </script>
-	```
+    ```
 
 ### event 绑定
 
@@ -1349,7 +1313,7 @@ obj1.sayName();
 
     ```javascript
     btn1.onclick = function () {
-    alert(456);
+        alert(456);
     };
 
     // 后面的绑定函数覆盖前面的绑定
@@ -1373,40 +1337,43 @@ obj1.sayName();
     ；attachEvent()中的 this 是 window；需要统一两个方法中的 this
 
     ```javascript
-    btn1.addEventListener("click",function () {
-        alert(this);//[object HTMLButtonElement]
-    },false);
+    btn1.addEventListener(
+        "click",
+        function () {
+            alert(this); //[object HTMLButtonElement]
+        },
+        false
+    );
 
     btn1.attachEvent("onclick", function () {
         alert(this); //[object Window]
     });
-
     ```
 
 -   代码兼容处理
 
-	```javascript
-            /*
+    ```javascript
+    /*
                 代码兼容型处理，为一个元素绑定响应函数
                 参数：
                     obj：要绑定事件的对象
                     eventStr：事件字符串
                     callback：回调函数
              */
-            function bind(obj, eventStr, callback) {
-                if (obj.addEventListener) {
-                    // 大部分浏览器兼容的方式
-                    obj.addEventListener(eventStr, callback, false);
-                } else {
-                    // 兼容IE8及以下的方式
-                    // callback.call(obj)该变this的指向为obj
-                    obj.attachEvent("on" + eventStr, function () {
-                        // 在匿名函数中调用callback();
-                        callback.call(obj);
-                    });
-                }
-            }
-	```
+    function bind(obj, eventStr, callback) {
+        if (obj.addEventListener) {
+            // 大部分浏览器兼容的方式
+            obj.addEventListener(eventStr, callback, false);
+        } else {
+            // 兼容IE8及以下的方式
+            // callback.call(obj)该变this的指向为obj
+            obj.attachEvent("on" + eventStr, function () {
+                // 在匿名函数中调用callback();
+                callback.call(obj);
+            });
+        }
+    }
+    ```
 
 ### event 的传播
 
@@ -1457,89 +1424,91 @@ obj1.sayName();
     ```
 
 <<<<<<< HEAD
+
 ## 类
+
 =======
+
 ### event 捕获
 
 -   当调用某一个元素的 setCapture()[元素事件的捕获]方法后，这个元素将会把下一次所有的元素事件捕获到自身上；不适用于 chrome 浏览器,会报错，适用于 IE 浏览器；用于 IE8 阻止浏览器的默认事件样式；
 -   清除浏览器默认样式
 
-	```javascript
-        // 清除浏览器的默认样式，该方法对 IE8 不起作用
-        return false;
-        // 设置 box1 捕获所有的鼠标按下的事件;这种方法用来清除IE8 浏览器事件的默认样式
-        box1.setCapture && box1.setCapture();
-        // 取消box1的捕获
-        box1.setCapture && box1.releaseCapture();
-	```
+    ```javascript
+    // 清除浏览器的默认样式，该方法对 IE8 不起作用
+    return false;
+    // 设置 box1 捕获所有的鼠标按下的事件;这种方法用来清除IE8 浏览器事件的默认样式
+    box1.setCapture && box1.setCapture();
+    // 取消box1的捕获
+    box1.setCapture && box1.releaseCapture();
+    ```
 
 ### 鼠标滚轮事件
 
 -   onmousewheel 鼠标滚轮事件，会在鼠标滚轮滚动时触发； - 但是火狐浏览器不支持； - 在火狐中需要使用 DOMMouseScroll 来绑定滚动事件；注意该事件需要通过 addEventLintener()函数来绑定 - event.wheelDelta 判断鼠标滚轮的方向；在火狐中不适用 > 向上滚是 120；向下滚是-120；不看大小只看正负； - event.detail 适用于火狐浏览器 > 向上滚是-3；向下滚是 3；
 
 ```html
-        <!DOCTYPE html>
+<!DOCTYPE html>
 
-        <html lang="en">
-            <head>
-                <meta charset="UTF-8" />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <title>Document</title>
-                <style>
-                    body {
-                        height: 2000px;
-                    }
-                    #box1 {
-                        width: 100px;
-                        height: 100px;
-                        background-color: #bfa;
-                    }
-                </style>
-            </head>
-            <body>
-                <div id="box1"></div>
-            </body>
-            <script>
-                var box1 = document.getElementById("box1");
-                box1.onmousewheel = function fun(event) {
-                    event = event || window.event;
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            body {
+                height: 2000px;
+            }
+            #box1 {
+                width: 100px;
+                height: 100px;
+                background-color: #bfa;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="box1"></div>
+    </body>
+    <script>
+        var box1 = document.getElementById("box1");
+        box1.onmousewheel = function fun(event) {
+            event = event || window.event;
 
-                    if (event.wheelDelta > 0 || event.detail < 0) {
-                        // alert("向上滚");
-                        // box1变短
-                        this.style.height = this.clientHeight - 10 + "px";
-                    } else {
-                        // alert("向下滚");
-                        // box1边长
-                        this.style.height = this.clientHeight + 10 + "px";
-                    }
+            if (event.wheelDelta > 0 || event.detail < 0) {
+                // alert("向上滚");
+                // box1变短
+                this.style.height = this.clientHeight - 10 + "px";
+            } else {
+                // alert("向下滚");
+                // box1边长
+                this.style.height = this.clientHeight + 10 + "px";
+            }
 
-                    //使用addEventlistener()方法绑定响应函数，取消默认行为时，不能使用return false；需要使用event来取消默认行为
-                    event.preventDefault && event.preventDefault(); //不适用于IE8及以下浏览器
+            //使用addEventlistener()方法绑定响应函数，取消默认行为时，不能使用return false；需要使用event来取消默认行为
+            event.preventDefault && event.preventDefault(); //不适用于IE8及以下浏览器
 
-                    // 滚轮滚动时，如果浏览器有滚动条，滚动条会随之滚动，这是浏览器的默认行为，如果不希望发生，可以取消
-                    return false;
-                };
+            // 滚轮滚动时，如果浏览器有滚动条，滚动条会随之滚动，这是浏览器的默认行为，如果不希望发生，可以取消
+            return false;
+        };
 
-                // 火狐滚轮事件绑定
-                bind(box1, "DOMMouseScroll", box1.onmousewheel);
+        // 火狐滚轮事件绑定
+        bind(box1, "DOMMouseScroll", box1.onmousewheel);
 
-                function bind(obj, eventStr, callback) {
-                    if (obj.addEventListener) {
-                        // 大部分浏览器兼容的方式
-                        obj.addEventListener(eventStr, callback, false);
-                    } else {
-                        // 兼容IE8及以下的方式
-                        // callback.call(obj)该变this的指向为obj
-                        obj.attachEvent("on" + eventStr, function () {
-                            // 在匿名函数中调用callback();
-                            callback.call(obj);
-                        });
-                    }
-                }
-            </script>
-
-        </html>
+        function bind(obj, eventStr, callback) {
+            if (obj.addEventListener) {
+                // 大部分浏览器兼容的方式
+                obj.addEventListener(eventStr, callback, false);
+            } else {
+                // 兼容IE8及以下的方式
+                // callback.call(obj)该变this的指向为obj
+                obj.attachEvent("on" + eventStr, function () {
+                    // 在匿名函数中调用callback();
+                    callback.call(obj);
+                });
+            }
+        }
+    </script>
+</html>
 ```
 
 ### 键盘事件
@@ -1566,32 +1535,30 @@ obj1.sayName();
 -   一般使用 userAgent 来判断浏览器的信息；不同的浏览器具有不同的 userAgent
 -   "ActiveXObject" in window 判断是否是 IE 浏览器；因为 ActiveXObject 属性只有 IE 浏览器有
 
-
 ```javascript
-        
-		var ua = navigator.userAgent;
+var ua = navigator.userAgent;
 
-        if (/edg/i.test(ua)) {
-            console.log("此浏览器为Edge");
-        } else if (/opr/i.test(ua)) {
-            console.log("此浏览器为Opera");
-        } else if (/firefox/i.test(ua)) {
-            console.log("此浏览器为FireFox");
-        } else if ("ActiveXObject" in window) {
-            //"ActiveXObject" in window判断是否是IE浏览器；因为ActiveXObject属性只有IE浏览器有
-            console.log("此浏览器为IE");
-        } else if (/Chrome/i.test(ua)) {
-            console.log("此浏览器为Chrome"); //因为Opera和Edge的userAgent也有Chrome，所以将chrome放在最后判断，不能放在最前面
-        }
+if (/edg/i.test(ua)) {
+    console.log("此浏览器为Edge");
+} else if (/opr/i.test(ua)) {
+    console.log("此浏览器为Opera");
+} else if (/firefox/i.test(ua)) {
+    console.log("此浏览器为FireFox");
+} else if ("ActiveXObject" in window) {
+    //"ActiveXObject" in window判断是否是IE浏览器；因为ActiveXObject属性只有IE浏览器有
+    console.log("此浏览器为IE");
+} else if (/Chrome/i.test(ua)) {
+    console.log("此浏览器为Chrome"); //因为Opera和Edge的userAgent也有Chrome，所以将chrome放在最后判断，不能放在最前面
+}
 ```
 
 ### Location
 
 -   代表当前浏览器的地址栏信息，通过 Location 可以获取地址栏信息，或者操作浏览器跳转页面
--   如果将location的值丢该为一个网页地址值（相对路径/绝对路径），就会跳转到该地址
+-   如果将 location 的值丢该为一个网页地址值（相对路径/绝对路径），就会跳转到该地址
 -   location.assign(地址值);作用和上一条一样；
--   location.reload();刷新页面；如果传入一个true作为参数，会强制清空页面缓存，刷新页面;
--   location.replace("地址值");用一个新的页面替代现在的页面；作用和location.assign(地址值)类似；但是不同的是跳转到新页面后不能回退；
+-   location.reload();刷新页面；如果传入一个 true 作为参数，会强制清空页面缓存，刷新页面;
+-   location.replace("地址值");用一个新的页面替代现在的页面；作用和 location.assign(地址值)类似；但是不同的是跳转到新页面后不能回退；
 
 ### History
 
@@ -1600,11 +1567,11 @@ obj1.sayName();
 -   history.back()回退到上一个页面，作用和浏览器回退按钮一样;
 -   history.forward();前进到下一个页面；作用和浏览器前进按钮一样;
 -   history.go(index);可以跳转到指定的页面；
-	
-	-	index整数作为参数
-	-	1表示向前跳转一个页面
-	-	2表示向前跳转2个页面
-	-	-1表示向后跳转一个页面
+
+    -   index 整数作为参数
+    -   1 表示向前跳转一个页面
+    -   2 表示向前跳转 2 个页面
+    -   -1 表示向后跳转一个页面
 
 ### Screen
 
@@ -1614,14 +1581,14 @@ obj1.sayName();
 
 ## 定时器
 
--	var timer = setInterval(function(){},time);每间隔一段时间执行一次
--	var timer = setTomeout();延时调用；隔一段之间之后执行
--	clearInterval(timer);关闭定时器；
--	clearTimeout(timer);关闭延时调用；
--	延时调用和定时调用可以互相代替，在开发中根据需要去选择；
+-   var timer = setInterval(function(){},time);每间隔一段时间执行一次
+-   var timer = setTomeout();延时调用；隔一段之间之后执行
+-   clearInterval(timer);关闭定时器；
+-   clearTimeout(timer);关闭延时调用；
+-   延时调用和定时调用可以互相代替，在开发中根据需要去选择；
 
 ```javascript
-		/*
+/*
 			参数：
 				obj：要执行动画的对象；
 				attr：要执行动画的样式；比如：left top width height
@@ -1629,34 +1596,79 @@ obj1.sayName();
 				speed：动画的移动速度；
 				callback：动画执行结束时，调用回调函数；
 		 */
-		function move(obj,attr,target,speed,callback){
-			clearInterval(obj.timer);
-			var currentValue = parseInt(getStyle(obj,attr));
-			if(currentValue>=target){
-				speed = -speed;
-			}
-			// 向执行动画的对象中添加一个timer属性，用来保存自己的定时器标识；
-			obj.timer = setInterval(function(){
-				var oldValue = parseInt(getStyle(obj,attr));
-				var newValue = oldValue+speed;
-				if((speed>0 && newValue>target) || (speed<0 && newValue<target)){
-					newValue=target;
-					clearInterval(obj.timer);
-					// 如果传入的参数有回调函数就执行，没有就不执行
-					callback && callback();
-				}
-				obj.style[attr] = newValue+"px";
-				
-			},30);
-		}
-	
-		function getStyle(obj, name) {
-		    // 兼容代码方法1
-		    if (window.getComputedStyle) {
-		        return getComputedStyle(obj, null)[name];
-		    } else {
-		        return obj.currentStyle[name];
-		    }
-		}
+function move(obj, attr, target, speed, callback) {
+    clearInterval(obj.timer);
+    var currentValue = parseInt(getStyle(obj, attr));
+    if (currentValue >= target) {
+        speed = -speed;
+    }
+    // 向执行动画的对象中添加一个timer属性，用来保存自己的定时器标识；
+    obj.timer = setInterval(function () {
+        var oldValue = parseInt(getStyle(obj, attr));
+        var newValue = oldValue + speed;
+        if (
+            (speed > 0 && newValue > target) ||
+            (speed < 0 && newValue < target)
+        ) {
+            newValue = target;
+            clearInterval(obj.timer);
+            // 如果传入的参数有回调函数就执行，没有就不执行
+            callback && callback();
+        }
+        obj.style[attr] = newValue + "px";
+    }, 30);
+}
+
+function getStyle(obj, name) {
+    // 兼容代码方法1
+    if (window.getComputedStyle) {
+        return getComputedStyle(obj, null)[name];
+    } else {
+        return obj.currentStyle[name];
+    }
+}
 ```
->>>>>>> ef697cc4a40d81792505b5743f20fbdea2e362e0
+
+## 类的操作
+
+-   修改 class 属性
+
+    obj.className = newClassName;将新类中的样式应用到 obj;
+
+    ```javascript
+    // 定义一个函数向元素中添加指定的class属性值;
+    /*
+            参数：
+                obj：要添加class属性的元素
+                cn：要添加的class值
+         */
+    function addClass(obj, cn) {
+        if (!hasClass(obj, cn)) {
+            obj.className += " " + cn;
+        }
+    }
+
+    /*
+            判断一个元素是否有该类
+         */
+    function hasClass(obj, cn) {
+        var reg = new RegExp("\\b" + cn + "\\b");
+        // alert(reg);
+        return reg.test(obj.className);
+    }
+    // 删除元素中一个正则表达式
+    function removeClass(obj, cn) {
+        var reg = new RegExp("\\b" + cn + "\\b");
+
+        obj.className = obj.className.replace(reg, "");
+    }
+
+    // 如果元素中有该类就删除；没有该类就添加
+    function toggleClass(obj, cn) {
+        if (hasClass(obj, cn)) {
+            removeClass(obj, cn);
+        } else {
+            addClass(obj, cn);
+        }
+    }
+    ```

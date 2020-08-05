@@ -1,0 +1,80 @@
+<!--
+ * @Brief: 
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-08-05 11:46:42
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .b1 {
+                width: 100px;
+                height: 100px;
+                background-color: #bfa;
+            }
+
+            .b2 {
+                height: 200px;
+                background-color: yellow;
+            }
+        </style>
+    </head>
+    <body>
+        <button id="btn01">点击按钮以后修改box的样式</button>
+        <div id="box" class="b1"></div>
+    </body>
+    <script>
+        var btn01 = document.getElementById("btn01");
+        var box = document.getElementById("box");
+        btn01.onclick = function () {
+            /* box.style.width = "200px";
+            box.style.height = "200px";
+            box.style.backgroundColor = "yellow"; */
+            // box.className = "b2";
+            /*  addClass(box, "b2");
+            console.log(box.className);
+            removeClass(box, "b1"); */
+
+            toggleClass(box, "b2");
+        };
+
+        // 定义一个函数向元素中添加指定的class属性值;
+        /*
+            参数：
+                obj：要添加class属性的元素
+                cn：要添加的class值
+         */
+        function addClass(obj, cn) {
+            if (!hasClass(obj, cn)) {
+                obj.className += " " + cn;
+            }
+        }
+
+        /*
+            判断一个元素是否有该类
+         */
+        function hasClass(obj, cn) {
+            var reg = new RegExp("\\b" + cn + "\\b");
+            // alert(reg);
+            return reg.test(obj.className);
+        }
+        // 删除元素中一个正则表达式
+        function removeClass(obj, cn) {
+            var reg = new RegExp("\\b" + cn + "\\b");
+
+            obj.className = obj.className.replace(reg, "");
+        }
+
+        // 如果元素中有该类就删除；没有该类就添加
+        function toggleClass(obj, cn) {
+            if (hasClass(obj, cn)) {
+                removeClass(obj, cn);
+            } else {
+                addClass(obj, cn);
+            }
+        }
+    </script>
+</html>
