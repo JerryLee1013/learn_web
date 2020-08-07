@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>显示原型与隐式原型</title>
+</head>
+<body>
+<script>
+
+    function Fun() {//函数创建的时候即生成prototype属性
+        // 内部语句：this.prototype = {}
+
+    }
+    var f1 = new Fun()//内部语句：this.__proto__ = Fun.prototype
+
+    // 每个实例对象都一个__proto__，即隐式原型
+    console.log(f1.__proto__)//{constructor: ƒ}
+
+    // 对象的隐式原型的值为其对应构造函数的显示原型的值
+    console.log(Fun.prototype.constructor.prototype===f1.__proto__)//true
+    console.log(Fun.prototype===f1.__proto__)//true
+
+    Fun.prototype.test = function () {
+        console.log('test方法')
+    }
+
+    f1.test()
+</script>
+</body>
+</html>

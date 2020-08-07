@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    console.log(Object.prototype)
+    function Fn () {
+        this.test1 = function(){
+            console.log('test1')
+        }
+    }
+
+    console.log(Fn.prototype)
+   /* {constructor: ƒ}
+    test2: ƒ ()
+    constructor: ƒ Fn()
+    __proto__: Object*/
+
+    Fn.prototype.test2 = function () {
+        console.log('test2')
+    }
+    var fn = new Fn()
+    fn.test1()
+    fn.test2()
+    console.log(fn.toString())
+</script>
+</html>

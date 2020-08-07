@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型</title>
+</head>
+<body>
+<!--
+    函数的prototype属性
+-->
+<script>
+    console.log(Date.prototype.constructor,typeof Date.prototype)
+    function Fun() {
+        
+        
+    }
+    console.log(Fun.prototype)//object
+    Fun.prototype.test = function () {
+        
+        console.log('test函数')
+    }
+
+    console.log(Fun.prototype.constructor===Fun)//true
+</script>
+</body>
+</html>
