@@ -1,0 +1,37 @@
+<!--
+ * @Brief: 
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-08-06 19:57:16
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body></body>
+    <script>
+        var a = 1;
+        function fun(a) {
+            a = a + 1;
+            console.log("fun中的a:" + a);
+        }
+        fun(a);
+        console.log(a);
+
+        var obj = { name: "n1", age: 12 };
+        /* function fun2(obj) {
+            // obj.name = "n2";
+            obj = { name: "n2", age: 15 };
+        }
+        fun2(obj);
+        console.log(obj.name); //n1 */
+        function fun2() {
+            // obj.name = "n2";
+            obj = { name: "n2", age: 15 };
+        }
+        fun2();
+        console.log(obj.name); //n2
+    </script>
+</html>
