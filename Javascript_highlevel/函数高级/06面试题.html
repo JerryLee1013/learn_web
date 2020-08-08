@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    /*测试题1*/
+    function A() {
+        
+    }
+    A.prototype.n = 2
+    var b = new A()
+    A.prototype = {
+        n:3,
+        m:4
+    }
+    var c = new A()
+    console.log(b.n, b.m, c.n, c.m)//2 undefined 3 4
+
+    /*测试题2*/
+    var F = new Function()
+    Object.prototype.a = function(){
+        console.log("a()")
+    }
+    Function.prototype.b = function () {
+        console.log("b()")
+    }
+    var f = new F()
+    f.a()
+    // f.b()//f.b is not a function
+    // f.b不在Function的原型链上
+    F.a()
+    F.b()
+    
+</script>
+</html>

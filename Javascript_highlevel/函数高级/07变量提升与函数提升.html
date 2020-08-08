@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    var a = 3
+    function fn() {
+        console.log(a)//变量提升
+        var a = 4
+    }
+    fn()//undefined
+    
+    console.log(b)//undefined变量提升
+    var b = 3
+
+    fn2()//函数提升，可调用
+    fn3()//不可调用，这是变量提升
+    function fn2(){
+        console.log("fn2()")
+    }
+    var fn3 = function fn3() {
+        console.log("fn3()")
+    }
+</script>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    /*全局执行上下文*/
+    console.log(a1)//undefined
+    console.log(a2)//ƒ a2() {}
+    console.log(this)//window
+    var a1 = 3
+    function a2() {
+      
+    }
+    
+    console.log("--------------")
+
+    /*函数体执行上下文*/
+    fn(2,3)//
+
+    function fn(a1) {
+        console.log(a1)//2
+        console.log(a2)//undefined
+        a3()//a3()
+        console.log(this)//window
+        console.log(arguments)//[2,3]
+        var a2 = 3
+        function a3(){
+            console.log("a3()")
+        }
+    }
+</script>
+</html>
