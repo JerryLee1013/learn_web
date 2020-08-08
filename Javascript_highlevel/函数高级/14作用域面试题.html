@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="button" value="btn1">
+    <input type="button" value="btn2">
+    <input type="button" value="btn3">
+    <input type="button" value="btn4">
+
+</body>
+<script>
+    var btns = document.querySelectorAll("input[type='button']")
+    var length = btns.length
+
+    /*将i赋值给btn的属性*/
+    /*for (var i = 0;i<length;i++){
+        var btn = btns[i]
+        btn.index = i
+        btn.onclick = function () {
+            alert("第"+(this.index+1)+"个")
+        }
+    }*/
+
+    /*使用闭包*/
+    /*for (var i = 0;i<length;i++){
+        (function(i){
+            btns[i].onclick = function () {
+                alert("第"+(i+1)+"个")
+            }
+        })(i)
+    }*/
+
+    /*块作用域*/
+    for (let i = 0;i<length;i++){
+        btns[i].onclick = function () {
+            alert("第"+(i+1)+"个")
+        }
+    }
+</script>
+</html>
