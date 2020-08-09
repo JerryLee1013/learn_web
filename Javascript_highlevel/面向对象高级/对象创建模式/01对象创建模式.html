@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var p = new Object()
+
+    p.name = "Tom"
+    p.age = 12
+    console.log(p)
+
+    // 工厂模式
+    function createPerson(name,age){
+        var obj = {
+            name:name,
+            age:age,
+            setName:function (name) {
+                this.name = name
+            }
+
+        }
+
+        return  obj
+    }
+
+    var p1 = createPerson("Tom",12)
+    var p2 = createPerson("Bob",13)
+
+    p1.setName("Jerry")
+    console.log(p1)
+    console.log(p2)
+    
+    
+    function createStudent(name,price) {
+        var obj = {
+            name:name,
+            price:price,
+
+        }
+
+        return  obj
+    }
+    var s1 = createPerson("Tom",12000)
+    var s2 = createPerson("Bob",13000)
+    
+    
+    function Person(name,age) {
+        this.name = name
+        this.age =  age
+        this.setName = function(name){
+            this.name = name
+        }
+    }
+
+    var p3 = new Person("Tom",12)
+    var p4 = new Person("Bob",15)
+</script>
+</body>
+</html>
