@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*父类型*/
+    function Super(name,age){
+        this.name = name
+        this.age = age
+    }
+    
+    Super.prototype.setName = function (name){
+        this.name = name
+    }
+
+    /*子类型*/
+    function Sub(name,age,price){
+        Super.call(this,name,age)//相当于this.Super(name.age)
+        this.price = price
+    }
+    //子类型的原型为父类型的一个实例对象
+    Sub.prototype = new Super()
+    //将子类型原型的构造属性设置为子类型
+    Sub.prototype.constructor = Sub
+    //给子类型原型添加方法
+    Sub.prototype.setAge = function (age) {
+        this.age = age
+    }
+     var s1 = new Sub("Bob",14,13000)
+    s1.setName("jey")
+    s1.setAge(19)
+
+    console.log(s1)
+    
+</script>
+</body>
+</html>

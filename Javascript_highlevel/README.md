@@ -252,6 +252,175 @@
 
 ### 闭包
 
+####  闭包相关
+
+1.  如何产生闭包
+    
+    - 当一个嵌套的内部子函数引用了嵌套外部的外部父函数的变量时，就产生了闭包
+
+2.  闭包到底是什么？
+    
+    - 使用chrome调试查看
+    - 理解1：闭包是嵌套的内部函数
+    - 理解2：闭包包含被引用变量（函数）的对象
+    - 闭包存在于嵌套的内部函数中
+
+3.  产生闭包的条件
+
+    - 函数嵌套
+    - 内部函数引用了外部函数的数据
+
+####  常见的闭包
+1.  将函数作为另一个函数的返回值
+
+  ```javascript
+    function fn1() {
+        var a = 2
+        function fn2() {
+            a++
+            console.log(a)
+        }
+
+        return fn2
+    }
+    var f = fn1()
+    f()//3
+    f()//4
+  ```
+
+2.  将函数作为实参传递给另一个函数调用
+
+  ```javascript
+    function showDelay(msg,time){
+        setTimeout(funtion(){
+            alert(msg)
+        },time)
+    }
+
+    showDelay("123",3000)
+  ```
+
+####  闭包的作用
+
+1.  使函数内部的变量，在函数执行完毕后，仍然存在于内存中
+2.  让函数外部可以操作到函数内部的数据
+
+**问题：**
+1.  函数执行完后，函数内部声明的局部变量是否还存在？
+
+    >一般不存在,存在于闭包中的变量才可能存在
+
+2.  在函数外部能直接访问函数内部的局部变量吗？
+
+    >不能,但是通过闭包，可以让外部操作它
+    
+####  闭包的生命周期
+
+产生：在嵌套内部函数定义执行完时就产生了（不是在调用的时候）
+死亡：在嵌套内部函数成为垃圾对象时死亡
+
+  ```javascript
+    function fn1() {
+
+        //此时闭包就已经产生了，（函数提升，内部函数对象已经创建了）
+        var a = 2
+        function fn2() {
+            a++
+            console.log(a)
+        }
+
+        return fn2
+    }
+    var f = fn1()//
+    f()//3
+    f()//4
+
+    f = null;//闭包死亡
+
+  ```
+
+####  闭包的应用
+
+  闭包的应用：定义js模块
+  -   具有特定功能的js模块
+  -   将所有的数据和功能都封装在一个函数内部（私有的）
+  -   只向外暴露一个包含n个方法的对象或函数
+  -   模块的使用者，只需要通过模块暴露的对象调用方法来实现对应的功能
+  -   没有返回值，使用IFEE，将方法设置为window对象属性，在代码中可以直接调用
+
+
+  ```javascript
+    (function(){
+     var msg = "message"
+     function doSomething() {
+          console.log("doSomething()"+msg.toUpperCase())
+      }
+      
+      function doOtherthing() {
+          console.log("doOtherthing()"+msg.toLowerCase())
+      }
+  
+      window.myModule2 = {
+          doSomething:doSomething,
+          doOtherthing:doOtherthing
+      }
+    })()
+  ```
+- 返回值为对象
+
+
+```javascript
+  function myModule() {
+    var msg = "message"
+    function doSomething() {
+        console.log("doSomething()"+msg.toUpperCase())
+    }
+    
+    function doOtherthing() {
+        console.log("doOtherthing()"+msg.toLowerCase())
+    }
+
+    return {
+        doSomething:doSomething,
+        doOtherthing:doOtherthing
+    }
+  }
+```
+
+####  缺点
+- 函数执行完后，函数内的局部变量没有哦释放，占用内存时间会边长
+- 容易造成**内存泄漏**（内存被占用没有释放）
+    **解决**
+    - 能不用闭包就不用
+    - 及时释放
+
+  **内存溢出**
+  - 一种程序运行出现的错误
+  - 当程序运行需要的内存超过了剩余的内存时，就会抛出内存溢出的错误
+  
+  
+  **内存泄漏**
+  - 占用的内存没有释放
+  - 内存泄漏积累多了就容易导致内存溢出
+  - 常见的内存泄漏
+    - 意外的全局变量
+    - 没有及时清理的计时器或回调函数
+    - 闭包
 
 
 --------
+
+##  原型链的继承
+
+1.  套路
+  - 定义父类型的构造函数
+  - 给父类型的原型添加方法
+  - 定义子类型的构造函数
+  - 创建父类型对象赋值给子类型的原型
+  - 将子类型原型的构造属性设置为子类型
+  - 给子类型原型添加方法
+  - 创建子类型的对象
+
+2.  关键
+
+  - **子类型的原型为父类型的一个实例对象**
