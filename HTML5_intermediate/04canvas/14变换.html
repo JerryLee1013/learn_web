@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            html,
+            body {
+                height: 100%;
+                overflow: hidden;
+            }
+            body {
+                background-color: pink;
+            }
+            canvas {
+                background-color: #fff;
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                margin: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="canvas" width="400px" height="400px">
+            <span>
+                对不起您的浏览器不支持画图，请更新至最新版本的浏览器
+            </span>
+        </canvas>
+    </body>
+    <script>
+        window.onload = function () {
+            var canvas = document.querySelector("#canvas");
+            if (canvas.getContext) {
+                var ctx = canvas.getContext("2d");
+            }
+
+            ctx.translate(200, 200);
+            // ctx.beginPath();
+            // ctx.arc(-100, -100, 50, 0, 360);
+            // ctx.stroke();
+
+            ctx.rotate((45 * Math.PI) / 180);
+            ctx.beginPath();
+            ctx.fillRect(-50, -50, 100, 100);
+        };
+    </script>
+</html>

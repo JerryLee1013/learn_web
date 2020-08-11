@@ -1,0 +1,57 @@
+<!--
+ * @Brief: 
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-08-11 16:26:34
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            html,
+            body {
+                height: 100%;
+                overflow: hidden;
+            }
+            body {
+                background-color: pink;
+            }
+            canvas {
+                background-color: gray;
+                /*  width: 500px;
+                height: 500px; */
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                margin: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 默认300*150的画布 -->
+        <canvas id="test" width="300px" height="300px">
+            <span>
+                您的浏览器不支持画布元素，请您换成最新的浏览器
+            </span>
+        </canvas>
+    </body>
+    <script>
+        window.onload = function () {
+            var testNode = document.getElementById("test");
+            //判断是否存在画笔
+            if (testNode.getContext) {
+                var ctx = testNode.getContext("2d");
+                ctx.fillStyle = "rgb(222,123,124)";
+                ctx.fillRect(100, 120, 140, 160);
+            }
+        };
+    </script>
+</html>

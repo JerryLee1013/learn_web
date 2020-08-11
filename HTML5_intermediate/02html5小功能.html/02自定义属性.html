@@ -1,0 +1,33 @@
+<!--
+ * @Brief: 
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-08-11 14:23:29
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div
+            id="test"
+            class="s1 s2"
+            data-defined="definedValue"
+            data-defined-sec="TheSecond_"
+        ></div>
+    </body>
+    <script>
+        var testNode = document.getElementById("test");
+        // 修改自定义属性
+        testNode.setAttribute("data-defined", "definedModifyValue");
+
+        //在js中存在针对自定义属性的方法dataset
+        console.log(testNode.dataset.defined);
+
+        // 输出data-defined-sec="TheSecond_"自定义属性
+        //第二个-后面使用驼峰命名法
+        console.log(testNode.dataset.definedSec);
+    </script>
+</html>

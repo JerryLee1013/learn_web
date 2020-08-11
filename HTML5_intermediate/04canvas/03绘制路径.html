@@ -1,0 +1,63 @@
+<!--
+ * @Brief: 
+ * @LastEditors: Jerry Lee
+ * @LastEditTime: 2020-08-11 17:01:42
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            html,
+            body {
+                height: 100%;
+                overflow: hidden;
+            }
+            body {
+                background-color: pink;
+            }
+            canvas {
+                background-color: gray;
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                margin: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 默认300*150的画布 -->
+        <canvas id="test" width="300px" height="300px">
+            <span>
+                您的浏览器不支持画布元素，请您换成最新的浏览器
+            </span>
+        </canvas>
+    </body>
+    <script>
+        window.onload = function () {
+            var canvas = document.getElementById("test");
+            //判断是否存在画笔
+            if (canvas.getContext) {
+                //定义画图布局为2d
+                var ctx = canvas.getContext("2d");
+                ctx.strokeStyle = "pink";
+                ctx.lineWidth = 10;
+                ctx.moveTo(100, 100);
+                ctx.lineTo(100, 200);
+                ctx.lineTo(200, 200);
+                // ctx.lineTo(100, 100);
+                ctx.closePath();
+                ctx.stroke();
+                ctx.fill(); //它会自动合并路径
+            }
+        };
+    </script>
+</html>

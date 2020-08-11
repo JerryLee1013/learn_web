@@ -1,0 +1,27 @@
+<!-- <!DOCTYPE html>注释后按怪异模式解析 -->
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            /* 在IE9以上的浏览器中三种模式在渲染方面几乎没有区别;
+            在IE789中；理论上存在怪异模式，实际上只有标准模式
+            在IE6中；标准模式和怪异模式区别最大
+            在IE6以下的浏览器中，只有怪异模式 */
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            #test {
+                width: 300px;
+                height: 300px;
+                padding: 50px;
+                background-color: pink;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="test"></div>
+    </body>
+</html>
