@@ -1,7 +1,7 @@
 <!--
  * @Brief:
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-08-11 22:01:26
+ * @LastEditTime: 2020-08-13 10:34:43
 -->
 
 # HTML5 深入学习：
@@ -341,6 +341,6 @@ console.log(testNode.classList);
     在 canvas 中 rotate 是累加的
 -   scale(x,y)
     scale 方法接受两个参数。(x,y)分别是横轴和纵轴的缩放因子，他们都必须是正值
-    值比 1.0 小表示缩小，比 1.0 大表示方法，1.0 时什么都不变
+    值比 1.0 小表示缩小，使 css 像素的个数变少,比 1.0 大表示放大，使 css 像素的个数变多,1.0 时什么都不变
     缩放一般我们用它来增减图形在 canvas 中的像素数目，对图形位图进行缩小或放大
     在 canvas 中 scale 时累乘的
