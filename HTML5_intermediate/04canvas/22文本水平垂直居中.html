@@ -1,0 +1,63 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-08-13 22:47:38
+ * @LastEditTime: 2020-08-13 22:58:32
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \GithubRepositories\JerryLee1013.github.io\HTML5_intermediate\04canvas\22中文文本水平垂直居中.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            html,
+            body {
+                height: 100%;
+            }
+            body {
+                background-color: #000;
+            }
+            #canvas {
+                background-color: white;
+                position: absolute;
+                right: 0;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                margin: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="canvas" width="500px" height="500px">
+            <span>
+                对不起您的浏览器不支持画布，请升级浏览器到最新版本
+            </span>
+        </canvas>
+    </body>
+    <script>
+        window.onload = function () {
+            var canvas = document.getElementById("canvas");
+
+            if (canvas.getContext) {
+                var ctx = canvas.getContext("2d");
+                ctx.fillStyle = "red";
+                ctx.font = "40px sans-serif";
+                ctx.textBaseline = "middle";
+                var w = ctx.measureText("abc宝宝").width;
+                ctx.fillText(
+                    "abc宝宝",
+                    (canvas.width - w) / 2,
+                    (canvas.height - 40) / 2
+                );
+            }
+        };
+    </script>
+</html>

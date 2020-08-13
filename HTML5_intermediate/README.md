@@ -1,7 +1,7 @@
 <!--
  * @Brief:
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-08-13 10:34:43
+ * @LastEditTime: 2020-08-13 23:01:04
 -->
 
 # HTML5 深入学习：
@@ -344,3 +344,240 @@ console.log(testNode.classList);
     值比 1.0 小表示缩小，使 css 像素的个数变少,比 1.0 大表示放大，使 css 像素的个数变多,1.0 时什么都不变
     缩放一般我们用它来增减图形在 canvas 中的像素数目，对图形位图进行缩小或放大
     在 canvas 中 scale 时累乘的
+
+### canvas 中插入图片
+
+-   canvas 操作图片时，必须要等图片加载完成才操作
+-   void ctx.drawImage(image, dx, dy);
+-   void ctx.drawImage(image, dx, dy, dWidth, dHeight);
+-   void ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
+
+    -   image
+        绘制到上下文的元素。允许任何的 canvas 图像源(CanvasImageSource)，例如：CSSImageValue，HTMLImageElement，SVGImageElement，HTMLVideoElement，HTMLCanvasElement，ImageBitmap 或者 OffscreenCanvas。
+    -   sx 可选
+        需要绘制到目标上下文中的，image 的矩形（裁剪）选择框的左上角 X 轴坐标。
+    -   sy 可选
+        需要绘制到目标上下文中的，image 的矩形（裁剪）选择框的左上角 Y 轴坐标。
+    -   sWidth 可选
+        需要绘制到目标上下文中的，image 的矩形（裁剪）选择框的宽度。如果不说明，整个矩形（裁剪）从坐标的 sx 和 sy 开始，到 image 的右下角结束。
+    -   sHeight 可选
+        需要绘制到目标上下文中的，image 的矩形（裁剪）选择框的高度。
+    -   dx
+        image 的左上角在目标 canvas 上 X 轴坐标。
+    -   dy
+        image 的左上角在目标 canvas 上 Y 轴坐标。
+    -   dWidth 可选
+        image 在目标 canvas 上绘制的宽度。 允许对绘制的 image 进行缩放。 如果不说明， 在绘制时 image 宽度不会缩放。
+    -   dHeight 可选
+        image 在目标 canvas 上绘制的高度。 允许对绘制的 image 进行缩放。 如果不说明， 在绘制时 image 高度不会缩放。
+
+-   canvas 中设置背景
+    -   设置背景
+        -   createPattern(img,repeation)
+        -   img:图像对象
+        -   repeation：
+            -   repeat
+            -   repeat-x
+            -   repeat-y
+            -   no-repeat
+    -   设置线性渐变
+    -   ctx.createLinearGradient(x, y, dx, dy);
+        -   x,y 是坐标
+        -   dx,dy 长度
+        -   gradient.addColorStop(num, color);
+            -   num(取 0~1 之间的数值)
+            -   color 表示渐变颜色
+    -   设置径向渐变
+    -   var gradient = ctx.createRadialGradient(x,y,r,x,y,R);
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            html,
+            body {
+                height: 100%;
+            }
+            body {
+                background-color: #000;
+            }
+            #canvas {
+                background-color: white;
+                position: absolute;
+                right: 0;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                margin: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="canvas" width="500px" height="500px">
+            <span>
+                对不起您的浏览器不支持画布，请升级浏览器到最新版本
+            </span>
+        </canvas>
+    </body>
+    <script>
+        window.onload = function () {
+            var canvas = document.getElementById("canvas");
+            var deg = ((360 / 60) * Math.PI) / 180;
+            var secDegPerSec = deg;
+            var minDegPerSec = ((360 / 3600) * Math.PI) / 180;
+            var hourDegPerSec = ((360 / 3600 / 12) * Math.PI) / 180;
+            if (canvas.getContext) {
+                var ctx = canvas.getContext("2d");
+
+                var img = new Image();
+                img.src = "../img/314301.jpg";
+                img.onload = function () {
+                    draw();
+                };
+
+                function draw() {
+                    //背景图片
+                    // ctx.drawImage(img, 100, 100);
+                    // 背景对象
+                    // var pattern = ctx.createPattern(img, "no-repeat");
+                    // 线性渐变
+                    // var gradient = ctx.createLinearGradient(0, 0, 300, 300);
+                    //径向渐变
+                    var gradient = ctx.createRadialGradient(
+                        250,
+                        250,
+                        50,
+                        250,
+                        250,
+                        100
+                    );
+                    gradient.addColorStop(0, "red");
+                    gradient.addColorStop(0.5, "yellow");
+                    gradient.addColorStop(1, "pink");
+                    ctx.fillStyle = gradient;
+                    ctx.fillRect(0, 0, 500, 500);
+                }
+            }
+        };
+    </script>
+</html>
+```
+
+### 文本样式属性
+
+-   font = value
+    -   当前我们用来绘制文本的样式，这个字符串使用和 css 属性相同的语法
+    -   默认字体是 10px sans-serif
+    -   font 属性在指定时必须要有大小和字体
+-   textAlign
+    -   和 css 中 font 属性一样
+    -   不一样的是，位置信息，以 fillText("text",x,y)中（x,y）为基准点
+-   textBaseline
+    -   top
+    -   middle
+    -   bottom
+-   fillText("text",x,y)填充文本
+    -   strokeText("text",x,y)，给文本描边
+-   measureText
+    -   返回一个对象,包含关于文本尺寸的信息
+
+#### canvas 文本的水平垂直居中
+
+-   方法 1：
+
+```javascript
+window.onload = function () {
+    var canvas = document.getElementById("canvas");
+
+    if (canvas.getContext) {
+        var ctx = canvas.getContext("2d");
+        ctx.fillStyle = "red";
+        ctx.font = "40px sans-serif";
+        ctx.textBaseline = "middle";
+        var w = ctx.measureText("abc宝宝").width;
+        ctx.fillText(
+            "abc宝宝",
+            (canvas.width - w) / 2,
+            (canvas.height - 40) / 2
+        );
+    }
+};
+```
+
+-   方法 2
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            html,
+            body {
+                height: 100%;
+            }
+            body {
+                background-color: #000;
+            }
+            #canvas {
+                background-color: white;
+                position: absolute;
+                right: 0;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                margin: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="canvas" width="500px" height="500px">
+            <span>
+                对不起您的浏览器不支持画布，请升级浏览器到最新版本
+            </span>
+        </canvas>
+    </body>
+    <script>
+        window.onload = function () {
+            var canvas = document.getElementById("canvas");
+
+            if (canvas.getContext) {
+                var ctx = canvas.getContext("2d");
+                //水平基准线
+                ctx.beginPath();
+                ctx.moveTo(0, 250);
+                ctx.lineTo(500, 250);
+                ctx.stroke();
+                //垂直基准线
+                ctx.beginPath();
+                ctx.moveTo(250, 0);
+                ctx.lineTo(250, 500);
+                ctx.stroke();
+
+                ctx.beginPath();
+                ctx.fillStyle = "red";
+                ctx.font = "30px sans-serif";
+                /* 文本的水平垂直居中 */
+                ctx.textAlign = "center";
+                ctx.textBaseline = "middle";
+                ctx.fillText("ahsAHAS按时艰是了", 250, 250);
+                ctx.strokeText("ahsAHAS按时艰是了", 250, 250);
+            }
+        };
+    </script>
+</html>
+```
