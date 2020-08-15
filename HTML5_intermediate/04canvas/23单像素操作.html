@@ -1,0 +1,101 @@
+<!--
+ * @Brief: 
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2020-08-15 11:41:25
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            html,
+            body {
+                height: 100%;
+                overflow: hidden;
+            }
+            body {
+                background-color: pink;
+            }
+            canvas {
+                background-color: gray;
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                margin: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 默认300*150的画布 -->
+        <canvas id="test" width="300px" height="300px">
+            <span>
+                您的浏览器不支持画布元素，请您换成最新的浏览器
+            </span>
+        </canvas>
+    </body>
+    <script>
+        window.onload = function () {
+            var canvas = document.getElementById("test");
+            //判断是否存在画笔
+            if (canvas.getContext) {
+                var ctx = canvas.getContext("2d");
+                ctx.save();
+                ctx.fillStyle = "red";
+                ctx.beginPath();
+                ctx.fillRect(50, 50, 100, 100);
+                ctx.restore();
+                var imgdata = ctx.getImageData(
+                    0,
+                    0,
+                    canvas.width,
+                    canvas.height
+                );
+                /* var color = getPxInfo(imgdata, 50, 50);
+                console.log(color); */
+                var color = [255, 0, 0, 255];
+                for (var i = 0; i < imgdata.width; i++) {
+                    setPxInfo(imgdata, i, 20, color);
+                }
+                ctx.putImageData(imgdata, 0, 0);
+            }
+
+            function getPxInfo(imgdata, x, y) {
+                var color = [];
+                var data = imgdata.data;
+                var w = imgdata.width;
+                var h = imgdata.height;
+                // console.log(w, h);
+                //R
+                color[0] = data[(y * w + x) * 4];
+                //G
+                color[1] = data[(y * w + x) * 4 + 1];
+                //B
+                color[2] = data[(y * w + x) * 4 + 2];
+                //A
+                color[3] = data[(y * w + x) * 4 + 3];
+                return color;
+            }
+
+            function setPxInfo(imgdata, x, y, color) {
+                var data = imgdata.data;
+                var w = imgdata.width;
+                //R
+                data[(y * w + x) * 4] = color[0];
+                //G
+                data[(y * w + x) * 4 + 1] = color[1];
+                //B
+                data[(y * w + x) * 4 + 2] = color[2];
+                //A
+                data[(y * w + x) * 4 + 3] = color[3];
+            }
+        };
+    </script>
+</html>

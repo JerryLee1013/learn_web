@@ -1,0 +1,134 @@
+<!--
+ * @Brief: 
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2020-08-15 13:41:47
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            html,
+            body {
+                height: 100%;
+                overflow: hidden;
+            }
+            body {
+                background-color: pink;
+            }
+            canvas {
+                background-color: white;
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                margin: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 默认300*150的画布 -->
+        <canvas id="test" width="300px" height="300px">
+            <span>
+                您的浏览器不支持画布元素，请您换成最新的浏览器
+            </span>
+        </canvas>
+    </body>
+    <script>
+        window.onload = function () {
+            var canvas = document.getElementById("test");
+            //判断是否存在画笔
+            if (canvas.getContext) {
+                var ctx = canvas.getContext("2d");
+                var img = new Image();
+                img.src = "../img/314301.jpg";
+
+                img.onload = function () {
+                    canvas.width = img.width * 2;
+                    canvas.height = img.height;
+                    draw();
+                };
+
+                function draw() {
+                    ctx.drawImage(img, 0, 0);
+                    var oldImgdata = ctx.getImageData(
+                        0,
+                        0,
+                        img.width,
+                        img.height
+                    );
+
+                    var newImgdata = ctx.createImageData(img.width, img.height);
+                    //做马赛克
+                    /*
+                        1.选取一个马赛克矩形
+                        2.从马赛克矩形中随机抽出一个像素点信息RGBA
+                        3.将整个马赛克矩形中的像素点信息统一调成随机抽出那个
+                    */
+                    var size = 5;
+
+                    for (var i = 0; i < oldImgdata.width / size; i++) {
+                        for (var j = 0; j < oldImgdata.height / size; j++) {
+                            //（i,j）每一个马赛克矩形的坐标
+                            //(0,0)-(4,4)
+                            var color = getPxInfo(
+                                oldImgdata,
+                                i * size + Math.floor(Math.random() * size),
+                                j * size + Math.floor(Math.random() * size)
+                            );
+
+                            for (var a = 0; a < size; a++) {
+                                for (var b = 0; b < size; b++) {
+                                    setPxInfo(
+                                        newImgdata,
+                                        i * size + a,
+                                        j * size + b,
+                                        color
+                                    );
+                                }
+                            }
+                        }
+                    }
+                    ctx.putImageData(newImgdata, img.width, 0);
+                }
+
+                function getPxInfo(imgdata, x, y) {
+                    var color = [];
+                    var data = imgdata.data;
+                    var w = imgdata.width;
+                    var h = imgdata.height;
+                    // console.log(w, h);
+                    //R
+                    color[0] = data[(y * w + x) * 4];
+                    //G
+                    color[1] = data[(y * w + x) * 4 + 1];
+                    //B
+                    color[2] = data[(y * w + x) * 4 + 2];
+                    //A
+                    color[3] = data[(y * w + x) * 4 + 3];
+                    return color;
+                }
+
+                function setPxInfo(imgdata, x, y, color) {
+                    var data = imgdata.data;
+                    var w = imgdata.width;
+                    //R
+                    data[(y * w + x) * 4] = color[0];
+                    //G
+                    data[(y * w + x) * 4 + 1] = color[1];
+                    //B
+                    data[(y * w + x) * 4 + 2] = color[2];
+                    //A
+                    data[(y * w + x) * 4 + 3] = color[3];
+                }
+            }
+        };
+    </script>
+</html>

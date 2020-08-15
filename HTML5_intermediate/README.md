@@ -1,7 +1,7 @@
 <!--
  * @Brief:
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-08-13 23:01:04
+ * @LastEditTime: 2020-08-15 16:16:32
 -->
 
 # HTML5 深入学习：
@@ -581,3 +581,70 @@ window.onload = function () {
     </script>
 </html>
 ```
+
+### canvas 中的像素操作
+
+#### 得到场景像素数据
+
+    -   getImageData()获得一个包含话补偿金像素数据的ImageData对象，它代表画布区域的对象数据
+    -   ctx.getImageData(x,y,dx,dy)
+
+#### ImageData 对象
+
+    -   ImageData对象中存储着canvas对象真实的像素数据；包含以下几个只读属性
+        -   width
+        -   height
+        -   data：Uint8ClampedArray类型的一维数组
+            包含着RGBA格式的整型数据
+    -   imageData = ctx.getImageData(x,y,dx,dy)
+
+#### 在场景中写入像素数据
+
+    -   putImageData(myImageData,dx,dy)
+        -   dx,dy参数表示你希望在场景左上角绘制的像素数据所得到的设备坐标
+
+#### 创建一个 ImageData 对象
+
+    -   ctx.createImageData(width,height)
+        -   width,height:新建对象的宽度和高度
+
+### canvas 合成
+
+#### ctx.globalAlpha;属性，设置图形透明度
+
+#### 覆盖合成
+
+-   source;新的图像（源）
+-   destination;已经绘制过的图形（目标）
+-   ctx.globalCompositeOperation
+
+    -   属性值
+    -   source-over 默认值，源在上面显示
+    -   source-in 只留下源和目标重叠的部分，显示源的剩余部分
+    -   source-out 只留下源超过目标的部分
+    -   source-atop 剪掉源超过目标的部分
+    -   destination-over 目标显示在上面
+    -   destination-in 只留下源和目标重叠的部分,显示目标的剩余部分
+    -   destination-out 只留下目标超过源的部分
+    -   destination-atop 剪掉目标超过源的部分
+
+    ```javascript
+    window.onload = function () {
+        var canvas = document.getElementById("test");
+        //判断是否存在画笔
+        if (canvas.getContext) {
+            var ctx = canvas.getContext("2d");
+
+            ctx.fillStyle = "pink";
+            ctx.fillRect(50, 50, 100, 100);
+            // ctx.globalCompositeOperation = "source-atop";
+            ctx.globalCompositeOperation = "destination-atop";
+            ctx.fillStyle = "red";
+            ctx.fillRect(100, 100, 100, 100);
+        }
+    };
+    ```
+
+#### ctx.isPointInPath(x, y)
+
+    判断画布中点击的位置(x, y)是否存在图像
