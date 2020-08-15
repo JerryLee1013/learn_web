@@ -1,0 +1,53 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-08-15 18:15:45
+ * @LastEditTime: 2020-08-15 18:26:14
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \GithubRepositories\JerryLee1013.github.io\HTML5_intermediate\05音视频标签.html\03音视频标签的property.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <video
+            src="../video/天气之子唯美片段.mp4"
+            controls
+            width="500px"
+        ></video>
+        <audio
+            src="../video/天气之子唯美片段.mp3"
+            controls
+            width="500px"
+        ></audio>
+    </body>
+    <script>
+        /*
+            音视频js相关属性：
+                duration：媒体总时间，只读
+                currentTime：开始播放到现在所用的时间
+                muted：是否静音；可读写，相比volume优先级更高
+                volume：0-1的音量相对值，可读写
+                paused：实体是否暂停，只读
+                ended：媒体是否播放完毕，只读
+                error：媒体发生错误的时候，返回错误代码
+                currentSrc：以字符串的形式返回媒体地址
+            
+                视频中多的部分：
+                    poster：视频播放前的预览图片，可读写
+                    width，height：设置视频尺寸，可读写
+                    videoWidth，videoHeight：视频的实际尺寸（只读）
+         */
+        window.onload = function () {
+            var video = document.querySelector("video");
+            var audio = document.querySelector("audio");
+
+            console.log(video.duration);
+            console.log(audio.duration);
+        };
+    </script>
+</html>
