@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <video controls width="500px">
+            <source src="../video/天气之子唯美片段.mp4" type="video/mp4" />
+            <source src="../video/天气之子唯美片段.ogg" type="video/ogg" />
+            <source src="../video/天气之子唯美片段.webm" type="video/webm" />
+        </video>
+        <audio
+            src="../video/天气之子唯美片段.mp3"
+            controls
+            width="500px"
+        ></audio>
+    </body>
+    <script>
+        window.onload = function () {
+            var video = document.querySelector("video");
+            var audio = document.querySelector("audio");
+            var sources = document.querySelectorAll("source");
+
+            //通过src改变源文件，必须通过load（）重新加载
+            sources[0].src = "../video/天气之子唯美片段.webm";
+            sources[1].src = "../video/天气之子唯美片段.mp4";
+            sources[2].src = "../video/天气之子唯美片段.ogg";
+            video.load();
+        };
+    </script>
+</html>
