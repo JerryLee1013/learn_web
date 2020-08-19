@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="../css/index.css" />
+        <link rel="stylesheet" href="../font/iconfont.css" />
+    </head>
+    <body>
+        <div id="wrap">
+            <video src="../video/天气之子唯美片段.mp4"></video>
+            <div class="control">
+                <!-- 开始/暂停控制 -->
+                <div class="btns">
+                    <span class="start iconfont icon-colorstop"></span>
+                    <span class="stop iconfont icon-paused"></span>
+                </div>
+                <!-- 播放进度条 -->
+                <div class="progress">
+                    <div class="wrap">
+                        <div class="inner"></div>
+                    </div>
+                    <div class="deeppink"></div>
+                </div>
+                <!-- 其他控制模块 -->
+                <div class="others">
+                    <!-- 时间显示 -->
+                    <div class="time"><span>00:00:00/00:00:00</span></div>
+                    <!-- 音量控制 -->
+                    <div class="sound">
+                        <div class="switch">
+                            <span class="iconfont icon-soundl"></span>
+                        </div>
+                        <div class="progress">
+                            <div class="wrap">
+                                <div class="inner"></div>
+                            </div>
+                            <div class="deeppink"></div>
+                        </div>
+                    </div>
+                    <!-- 全屏按钮 -->
+                    <div class="full-screen">
+                        <span class="iconfont icon-full-screen1"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="../js/drag.js"></script>
+    <script src="../js/class.js"></script>
+    <script>
+        window.onload = function () {
+            var video = document.querySelector("#wrap > video");
+            var control = document.querySelector("#wrap > .control");
+            var progress = document.querySelector("#wrap>.control>.progress");
+            var inner = document.querySelector(
+                "#wrap>.control>.progress .inner"
+            );
+            var deeppink = document.querySelector(
+                "#wrap>.control>.progress .deeppink"
+            );
+
+            var inner2 = document.querySelector(
+                "#wrap>.control>.others>.sound>.progress .inner"
+            );
+            var deeppink2 = document.querySelector(
+                "#wrap>.control>.others>.sound>.progress>.deeppink"
+            );
+            var start = document.querySelector("#wrap>.control>.btns>.start");
+            var stop = document.querySelector("#wrap>.control>.btns>.stop");
+            video.width = document.documentElement.clientWidth;
+            video.height =
+                document.documentElement.clientHeight - control.offsetHeight;
+            window.onresize = function () {
+                video.width = document.documentElement.clientWidth;
+                video.height =
+                    document.documentElement.clientHeight -
+                    control.offsetHeight;
+            };
+
+            var callback = {
+                //回调机制
+                move: function () {
+                    deeppink.style.width = this.offsetLeft + "px";
+                },
+            };
+
+            //功能
+            player();
+            function player() {
+                progress.onclick = function (ev) {
+                    ev = ev || event;
+                    removeClass(start, "icon-colorstop");
+                    addClass(start, "icon-colorstart");
+                    video.play();
+                    video.currentTime =
+                        video.duration *
+                        ((ev.clientX - this.offsetLeft) /
+                            (this.clientWidth - inner.offsetWidth));
+
+                    console.log(video.currentTime);
+                    move();
+                };
+
+                start.onclick = function () {
+                    if (video.paused) {
+                        //暂停--播放--显示暂停按钮
+                        removeClass(this, "icon-colorstop");
+                        addClass(this, "icon-colorstart");
+                        video.play();
+                        setInterval(move, 1);
+                    } else {
+                        removeClass(this, "icon-colorstart");
+                        addClass(this, "icon-colorstop");
+                        video.pause();
+                    }
+                };
+
+                stop.onclick = function () {
+                    if (!video.paused) {
+                        removeClass(start, "icon-colorstart");
+                        addClass(start, "icon-colorstop");
+                        video.pause();
+                    }
+
+                    inner.style.left = deeppink.style.width = 0 + "px";
+                    video.currentTime = 0;
+                };
+
+                function move() {
+                    inner.style.left = deeppink.style.width =
+                        (video.currentTime / video.duration) *
+                            (progress.clientWidth - inner.offsetWidth) +
+                        "px";
+                }
+            }
+
+            var callback2 = {
+                //回调机制
+                move: function () {
+                    deeppink2.style.width = this.offsetLeft + "px";
+                },
+            };
+
+            $.drag(inner, callback);
+            $.drag(inner2, callback2);
+        };
+    </script>
+</html>

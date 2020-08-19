@@ -1,0 +1,86 @@
+{
+  "id": "2016872",
+  "name": "视频播放/暂停按钮",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "6141182",
+      "name": "AK-YK方块_fill",
+      "font_class": "paused",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "166622",
+      "name": "全屏",
+      "font_class": "full-screen1",
+      "unicode": "e62c",
+      "unicode_decimal": 58924
+    },
+    {
+      "icon_id": "6677523",
+      "name": "全屏",
+      "font_class": "full-screen2",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "1629911",
+      "name": "音量",
+      "font_class": "sound",
+      "unicode": "e626",
+      "unicode_decimal": 58918
+    },
+    {
+      "icon_id": "8081391",
+      "name": "音量",
+      "font_class": "soundl",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    },
+    {
+      "icon_id": "8843115",
+      "name": "静音",
+      "font_class": "sound-stop",
+      "unicode": "e63e",
+      "unicode_decimal": 58942
+    },
+    {
+      "icon_id": "13065536",
+      "name": "静音",
+      "font_class": "soundl-stop",
+      "unicode": "e646",
+      "unicode_decimal": 58950
+    },
+    {
+      "icon_id": "683294",
+      "name": "暂停",
+      "font_class": "colorstart",
+      "unicode": "e669",
+      "unicode_decimal": 58985
+    },
+    {
+      "icon_id": "14102127",
+      "name": "暂停",
+      "font_class": "colorstop",
+      "unicode": "e625",
+      "unicode_decimal": 58917
+    },
+    {
+      "icon_id": "4328008",
+      "name": "播放",
+      "font_class": "stop",
+      "unicode": "e645",
+      "unicode_decimal": 58949
+    },
+    {
+      "icon_id": "12683552",
+      "name": "播放",
+      "font_class": "start",
+      "unicode": "e615",
+      "unicode_decimal": 58901
+    }
+  ]
+}
