@@ -1,7 +1,7 @@
 <!--
  * @Brief:
- * @LastEditors: Jerry Lee
- * @LastEditTime: 2020-08-05 11:49:53
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2020-08-20 12:51:00
 -->
 
 # Javascript 基础部分(常用关键点)
@@ -1104,7 +1104,7 @@ obj1.sayName();
     console.log(reg); //  输出为 ：/\\/
     ```
 
--   转移字符的正则表达式相关代码表
+-   转义字符的正则表达式相关代码表
     ![相关转移字符的正则表达式](img/正则表达式转移字符.png)
 
     ```javascript

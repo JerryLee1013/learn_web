@@ -33,3 +33,22 @@ function toggleClass(obj, cn) {
         addClass(obj, cn);
     }
 }
+
+function changeTime(time) {
+    time = parseInt(time);
+    var h, m, s;
+    h = Math.floor(time / 3600);
+
+    m = Math.floor((time % 3600) / 60);
+    s = Math.floor((time % 3600) % 60);
+    if (h < 10) {
+        h = "0" + h;
+    }
+    if (m < 10) {
+        m = "0" + m;
+    }
+    if (s < 10) {
+        s = "0" + s;
+    }
+    return h + ":" + m + ":" + s;
+}

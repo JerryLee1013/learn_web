@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            #oc {
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                background-color: #bfa;
+                margin: 100px auto;
+            }
+        </style>
+    </head>
+    <body>
+        <video
+            autoplay
+            src="../video/天气之子唯美片段.mp4"
+            width="0"
+            height="0"
+        ></video>
+        <canvas id="oc" width="300px" height="300px"></canvas>
+    </body>
+    <script>
+        window.onload = function () {
+            var oc = document.getElementById("oc");
+            var video = document.querySelector("video");
+            if (oc.getContext) {
+                var ctx = oc.getContext("2d");
+                video.addEventListener("loadeddata", function () {
+                    setInterval(function () {
+                        ctx.drawImage(video, 0, 0, oc.width, oc.height);
+                    }, 5);
+                });
+            }
+        };
+    </script>
+</html>

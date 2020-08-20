@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="../css/index.css" />
+        <link rel="stylesheet" href="../font/iconfont.css" />
+    </head>
+    <body>
+        <div id="wrap">
+            <video src="../video/天气之子唯美片段.mp4"></video>
+            <div class="control">
+                <!-- 开始/暂停控制 -->
+                <div class="btns">
+                    <span class="start iconfont icon-colorstop"></span>
+                    <span class="stop iconfont icon-paused"></span>
+                </div>
+                <!-- 播放进度条 -->
+                <div class="progress">
+                    <div class="wrap">
+                        <div class="inner"></div>
+                    </div>
+                    <div class="deeppink"></div>
+                </div>
+                <!-- 其他控制模块 -->
+                <div class="others">
+                    <!-- 时间显示 -->
+                    <div class="time">
+                        <span class="now">00:00:00</span>/<span class="all"
+                            >00:00:00</span
+                        >
+                    </div>
+                    <!-- 音量控制 -->
+                    <div class="sound">
+                        <div class="switch">
+                            <span class="soundicon iconfont icon-soundl"></span>
+                        </div>
+                        <div class="progress">
+                            <div class="wrap">
+                                <div class="inner"></div>
+                            </div>
+                            <div class="deeppink"></div>
+                        </div>
+                    </div>
+                    <!-- 全屏按钮 -->
+                    <div class="full-screen">
+                        <span
+                            class="fullScreenIcon iconfont icon-full-screen1"
+                        ></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="../js/drag.js"></script>
+    <script src="../js/class.js"></script>
+    <script>
+        window.onload = function () {
+            var video = document.querySelector("#wrap > video");
+            var control = document.querySelector("#wrap > .control");
+            var progress = document.querySelector("#wrap>.control>.progress");
+            var inner = document.querySelector(
+                "#wrap>.control>.progress .inner"
+            );
+            var deeppink = document.querySelector(
+                "#wrap>.control>.progress .deeppink"
+            );
+
+            var start = document.querySelector("#wrap>.control>.btns>.start");
+            var stop = document.querySelector("#wrap>.control>.btns>.stop");
+            var allSpan = document.querySelector(
+                "#wrap>.control>.others>.time>.all"
+            );
+            var nowSpan = document.querySelector(
+                "#wrap>.control>.others>.time>.now"
+            );
+            var soundIcon = document.querySelector(
+                "#wrap>.control>.others>.sound>.switch>.soundicon"
+            );
+            var progress2 = document.querySelector(
+                "#wrap>.control>.others>.sound>.progress"
+            );
+            var inner2 = document.querySelector(
+                "#wrap>.control>.others>.sound>.progress .inner"
+            );
+            var deeppink2 = document.querySelector(
+                "#wrap>.control>.others>.sound>.progress>.deeppink"
+            );
+            var fullScreen = document.querySelector(
+                "#wrap>.control>.others .fullScreenIcon"
+            );
+
+            video.width = document.documentElement.clientWidth;
+            video.height =
+                document.documentElement.clientHeight - control.offsetHeight;
+            window.onresize = function () {
+                video.width = document.documentElement.clientWidth;
+                video.height =
+                    document.documentElement.clientHeight -
+                    control.offsetHeight;
+            };
+
+            //功能
+            var timer = 0;
+            var flag = 1;
+            var isFullScreen = false;
+            player();
+            function player() {
+                video.onclick = function () {
+                    if (video.paused) {
+                        //暂停--播放--显示暂停按钮
+                        removeClass(start, "icon-colorstop");
+                        addClass(start, "icon-colorstart");
+                        video.play();
+                        timer = setInterval(move, 10);
+                    } else {
+                        removeClass(start, "icon-colorstart");
+                        addClass(start, "icon-colorstop");
+                        video.pause();
+                    }
+                };
+                //全屏
+                fullScreen.onclick = function () {
+                    console.log(12);
+                    if (isFullScreen) {
+                        //全屏--非全屏
+                        removeClass(this, "icon-full-screen1");
+                        addClass(this, "icon-full-screen2");
+                        isFullScreen = false;
+                        if (document.exitFullscreen) {
+                            document.exitFullscreen();
+                        } else if (document.mozCancelFullScreen) {
+                            document.mozCancelFullScreen();
+                        } else if (document.webkitCancelFullScreen) {
+                            document.webkitCancelFullScreen();
+                        } else if (document.msExitFullScreen) {
+                            document.msExitFullScreen();
+                        }
+                    } else {
+                        isFullScreen = true;
+                        removeClass(this, "icon-full-screen2");
+                        addClass(this, "icon-full-screen1");
+                        var docEle = document.documentElement;
+                        if (docEle.requestFullscreen) {
+                            docEle.requestFullscreen();
+                        } else if (docEle.mozRequestFullscreen) {
+                            docEle.mozRequestFullscreen();
+                        } else if (docEle.webkitRequestFullscreen) {
+                            docEle.webkitRequestFullscreen();
+                        } else if (docEle.msRequestFullscreen) {
+                            docEle.msRequestFullscreen();
+                        }
+                    }
+                };
+                //音量控制
+                inner2.style.left = deeppink2.style.width =
+                    progress2.clientWidth - inner2.offsetWidth + "px";
+                //音量图标点击事件
+                soundIcon.onclick = function () {
+                    if (video.muted) {
+                        removeClass(this, "icon-soundlstop");
+                        addClass(this, "icon-soundl");
+                        video.muted = false;
+                        video.volume = 1;
+                        inner2.style.left = deeppink2.style.width =
+                            (progress2.clientWidth - inner2.offsetWidth) *
+                                flag +
+                            "px";
+                    } else {
+                        removeClass(this, "icon-soundl");
+                        addClass(this, "icon-soundlstop");
+                        video.muted = true;
+                        video.volume = 0;
+                        inner2.style.left = deeppink2.style.width = 0 + "px";
+                    }
+                };
+                //时间的显示
+                //视频第一帧加载完事件
+                video.addEventListener("loadeddata", function () {
+                    var allTime = changeTime(video.duration);
+                    allSpan.innerHTML = allTime;
+                });
+                //音量进度条点击调节
+                progress2.onclick = function (ev) {
+                    ev = ev || event;
+                    removeClass(soundIcon, "icon-soundlstop");
+                    addClass(soundIcon, "icon-soundl");
+                    video.muted = false;
+                    var inner2X =
+                        ev.clientX -
+                        this.offsetLeft -
+                        this.parentNode.parentNode.offsetLeft -
+                        inner2.offsetWidth;
+                    if (inner2X < 0) {
+                        inner2X = 0;
+                        removeClass(soundIcon, "icon-soundl");
+                        addClass(soundIcon, "icon-soundlstop");
+                        video.muted = true;
+                    }
+                    var scale =
+                        inner2X / (this.clientWidth - inner2.offsetWidth);
+                    flag = video.volume = scale;
+                    inner2.style.left = deeppink2.style.width = inner2X + "px";
+                };
+
+                // 进度条
+                progress.onclick = function (ev) {
+                    ev = ev || event;
+                    removeClass(start, "icon-colorstop");
+                    addClass(start, "icon-colorstart");
+                    video.play();
+                    video.currentTime =
+                        video.duration *
+                        ((ev.clientX - this.offsetLeft) /
+                            (this.clientWidth - inner.offsetWidth));
+                    console.log(this.offsetLeft);
+                    timer = setInterval(move, 10);
+                };
+
+                // 按钮
+                start.onclick = function () {
+                    if (video.paused) {
+                        //暂停--播放--显示暂停按钮
+                        removeClass(this, "icon-colorstop");
+                        addClass(this, "icon-colorstart");
+                        video.play();
+                        timer = setInterval(move, 10);
+                    } else {
+                        removeClass(this, "icon-colorstart");
+                        addClass(this, "icon-colorstop");
+                        video.pause();
+                    }
+                };
+                stop.onclick = function () {
+                    if (!video.paused) {
+                        removeClass(start, "icon-colorstart");
+                        addClass(start, "icon-colorstop");
+                        video.pause();
+                    }
+
+                    inner.style.left = deeppink.style.width = 0 + "px";
+                    video.currentTime = 0;
+                };
+
+                function move() {
+                    inner.style.left = deeppink.style.width =
+                        (video.currentTime / video.duration) *
+                            (progress.clientWidth - inner.offsetWidth) +
+                        "px";
+                    nowSpan.innerHTML = changeTime(video.currentTime);
+                }
+            }
+            // 进度条小滑块拖拽时的逻辑
+            var callback = {
+                //回调机制
+                move: function () {
+                    deeppink.style.width = this.offsetLeft + "px";
+
+                    var scale =
+                        this.offsetLeft /
+                        (progress.clientWidth - this.offsetWidth);
+                    video.currentTime = scale * video.duration;
+                    nowSpan.innerHTML = changeTime(video.currentTime);
+                },
+            };
+            // 音量小滑块拖拽时的逻辑
+            var callback2 = {
+                //回调机制
+                move: function () {
+                    deeppink2.style.width = this.offsetLeft + "px";
+                    var scale =
+                        this.offsetLeft /
+                        (progress2.clientWidth - this.offsetWidth);
+                    flag = scale;
+                    video.volume = scale;
+                    if (video.volume == 0) {
+                        video.muted = true;
+                        removeClass(soundIcon, "icon-soundl");
+                        addClass(soundIcon, "icon-soundlstop");
+                    } else {
+                        video.muted = false;
+                        removeClass(soundIcon, "icon-soundlstop");
+                        addClass(soundIcon, "icon-soundl");
+                    }
+                },
+            };
+
+            $.drag(inner, callback);
+            $.drag(inner2, callback2);
+        };
+    </script>
+</html>

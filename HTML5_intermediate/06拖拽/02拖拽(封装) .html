@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            html,
+            body {
+                height: 100%;
+                overflow: hidden;
+            }
+            #test {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 200px;
+                height: 200px;
+                background-color: pink;
+            }
+            #zaw {
+                position: absolute;
+                left: 600px;
+                top: 400px;
+                width: 200px;
+                height: 200px;
+                background-color: pink;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- <img src="../img/314301.jpg" id="test" alt="" /> -->
+        <div id="test"></div>
+        <img src="../img/飞鸟.jfif" id="zaw" alt="" />
+    </body>
+    <script src="../js/lfx_dragXY.js"></script>
+    <script>
+        window.onload = function () {
+            var testNode = document.getElementById("test");
+            var imgNode = document.getElementById("zaw");
+
+            lfx.drag(testNode, true, 100);
+        };
+    </script>
+</html>

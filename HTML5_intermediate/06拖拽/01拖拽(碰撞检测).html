@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            html,
+            body {
+                height: 100%;
+                overflow: hidden;
+            }
+            #test {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 200px;
+                height: 200px;
+                background-color: pink;
+            }
+            #zaw {
+                position: absolute;
+                left: 600px;
+                top: 400px;
+                width: 200px;
+                height: 200px;
+                background-color: pink;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- <img src="../img/314301.jpg" id="test" alt="" /> -->
+        <div id="test"></div>
+        <img src="../img/飞鸟.jfif" id="zaw" alt="" />
+    </body>
+
+    <script>
+        window.onload = function () {
+            var testNode = document.getElementById("test");
+            var imgNode = document.getElementById("zaw");
+
+            //抽象元素一开始的位置
+            var startPoint = {
+                x: 0,
+                y: 0,
+            };
+
+            //鼠标一开始的位置
+            var elementPoint = {
+                x: 0,
+                y: 0,
+            };
+            testNode.onmousedown = function (ev) {
+                ev = ev || event;
+                if (testNode.setCapture) {
+                    testNode.setCapture();
+                }
+
+                startPoint.x = testNode.offsetLeft;
+                startPoint.y = testNode.offsetTop;
+
+                elementPoint.x = ev.clientX;
+                elementPoint.y = ev.clientY;
+
+                document.onmousemove = function (ev) {
+                    ev = ev || event;
+                    var nowPoint = {
+                        x: 0,
+                        y: 0,
+                    };
+                    nowPoint.x = ev.clientX;
+                    nowPoint.y = ev.clientY;
+
+                    var L = startPoint.x + (nowPoint.x - elementPoint.x);
+                    var T = startPoint.y + (nowPoint.y - elementPoint.y);
+                    if (L < 10) {
+                        L = 0;
+                    }
+                    if (
+                        L >=
+                        document.documentElement.clientWidth -
+                            testNode.offsetWidth -
+                            10
+                    ) {
+                        L =
+                            document.documentElement.clientWidth -
+                            testNode.offsetWidth;
+                    }
+
+                    // 限制范围，磁性吸附
+                    if (T < 10) {
+                        T = 0;
+                    } else if (
+                        T >=
+                        document.documentElement.clientHeight -
+                            testNode.offsetHeight -
+                            10
+                    ) {
+                        T =
+                            document.documentElement.clientHeight -
+                            testNode.offsetHeight;
+                    }
+                    testNode.style.left = L + "px";
+                    testNode.style.top = T + "px";
+
+                    //碰撞检测
+                    var T1 = testNode.offsetTop;
+                    var B1 = testNode.offsetTop + testNode.offsetHeight;
+                    var R1 = testNode.offsetLeft + testNode.offsetWidth;
+                    var L1 = testNode.offsetLeft;
+
+                    var T2 = imgNode.offsetTop;
+                    var B2 = imgNode.offsetTop + imgNode.offsetHeight;
+                    var R2 = imgNode.offsetLeft + imgNode.offsetWidth;
+                    var L2 = imgNode.offsetLeft;
+
+                    if (R1 < L2 || B1 < T2 || L1 > R2 || T1 > B2) {
+                        imgNode.src = "../img/飞鸟.jfif";
+                    } else {
+                        imgNode.src = "../img/314301.jpg";
+                    }
+
+                    /* if (
+                        callback &&
+                        callback["move"] &&
+                        typeof callback["move"] === "function"
+                    ) {
+                        callback["move"].call(testNode);
+                    } */
+                };
+
+                document.onmouseup = function () {
+                    document.onmousemove = document.onmouseup = null;
+                    if (document.releaseCapture) {
+                        document.realeaseCapture();
+                    }
+                };
+
+                return false;
+            };
+        };
+    </script>
+</html>
