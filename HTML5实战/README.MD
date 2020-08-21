@@ -31,9 +31,24 @@
 
     -   本身没有定位
     -   本身定位为 absolute/relative
-        -   offsetParent：body
     -   本身定位为 fixed
         -   offsetParent：body
+
+-   父级有定位
+    -   本身没有定位
+    -   本身定位为 absolute/relative
+        -   offsetParent：定位父级
+    -   本身定位为 fixed
+        -   offsetParent：body
+### IE7 以下
+
+-   父级没有定位
+
+    -   本身没有定位
+    -   本身定位为 absolute/relative
+        -   offsetParent：body
+    -   本身定位为 fixed
+        -   offsetParent：null
 
 -   父级有定位
     -   本身没有定位
