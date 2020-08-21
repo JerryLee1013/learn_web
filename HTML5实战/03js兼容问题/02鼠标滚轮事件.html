@@ -28,14 +28,19 @@
     <script>
         window.onload = function () {
             var test = document.querySelector("#test");
-            //非火狐浏览器
-            test.onmousewheel = function () {
-                console.log(1);
-            };
-            //火狐
-            test.addEventListener("DOMMouseScroll", function () {
-                console.log(1);
-            });
+            
+			if(test.addEventListener){
+				//火狐
+				test.addEventListener("DOMMouseScroll", function () {
+				    console.log(1);
+				});
+			}else{
+				//非火狐浏览器
+				test.onmousewheel = function () {
+				    console.log(1);
+				};
+			}
+            
         };
     </script>
 </html>

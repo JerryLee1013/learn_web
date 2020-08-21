@@ -105,4 +105,18 @@ window.onload = function () {
 
 #### addEventlistener/attachEvent
 
-#### onmousewheel/
+#### 滚轮事件
+
+```javascript
+if(test.addEventListener){
+	//火狐
+	test.addEventListener("DOMMouseScroll", function () {
+		console.log(1);
+	});
+	}else{
+	//非火狐浏览器
+	test.onmousewheel = function () {
+		console.log(1);
+		};
+}
+```
