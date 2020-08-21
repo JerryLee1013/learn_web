@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body id="body">
+        <ul class="list">
+            <li>
+                xfz
+                <a href="javascript:;">删除</a>
+            </li>
+            <li>
+                xfz2
+                <a href="javascript:;">删除</a>
+            </li>
+            <li>
+                xfz22
+                <a href="javascript:;">删除</a>
+            </li>
+            <li>
+                xfz222
+                <a href="javascript:;">删除</a>
+            </li>
+            <li>
+                xfz2222
+                <a href="javascript:;">删除</a>
+            </li>
+        </ul>
+    </body>
+    <script>
+        window.onload = function () {
+            //假删除
+            var aNodes = document.querySelectorAll(".list>li>a");
+            for (var i = 0; i < aNodes.length; i++) {
+                aNodes[i].onclick = function () {
+                    this.parentNode.style.display = "none";
+                };
+            }
+        };
+    </script>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            #wrap {
+                position: relative;
+            }
+            #inner2 {
+                position: absolute;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <div id="inner1">
+                <div id="inner2"></div>
+            </div>
+        </div>
+    </body>
+    <script>
+        window.onload = function () {
+            var inner2 = document.getElementById("inner2");
+            console.log(inner2.offsetParent);
+        };
+    </script>
+</html>
