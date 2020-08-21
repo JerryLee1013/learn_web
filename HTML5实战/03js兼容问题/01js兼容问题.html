@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            #wrap {
+                width: 200px;
+                height: 200px;
+                background-color: pink;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <div id="inner"></div>
+        </div>
+    </body>
+    <script>
+        var wrap = document.querySelector("#wrap");
+        if (wrap.addEventListener) {
+            wrap.addEventListener("click", function () {
+                console.log(1);
+            });
+            wrap.addEventListener("click", function () {
+                console.log(2);
+            });
+            wrap.addEventListener("click", function () {
+                console.log(3);
+            });
+        } else {
+            wrap.attachEvent("onclick", function () {
+                console.log(1);
+            });
+            wrap.attachEvent("onclick", function () {
+                console.log(2);
+            });
+            wrap.attachEvent("onclick", function () {
+                console.log(3);
+            });
+        }
+    </script>
+</html>
