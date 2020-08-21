@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style></style>
+        <style>
+            input::-webkit-input-placeholder {
+                color: blue;
+            }
+        </style>
+    </head>
+    <body>
+        <form action="javascript:;">
+            <input
+                type="text"
+                autofocus
+                required
+                pattern="\d{1,5}"
+                name=""
+                id=""
+                placeholder="你的年龄多大？"
+            />
+            <input type="submit" value="提交" formaction="javascript:;" /><br />
+            <input type="text" value="" list="datalist" />
+            <input type="submit" value="提交" /><br />
+            <datalist id="datalist">
+                <option value="1"></option>
+                <option value="2"></option>
+                <option value="3"></option>
+                <option value="4"></option>
+            </datalist>
+        </form>
+    </body>
+</html>

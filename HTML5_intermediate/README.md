@@ -1,7 +1,7 @@
 <!--
  * @Brief:
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-08-15 16:16:32
+ * @LastEditTime: 2020-08-21 12:02:34
 -->
 
 # HTML5 深入学习：
@@ -648,3 +648,150 @@ window.onload = function () {
 #### ctx.isPointInPath(x, y)
 
     判断画布中点击的位置(x, y)是否存在图像
+
+## 其他新增标签
+
+### 状态标签
+
+-   meter 用来显示已知范围的标量值或者分数值
+-   progress 用来显示一项任务的完成进度
+
+### 列表标签
+
+-   datalist:datalist 会包含一组 option 元素，这些元素表示其表单控件的可选值
+    -   他的 id 必须和 input 中的 list 一致
+-   details:一个 ui 小部件用户可以从其中检索附加信息
+    -   open 属性来控制附加信息的显示与隐藏
+-   summary 用作一个\<details\>元素的一个内容摘要
+
+### 注释标签
+
+-   ruby
+-   rt
+
+### 标记标签
+
+-   mark 特殊显示标签中的内容
+
+## 新增表单相关
+
+### 新增表单格式
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <form action="javascript:;">
+            <input type="email" name="1" id="" />
+            <input type="submit" name="" id="" value="提交" /><br />
+            <!-- 手机上能看到效果 -->
+            <input type="tel" name="" id="" />
+            <input type="submit" name="" id="" value="提交" /><br />
+            <!-- 验证是否为url地址 -->
+            <input type="url" name="" id="" />
+            <input type="submit" name="" id="" value="提交" /><br />
+            <input type="search" name="" id="" />
+            <input type="submit" name="" id="" value="提交" /><br />
+            <input type="range" min="10" max="20" step="2" />
+            <input type="submit" name="" id="" value="提交" /><br />
+            <input type="number" name="" id="" />
+            <input type="submit" name="" id="" value="提交" /><br />
+            <input type="color" name="" id="" />
+            <input type="submit" name="" id="" value="提交" /><br />
+            <input type="datetime" name="" id="" />
+            <input type="submit" name="" id="" value="提交" /><br />
+            <input type="time" name="" id="" />
+            <input type="submit" name="" id="" value="提交" /><br />
+            <input type="date" name="" id="" />
+            <input type="submit" name="" id="" value="提交" /><br />
+            <input type="week" name="" id="" />
+            <input type="submit" name="" id="" value="提交" /><br />
+            <input type="month" name="" id="" />
+            <input type="submit" name="" id="" value="提交" /><br />
+        </form>
+    </body>
+</html>
+```
+
+### 新增表单属性
+
+-   placeholder 输入框提示信息
+
+    -   修改样式：
+    -   input::-webkit-input-placeholder{}
+
+-   autofocus 自定表单获取输入焦点
+-   required 此项必填
+-   pattern 正则验证
+-   formaction 在 submit 里定义提交地址
+-   list 和 datalist 为输入框构造一个选择列表；list 的值为 datalist 标签的 id
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style></style>
+        <style>
+            input::-webkit-input-placeholder {
+                color: blue;
+            }
+        </style>
+    </head>
+    <body>
+        <form action="javascript:;">
+            <input
+                type="text"
+                autofocus
+                required
+                pattern="\d{1,5}"
+                name=""
+                id=""
+                placeholder="你的年龄多大？"
+            />
+            <input type="submit" value="提交" formaction="javascript:;" /><br />
+            <input type="text" value="" list="datalist" />
+            <input type="submit" value="提交" /><br />
+            <datalist id="datalist">
+                <option value="1"></option>
+                <option value="2"></option>
+                <option value="3"></option>
+                <option value="4"></option>
+            </datalist>
+        </form>
+    </body>
+</html>
+```
+
+### 表单验证
+
+#### 表单验证反馈
+
+-   node.addEventListener("invalid",fn1,false)
+-   validity 对象，通过下面的 valid 可以查看验证是否通过，如果八种验证都能通过，返回 true，一种验证失败返回 false
+
+    -   valueMissing： 输入值为空时返回 true
+    -   typeMismatch： 控件类型与预期类型不匹配返回 true
+    -   patternMismatch：输入值不满足 pattern 正则返回 true
+
+    -   **下面四个鸡肋**
+    -   tooLong： 超过 maxLength 最大限制返回 true
+    -   rangeUnderflow： 验证的 range 最小值返回 true
+    -   rangeOverflow： 验证的 range 最大值返回 true
+    -   stepMismatch：验证 range 的当前值是否符合 min、max 及 step 的规则返回 true
+
+    *   badInput：
+    *   valid：
+    *   customError：不符合自定义验证返回 true
+        -   setCustomValidity
+
+#### 关闭验证
+
+-   formnovalidate 属性

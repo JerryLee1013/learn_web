@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            input::-webkit-input-placeholder {
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <datalist id="list">
+            <option value="1">宝宝1</option>
+            <option value="2">宝宝2</option>
+            <option value="3">宝宝3</option>
+            <option value="4">宝宝4</option>
+            <option value="5">宝宝5</option>
+        </datalist>
+        <input
+            type="text"
+            name=""
+            list="list"
+            placeholder="你最喜欢的女明星是？"
+        />
+    </body>
+</html>
