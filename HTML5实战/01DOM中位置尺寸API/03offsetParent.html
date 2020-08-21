@@ -5,6 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
         <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
             #wrap {
                 position: relative;
             }
@@ -13,7 +17,7 @@
             }
         </style>
     </head>
-    <body>
+    <body id="body">
         <div id="wrap">
             <div id="inner1">
                 <div id="inner2"></div>
@@ -23,7 +27,7 @@
     <script>
         window.onload = function () {
             var inner2 = document.getElementById("inner2");
-            console.log(inner2.offsetParent);
+            console.log(inner2.offsetParent.id);
         };
     </script>
 </html>

@@ -1,9 +1,10 @@
 ## offsetParent API
 
-### parentNode 直接父级
+### parentNode :直接父级
 
-### offsetParent 类似于 css 中的**包含块**概念
+### offsetParent :类似于 css 中的**包含块**概念
 
+-   作用：offsetLeft和OffsetTop参照与offsetParent的内边距边界的
 -   父级是否有定位
 -   本身是否有定位
 -   浏览器不一样
@@ -40,19 +41,56 @@
         -   offsetParent：定位父级
     -   本身定位为 fixed
         -   offsetParent：body
+        
 ### IE7 以下
 
 -   父级没有定位
 
-    -   本身没有定位
-    -   本身定位为 absolute/relative
-        -   offsetParent：body
+    -   本身没有定位    
+    -   本身定位为 absolute/relative    
     -   本身定位为 fixed
-        -   offsetParent：null
+        -   offsetParent：body
 
 -   父级有定位
     -   本身没有定位
     -   本身定位为 absolute/relative
-        -   offsetParent：定位父级
     -   本身定位为 fixed
-        -   offsetParent：null
+        -   offsetParent：定位父级
+
+### haslayout
+
+-   IE7以下，如果当前元素的某个父级元素触发了hasLayout，那么offsetParent就会被指向这个触发了layout的父节点上
+
+### getBoundingClientRect()返回元素的大小及其相对于视口的位置
+-   返回一个对象，相对于视口的相对值
+    
+```javascript
+DOMRect{
+    bottom: 599.9747314453125
+    height: 199.9915771484375
+    width: 199.9915771484375
+    left: 399.983154296875 
+    right: 599.9747314453125
+    top: 399.983154296875
+    x: 399.983154296875
+    y: 399.983154296875
+}
+```
+### clientWH & offsetWH
+
+-   在ie10及以下clientWH & offsetWH统一被指定为视口的宽高
+#### 专门为视口设计的clientWH
+```javascript
+    window.onload = function () {
+        //视口大小，html根标签有margin不会影响wh的大小
+        var w = document.documentElement.clientWidth
+        var h = document.documentElement.clientHeight
+        console.log(w,h)
+
+        //IE11中，html根标签有margin会影响wh的大小
+        //在IE10及以下clientWH & offsetWH统一被指定为视口的宽高，html根标签有margin不会影响wh的大小
+        w = document.documentElement.offsetWidth
+        h = document.documentElement.offsetHeight
+        console.log(w,h)
+    }
+```

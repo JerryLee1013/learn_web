@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" style="margin: 50px;">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            height: 100%;
+            overflow: hidden;
+        }
+        #wrap{
+            width: 200px;
+            height: 200px;
+            padding: 50px;
+            border: 10px solid;
+            margin: 60px;
+
+
+        }
+
+
+    </style>
+</head>
+<body id="body" style="height: 3000px;width: 3000px;">
+    <div id="wrap">
+        wrap
+    </div>
+</body>
+<script>
+    window.onload = function () {
+        //视口大小，html根标签有margin不会影响wh的大小
+        var w = document.documentElement.clientWidth
+        var h = document.documentElement.clientHeight
+        console.log(w,h)
+
+        //IE11中，html根标签有margin会影响wh的大小
+        //在IE10及以下clientWH & offsetWH统一被指定为视口的宽高，html根标签有margin不会影响wh的大小
+        w = document.documentElement.offsetWidth
+        h = document.documentElement.offsetHeight
+        console.log(w,h)
+    }
+
+</script>
+</html>

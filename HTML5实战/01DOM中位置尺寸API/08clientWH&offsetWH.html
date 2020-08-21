@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            height: 100%;
+            overflow: hidden;
+        }
+        #wrap{
+            width: 200px;
+            height: 200px;
+            padding: 50px;
+            border: 10px solid;
+            margin: 60px;
+
+
+        }
+
+
+    </style>
+</head>
+<body id="body" style="height: 3000px;width: 3000px;">
+    <div id="wrap">
+        wrap
+    </div>
+</body>
+<script>
+    window.onload = function () {
+        var wrap = document.getElementById("wrap")
+        console.log(wrap.clientWidth,wrap.clientHeight)//可视区域
+        console.log(wrap.offsetWidth,wrap.offsetHeight)//可是区域+border
+    }
+
+</script>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            height: 100%;
+            overflow: hidden;
+        }
+        #wrap{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+
+        }
+        #wrap > img{
+            width: 64px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <img src="../img/01.jfif" alt="1">
+        <img src="../img/04.jpg" alt="2">
+        <img src="../img/05.jfif" alt="3">
+        <img src="../img/06.jfif" alt="4">
+        <img src="../img/07.jpg" alt="5">
+        <img src="../img/08.jpg" alt="6">
+        <img src="../img/09.jfif" alt="7">
+    </div>
+</body>
+<script>
+    window.onload = function (ev) {
+        ev = ev||event
+        var r = 128
+        var imgNodes = document.querySelectorAll("#wrap>img")
+        document.onmousemove = function () {
+            for(var i = 0;i<imgNodes.length;i++){
+                var x = imgNodes[i].getBoundingClientRect().left + imgNodes[i].offsetWidth/2 - ev.clientX
+                var y = imgNodes[i].getBoundingClientRect().top + imgNodes[i].offsetHeight/2 - ev.clientY
+                var c = Math.sqrt(x*x+y*y)
+
+                if (c>=r){
+                    c = r
+                }
+                imgNodes[i].style.width = 128 - c*0.5 + "px"
+            }
+            
+        }
+    }
+    
+</script>
+</html>

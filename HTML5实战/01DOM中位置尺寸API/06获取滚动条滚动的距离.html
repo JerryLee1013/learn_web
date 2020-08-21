@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            height: 100%;
+
+        }
+        #wrap{
+            position: absolute;
+            background-color: pink;
+            left: 100px;
+            top: 100px;
+        }
+        #inner1{
+            position: absolute;
+            background-color: red;
+            left: 100px;
+            top: 100px;
+        }
+        #inner2{
+            position: absolute;
+            border: 50px solid;
+            background-color: blue;
+            left: 100px;
+            top: 100px;
+        }
+        #inner3{
+            position: absolute;
+            border: 10px solid;
+            background-color: yellow;
+            left: 100px;
+            top: 100px;
+        }
+
+        div{
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body id="body" style="height: 3000px;width: 3000px;">
+    <div id="wrap">wrap
+        <div id="inner1">inner1
+            <div id="inner2">inner2
+                <div id="inner3">inner3</div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    window.onload = function () {
+        //滚动条滚动时，元素滚动的距离
+        var L = document.documentElement.scrollLeft||document.body.scrollLeft
+        var T = document.documentElement.scrollTop||document.body.scrollTop
+        console.log(L,T)
+    }
+
+</script>
+</html>
