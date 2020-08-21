@@ -107,16 +107,60 @@ window.onload = function () {
 
 #### 滚轮事件
 
-```javascript
-if(test.addEventListener){
-	//火狐
-	test.addEventListener("DOMMouseScroll", function () {
-		console.log(1);
-	});
-	}else{
-	//非火狐浏览器
-	test.onmousewheel = function () {
-		console.log(1);
+```html
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			#test {
+				width: 200px;
+				height: 200px;
+				background-color: pink;
+				position: absolute;
+				left: 0;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				margin: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="test"></div>
+	</body>
+	<script>
+		window.onload = function() {
+			var test = document.querySelector("#test");
+
+			if (test.addEventListener) {
+				//火狐
+				test.addEventListener("DOMMouseScroll", fn);
+			}
+			//非火狐浏览器
+			test.onmousewheel = fn;
+
+			function fn(ev) {
+				ev = ev || event;
+				var dir = "";
+				if (ev.wheelDelta) {
+					dir = ev.wheelDelta > 0 ? "up" : "down";
+				}
+				if (ev.detail) {
+					dir = ev.detail < 0 ? "up" : "down";
+				}
+				console.log(dir);
+			}
+
 		};
-}
+	</script>
+</html>
+
 ```
