@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			#test {
+				width: 100%;
+				height: 200px;
+				background-color: pink;
+				position: absolute;
+
+			}
+		</style>
+	</head>
+	<body style="height: 2000px;">
+		<div id="test"></div>
+	</body>
+	<script>
+		window.onload = function() {
+			var test = document.getElementById("test");
+
+			if (test.addEventListener) {
+				//火狐
+				test.addEventListener("DOMMouseScroll", fn);
+			}
+			//非火狐浏览器
+			test.onmousewheel = fn;
+
+			function fn(ev) {
+				ev = ev || event;
+				var dir = "";
+				if (ev.wheelDelta) {
+					dir = ev.wheelDelta > 0 ? "up" : "down";
+				}
+				if (ev.detail) {
+					dir = ev.detail < 0 ? "up" : "down";
+				}
+				switch (dir) {
+					case "up":
+						this.style.height = this.offsetHeight - 10 +"px"
+						break;
+					case "down":
+						this.style.height =  this.offsetHeight + 10 +"px"
+						break;
+					default:
+						break;
+				}
+				
+				//禁止事件的默认样式
+				if(ev.preventDefault){
+					//IE7禁止浏览器默认样式
+					ev.preventDefault();
+				}
+				return false;
+			}
+
+		};
+	</script>
+</html>

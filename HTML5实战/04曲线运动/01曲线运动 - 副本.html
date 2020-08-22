@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#app{
+				width: 10px;
+				height: 10px;
+				background-color: deeppink;
+				position: absolute;
+				left: 100px;
+				top: 300px;
+			}
+			
+			.follow{
+				width: 1px;
+				height: 1px;
+				background-color: #000;
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			
+		</div>
+	</body>
+	<script type="text/javascript">
+		window.onload = function(){
+			var appNode = document.getElementById("app")
+			var startX = appNode.offsetLeft
+			var startY = appNode.offsetTop
+			
+			var deg = 0
+			var stepY = 100
+			var stepX = 20
+			setInterval(function(){
+				deg++
+				appNode.style.left = startX+(deg*Math.PI/180)*stepX + "px"
+				appNode.style.top = startY+Math.cos(deg*Math.PI/180)*stepY + "px"
+				
+				var div = document.createElement("div")
+				div.classList.add("follow")
+				div.style.left = appNode.offsetLeft + "px"
+				div.style.top = appNode.offsetTop + "px"
+				document.body.appendChild(div)
+			},1000/60)
+			
+		}
+	</script>
+</html>
