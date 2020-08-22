@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
         <link rel="stylesheet" href="css/index.css" />
-        <link rel="stylesheet" href="" />
+        <link rel="stylesheet" href="font/iconfont.css" />
         <!-- 设置分辨率 -->
     </head>
     <body>
@@ -88,19 +88,92 @@
             <section id="content">
                 <ul class="list">
                     <li class="home">
-                        <div>home</div>
+                        <section>home</section>
                     </li>
                     <li class="course">
-                        <div>course</div>
+                        <section>course</section>
                     </li>
                     <li class="works">
-                        <div>works</div>
+                        <section>
+                            <header class="works1 commomTitle">
+                                <span>EINBLICK</span><br />
+                                <span>DEVELOPERS</span><br />
+                                <span>BEST</span><br />
+                            </header>
+                            <div class="works2">
+                                <div class="item">
+                                    <img src="img/01.jpg" alt="" />
+                                    <div class="mask">
+                                        <span>我有一只小毛驴</span>
+                                        <div class="icon">
+                                            <div class="iconwrap">
+                                                <span
+                                                    class="iconfont icon-zoomout"
+                                                ></span>
+                                                <span
+                                                    class="iconfont icon-zoomout"
+                                                ></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="img/02.jpg" alt="" />
+                                    <div class="mask">
+                                        <span>我从来都不骑</span>
+                                        <div class="icon">
+                                            <div class="iconwrap">
+                                                <span
+                                                    class="iconfont icon-zoomout"
+                                                ></span>
+                                                <span
+                                                    class="iconfont icon-zoomout"
+                                                ></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="img/03.jpg" alt="" />
+                                    <div class="mask">
+                                        <span>有一天我骑着它去赶集</span>
+                                        <div class="icon">
+                                            <div class="iconwrap">
+                                                <span
+                                                    class="iconfont icon-zoomout"
+                                                ></span>
+                                                <span
+                                                    class="iconfont icon-zoomout"
+                                                ></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="img/06.jpg" alt="" />
+                                    <div class="mask">
+                                        <span>我右手拿着小皮鞭</span>
+                                        <div class="icon">
+                                            <div class="iconwrap">
+                                                <span
+                                                    class="iconfont icon-zoomout"
+                                                ></span>
+                                                <span
+                                                    class="iconfont icon-zoomout"
+                                                ></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="works3"></div>
+                        </section>
                     </li>
                     <li class="about">
-                        <div>about</div>
+                        <section>about</section>
                     </li>
                     <li class="team">
-                        <div>team</div>
+                        <section>team</section>
                     </li>
                 </ul>
             </section>
@@ -122,9 +195,52 @@
             var content = document.querySelector("#content");
             var cLiNodes = document.querySelectorAll("#content .list > li");
             var ulNode = document.querySelector("#content>.list");
-            var now = 0;
-
+            var now = 0; /* 同步当前索引 */
+            var timer = 0;
             /* 内容区交互 */
+            //滚轮
+            if (content.addEventListener) {
+                content.addEventListener("DOMMouseScroll", function (ev) {
+                    ev = ev || event;
+                    clearTimeout(timer);
+                    timer = setTimeout(function () {
+                        fn(ev);
+                    }, 50);
+                });
+            }
+            content.onmousewheel = function (ev) {
+                ev = ev || event;
+                clearTimeout(timer);
+                timer = setTimeout(function () {
+                    fn(ev);
+                }, 50);
+            };
+            function fn(ev) {
+                ev = ev || event;
+                var dir = "";
+                if (ev.wheelDelta) {
+                    dir = ev.wheelDelta > 0 ? "up" : "down";
+                } else if (ev.detail) {
+                    dir = ev.wheelDelta < 0 ? "up" : "down";
+                }
+                switch (dir) {
+                    case "up":
+                        now--;
+                        if (now < 0) {
+                            now = 0;
+                        }
+                        move(now);
+                        break;
+                    case "down":
+                        now++;
+                        if (now > cLiNodes.length - 1) {
+                            now = cLiNodes.length - 1;
+                        }
+                        move(now);
+                        break;
+                }
+            }
+
             /* 视口分辨率改变时，实时的更新各个界面的大小 */
             window.onresize = function () {
                 contentBind();
@@ -175,25 +291,27 @@
                         now = this.index;
                     };
                 }
-                function move(index) {
-                    for (let j = 0; j < upNodes.length; j++) {
-                        upNodes[j].style.width = "";
-                    }
-                    upNodes[index].style.width = "100%";
-                    upNodes[index].style.height = "100%";
-                    arrowEle.style.left =
-                        liNodes[index].offsetLeft +
-                        liNodes[index].offsetWidth / 2 -
-                        arrowEle.offsetWidth / 2 +
-                        "px";
-                    ulNode.style.top =
-                        -(
-                            document.documentElement.clientHeight -
-                            head.offsetHeight
-                        ) *
-                            index +
-                        "px";
+            }
+
+            /* 动画核心函数 */
+            function move(index) {
+                for (let j = 0; j < upNodes.length; j++) {
+                    upNodes[j].style.width = "";
                 }
+                upNodes[index].style.width = "100%";
+                upNodes[index].style.height = "100%";
+                arrowEle.style.left =
+                    liNodes[index].offsetLeft +
+                    liNodes[index].offsetWidth / 2 -
+                    arrowEle.offsetWidth / 2 +
+                    "px";
+                ulNode.style.top =
+                    -(
+                        document.documentElement.clientHeight -
+                        head.offsetHeight
+                    ) *
+                        index +
+                    "px";
             }
         };
     </script>

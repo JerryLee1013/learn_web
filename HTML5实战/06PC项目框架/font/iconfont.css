@@ -1,0 +1,37 @@
+@font-face {
+    font-family: "iconfont";
+    src: url("iconfont.eot?t=1598104606471"); /* IE9 */
+    src: url("iconfont.eot?t=1598104606471#iefix") format("embedded-opentype"),
+        /* IE6-IE8 */
+            url("data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAREAAsAAAAACQgAAAP1AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDMgqFJIRYATYCJAMUCwwABCAFhG0HTBvoB8gOJQWRwABgoABmPHy/H+vcJx8RSS7Vp+OJTCJRSUQSPn1T2hB3+nYvgeHf016bQchOGOy0g4qXrCuyarIPdq49+e8+74v/c+9em8cDm9ee5bLmojYVdfJNEyiLxlpYQmlfHP8wdnEZlwm0m3YA7SQyPh1oKLRZgbjjESygEVMpJYTQKm1yNhbxAqrW9ER/CHh2/z7+g63QIKmZtvD0NoILgn+RP5qQuv91bmwUYPdnALONjBVAIe5zTXcQP7QC0S4FVBwAcqBVkvrqJf1R/aPp/38gb0WSdv0fHiHJCtHQRJ0IfxAu/CJNhOCXFCHxqxoh86uJc2NEFZnakSI/gFiH+Blx2nH/mIW/uY6ebVN5WdFB+Vvsc16i6jA4vGpOXFHWK9K5+PP6tM0Hynt7A4Y7zYP8Q54dqztayXgSNjqxsmRCUR0KxggZPGZ6LSF9qG6905z5CAP+cVPTzlF26alOL2x4WXvYfHTSjKFMwprvHp0oZ1xRMhUKBkWlv3yJKbME7CRBqWSWSlHFB2dp0R43OtZMgNbHWt26trbP9c5NGq3DouOpHtcbDNO252PbDT8B78DwqCvhMWGxa/0j4bG0bRgLxRL+r7nr32zaZVL2OhS8LmeuW5UTZffCwD1ab1QS8DkLZTCDKrMzRPIO3/yzxIfzhHcOf0iQmZ2Tn54+bulqtZaVPRJm4lB/4NZzsc5vq+2NWFrzjsZ92poHrtdvHXBoDDVpyc4esx6LNgd+vfRLl2YPVILwPP3i+TQyhbygkGl1yIspJBxUrGpculRpGU/ra10DcvgQvZHecPhwg9O3hw4jDUjjoUONU5GUggJdQ2tDHYi+KtaNofTQeseBMgBf7/MM/R5A/kb3ZWO38nlku7uZhuBhz9ggX9//l0bHNWv4SUTYQefXrQLqs96/mMT+Udg1C4rM1dS1iLkmS4xU+5CbypQa2vF72Pp96EcyVDue0GoohKTFFGStZtAFvwJVhx1otNqHdsuitncYIIGI0oYlzQBCryOQdPsOWa9H6IJ/D9Wwn9DoDQTaXYfxgR3mgqcVJoEsGeSi7HKUxyFFuKGVaXmJqZCQC1iSKNclMqBEyvOiLo7OyWgUFEFJH0ukJYSrTIajuIQUopHgOigQkGixhCyCHJljoUxW7OvkhOd9yJFDCoGWYxIQiwzEhWIrh+LhIIngdn0ZrdTvU0EEOQEWSUleiZYBkpDidY9y4ci5BjpKJKqVdy7DpUoQXMnI4HgaToIkhIqEBkigh0io4vxxRSAOGUeFLQLFfDmhYnhdkeP4EuE17oB22jtrpMhRokaj9ZbFlgtIuVSlkMeFalLIknAK1StIUkjKZQAAAAAA")
+            format("woff2"),
+        url("iconfont.woff?t=1598104606471") format("woff"),
+        url("iconfont.ttf?t=1598104606471") format("truetype"),
+        /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+            url("iconfont.svg?t=1598104606471#iconfont") format("svg"); /* iOS 4.1- */
+}
+
+.iconfont {
+    font-family: "iconfont" !important;
+    color: white;
+    font-size: 34px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-fabulous:before {
+    content: "\e66f";
+}
+
+.icon-hide:before {
+    content: "\e673";
+}
+
+.icon-search:before {
+    content: "\e67d";
+}
+
+.icon-zoomout:before {
+    content: "\e684";
+}
