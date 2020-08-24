@@ -312,8 +312,45 @@
                         </section>
                     </li>
                     <li class="team">
-                        <section>team</section>
+                        <section>
+                            <header class="team1 commomTitle">
+                                <span>EINBLICK</span><br />
+                                <span>DEVELOPERS</span><br />
+                                <span>BEST</span><br />
+                            </header>
+                            <div class="team2 commonText">
+                                <p>
+                                    Nothing succeeds lacks confidence. When you
+                                    are truly and justifiably confident, it
+                                    radiates from you like sunlight, and
+                                    attracts success to you like a magnet. It's
+                                    important to believe in yourself. Believe
+                                    that you can do it under any circumstances,
+                                    because if you believe you can, then you
+                                    really will.
+                                </p>
+                            </div>
+                            <div class="team3">
+                                <ul>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                </ul>
+                            </div>
+                        </section>
                     </li>
+                </ul>
+                <ul class="dot">
+                    <li class="active"></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
                 </ul>
             </section>
         </section>
@@ -352,7 +389,144 @@
             var imgNodes = document.querySelectorAll(
                 "#content > .list .about .about4 .item ul img"
             );
+            var dotLiNodes = document.querySelectorAll("#content > .dot > li ");
+            var teamSection = document.querySelector(
+                "#content > .list .team > section"
+            );
+            var team3 = document.querySelector("#content > .list .team .team3");
+            var team3UL = document.querySelector(
+                "#content > .list .team .team3 ul"
+            );
+            var team3LiNodes = document.querySelectorAll(
+                "#content > .list .team .team3 li"
+            );
+            var timerDraw = 0;
+            var timerCircle = 0;
             /* 内容区交互 */
+            /* 第五屏气泡效果 */
+            biubiu();
+            function biubiu() {
+                var oc = null;
+                for (let i = 0; i < team3LiNodes.length; i++) {
+                    team3LiNodes[i].onmouseenter = function () {
+                        for (let j = 0; j < team3LiNodes.length; j++) {
+                            team3LiNodes[j].style.opacity = 0.5;
+                        }
+                        this.style.opacity = 1;
+                        /* 添加canvas元素 */
+                        addCanvas();
+                        oc.style.left = this.offsetLeft + "px";
+                        oc.style.top = this.offsetTop + "px";
+                    };
+                }
+                function qiPao() {
+                    if (oc.getContext) {
+                        var ctx = oc.getContext("2d");
+                        var arr = [];
+
+                        //将数组中的圆绘制到画布上
+                        timerDraw = setInterval(function () {
+                            ctx.clearRect(0, 0, oc.width, oc.height);
+
+                            for (var i = 0; i < arr.length; i++) {
+                                arr[i].deg += 8;
+                                arr[i].x =
+                                    arr[i].startX +
+                                    Math.sin((arr[i].deg * Math.PI) / 180) *
+                                        arr[i].step *
+                                        2;
+                                arr[i].y =
+                                    arr[i].startY -
+                                    ((arr[i].deg * Math.PI) / 180) *
+                                        arr[i].step;
+                                if (arr[i].y <= 50) {
+                                    arr.splice(i, 1);
+                                }
+                            }
+                            console.log(arr);
+                            for (var i = 0; i < arr.length; i++) {
+                                ctx.save();
+                                ctx.fillStyle =
+                                    "rgba(" +
+                                    arr[i].red +
+                                    "," +
+                                    arr[i].green +
+                                    "," +
+                                    arr[i].blue +
+                                    "," +
+                                    arr[i].alpha +
+                                    ")";
+                                ctx.beginPath();
+                                ctx.arc(
+                                    arr[i].x,
+                                    arr[i].y,
+                                    arr[i].r,
+                                    0,
+                                    (360 * Math.PI) / 180
+                                );
+                                ctx.fill();
+                                ctx.restore();
+                            }
+                        }, 1000 / 60);
+
+                        //生成随机圆
+                        timerCircle = setInterval(function () {
+                            //圆
+                            var r = Math.round(Math.random() * 8 + 2);
+                            var x = Math.random() * oc.width;
+                            var y = oc.height - r;
+
+                            //圆的填充色
+                            var red = Math.round(Math.random() * 255);
+                            var green = Math.round(Math.random() * 255);
+                            var blue = Math.round(Math.random() * 255);
+                            var alpha = 1;
+                            //圆运动轨迹参数
+                            var deg = 0;
+                            var step = Math.round(Math.random() * 20 + 10);
+                            var startX = x;
+                            var startY = y;
+                            arr.push({
+                                x: x,
+                                y: y,
+                                r: r,
+                                red: red,
+                                green: green,
+                                blue: blue,
+                                alpha: alpha,
+                                deg: deg,
+                                step: step,
+                                startX: startX,
+                                startY: startY,
+                            });
+                        }, 50);
+                    }
+                }
+
+                function addCanvas() {
+                    if (!oc) {
+                        oc = document.createElement("canvas");
+                        oc.width = team3LiNodes[0].offsetWidth;
+                        oc.height = team3LiNodes[0].offsetHeight;
+                        oc.onmouseleave = function () {
+                            for (let i = 0; i < team3LiNodes.length; i++) {
+                                team3LiNodes[i].style.opacity = 1;
+                            }
+                            removeCanvas();
+                        };
+                        team3.appendChild(oc);
+                        qiPao();
+                    }
+                }
+
+                function removeCanvas() {
+                    oc.remove();
+                    oc = null;
+                    clearInterval(timerDraw);
+                    clearInterval(timerCircle);
+                }
+            }
+
             /* 第四屏图片炸裂效果 */
             picBoom();
             function picBoom() {
@@ -362,7 +536,6 @@
                 function change(node) {
                     var src = node.dataset.src;
                     var w = node.offsetWidth / 2;
-                    console.log(w);
                     var h = node.offsetHeight / 2;
                     var newarrLeft = [0, -2, 1, -1];
                     var newarrTop = [1, 0, -1, -2];
@@ -475,11 +648,12 @@
                         }
                     }
                 }
-                /* 批量清空类方法 */
-                function removeClass(nodes, className) {
-                    for (let j = 0; j < nodes.length; j++) {
-                        nodes[j].classList.remove(className);
-                    }
+            }
+
+            /* 批量清空类方法 */
+            function removeClass(nodes, className) {
+                for (let j = 0; j < nodes.length; j++) {
+                    nodes[j].classList.remove(className);
                 }
             }
 
@@ -498,7 +672,7 @@
                 clearTimeout(timer);
                 timer = setTimeout(function () {
                     fn(ev);
-                }, 50);
+                }, 100);
             };
             function fn(ev) {
                 ev = ev || event;
@@ -577,7 +751,12 @@
                     };
                 }
             }
-
+            /* dot点击数事件 */
+            for (let i = 0; i < dotLiNodes.length; i++) {
+                dotLiNodes[i].onclick = function () {
+                    move(i);
+                };
+            }
             /* 动画核心函数 */
             function move(index) {
                 for (let j = 0; j < upNodes.length; j++) {
@@ -597,6 +776,8 @@
                     ) *
                         index +
                     "px";
+                removeClass(dotLiNodes, "active");
+                dotLiNodes[index].classList.add("active");
             }
         };
     </script>
