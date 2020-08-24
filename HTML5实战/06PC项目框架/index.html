@@ -280,7 +280,36 @@
                         </section>
                     </li>
                     <li class="about">
-                        <section>about</section>
+                        <section>
+                            <header class="about1 commomTitle">
+                                <span>EINBLICK</span><br />
+                                <span>DEVELOPERS</span><br />
+                                <span>BEST</span><br />
+                            </header>
+                            <div class="about2 commonText">
+                                <p>
+                                    Nothing succeeds lacks confidence. When you
+                                    are truly and justifiably confident, it
+                                    radiates from you like sunlight, and
+                                    attracts success to you like a magnet. It's
+                                    important to believe in yourself. Believe
+                                    that you can do it under any circumstances,
+                                    because if you believe you can, then you
+                                    really will.
+                                </p>
+                            </div>
+                            <div class="about3"></div>
+                            <div class="about4">
+                                <div class="item">
+                                    <span></span>
+                                    <ul data-src="img/about1.jpg"></ul>
+                                </div>
+                                <div class="item">
+                                    <span></span>
+                                    <ul data-src="img/about3.jpg"></ul>
+                                </div>
+                            </div>
+                        </section>
                     </li>
                     <li class="team">
                         <section>team</section>
@@ -317,7 +346,56 @@
                 "#content > .list .home .home1 li"
             );
             var home1 = document.querySelector("#content > .list .home .home1");
+            var aboutULs = document.querySelectorAll(
+                "#content > .list .about .about4 .item ul"
+            );
+            var imgNodes = document.querySelectorAll(
+                "#content > .list .about .about4 .item ul img"
+            );
             /* 内容区交互 */
+            /* 第四屏图片炸裂效果 */
+            picBoom();
+            function picBoom() {
+                for (let i = 0; i < aboutULs.length; i++) {
+                    change(aboutULs[i]);
+                }
+                function change(node) {
+                    var src = node.dataset.src;
+                    var w = node.offsetWidth / 2;
+                    console.log(w);
+                    var h = node.offsetHeight / 2;
+                    var newarrLeft = [0, -2, 1, -1];
+                    var newarrTop = [1, 0, -1, -2];
+                    var oldarrLeft = [0, -1, 0, -1];
+                    var oldarrTop = [0, 0, -1, -1];
+                    for (let i = 0; i < 4; i++) {
+                        var liNode = document.createElement("li");
+                        var imgNode = document.createElement("img");
+                        imgNode.src = src;
+                        // left[0,-1,0,-1]
+                        // top[0,0,-1,-1]
+                        imgNode.style.left = -(i % 2) * w + "px";
+                        imgNode.style.top = -Math.floor(i / 2) * h + "px";
+                        liNode.style.width = w + "px";
+                        liNode.style.height = h + "px";
+                        liNode.appendChild(imgNode);
+                        node.appendChild(liNode);
+                    }
+                    var imgNodes = node.querySelectorAll("img");
+                    node.onmouseenter = function () {
+                        imgNodes[0].style.top = h + "px";
+                        imgNodes[1].style.left = -2 * w + "px";
+                        imgNodes[2].style.left = w + "px";
+                        imgNodes[3].style.top = -2 * h + "px";
+                    };
+                    node.onmouseleave = function () {
+                        imgNodes[0].style.top = 0 + "px";
+                        imgNodes[1].style.left = -w + "px";
+                        imgNodes[2].style.left = 0 + "px";
+                        imgNodes[3].style.top = -h + "px";
+                    };
+                }
+            }
             /* 第一屏3D效果 */
             home3D();
             function home3D() {

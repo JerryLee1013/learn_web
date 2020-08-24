@@ -184,6 +184,7 @@ table {
   /* 第一屏 */
   /* 第二屏 */
   /* 第三屏 */
+  /* 第四屏 */
 }
 #content > .list > li {
   position: relative;
@@ -530,6 +531,71 @@ table {
 }
 #content > .list .about {
   background: url(../img/marvel4.jpg) no-repeat;
+}
+#content > .list .about .about1 {
+  margin: 50px 0 50px 50px;
+}
+#content > .list .about .about2 {
+  font-size: 20px;
+  margin-left: 50px;
+  width: 400px;
+}
+#content > .list .about .about3 {
+  width: 357px;
+  height: 998px;
+  background: url(../img/greenLine.png) no-repeat;
+  background-size: 100% 100%;
+  position: absolute;
+  left: 50%;
+  top: -110px;
+}
+#content > .list .about .about4 .item {
+  position: absolute;
+  width: 260px;
+  height: 200px;
+  border: 5px solid rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  overflow: hidden;
+}
+#content > .list .about .about4 .item:nth-of-type(1) {
+  left: 750px;
+  top: 50px;
+}
+#content > .list .about .about4 .item:nth-of-type(1) span {
+  background: url(../img/about2.jpg) no-repeat;
+  transform: scale(1.5);
+  transition: 1s transform;
+}
+#content > .list .about .about4 .item:nth-of-type(2) {
+  left: 600px;
+  top: 290px;
+}
+#content > .list .about .about4 .item:nth-of-type(2) span {
+  background: url(../img/about4.jpg) no-repeat;
+  transform: scale(1.5);
+  transition: 1s transform;
+}
+#content > .list .about .about4 .item:hover span {
+  transform: scale(1);
+}
+#content > .list .about .about4 .item span,
+#content > .list .about .about4 .item ul {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+#content > .list .about .about4 .item ul li {
+  float: left;
+  position: relative;
+  overflow: hidden;
+}
+#content > .list .about .about4 .item ul li img {
+  position: absolute;
+  width: 250px;
+  height: 190px;
+  transition: 1s top, 1s left;
 }
 #content > .list .team {
   background: url(../img/marvel5.jpg) no-repeat;

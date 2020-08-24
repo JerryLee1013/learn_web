@@ -485,9 +485,80 @@
                 }
             }
         }
-
+        /* 第四屏 */
         .about {
             background: url(../img/marvel4.jpg) no-repeat;
+            .about1 {
+                margin: 50px 0 50px 50px;
+            }
+
+            .about2 {
+                font-size: 20px;
+                margin-left: 50px;
+                width: 400px;
+            }
+            .about3 {
+                width: 357px;
+                height: 998px;
+                background: url(../img/greenLine.png) no-repeat;
+                background-size: 100% 100%;
+                position: absolute;
+                left: 50%;
+                top: -110px;
+            }
+            .about4 {
+                .item {
+                    position: absolute;
+                    width: 260px;
+                    height: 200px;
+                    border: 5px solid rgba(255, 255, 255, 0.5);
+                    border-radius: 8px;
+                    overflow: hidden;
+                    &:nth-of-type(1) {
+                        left: 750px;
+                        top: 50px;
+                        span {
+                            background: url(../img/about2.jpg) no-repeat;
+                            transform: scale(1.5);
+                            transition: 1s transform;
+                        }
+                    }
+                    &:nth-of-type(2) {
+                        left: 600px;
+                        top: 290px;
+                        span {
+                            background: url(../img/about4.jpg) no-repeat;
+                            transform: scale(1.5);
+                            transition: 1s transform;
+                        }
+                    }
+                    &:hover span {
+                        transform: scale(1);
+                    }
+
+                    span,
+                    ul {
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        right: 0;
+                        bottom: 0;
+                    }
+                    ul {
+                        li {
+                            float: left;
+                            position: relative;
+                            overflow: hidden;
+                            img {
+                                position: absolute;
+                                width: 250px;
+                                height: 190px;
+                                transition: 1s top, 1s left;
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         .team {
