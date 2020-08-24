@@ -85,13 +85,123 @@
                     </div>
                 </div>
             </header>
+            <!-- 内容区 -->
             <section id="content">
                 <ul class="list">
                     <li class="home">
-                        <section>home</section>
+                        <section>
+                            <ul class="home1 commomTitle">
+                                <li class="active">
+                                    <div class="item">
+                                        one layer
+                                    </div>
+                                </li>
+                                <li class="">
+                                    <div class="item">
+                                        two layer
+                                    </div>
+                                </li>
+                                <li class="">
+                                    <div class="item">
+                                        three layer
+                                    </div>
+                                </li>
+                                <li class="">
+                                    <div class="item">
+                                        four layer
+                                    </div>
+                                </li>
+                            </ul>
+                            <ul class="home2">
+                                <li class="active"></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                            </ul>
+                        </section>
                     </li>
                     <li class="course">
-                        <section>course</section>
+                        <section>
+                            <header class="course1 commomTitle">
+                                <span>EINBLICK</span><br />
+                                <span>DEVELOPERS</span><br />
+                                <span>BEST</span><br />
+                            </header>
+                            <div class="course2 commonText">
+                                <p>
+                                    Nothing succeeds lacks confidence. When you
+                                    are truly and justifiably confident, it
+                                    radiates from you like sunlight, and
+                                    attracts success to you like a magnet. It's
+                                    important to believe in yourself. Believe
+                                    that you can do it under any circumstances,
+                                    because if you believe you can, then you
+                                    really will. <br />
+                                    The belief keeps you searching for answers,
+                                    which means that pretty soon you will get
+                                    them. Confidence is more than an attitude.
+                                    It comes from knowing exactly where you are
+                                    going and exactly how you are going to get
+                                    there. It comes from acting with integrity
+                                    and confidence.
+                                </p>
+                            </div>
+                            <div class="course3">
+                                <span class="line"></span>
+                                <span class="line"></span>
+                                <span class="line"></span>
+                                <span class="line"></span>
+                                <span class="line"></span>
+                                <div class="item">
+                                    <div class="backface"></div>
+                                    <div class="face">我有一只小毛驴</div>
+                                </div>
+                                <div class="item">
+                                    <div class="backface"></div>
+                                    <div class="face">我有一只小毛驴</div>
+                                </div>
+                                <div class="item">
+                                    <div class="backface"></div>
+                                    <div class="face">我有一只小毛驴</div>
+                                </div>
+                                <div class="item">
+                                    <div class="backface"></div>
+                                    <div class="face">我有一只小毛驴</div>
+                                </div>
+                                <div class="item">
+                                    <div class="backface"></div>
+                                    <div class="face">我有一只小毛驴</div>
+                                </div>
+                                <div class="item">
+                                    <div class="backface"></div>
+                                    <div class="face">我有一只小毛驴</div>
+                                </div>
+                                <div class="item">
+                                    <div class="backface"></div>
+                                    <div class="face">我有一只小毛驴</div>
+                                </div>
+                                <div class="item">
+                                    <div class="backface"></div>
+                                    <div class="face">我有一只小毛驴</div>
+                                </div>
+                                <div class="item">
+                                    <div class="backface"></div>
+                                    <div class="face">我有一只小毛驴</div>
+                                </div>
+                                <div class="item">
+                                    <div class="backface"></div>
+                                    <div class="face">我有一只小毛驴</div>
+                                </div>
+                                <div class="item">
+                                    <div class="backface"></div>
+                                    <div class="face">我有一只小毛驴</div>
+                                </div>
+                                <div class="item">
+                                    <div class="backface"></div>
+                                    <div class="face">我有一只小毛驴</div>
+                                </div>
+                            </div>
+                        </section>
                     </li>
                     <li class="works">
                         <section>
@@ -197,8 +307,105 @@
             var ulNode = document.querySelector("#content>.list");
             var now = 0; /* 同步当前索引 */
             var timer = 0;
+            var timer3D = 0;
+            var oldIndex = 0;
+            var autoIndex = 0;
+            var home2LiNodes = document.querySelectorAll(
+                "#content > .list .home .home2 li"
+            );
+            var home1LiNodes = document.querySelectorAll(
+                "#content > .list .home .home1 li"
+            );
+            var home1 = document.querySelector("#content > .list .home .home1");
             /* 内容区交互 */
-            //滚轮
+            /* 第一屏3D效果 */
+            home3D();
+            function home3D() {
+                /* home1鼠标进入、离开事件 */
+                home1.onmouseenter = function () {
+                    clearInterval(timer3D);
+                };
+                home1.onmouseleave = function () {
+                    autoLunbo();
+                };
+                /* 自动轮播方法调用 */
+                autoLunbo();
+                /* 自动轮播方法 */
+                function autoLunbo() {
+                    clearInterval(timer3D);
+                    timer3D = setInterval(function () {
+                        autoIndex++;
+                        if (autoIndex == home1LiNodes.length) {
+                            autoIndex = 0;
+                        }
+                        autolunboFun(autoIndex);
+                        oldIndex = autoIndex;
+                    }, 2000);
+                }
+                /* 点击轮播事件 */
+                for (let i = 0; i < home2LiNodes.length; i++) {
+                    home2LiNodes[i].onclick = function () {
+                        clearInterval(timer3D);
+                        lunboClick(i);
+                        autoIndex = i;
+                        autoLunbo();
+                    };
+                }
+                /* 自动轮播调用函数 */
+                function autolunboFun(i) {
+                    removeClass(home2LiNodes, "active");
+                    home2LiNodes[i].classList.add("active");
+                    if (i != oldIndex) {
+                        home1LiNodes[0].classList.remove("active");
+
+                        removeClass(home1LiNodes, "rightShow");
+                        removeClass(home1LiNodes, "rightHide");
+                        removeClass(home1LiNodes, "leftShow");
+                        removeClass(home1LiNodes, "leftHide");
+
+                        /* 从左往右播 */
+
+                        home1LiNodes[oldIndex].classList.add("leftHide");
+                        home1LiNodes[i].classList.add("rightShow");
+                        oldIndex = i;
+                    }
+                }
+                /* 点击轮播调用函数 */
+                function lunboClick(i) {
+                    removeClass(home2LiNodes, "active");
+                    home2LiNodes[i].classList.add("active");
+                    if (i != oldIndex) {
+                        home1LiNodes[0].classList.remove("active");
+
+                        removeClass(home1LiNodes, "rightShow");
+                        removeClass(home1LiNodes, "rightHide");
+                        removeClass(home1LiNodes, "leftShow");
+                        removeClass(home1LiNodes, "leftHide");
+
+                        /* 从左往右点 */
+                        if (i > oldIndex) {
+                            home1LiNodes[oldIndex].classList.add("leftHide");
+                            home1LiNodes[i].classList.add("rightShow");
+                            oldIndex = i;
+                        }
+
+                        /* 从右往左点 */
+                        if (i < oldIndex) {
+                            home1LiNodes[oldIndex].classList.add("rightHide");
+                            home1LiNodes[i].classList.add("leftShow");
+                            oldIndex = i;
+                        }
+                    }
+                }
+                /* 批量清空类方法 */
+                function removeClass(nodes, className) {
+                    for (let j = 0; j < nodes.length; j++) {
+                        nodes[j].classList.remove(className);
+                    }
+                }
+            }
+
+            //内容区滚轮事件
             if (content.addEventListener) {
                 content.addEventListener("DOMMouseScroll", function (ev) {
                     ev = ev || event;

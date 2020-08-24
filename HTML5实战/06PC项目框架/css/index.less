@@ -1,5 +1,6 @@
 /* 格式化代码 */
 @import "reset.less";
+
 /* 公共样式 */
 .commomTitle {
     color: #009ee0;
@@ -8,14 +9,23 @@
     font-weight: bold;
     letter-spacing: -5px;
 }
+
+.commonText {
+    color: #fff;
+    line-height: 1.5;
+    font-size: 15px;
+}
+
 /* 头部样式开始 */
 #head {
     background-color: #fff !important;
+
     .headMain {
         position: relative;
         width: 1100px;
         height: 80px;
         margin: 0 auto;
+
         .logo {
             float: left;
 
@@ -23,9 +33,11 @@
                 height: 80px;
             }
         }
+
         .nav {
             float: right;
             margin-top: 40px;
+
             .list > li {
                 float: left;
                 position: relative;
@@ -39,9 +51,11 @@
                     color: #000;
                     transition: 1s width;
                 }
+
                 .down {
                     color: blue;
                 }
+
                 img {
                     width: 20px;
                 }
@@ -53,11 +67,13 @@
                 }
             }
         }
+
         .arrow {
             position: absolute;
             z-index: 2;
             bottom: -40px;
             transition: left 1s;
+
             .iconarrow {
                 border-left: 20px solid transparent;
                 border-top: 20px solid white;
@@ -67,6 +83,7 @@
         }
     }
 }
+
 /* 头部样式结束 */
 
 /* 内容区样式开始 */
@@ -75,6 +92,7 @@
     width: 100%;
     overflow: hidden;
     background-color: gray;
+
     & > .list {
         position: absolute;
         left: 0;
@@ -85,6 +103,7 @@
         & > li {
             position: relative;
             background-position: 50% 50% !important;
+
             & > section {
                 position: absolute;
                 left: 0;
@@ -94,23 +113,279 @@
                 margin: auto;
                 width: 1100px;
                 height: 600px;
+                background-color: #bfa;
+            }
+        }
+        /* 第一屏 */
+        .home {
+            background: url(../img/marvel1.jpg) no-repeat;
+            .home1 {
+                width: 100%;
+                height: 100%;
+                perspective: 1000px;
+                transform-style: preserve-3d;
+                li {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    color: yellow;
+                    visibility: hidden;
+                    &.active {
+                        visibility: visible;
+                    }
+
+                    /* 从左往右点 */
+                    &.leftHide {
+                        visibility: hidden;
+                        animation: 1s leftHide 1 linear;
+                    }
+                    &.rightShow {
+                        visibility: visible;
+                        animation: 1s rightShow 1 linear;
+                    }
+                    @keyframes leftHide {
+                        0% {
+                            visibility: visible;
+                        }
+                        50% {
+                            transform: translateX(-40%) rotateY(30deg)
+                                scale(0.8);
+                        }
+                        100% {
+                            transform: translateZ(-200px);
+                        }
+                    }
+                    @keyframes rightShow {
+                        0% {
+                            visibility: hidden;
+                            transform: translateZ(-200px);
+                        }
+                        50% {
+                            transform: translateX(40%) rotateY(-30deg)
+                                scale(0.8);
+                        }
+                        100% {
+                            transform: translateZ(0px);
+                        }
+                    }
+
+                    /* 从右往左点 */
+                    &.leftShow {
+                        visibility: visible;
+                        animation: 1s leftShow 1 linear;
+                    }
+                    &.rightHide {
+                        visibility: hidden;
+                        animation: 1s rightHide 1 linear;
+                    }
+                    @keyframes leftShow {
+                        0% {
+                            visibility: hidden;
+                            transform: translateZ(-200px);
+                        }
+                        50% {
+                            transform: translateX(-40%) rotateY(30deg)
+                                scale(0.8);
+                        }
+                        100% {
+                            transform: translateZ(0);
+                        }
+                    }
+                    @keyframes rightHide {
+                        0% {
+                            visibility: visible;
+                        }
+                        50% {
+                            transform: translateX(40%) rotateY(-30deg)
+                                scale(0.8);
+                        }
+                        100% {
+                            transform: translateZ(-200px);
+                        }
+                    }
+
+                    &:nth-child(1) {
+                        color: white;
+                        background-color: red;
+                    }
+                    &:nth-child(2) {
+                        color: blue;
+                        background-color: pink;
+                    }
+                    &:nth-child(3) {
+                        color: red;
+                        background-color: blue;
+                    }
+                    &:nth-child(4) {
+                        color: yellow !important;
+                        background-color: deeppink;
+                    }
+                    .item {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translateX(-50%) translateY(-50%);
+                        text-align: center;
+                    }
+                }
+            }
+            .home2 {
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                text-align: center;
+                li {
+                    display: inline-block;
+                    width: 20px;
+                    height: 20px;
+                    line-height: 20px;
+                    margin: 2px;
+                    cursor: pointer;
+                    border-radius: 50%;
+                    background-color: rgba(255, 255, 255, 0.5);
+                    box-shadow: 0 0 4px rgba(25, 25, 25, 0.9);
+                    &.active {
+                        background-color: #fff;
+                        cursor: default;
+                    }
+                }
             }
         }
 
-        .home {
-            background: url(../img/marvel1.jpg) no-repeat;
-        }
+        /* 第二屏 */
         .course {
             background: url(../img/marvel2.jpg) no-repeat;
+
+            .course1 {
+                margin: 50px 0 50px 50px;
+            }
+
+            .course2 {
+                margin-left: 50px;
+                width: 400px;
+            }
+
+            .course3 {
+                position: absolute;
+                right: 50px;
+                top: 80px;
+                width: 480px;
+
+                .line {
+                    position: absolute;
+                    top: -7px;
+                    left: -4px;
+                    background-color: red;
+                    display: block;
+                    width: 9px;
+                    height: 410px;
+                    background: url(../img/plus_row.png) no-repeat;
+
+                    &:nth-of-type(1) {
+                        left: -4px;
+                    }
+                    &:nth-of-type(2) {
+                        left: 115px;
+                    }
+                    &:nth-of-type(3) {
+                        left: 234px;
+                    }
+                    &:nth-of-type(4) {
+                        left: 353px;
+                    }
+                    &:nth-of-type(5) {
+                        left: 471px;
+                    }
+                }
+
+                .item {
+                    position: relative;
+                    width: 118px;
+                    height: 132px;
+                    float: left;
+                    margin-left: 1px;
+                    // 景深和3d舞台
+                    perspective: 500px;
+                    transform-style: preserve-3d;
+                    .face,
+                    .backface {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        transition: 2s transform;
+                    }
+                    .face {
+                        box-sizing: border-box;
+                        padding: 15px;
+                        transform: rotateY(180deg);
+                        backface-visibility: hidden;
+                        background-color: #009ee0;
+                        color: white;
+                    }
+                    .backface {
+                        background-position: 50% 50% !important;
+                    }
+
+                    &:hover .face {
+                        transform: rotateY(360deg);
+                    }
+                    &:hover .backface {
+                        transform: rotateY(180deg);
+                    }
+                    &:nth-of-type(1) .backface {
+                        background: url(../img/binoli.png) no-repeat;
+                    }
+                    &:nth-of-type(2) .backface {
+                        background: url(../img/bks.png) no-repeat;
+                    }
+                    &:nth-of-type(3) .backface {
+                        background: url(../img/gu.png) no-repeat;
+                    }
+                    &:nth-of-type(4) .backface {
+                        background: url(../img/hlx.png) no-repeat;
+                    }
+                    &:nth-of-type(5) .backface {
+                        background: url(../img/hlx.png) no-repeat;
+                    }
+                    &:nth-of-type(6) .backface {
+                        background: url(../img/lbs.png) no-repeat;
+                    }
+                    &:nth-of-type(7) .backface {
+                        background: url(../img/leonberg.png) no-repeat;
+                    }
+                    &:nth-of-type(8) .backface {
+                        background: url(../img/pcwelt.png) no-repeat;
+                    }
+                    &:nth-of-type(9) .backface {
+                        background: url(../img/gu.png) no-repeat;
+                    }
+                    &:nth-of-type(10) .backface {
+                        background: url(../img/gu.png) no-repeat;
+                    }
+                    &:nth-of-type(11) .backface {
+                        background: url(../img/gu.png) no-repeat;
+                    }
+                    &:nth-of-type(12) .backface {
+                        background: url(../img/gu.png) no-repeat;
+                    }
+                }
+            }
         }
+
         /* 第三屏 */
         .works {
             background: url(../img/marvel3.jpg) no-repeat;
+
             .works1 {
                 margin: 50px 0 100px 50px;
             }
+
             .works2 {
                 margin-left: 50px;
+
                 .item {
                     position: relative;
                     overflow: hidden;
@@ -120,6 +395,7 @@
                     &:hover .mask {
                         opacity: 0.7;
                     }
+
                     &:hover img {
                         transform: rotate(25deg) scale(1.7);
                     }
@@ -128,6 +404,7 @@
                         transition: 1s;
                         width: 250px;
                     }
+
                     .mask {
                         transition: 1s;
                         position: absolute;
@@ -140,6 +417,7 @@
                         background: #000;
                         opacity: 0;
                         color: white;
+
                         .icon {
                             position: relative;
                             width: 34px;
@@ -147,16 +425,19 @@
                             overflow: hidden;
                             margin: 0 auto;
                             margin-top: 10px;
+
                             .iconwrap {
                                 position: absolute;
                                 top: 0;
                                 transition: 1s;
+
                                 span {
                                     display: block;
                                     width: 34px;
                                     height: 34px;
                                     text-align: center;
                                     line-height: 34px;
+
                                     &:last-child {
                                         color: blue;
                                     }
@@ -170,6 +451,7 @@
                     }
                 }
             }
+
             .works3 {
                 position: absolute;
                 left: 865px;
@@ -181,26 +463,33 @@
 
                 animation: works3Move 8s linear infinite;
             }
+
             @keyframes works3Move {
                 0% {
                 }
+
                 49% {
                     transform: translate(-825px) rotateY(0deg);
                 }
+
                 50% {
                     transform: translate(-825px) rotateY(180deg);
                 }
+
                 99% {
                     transform: translate(0px) rotateY(180deg);
                 }
+
                 100% {
                     transform: translate(0px) rotateY(0deg);
                 }
             }
         }
+
         .about {
             background: url(../img/marvel4.jpg) no-repeat;
         }
+
         .team {
             background: url(../img/marvel5.jpg) no-repeat;
         }
