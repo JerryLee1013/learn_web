@@ -121,11 +121,19 @@ table {
   height: 80px;
   margin: 0 auto;
 }
-#head .headMain .logo {
+#head .headMain .music {
+  width: 14px;
+  height: 14px;
+  margin: 50px 0 5px;
+  background: url(../img/musicon.gif) no-repeat;
   float: left;
 }
+#head .headMain .logo {
+  float: left;
+  margin-top: 30px;
+}
 #head .headMain .logo img {
-  height: 80px;
+  width: 188px;
 }
 #head .headMain .nav {
   float: right;

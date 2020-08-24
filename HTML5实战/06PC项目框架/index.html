@@ -18,12 +18,12 @@
                     <!-- logo -->
                     <h1 class="logo">
                         <a href="javascript:;">
-                            <img
-                                src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1598082995795&di=794266c31979e1000ff4f38d820befad&imgtype=0&src=http%3A%2F%2Fimg.ewebweb.com%2Fuploads%2F20190625%2F16%2F1561450847-VOdWtNnhRB.jpg"
-                                alt=""
-                            />
+                            <img src="img/logo.png" alt="" />
                         </a>
                     </h1>
+                    <div class="music">
+                        <audio src="img/audio.mp3" loop autoplay></audio>
+                    </div>
                     <!-- 导航 -->
                     <nav class="nav">
                         <ul class="list">
@@ -409,6 +409,19 @@
             var timerDraw = 0;
             var timerCircle = 0;
             var preIndex = 0;
+            var music = document.querySelector("#head .headMain .music");
+            var audio = document.querySelector("#head .headMain .music audio");
+            /* 音乐控件 */
+            music.onclick = function () {
+                if (audio.paused) {
+                    audio.play();
+                    this.style.background = "url(img/musicon.gif)";
+                } else {
+                    audio.pause();
+                    this.style.background = "url(img/musicoff.gif)";
+                }
+            };
+
             /* 出入场 */
             var anArr = [
                 {
