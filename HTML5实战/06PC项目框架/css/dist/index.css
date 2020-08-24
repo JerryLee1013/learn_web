@@ -205,6 +205,7 @@ table {
 #content > .list > li {
   position: relative;
   background-position: 50% 50% !important;
+  overflow: hidden;
 }
 #content > .list > li > section {
   position: absolute;
@@ -222,6 +223,7 @@ table {
 #content > .list .home .home1 {
   width: 100%;
   height: 100%;
+  transition: 1s transform, 1s opacity;
   perspective: 1000px;
   transform-style: preserve-3d;
 }
@@ -330,6 +332,7 @@ table {
   right: 0;
   bottom: 0;
   text-align: center;
+  transition: 1s transform, 1s opacity;
 }
 #content > .list .home .home2 li {
   display: inline-block;
@@ -350,14 +353,19 @@ table {
   background: url(../img/marvel2.jpg) no-repeat;
 }
 #content > .list .course .course1 {
+  position: relative;
+  z-index: 2;
   margin: 50px 0 50px 50px;
 }
 #content > .list .course .course2 {
+  position: relative;
+  z-index: 2;
   margin-left: 50px;
   width: 400px;
 }
 #content > .list .course .course3 {
   position: absolute;
+  z-index: 2;
   right: 50px;
   top: 80px;
   width: 480px;
@@ -456,13 +464,46 @@ table {
 #content > .list .course .course3 .item:nth-of-type(12) .backface {
   background: url(../img/gu.png) no-repeat;
 }
+#content > .list .course .plane1,
+#content > .list .course .plane2,
+#content > .list .course .plane3 {
+  transition: 1s transform;
+}
+#content > .list .course .plane1 {
+  background: url(../img/plane1.png) no-repeat;
+  width: 359px;
+  height: 283px;
+  position: absolute;
+  left: 300px;
+  top: -100px;
+}
+#content > .list .course .plane2 {
+  background: url(../img/plane2.png) no-repeat;
+  width: 309px;
+  height: 249px;
+  position: absolute;
+  left: -100px;
+  top: 200px;
+}
+#content > .list .course .plane3 {
+  background: url(../img/plane3.png) no-repeat;
+  width: 230px;
+  height: 182px;
+  position: absolute;
+  left: 300px;
+  top: 400px;
+}
 #content > .list .works {
   background: url(../img/marvel3.jpg) no-repeat;
 }
 #content > .list .works .works1 {
+  position: relative;
+  z-index: 3;
   margin: 50px 0 100px 50px;
 }
 #content > .list .works .works2 {
+  position: relative;
+  z-index: 3;
   margin-left: 50px;
 }
 #content > .list .works .works2 .item {
@@ -522,6 +563,7 @@ table {
 }
 #content > .list .works .works3 {
   position: absolute;
+  z-index: 3;
   left: 865px;
   bottom: 210px;
   width: 200px;
@@ -529,6 +571,35 @@ table {
   background: url(../img/rocket2.png) no-repeat;
   background-size: 100%;
   animation: works3Move 8s linear infinite;
+}
+#content > .list .works .pencil1,
+#content > .list .works .pencil2,
+#content > .list .works .pencil3 {
+  transition: 1s transform;
+}
+#content > .list .works .pencil1 {
+  width: 180px;
+  height: 97px;
+  background: url(../img/pencel1.png) no-repeat;
+  position: absolute;
+  left: 500px;
+  top: 0;
+}
+#content > .list .works .pencil2 {
+  width: 268px;
+  height: 38px;
+  background: url(../img/pencel2.png) no-repeat;
+  position: absolute;
+  left: 300px;
+  top: 250px;
+}
+#content > .list .works .pencil3 {
+  width: 441px;
+  height: 231px;
+  background: url(../img/pencel3.png) no-repeat;
+  position: absolute;
+  left: 650px;
+  top: 300px;
 }
 @keyframes works3Move {
   49% {
@@ -565,6 +636,7 @@ table {
   top: -110px;
 }
 #content > .list .about .about4 .item {
+  transition: 1s transform;
   position: absolute;
   width: 260px;
   height: 200px;
@@ -621,8 +693,10 @@ table {
 #content > .list .team .team1 {
   margin: 50px 0 50px 50px;
   float: left;
+  transition: 1s transform;
 }
 #content > .list .team .team2 {
+  transition: 1s transform;
   margin: 50px;
   width: 400px;
   float: right;

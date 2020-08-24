@@ -201,6 +201,9 @@
                                     <div class="face">我有一只小毛驴</div>
                                 </div>
                             </div>
+                            <div class="plane1"></div>
+                            <div class="plane2"></div>
+                            <div class="plane3"></div>
                         </section>
                     </li>
                     <li class="works">
@@ -277,6 +280,9 @@
                                 </div>
                             </div>
                             <div class="works3"></div>
+                            <div class="pencil1"></div>
+                            <div class="pencil2"></div>
+                            <div class="pencil3"></div>
                         </section>
                     </li>
                     <li class="about">
@@ -402,6 +408,152 @@
             );
             var timerDraw = 0;
             var timerCircle = 0;
+            var preIndex = 0;
+            /* 出入场 */
+            var anArr = [
+                {
+                    inAn: function () {
+                        var home1 = document.querySelector(
+                            "#content > .list .home .home1"
+                        );
+                        var home2 = document.querySelector(
+                            "#content > .list .home .home2"
+                        );
+                        home1.style.transform = "translateY(0)";
+                        home2.style.transform = "translateY(0)";
+                        home1.style.opacity = 1;
+                        home2.style.opacity = 1;
+                    },
+                    outAn: function () {
+                        var home1 = document.querySelector(
+                            "#content > .list .home .home1"
+                        );
+                        var home2 = document.querySelector(
+                            "#content > .list .home .home2"
+                        );
+                        home1.style.transform = "translateY(-400px)";
+                        home2.style.transform = "translateY(200px)";
+                        home1.style.opacity = 0;
+                        home2.style.opacity = 0;
+                    },
+                },
+                {
+                    inAn: function () {
+                        var plane1 = document.querySelector(
+                            "#content > .list .course .plane1"
+                        );
+                        var plane2 = document.querySelector(
+                            "#content > .list .course .plane2"
+                        );
+                        var plane3 = document.querySelector(
+                            "#content > .list .course .plane3"
+                        );
+                        plane1.style.transform = "translate(0,0)";
+                        plane2.style.transform = "translate(0,0)";
+                        plane3.style.transform = "translate(0,0)";
+                    },
+                    outAn: function () {
+                        var plane1 = document.querySelector(
+                            "#content > .list .course .plane1"
+                        );
+                        var plane2 = document.querySelector(
+                            "#content > .list .course .plane2"
+                        );
+                        var plane3 = document.querySelector(
+                            "#content > .list .course .plane3"
+                        );
+                        plane1.style.transform = "translate(-200px,-200px)";
+                        plane2.style.transform = "translate(-200px,200px)";
+                        plane3.style.transform = "translate(200px,-200px)";
+                    },
+                },
+                {
+                    inAn: function () {
+                        var pencil1 = document.querySelector(
+                            "#content > .list .works .pencil1"
+                        );
+                        var pencil2 = document.querySelector(
+                            "#content > .list .works .pencil2"
+                        );
+                        var pencil3 = document.querySelector(
+                            "#content > .list .works .pencil3"
+                        );
+
+                        pencil1.style.transform = "translateY(0)";
+                        pencil2.style.transform = "translateY(0)";
+                        pencil3.style.transform = "translateY(0)";
+                    },
+                    outAn: function () {
+                        var pencil1 = document.querySelector(
+                            "#content > .list .works .pencil1"
+                        );
+                        var pencil2 = document.querySelector(
+                            "#content > .list .works .pencil2"
+                        );
+                        var pencil3 = document.querySelector(
+                            "#content > .list .works .pencil3"
+                        );
+
+                        pencil1.style.transform = "translateY(-200px)";
+                        pencil2.style.transform = "translateY(100px)";
+                        pencil3.style.transform = "translateY(200px)";
+                    },
+                },
+                {
+                    inAn: function () {
+                        var Rect1 = document.querySelector(
+                            "#content > .list .about .about4 .item:nth-of-type(1)"
+                        );
+                        var Rect2 = document.querySelector(
+                            "#content > .list .about .about4 .item:nth-of-type(2)"
+                        );
+
+                        Rect1.style.transform = "rotate(0)";
+                        Rect2.style.transform = "rotate(0)";
+                    },
+                    outAn: function () {
+                        var Rect1 = document.querySelector(
+                            "#content > .list .about .about4 .item:nth-of-type(1)"
+                        );
+                        var Rect2 = document.querySelector(
+                            "#content > .list .about .about4 .item:nth-of-type(2)"
+                        );
+
+                        Rect1.style.transform = "rotate(30deg)";
+                        Rect2.style.transform = "rotate(-30deg)";
+                    },
+                },
+                {
+                    inAn: function () {
+                        var team1 = document.querySelector(
+                            "#content > .list .team .team1"
+                        );
+                        var team2 = document.querySelector(
+                            "#content > .list .team .team2"
+                        );
+                        team1.style.transform = "translateX(0)";
+                        team2.style.transform = "translateX(0)";
+                    },
+                    outAn: function () {
+                        var team1 = document.querySelector(
+                            "#content > .list .team .team1"
+                        );
+                        var team2 = document.querySelector(
+                            "#content > .list .team .team2"
+                        );
+                        team1.style.transform = "translateX(-300px)";
+                        team2.style.transform = "translateX(300px)";
+                    },
+                },
+            ];
+            /* 循环出场状态 */
+            for (let i = 0; i < anArr.length; i++) {
+                anArr[i]["outAn"]();
+            }
+            setTimeout(function () {
+                anArr[0]["inAn"]();
+            }, 1000);
+
             /* 内容区交互 */
             /* 第五屏气泡效果 */
             biubiu();
@@ -682,20 +834,19 @@
                 } else if (ev.detail) {
                     dir = ev.wheelDelta < 0 ? "up" : "down";
                 }
+                preIndex = now;
                 switch (dir) {
                     case "up":
-                        now--;
-                        if (now < 0) {
-                            now = 0;
+                        if (now > 0) {
+                            now--;
+                            move(now);
                         }
-                        move(now);
                         break;
                     case "down":
-                        now++;
-                        if (now > cLiNodes.length - 1) {
-                            now = cLiNodes.length - 1;
+                        if (now < cLiNodes.length) {
+                            now++;
+                            move(now);
                         }
-                        move(now);
                         break;
                 }
             }
@@ -746,6 +897,7 @@
                 for (let i = 0; i < liNodes.length; i++) {
                     liNodes[i].index = i;
                     liNodes[i].onclick = function () {
+                        preIndex = now;
                         move(this.index);
                         now = this.index;
                     };
@@ -754,7 +906,9 @@
             /* dot点击数事件 */
             for (let i = 0; i < dotLiNodes.length; i++) {
                 dotLiNodes[i].onclick = function () {
+                    preIndex = now;
                     move(i);
+                    now = i;
                 };
             }
             /* 动画核心函数 */
@@ -778,6 +932,20 @@
                     "px";
                 removeClass(dotLiNodes, "active");
                 dotLiNodes[index].classList.add("active");
+
+                /* 出入场 */
+                if (
+                    anArr[index] &&
+                    typeof anArr[index]["inAn"] === "function"
+                ) {
+                    anArr[index]["inAn"]();
+                }
+                if (
+                    anArr[preIndex] &&
+                    typeof anArr[preIndex]["inAn"] === "function"
+                ) {
+                    anArr[preIndex]["outAn"]();
+                }
             }
         };
     </script>
