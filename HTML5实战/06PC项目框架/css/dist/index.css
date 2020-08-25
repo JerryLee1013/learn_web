@@ -111,6 +111,43 @@ table {
   line-height: 1.5;
   font-size: 15px;
 }
+/* 开机动画 */
+#wrap {
+  width: 100%;
+  height: 100%;
+}
+#mask {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 299;
+}
+#mask .up {
+  width: 100%;
+  height: 50%;
+  background-color: skyblue;
+  position: absolute;
+  top: 0;
+  transition: 2s height;
+}
+#mask .down {
+  width: 100%;
+  height: 50%;
+  background-color: skyblue;
+  position: absolute;
+  bottom: 0;
+  transition: 2s height;
+}
+#mask .line {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 0;
+  height: 4px;
+  transform: translateY(-50%);
+  background-color: white;
+  transition: 3s width;
+}
 /* 头部样式开始 */
 #head {
   background-color: #fff !important;
@@ -187,6 +224,7 @@ table {
   position: fixed;
   right: 10px;
   top: 50%;
+  z-index: 199;
 }
 #content > .dot > li {
   margin-top: 10px;

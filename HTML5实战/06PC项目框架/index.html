@@ -11,6 +11,12 @@
     <body>
         <!-- 整体包裹区 -->
         <section id="wrap">
+            <!-- 开机动画 -->
+            <div id="mask">
+                <div class="up"></div>
+                <div class="down"></div>
+                <span class="line"></span>
+            </div>
             <!-- 头部，流体布局 -->
             <header id="head">
                 <!-- 固定布局 -->
@@ -22,7 +28,7 @@
                         </a>
                     </h1>
                     <div class="music">
-                        <audio src="img/audio.mp3" loop autoplay></audio>
+                        <audio src="img/audio.mp3" loop></audio>
                     </div>
                     <!-- 导航 -->
                     <nav class="nav">
@@ -411,6 +417,55 @@
             var preIndex = 0;
             var music = document.querySelector("#head .headMain .music");
             var audio = document.querySelector("#head .headMain .music audio");
+            /* 开机动画 */
+            var maskUpNode = document.querySelector("#mask .up");
+            var maskDownNode = document.querySelector("#mask .down");
+            var maskLineNode = document.querySelector("#mask .line");
+            var mask = document.querySelector("#wrap > #mask");
+            loadingAnimation();
+            function loadingAnimation() {
+                var arr = [
+                    "bg1.jpg",
+                    "bg2.jpg",
+                    "bg3.jpg",
+                    "bg4.jpg",
+                    "bg5.jpg",
+                    "about1.jpg",
+                    "about2.jpg",
+                    "about3.jpg",
+                    "about4.jpg",
+                    "worksimg1.jpg",
+                    "worksimg2.jpg",
+                    "worksimg3.jpg",
+                    "worksimg4.jpg",
+                    "team.png",
+                    "greenLine.png",
+                ];
+                var flag = 0;
+
+                for (let i = 0; i < arr.length; i++) {
+                    var img = new Image();
+                    img.src = "img/" + arr[i];
+                    img.onload = function () {
+                        flag++;
+                        maskLineNode.style.width =
+                            (flag / arr.length) * 100 + "%";
+                    };
+                }
+                maskLineNode.addEventListener("transitionend", function () {
+                    if (flag == arr.length) {
+                        maskUpNode.style.height = 0;
+                        maskDownNode.style.height = 0;
+                        this.style.display = "none";
+                    }
+                });
+                maskUpNode.addEventListener("transitionend", function () {
+                    mask.remove();
+                    anArr[0]["inAn"]();
+                    home3D();
+                    audio.play();
+                });
+            }
             /* 音乐控件 */
             music.onclick = function () {
                 if (audio.paused) {
@@ -563,10 +618,6 @@
             for (let i = 0; i < anArr.length; i++) {
                 anArr[i]["outAn"]();
             }
-            setTimeout(function () {
-                anArr[0]["inAn"]();
-            }, 1000);
-
             /* 内容区交互 */
             /* 第五屏气泡效果 */
             biubiu();
@@ -608,7 +659,7 @@
                                     arr.splice(i, 1);
                                 }
                             }
-                            console.log(arr);
+
                             for (var i = 0; i < arr.length; i++) {
                                 ctx.save();
                                 ctx.fillStyle =
@@ -735,7 +786,7 @@
                 }
             }
             /* 第一屏3D效果 */
-            home3D();
+            // home3D();
             function home3D() {
                 /* home1鼠标进入、离开事件 */
                 home1.onmouseenter = function () {
