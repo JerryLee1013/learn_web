@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <button>AJAX请求</button>
+    </body>
+    <script>
+        var btn = document.querySelector("button");
+        btn.addEventListener("click", function () {
+            //发送请求直接调用fetch函数
+            fetch("http://127.0.0.1:8000/fetch-server", {
+                // 请求方法
+                method: "POST",
+                //请求头
+                headers: {
+                    name: "atguigu",
+                },
+                //请求体
+                body: "username=admin&password=admin",
+            })
+                .then((response) => {
+                    console.log(response);
+                    return response.json();
+                })
+                .then((response) => {
+                    console.log(response);
+                });
+        });
+    </script>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>标题</h1>
+        <button>点击获取用户数据</button>
+    </body>
+    <script>
+        //同源:协议、域名、端口号 必须完全相同
+        //违背同源策略就是跨域
+        var btn = document.querySelector("button");
+        btn.onclick = function () {
+            const xhr = new XMLHttpRequest();
+            // 满足同源策略的情况下url可以简写相对路径
+            xhr.open("GET", "/data");
+            xhr.send();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                        console.log(xhr.response);
+                    }
+                }
+            };
+        };
+    </script>
+</html>
