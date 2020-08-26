@@ -47,7 +47,8 @@ app.all("/server", function (request, response) {
   response.setHeader("Access-Control-Allow-Headers", "*"); // 设置响应
 
   response.send("Hello AJAX POST");
-});
+}); // 处理json数据
+
 app.all("/json-server", function (request, response) {
   // 设置响应头   设置允许跨域
   response.setHeader("Access-Control-Allow-Origin", "*"); // 针对自定义的请求头，设置响应头
@@ -61,6 +62,26 @@ app.all("/json-server", function (request, response) {
   var str = JSON.stringify(data); // 设置响应
 
   response.send(str);
+});
+/* 针对IE缓存问题 */
+
+app.all("/ie", function (request, response) {
+  // 设置响应头   设置允许跨域
+  response.setHeader("Access-Control-Allow-Origin", "*"); // 针对自定义的请求头，设置响应头
+
+  response.setHeader("Access-Control-Allow-Headers", "*"); // 设置响应
+
+  response.send("hello ie - 4");
+});
+/* 延时响应 */
+
+app.all("/delay", function (request, response) {
+  // 设置响应头   设置允许跨域
+  response.setHeader("Access-Control-Allow-Origin", "*");
+  setTimeout(function () {
+    // 设置延时响应
+    response.send("延时响应");
+  }, 3000);
 }); //监听端口启动服务
 
 app.listen(8000, function () {

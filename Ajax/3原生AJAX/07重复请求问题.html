@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <button id="btn1">点击发送请求</button>
+    </body>
+    <script>
+        /* 获取元素对象 */
+        const btn1 = document.getElementById("btn1");
+
+        let xhr = null;
+        // 标识变量;是否正在发送请求
+        let isSending = false;
+        // 点击btn1发送请求
+        btn1.addEventListener("click", function () {
+            // 判断标识变量
+            if (isSending) {
+                xhr.abort();
+            }
+            //1。创建请求对象
+            xhr = new XMLHttpRequest();
+            // 修改标识变量的值
+            isSending = true;
+            //2.设置请求类型和url
+            xhr.open("GET", "http://127.0.0.1:8000/delay");
+
+            //3.将请求发送到服务器
+            xhr.send();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    // 修改标识变量
+                    isSending = false;
+                }
+            };
+        });
+    </script>
+</html>
