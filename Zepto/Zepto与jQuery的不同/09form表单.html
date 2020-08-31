@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="../js/zepto.js"></script>
+    <script src="../js/touch.js"></script>
+    <style></style>
+  </head>
+  <body>
+    <form method="post">
+      <input type="text" name="val" value="kobe" />
+      <input type="password" name="pw" value="123" />
+      <input type="checkbox" checked="checked" name="rember" />
+      <input type="submit" value="按钮" name="anniu" />
+    </form>
+  </body>
+  <script>
+    $(function () {
+      var result = $("form").serialize();
+      console.log(result);
+      result = $("form").serializeArray();
+      console.log(result);
+
+      $("form").submit(function (ev) {
+        ev = ev || event;
+        ev.preventDefault();
+        alert("我暂时不想提交");
+      });
+    });
+  </script>
+</html>

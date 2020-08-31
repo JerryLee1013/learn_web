@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="../js/zepto.js"></script>
+    <script src="../js/touch.js"></script>
+    <style>
+      body {
+        height: 1000px;
+      }
+      div {
+        width: 50px;
+        height: 50px;
+        background-color: red;
+        margin: 50px auto;
+        text-align: center;
+        line-height: 50px;
+      }
+      button {
+        /*禁止默认属性*/
+        touch-action: none;
+        width: 200px;
+        height: 50px;
+        background-color: pink;
+        position: absolute;
+        left: 50%;
+        margin-left: -100px;
+        text-align: center;
+        line-height: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box1">按钮1</div>
+    <div class="box2">按钮2</div>
+    <div class="box3">按钮3</div>
+    <button class="btn">button</button>
+  </body>
+  <script>
+    $(function () {
+      /* $(".box1").on("tap", function () {
+        alert("tap触发的事件");
+      });*/
+      $(".box1").tap(function () {
+        alert("tap触发的事件");
+      });
+      $(".box2").singleTap(function () {
+        alert("单击触发的事件");
+      });
+      $(".box2").doubleTap(function () {
+        alert("双击触发的事件");
+      });
+      $(".box3").longTap(function () {
+        alert("长按750ms触发的事件");
+      });
+      /*  $(".btn").swipe(function () {
+        alert("我滑动了一下");
+      });*/
+      $(".btn").swipeLeft(function () {
+        alert("我向左滑动了一下");
+      });
+    });
+  </script>
+</html>

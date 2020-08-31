@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <select name="" id="">
+      <option value="">1</option>
+      <option value="">2</option>
+      <option value="" selected="selected">3</option>
+      <option value="">4</option>
+      <option value="" selected>5</option>
+    </select>
+    <button id="btn">按钮</button>
+  </body>
+  <script src="../js/zepto.js"></script>
+  <script>
+    $(function () {
+      $("option").each(function () {
+        console.log($(this).attr("selected"));
+        console.log($(this).prop("selected"));
+      });
+
+      $("#btn").click(function () {
+        $(this).prop("disabled", true);
+        setTimeout(function () {
+          console.log(this);
+          $("#btn").removeAttr("disabled");
+        }, 1000);
+      });
+    });
+  </script>
+</html>

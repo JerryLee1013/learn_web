@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="../js/zepto.js"></script>
+    <script src="../js/touch.js"></script>
+    <style>
+      #btn {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+      }
+    </style>
+    <style></style>
+  </head>
+  <body>
+    <form method="post">
+      <button id="btn">按钮</button>
+    </form>
+  </body>
+  <script>
+    $(function () {
+      var isSending = false;
+      var xmlHttp = null;
+      $("#btn").on("touchstart", function () {
+        if (isSending) {
+          //用户点击失效
+          return;
+        }
+        isSending = true;
+        $(this).css("background", "gray");
+        $(this).prop("disabled", "true");
+        setTimeout(function () {
+          $("#btn").css("background", "red");
+
+          isSending = false;
+        }, 1000);
+        //判断用户是否发送过请求
+        if (!xmlHttp) {
+          //表示用户没有发送过请求
+          xmlHttp = sendXML();
+        } else {
+          //用户发送过请求
+          xmlHttp.abort();
+          xmlHttp = sendXML();
+        }
+      });
+
+      function sendXML() {
+        var xmlHttp = $.ajax({
+          method: "GET",
+          url: "http://localhost:3000",
+          dataType: "json",
+          success: function (data) {
+            console.log(data);
+          },
+          error: function (error) {
+            console.log(error);
+          },
+        });
+        return xmlHttp;
+      }
+    });
+  </script>
+</html>

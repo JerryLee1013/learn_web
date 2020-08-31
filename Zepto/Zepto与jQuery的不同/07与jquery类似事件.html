@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="../js/zepto.js"></script>
+    <script src="../js/touch.js"></script>
+    <style>
+      .btn2 {
+        width: 50px;
+        height: 50px;
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="btn1">按钮1</button>
+    <div class="btn2">按钮2</div>
+    <button class="btn3">按钮3</button>
+  </body>
+  <script>
+    $(function () {
+      $(".btn1").on("touchstart", function () {
+        alert("on触发的事件");
+      });
+      $(".btn1").off();
+      $(".btn2").bind("myTouch", function () {
+        alert("bind触发的事件");
+      });
+      $(".btn2").unbind();
+      $(".btn2").trigger("myTouch"); //触发bind绑定的自定义事件
+      $(".btn3").one("touchstart", function () {
+        alert("我只执行一次");
+      });
+    });
+  </script>
+</html>
