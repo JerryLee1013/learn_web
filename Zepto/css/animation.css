@@ -1,0 +1,246 @@
+/* 定义四个方向的动画 */
+/* 向上滑动 */
+.pt-page-moveToTop {
+    animation: moveToTop 0.6 ease both;
+    -webkit-animation: moveToTop 0.6 ease both;
+}
+.pt-page-moveFromBottom {
+    animation: moveFromBottom 0.6s ease both;
+    -webkit-animation: moveFromBottom 0.6s ease both;
+}
+
+/* 向下滑动 */
+.pt-page-moveToBottom {
+    animation: moveToBottom 0.6 ease both;
+    -webkit-animation: moveToBottom 0.6 ease both;
+}
+.pt-page-moveFromTop {
+    animation: moveFromTop 0.6s ease both;
+    -webkit-animation: moveFromTop 0.6s ease both;
+}
+
+/* 向左滑动 */
+.pt-page-moveToLeft {
+    animation: moveToLeft 0.6 ease both;
+    -webkit-animation: moveToLeft 0.6 ease both;
+}
+.pt-page-moveFromRight {
+    animation: moveFromRight 0.6s ease both;
+    -webkit-animation: moveFromRight 0.6s ease both;
+}
+
+/* 向由滑动 */
+.pt-page-moveToRight {
+    animation: moveToLeft 0.6 ease both;
+    -webkit-animation: moveToLeft 0.6 ease both;
+}
+.pt-page-moveFromLeft {
+    animation: moveFromLeft 0.6s ease both;
+    -webkit-animation: moveFromLeft 0.6s ease both;
+}
+
+/* 关键帧 */
+@keyframes moveToTop {
+    from {
+    }
+    to {
+        transform: translateY(-100%);
+    }
+}
+
+@keyframes moveFromBottom {
+    from {
+        transform: translateY(100%);
+        -webkit-transform: translateY(100%);
+        -moz-transform: translateY(100%);
+        -ms-transform: translateY(100%);
+        -o-transform: translateY(100%);
+    }
+    to {
+    }
+}
+
+@keyframes moveToBottom {
+    from {
+    }
+    to {
+        transform: translateY(100%);
+        -webkit-transform: translateY(100%);
+        -moz-transform: translateY(100%);
+        -ms-transform: translateY(100%);
+        -o-transform: translateY(100%);
+    }
+}
+
+@keyframes moveFromTop {
+    from {
+        transform: translateY(-100%);
+        -webkit-transform: translateY(-100%);
+        -moz-transform: translateY(-100%);
+        -ms-transform: translateY(-100%);
+        -o-transform: translateY(-100%);
+    }
+    to {
+    }
+}
+
+@keyframes moveToLeft {
+    from {
+    }
+    to {
+        transform: translateX(-100%);
+        -webkit-transform: translateX(-100%);
+        -moz-transform: translateX(-100%);
+        -ms-transform: translateX(-100%);
+        -o-transform: translateX(-100%);
+    }
+}
+
+@keyframes moveFromRight {
+    from {
+        transform: translateX(100%);
+        -webkit-transform: translateX(100%);
+        -moz-transform: translateX(100%);
+        -ms-transform: translateX(100%);
+        -o-transform: translateX(100%);
+    }
+    to {
+    }
+}
+
+@keyframes moveToRight {
+    from {
+    }
+    to {
+        transform: translateX(100%);
+        -webkit-transform: translateX(100%);
+        -moz-transform: translateX(100%);
+        -ms-transform: translateX(100%);
+        -o-transform: translateX(100%);
+    }
+}
+
+@keyframes moveFromLeft {
+    from {
+        transform: translateX(-100%);
+        -webkit-transform: translateX(-100%);
+        -moz-transform: translateX(-100%);
+        -ms-transform: translateX(-100%);
+        -o-transform: translateX(-100%);
+    }
+    to {
+    }
+}
+
+/* 定义箭头动画 */
+.pt-page-moveIconUp {
+    animation: moveIconUp 1s ease both infinite;
+    -webkit-animation: moveIconUp 1s ease both infinite;
+}
+
+@keyframes moveIconUp {
+    0% {
+        opacity: 0;
+        transform: translateY(100%);
+        -webkit-transform: translateY(100%);
+        -moz-transform: translateY(100%);
+        -ms-transform: translateY(100%);
+        -o-transform: translateY(100%);
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100%);
+        -webkit-transform: translateY(-100%);
+        -moz-transform: translateY(-100%);
+        -ms-transform: translateY(-100%);
+        -o-transform: translateY(-100%);
+    }
+}
+
+/* 定义圆的动画 */
+.pt-page-moveCircle {
+    animation: moveCircle 1.5s ease both;
+    -webkit-animation: moveCircle 1.5s ease both;
+}
+
+@keyframes moveCircle {
+    0% {
+        opacity: 0.3;
+        transform: translateY(-80%);
+    }
+    20% {
+        opacity: 0.7;
+        transform: translateY(30%);
+        -webkit-transform: translateY(30%);
+        -moz-transform: translateY(30%);
+        -ms-transform: translateY(30%);
+        -o-transform: translateY(30%);
+    }
+    40% {
+        opacity: 0.7;
+        transform: translateY(-40%);
+        -webkit-transform: translateY(-40%);
+        -moz-transform: translateY(-40%);
+        -ms-transform: translateY(-40%);
+        -o-transform: translateY(-40%);
+    }
+    60% {
+        opacity: 1;
+        transform: translateY(20%);
+        -webkit-transform: translateY(20%);
+        -moz-transform: translateY(20%);
+        -ms-transform: translateY(20%);
+        -o-transform: translateY(20%);
+    }
+    80% {
+        opacity: 1;
+        transform: translateY(-10%);
+        -webkit-transform: translateY(-10%);
+        -moz-transform: translateY(-10%);
+        -ms-transform: translateY(-10%);
+        -o-transform: translateY(-10%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 定义缩放动画 */
+.pt-page-scaleUp {
+    animation: scaleUp 0.6s ease both;
+    -webkit-animation: scaleUp 0.6s ease both;
+}
+
+@keyframes scaleUp {
+    from {
+        transform: scale(0.4);
+        -webkit-transform: scale(0.4);
+        -moz-transform: scale(0.4);
+        -ms-transform: scale(0.4);
+        -o-transform: scale(0.4);
+    }
+    to {
+    }
+}
+
+/* 定义翻转动画 */
+.pt-page-flipInLeft {
+    animation: flipInLeft 0.6s ease both;
+    transform-origin: 50% 50%;
+    -webkit-animation: flipInLeft 0.6s ease both;
+}
+@keyframes flipInLeft {
+    from {
+        transform: rotateY(-90deg);
+        -webkit-transform: rotateY(-90deg);
+        -moz-transform: rotateY(-90deg);
+        -ms-transform: rotateY(-90deg);
+        -o-transform: rotateY(-90deg);
+    }
+    to {
+    }
+}
