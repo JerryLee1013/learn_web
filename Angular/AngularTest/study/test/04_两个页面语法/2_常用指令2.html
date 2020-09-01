@@ -21,13 +21,38 @@
     background-color: green;
   }
 </style>
-<body>
-
-
-
+<body ng-app="myApp">
+  <div ng-controller="MyController">
+    <div style="width:200px;height: 200px;"
+         ng-style="myStyle"
+         ng-mouseenter="enter()"
+         ng-mouseleave="leave()">
+    </div>
+    <ul>
+      <li ng-repeat="xxx in persons" ng-class="{oddB:$odd,evenB:$even}">{{xxx.username}}---{{xxx.age}}</li>
+    </ul>
+  </div>
 <script type='text/javascript' src="../../js/angular-1.5.5/angular.js"></script>
 <script type="text/javascript">
-
+  angular.module("myApp",[])
+    .controller("MyController",["$scope",function ($scope) {
+      $scope.myStyle = {background:'red'}
+      $scope.enter = function () {
+        this.myStyle.background = "pink"
+      }
+      $scope.leave = function () {
+        this.myStyle.background = "red"
+      }
+      $scope.persons = [
+        {username:"kobe1",age:23},
+        {username:"kobe2",age:24},
+        {username:"kobe3",age:25},
+        {username:"kobe4",age:26},
+        {username:"kobe5",age:27},
+      ]
+      
+     
+    }])
 </script>
 </body>
 

@@ -5,10 +5,21 @@
   <title></title>
 </head>
 <body>
+<form action="">
+  <input type="text">
+</form>
 
+<p>输入的内容是：<span></span></p>
 <script type="text/javascript" src="../../js/jquery/jquery-1.11.1.js"></script>
 <script type="text/javascript">
-
+  //window.onload整个页面加载完毕，包括图片
+  //document.ready文档结构加载完毕
+  $(function () {
+    $("input").keyup(function () {
+      var value = $(this).val()
+      $("span").html(value)
+    })
+  })
 </script>
 </body>
 </html>

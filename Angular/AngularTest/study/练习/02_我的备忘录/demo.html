@@ -4,11 +4,65 @@
   <meta charset="UTF-8">
   <title>Title</title>
 </head>
-<body ng-app="todoApp" >
-
+<body ng-app="myApp" >
+<div ng-controller="MyController">
+  <h1>我的备忘录</h1>
+  
+  <div>
+    <input type="text" ng-model="name">
+    <button ng-click="add()">新增</button>
+  </div>
+  <div ng-repeat="todo in todos">
+    <input type="checkbox" ng-model="todo.isChecked">
+    <span>{{todo.name}}</span>
+  </div>
+  <button ng-click="delete()">删除选中的记录</button>
+</div>
 
 
 <script type="text/javascript" src="../../js/angular-1.5.5/angular.js"></script>
-<script type="text/javascript" src="app.js"></script>
+<script type="text/javascript">
+  angular.module('myApp',[])
+    .controller("MyController",["$scope",function ($scope) {
+      $scope.todos = [
+        {name:"吃饭", isChecked : false},
+        {name:"睡觉", isChecked : false},
+        {name:"打豆豆", isChecked : false},
+        
+      ]
+      $scope.add = function(){
+        //判断用户输入的内容是否合法
+        if(!$scope.name){
+          alert("输入的内容不能为空")
+          return
+        }
+        var obj = {
+          name:$scope.name,
+          sChecked : false
+        }
+        $scope.todos.unshift(obj)
+        $scope.name = ""
+      }
+      /*$scope.delete = function () {
+        $scope.todos.forEach(function (item,index) {
+        //  找到选中的
+          if(item.isChecked){
+            $scope.todos.splice(index,1)
+            $scope.delete()
+          }
+        })
+      }*/
+      
+      $scope.delete = function () {
+        var oldTodos = $scope.todos
+        $scope.todos = []
+        oldTodos.forEach(function (item,index) {
+          if(!item.isChecked){
+            $scope.todos.push(item)
+          }
+        })
+      }
+    }])
+</script>
 </body>
 </html>

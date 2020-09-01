@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title></title>
 </head>
-<body ng-app="">
+<body ng-app="myApp">
 <!--
 1. 使用Angular表达式:
   * 语法: {{expression}}
@@ -17,9 +17,23 @@
   * 数组
 -->
 
-
+<div ng-controller="MyController">
+  <p>{{123}}</p>
+  <p>{{"abc"}}</p>
+  <p>{{abc.split("").reverse().join("")}}</p>
+  <p>{{true}}</p>
+  <p>---{{undefined}}----
+  <p>---{{null}}----</p>
+</div>
 
 
 </body>
 <script type='text/javascript' src="../../js/angular-1.5.5/angular.js"></script>
+<script>
+  angular.module("myApp",[])
+    .controller("MyController",["$scope",function ($scope) {
+      $scope.abc = "abc"
+      
+    }])
+</script>
 </html>

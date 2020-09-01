@@ -23,10 +23,69 @@
 
 <body ng-app="myApp" >
 
+<div ng-controller="MyController">
+    <h2>价格计算器(自动)</h2>
+    数量:<input type="number" ng-model="num1">
+    价格:<input type="number" ng-model="price1">
+    <p>总计：{{num1*price1}}</p>
+    
+    <h2>价格计算器(手动)</h2>
+    数量:<input type="number" ng-model="num2">
+    价格:<input type="number" ng-model="price2">
+    <button ng-click="getTotalPrice()">计算</button>
+    <p>总计：{{totalPrice}}</p>
+    
+    <div>
+        <h3>人员信息列表</h3>
+        <ul>
+            <li ng-repeat="person in persons">
+               {{$even}}---{{$odd}}---{{$first}}---{{$middle}}----{{person.username}}----{{person.age}}
+            </li>
+        </ul>
+    </div>
+    
+    <div>
+        <p>{{123}}</p>
+        <p ng-bind="123"></p>
+    </div>
+    
+    <div>
+        <button ng-click="toggleLike()">切换喜欢</button>
+        <p ng-show="islike">宝宝</p>
+        <p ng-hide="islike">宝宝酱</p>
+    </div>
+</div>
+
+
+
 
 <script type='text/javascript' src='../../js/angular-1.5.5/angular.js'></script>
 <script type='text/javascript'>
-
+    angular.module("myApp",[])
+        .controller("MyController",["$scope",function ($scope) {
+            $scope.num1 = 0
+            $scope.price1 = 0
+            $scope.num2 = 0
+            $scope.price2 = 0
+            $scope.getTotalPrice = function() {
+                $scope.totalPrice =  this.num2*this.price2
+            }
+            
+            $scope.persons = [
+                {username:"kobe",age:39},
+                {username:"Tom",age:22},
+                {username:"Jeck",age:24},
+                {username:"Rose",age:34},
+                {username:"Bob",age:12},
+            ]
+    
+    
+            $scope.islike = true
+            $scope.toggleLike = function () {
+                
+                this.islike = !this.islike
+            }
+        }])
 </script>
 
 </body>

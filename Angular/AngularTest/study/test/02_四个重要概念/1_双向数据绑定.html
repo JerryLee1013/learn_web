@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>02_(双向)数据绑定</title>
 </head>
-<body>
+<body ng-app ng-init="name1='tom'">
 
 <!--
 1. 数据绑定: 数据从一个地方A转移(传递)到另一个地方B, 而且这个操作由框架来完成
@@ -16,7 +16,10 @@
   * ng-model是双向数据绑定, 而{{}}是单向数据绑定
 3.ng-init  用来初始化当前作用域变量。
 -->
-
+<input type="text" ng-model="name1">
+<p>姓名1：<span>{{name1}}</span></p>
+<input type="text" ng-model="name1">
+<p>姓名2：<span>{{name1}}</span></p>
 
 <script type="text/javascript" src="../../js/angular-1.2.29/angular.js"></script>
 </body>
