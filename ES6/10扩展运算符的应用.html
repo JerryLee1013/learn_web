@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div></div>
+        <div></div>
+        <div></div>
+        <script>
+            // 数组的合并
+            const kuaizi = ["王太利", "肖央"];
+            const fenghuang = ["曾毅", "零花"];
+            // const hebing = kuaizi.concat(fenghuang);
+            const hebing = [...kuaizi, ...fenghuang];
+            console.log(hebing);
+
+            //数组的克隆
+            const sanzhihua = ["E", "G", "M"];
+            const sanyecao = [...sanzhihua];
+            console.log(sanyecao);
+
+            // 将伪数组转为真数组
+            const divs = document.getElementsByTagName("div");
+            const divArr = [...divs];
+            console.log(divs);
+            console.log(divArr);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // 引入rest参数用于获取函数的实参，用来代替arguments
+            function date() {
+                console.log(arguments);
+            }
+            date("sadsa", "sada", true, 213, null, undefined);
+
+            //ES6
+            function data(...args) {
+                console.log(args);
+            }
+            data("sadsa", "sada", true, 213, null, undefined);
+            //rest参数必须放在参数最后
+            function fn(a, b, ...args) {
+                console.log(args);
+            }
+            fn(1, 2, "ad", "we", 1312, true);
+        </script>
+    </body>
+</html>

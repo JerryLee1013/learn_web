@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .item {
+                width: 100px;
+                height: 100px;
+                border: 1px solid;
+                float: left;
+                margin: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h2 class="page-header">点击切换颜色</h2>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+        </div>
+    </body>
+    <script>
+        let a;
+        let b, c, d;
+        let e = 100;
+        let f = 521,
+            g = "asjdka",
+            h = [];
+        //变量不能重复声明
+        // let star = "罗志祥";
+        // let star = "小猪";
+        // console.log(star);
+
+        // 块作用域
+        {
+            //不存在变量提升
+            // console.log(girl);
+
+            let girl = "周扬青";
+        }
+        // console.log(girl);
+
+        // 不影响作用域链
+        let itemNodes = document.querySelectorAll(".item");
+        let headerNode = document.querySelector(".page-header");
+        for (let i = 0; i < itemNodes.length; i++) {
+            itemNodes[i].onclick = function () {
+                this.style.background = "red";
+            };
+        }
+    </script>
+</html>

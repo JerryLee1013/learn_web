@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            let fn = (a, b) => {
+                console.log("箭头函数");
+                return a + b;
+            };
+            let sum = fn(1, 2);
+            console.log(sum);
+
+            // 特点：1this是静态的
+            let fun = () => {
+                console.log(this); //window
+            };
+            // fun();
+
+            let obj = {
+                name: "asa",
+                func: () => {
+                    console.log(this);
+                },
+            };
+            let obj1 = {
+                name: "dasdwqeq",
+                func: function () {
+                    console.log(this);
+                },
+            };
+            obj1.func(); //obj1
+            obj.func.call(obj1); //window
+
+            //不能作为构造函数实例化对象
+            //不能使用arguments变量
+            // 形参有且只有一个的时候可以省略小括号，当函数体有且只有一句时，可以省略大括号，此时return必须省略，而且语句的执行结果就是函数的返回值
+            let pow = (n) => n * n;
+            let result = pow(23);
+            console.log(result);
+        </script>
+    </body>
+</html>
