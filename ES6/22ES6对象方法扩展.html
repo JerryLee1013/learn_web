@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // Object.is判断两个值是否完全相等
+            console.log(Object.is(12, 12)); //true
+            console.log(Object.is(NaN, NaN)); //true
+            console.log(NaN === NaN); //false
+            // Object.assign()对象的合并
+            const config1 = {
+                name: "asd",
+                age: "12",
+                test: "test1",
+            };
+            const config2 = {
+                name: "qwe",
+                age: "14",
+                gender: "男",
+            };
+            // 将config2和config1的对象属性进行合并，重名的属性，config2的属性值覆盖config1的属性值，两个对象各自独有的属性取原有值进行合并
+            console.log(Object.assign(config1, config2));
+
+            // Object.setPrototypeOf设置原型对象  Object.getPrototypeOf
+            const school = {
+                name: "清华",
+            };
+            const cities = {
+                xiaoqu: ["北京", "山东", "上海"],
+            };
+
+            Object.setPrototypeOf(school, cities);
+            console.log(Object.getPrototypeOf(school));
+            console.log(school);
+        </script>
+    </body>
+</html>

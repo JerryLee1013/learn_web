@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d4be979f-5c74-42fd-98c9-8c2d495b8f99" name="Default Changelist" comment="" />
+    <list default="true" id="d4be979f-5c74-42fd-98c9-8c2d495b8f99" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/ES6/01let生命变量.html" beforeDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -17,7 +19,7 @@
         <entry file="file://$PROJECT_DIR$/Angular/AngularTest/study/练习/02_我的备忘录/demo.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="302">
-              <caret line="53" column="9" lean-forward="true" selection-start-line="53" selection-start-column="9" selection-end-line="53" selection-end-column="9" />
+              <caret line="53" column="9" selection-start-line="53" selection-start-column="9" selection-end-line="53" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -58,10 +60,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="506" />
-    <option name="y" value="11" />
-    <option name="width" value="1381" />
-    <option name="height" value="748" />
+    <option name="x" value="505" />
+    <option name="y" value="9" />
+    <option name="width" value="1383" />
+    <option name="height" value="749" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -107,6 +109,7 @@
       <updated>1598932826587</updated>
       <workItem from="1598932827689" duration="3575000" />
       <workItem from="1598938922326" duration="23691000" />
+      <workItem from="1599136693856" duration="11000" />
     </task>
     <task id="LOCAL-00001" summary="Angular学习文件">
       <created>1598934889485</created>
@@ -126,11 +129,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27266000" />
+    <option name="totallyTimeSpent" value="27277000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1563" height="845" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24950884" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -279,7 +281,7 @@
     <entry file="file://$PROJECT_DIR$/Angular/AngularTest/study/练习/02_我的备忘录/demo.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="302">
-          <caret line="53" column="9" lean-forward="true" selection-start-line="53" selection-start-column="9" selection-end-line="53" selection-end-column="9" />
+          <caret line="53" column="9" selection-start-line="53" selection-start-column="9" selection-end-line="53" selection-end-column="9" />
         </state>
       </provider>
     </entry>

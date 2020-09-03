@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            let s = new Set();
+            console.log(typeof s);
+
+            let s2 = new Set([1, 2, 3, 4, 5, 6, 1, 2, 3, 4, "1", "2"]); //自动去重
+            s2.add(9);
+            s2.delete("1");
+            console.log(s2.has("2"));
+            console.log(s2.size);
+            console.log(s2);
+        </script>
+    </body>
+</html>

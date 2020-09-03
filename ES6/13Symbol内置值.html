@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            /* Symbol内置值会作为一个对象的属性被使用，如下，起到类似过滤的作用或限制条件 */
+            class Person {
+                /*  static [Symbol.hasInstance](param) {
+                    console.log(param);
+                    console.log("我被用来检测类型了");
+                    // 此方法可以认为修改返回值
+                    return true;
+                } */
+            }
+
+            let o = {};
+            let p1 = new Person();
+            console.log(o instanceof Person);
+            console.log(p1 instanceof Person);
+
+            const arr1 = [1, 2, 3];
+            const arr2 = [4, 5, 6];
+            //表示被连接的arr2数组不可展开，而是作为一个整体被传入数组称为一个数组的一个值
+            arr2[Symbol.isConcatSpreadable] = false;
+            console.log(arr1.concat(arr2));
+        </script>
+    </body>
+</html>

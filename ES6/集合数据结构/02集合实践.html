@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            let arr = [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                2,
+                3,
+                4,
+                6,
+                7,
+                8,
+                3,
+                8,
+                6,
+                1,
+            ];
+            let arr2 = [4, 5, 6, 5, 6, 7, 4, 11, 23, 45];
+            // 数组去重
+            let result = [...new Set(arr)]; //将数组变成集合
+            console.log(result);
+            // 交集
+
+            let result2 = [...new Set(arr)].filter((item) => {
+                return new Set(arr2).has(item);
+            });
+            console.log(result2);
+            // 并集
+            let result3 = [...new Set([...arr, ...arr2])];
+            console.log(result3);
+            // 差集
+            let diff = [...new Set(arr)].filter(
+                (item) => !new Set(arr2).has(item)
+            );
+            console.log(diff);
+        </script>
+    </body>
+</html>

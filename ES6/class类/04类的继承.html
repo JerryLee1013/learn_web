@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            class Phone {
+                // 构造方法
+                constructor(brand, price) {
+                    this.brand = brand;
+                    this.price = price;
+                }
+                //类方法必须使用这种方法，不能使用ES5的function创建
+                call() {
+                    console.log("打电话");
+                }
+            }
+
+            // 子类
+            class SmartPhone extends Phone {
+                constructor(brand, price, color, size) {
+                    super(brand, price);
+                    this.color = color;
+                    this.size = size;
+                }
+
+                phone() {
+                    console.log("我可以拍照");
+                }
+
+                playGame() {
+                    console.log("我可以玩游戏");
+                }
+            }
+
+            const xiaomi = new SmartPhone("小米", 1999, "pink", 5.9);
+            xiaomi.call();
+            xiaomi.phone();
+            xiaomi.playGame();
+            console.log(xiaomi);
+        </script>
+    </body>
+</html>
