@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            let str = "adas231321312你知道吗666啦啦啦";
+
+            // 正向断言，根据后边的内容进行判断
+            // const reg = /\d+(?=啦)/;
+            // const result = reg.exec(str);
+
+            // 反向断言，根据前边的内容进行判断
+            const reg = /(?<=吗)\d+/;
+            const result = reg.exec(str);
+
+            console.log(result[0]);
+        </script>
+    </body>
+</html>

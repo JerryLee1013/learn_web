@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // ?.可选链操作符，应用于对象层级较深时候的查询
+            function main(config) {
+                // const db = config && config.db && config.db.host;
+                const db = config?.db?.host; //判断？前面的是存在，如果存在调用.后的属性
+                console.log(db);
+            }
+            main({
+                db: {
+                    host: "192.168.1.100",
+                    username: "root",
+                },
+                cache: {
+                    host: "192.168.1.200",
+                    username: "admin",
+                },
+            });
+        </script>
+    </body>
+</html>

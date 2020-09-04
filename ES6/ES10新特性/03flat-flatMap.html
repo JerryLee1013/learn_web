@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // 将多维数组转换为低维数组
+            const arr = [1, 2, 3, 4, [5, 6, 7]];
+            console.log(arr.flat());
+            // 三维转1维
+            const arr1 = [1, 2, 3, 4, [5, 6, 7, [8, 9, 10, 1, 2]]];
+            console.log(arr1.flat(2)); //2表示深度，进行2维的降低
+
+            // flatMap
+            const arr2 = [1, 2, 3, 4];
+            const result = arr2.flatMap((item) => [item * 10]);
+            console.log(result);
+        </script>
+    </body>
+</html>

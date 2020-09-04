@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // 大整型
+            let n = 521n;
+            console.log(n, typeof n);
+
+            let n1 = -123;
+            console.log(BigInt(n1));
+            // console.log(BIgInt(1.2));//只能操作整数
+
+            // 大数值运算
+            let max = Number.MAX_SAFE_INTEGER;
+            console.log(max); //9007199254740991
+            console.log(max + 1); //9007199254740992
+            console.log(max + 2); //9007199254740992
+
+            console.log(BigInt(max) + BigInt(2)); //9007199254740993n
+        </script>
+    </body>
+</html>
